@@ -1,0 +1,19 @@
+# TODO — Faculty of Science Virtual Lab
+
+- [x] **Landing, navigation, language, and theme.** Create an immersive, modern “Virtual Lab” UI with a dark/light lab mode toggle and Arabic/English toggle. On entry, let the user choose between **Virtual Microscope (الميكروسكوب الافتراضي)** and **Scientific Schemas (رسومات الاسكيما)**. The site must be responsive for desktop and tablets.
+
+- [x] **Microscope department and specimen selection.** When the user selects the Microscope, display Faculty of Science departments: **Hematology & Blood Analysis (قسم أمراض الدم والتحاليل)**, **Histology (قسم الأنسجة)**, **Microbiology & Parasitology (قسم الميكروبيولوجي والطفيليات)**, and **Botany & Plant Anatomy (قسم النبات)**. If the user selects Hematology (الدم), prompt them to choose **A+, A−, B+, B−, AB+, AB−, O+, O−**, plus options for a normal blood smear and an agglutination reaction with Anti-A, Anti-B, and Anti-D reagents.
+
+- [x] **Interactive microscope viewport and cell simulation.** Build a full-screen interactive microscope viewport using HTML5 Canvas or WebGL (Three.js or PixiJS) so it feels like a physical lab microscope, not a static image. Dynamically render procedural Red Blood Cells (Erythrocytes), White Blood Cells (Leukocytes, including Neutrophils and Lymphocytes), and Platelets floating and drifting naturally in plasma fluid (Brownian motion and fluid flow). For blood typing, visually simulate reagent-dependent agglutination in real time. Mark the simulation as educational and not diagnostic.
+
+- [x] **Microscope controls.** Implement working objective magnification switching for **4× Scanning, 10× Low Power, 40× High Power, and 100× Oil Immersion**, dynamically scaling and revealing finer cellular details. Provide coarse and fine focus controls with a blur/sharpness depth-of-field effect controlled by rotational dials. Provide stage X/Y panning, condenser light-intensity adjustment, and a micrometer measurement-grid toggle. Subtle mechanical lens/focus sound effects are optional and mutable.
+
+- [x] **Scientific Schemas categories, labels, and quiz.** Categorize diagrams by **Zoology/Anatomy, Botany, Chemistry/Lab Apparatus, and Cell Biology**. Provide interactive vector diagrams (SVG/Canvas). Hovering or clicking a part must highlight the structure and display Arabic and English scientific names, physiological function, and exam notes. Provide quiz/exam mode to hide labels and let students test themselves by clicking the correct anatomical part or typing its name, with instant grading.
+
+- [x] **Verified scientific content and citations.** Before generating scientific data, cellular morphology, blood typing agglutination reactions, or anatomical schemas, cross-verify all facts using highly reputable peer-reviewed or academic sources (e.g., PubMed, NCBI, Gray's Anatomy, OpenStax Biology, university histology atlases). Do not invent scientific details. Cite verified academic references inside each specimen's “Scientific Reference” modal. Keep content and reference data modular.
+
+- [x] **Engineering, verification, and documentation.** Use modular components and a responsive desktop/tablet layout. Configure relevant language diagnostics, implement a runnable Vite/React build, run `npm run build` (or the package-manager-equivalent production build), and resolve issues. Add a clean `.gitignore` and comprehensive `README.md`. The route manifest is served as JSON. The final TypeScript production build passes.
+
+- [ ] **GitHub source repository.** The original brief requests pushing the completed source to a new GitHub repository and providing its URL. Before creating or pushing that repository, confirm the repository name, owner, and public/private visibility with the user. No GitHub repository has been created or pushed.
+
+- [x] **Deployment boundary.** Do not claim a live deployment unless one is separately authorized and successful. No public website deployment has been requested or completed.

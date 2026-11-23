@@ -1,0 +1,9 @@
+{
+  "routes": [
+    { "path": "/", "title": "Virtual Lab" },
+    { "path": "/microscope", "title": "Virtual Microscope" },
+    { "path": "/exams", "title": "Practical Exams" },
+    { "path": "/schemas", "title": "Scientific Schemas" },
+    { "path": "/schemas/:diagramId", "title": "Schema Study" }
+  ]
+}

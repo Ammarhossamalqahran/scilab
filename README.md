@@ -1,6 +1,28 @@
-# Faculty of Science Virtual Lab
+# Faculty of Science Virtual Lab (معمل عمار التعليمي)
 
-A bilingual English/Arabic biology teaching lab for Faculty of Science students. The microscope uses locally bundled specimen photographs, shown directly inside the microscope field. The app is a client-side React + TypeScript single-page application; it has no account system, backend, database, or provider keys. Favorites and the practical notebook are saved only in the current browser's local storage.
+A bilingual (Arabic / English) virtual biology lab for Faculty of Science students: a virtual microscope with 35 specimens, practical-exam practice, and interactive anatomy and lab diagrams.
+
+**Live site:** https://scilab-wheat.vercel.app/
+
+> **Designed and built by Ammar Hossam Alqahran.** The interface, layout, interactions, exam logic and bilingual content structure are my own work. The specimen photographs are **not** mine: they come from Wikimedia Commons and other open sources, credited below.
+
+| Home | Practical exams |
+| --- | --- |
+| ![Home page](docs/screenshots/home.png) | ![Practical exam room](docs/screenshots/exams.png) |
+
+| Study diagrams |
+| --- |
+| ![Interactive heart diagram](docs/screenshots/schemas.png) |
+
+## Features
+
+- Virtual microscope with 35 built-in photomicrographs, search, favorites and a blind identification challenge.
+- Practical exam room: identify specimens, compare slides, stain-selection questions, preparation workflow and a browser-local lab notebook.
+- Interactive SVG study diagrams (heart, animal cell, dicot leaf, lab apparatus) with study and exam modes.
+- Arabic and English interface, light and dark theme, saved locally in the browser.
+- Client-side only: no accounts, backend, database or API keys.
+
+**Built with:** React 19, TypeScript, Vite 7, Tailwind CSS 4, React Router 7, Framer Motion. Deployed on Vercel.
 
 ## Run locally
 
@@ -26,6 +48,16 @@ This is an educational viewer, not a live feed from a microscope or a calibrated
 
 Each specimen includes an Academic References dialog. Scientific content and source metadata are centralized in `src/data/scientificData.ts` and `src/data/specimenMedia.ts`.
 
+## Credits and sources
+
+**Design and code:** Ammar Hossam Alqahran.
+
+**Specimen photographs.** All 35 photomicrographs and the landing-page microscope photo are third-party images bundled locally. Each one is credited to its author with its license and source link in [`docs/specimen-photo-credits.md`](docs/specimen-photo-credits.md). They come mostly from [Wikimedia Commons](https://commons.wikimedia.org/) under CC0, CC BY, CC BY-SA 3.0 and CC BY-SA 4.0 licenses, including photographs by Microrao, Dr Graham Beards, Prof. Osaro Erhabor, Josef Reischig's archive (shared by his heirs), the Department of Pathology at Calicut Medical College, NOAA and others. The author and license are also shown under each specimen inside the app. Some images are cropped or color-filtered for teaching; the credits file notes where.
+
+**Scientific content.** Specimen descriptions, diagram labels and exam answers cite academic references listed in [`docs/scientific-sources.md`](docs/scientific-sources.md) and in each Academic References dialog. Research notes are in [`docs/research-notes.md`](docs/research-notes.md).
+
+If you are the author of an image used here and want a credit changed or the image removed, please open an issue.
+
 ## Project map
 
 ```text
@@ -41,10 +73,10 @@ public/           Static branding asset and route manifest
 
 ## Routes
 
-- `/` — overview and learning pathways
-- `/microscope` — microscope workspace
-- `/exams` — practical exam room and lab notebook
-- `/schemas` — schema atlas
-- `/schemas/:diagramId` — schema study or exam view
+- `/` overview and learning pathways
+- `/microscope` microscope workspace
+- `/exams` practical exam room and lab notebook
+- `/schemas` schema atlas
+- `/schemas/:diagramId` schema study or exam view
 
-`public/manus-routes.json` mirrors this route set for Manus Preview. There is no public deployment configured. A new GitHub repository has not been created or pushed; request confirmation of the owner, repository name, and visibility before doing so.
+`public/manus-routes.json` mirrors this route set for Manus Preview.

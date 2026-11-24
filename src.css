@@ -1271,3 +1271,6 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 /* Fonts: El Messiri for headings (Arabic and Latin), IBM Plex Sans Arabic for body. Both OFL, self-hosted. */
 h1, h2, h3, .brand-name, .page-title, .hero-copy h1 { font-family: "El Messiri", "IBM Plex Sans Arabic", system-ui, sans-serif; }
 [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] .page-title, [dir="rtl"] .brand-name { letter-spacing: 0; }
+
+.needs-review-tag { color: #b45309; font-weight: 700; font-size: 0.75em; }
+[data-theme='dark'] .needs-review-tag { color: #fbbf24; }

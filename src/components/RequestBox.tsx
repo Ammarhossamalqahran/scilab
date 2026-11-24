@@ -2,7 +2,7 @@ import { FormEvent, useState } from 'react';
 import { usePreferences } from '../app/PreferencesContext';
 
 // Web3Forms public access key. Replace with the real key (it is safe to publish).
-const ACCESS_KEY = 'REPLACE_WITH_WEB3FORMS_KEY';
+const ACCESS_KEY = 'c3456be1-ce28-4f41-8c5a-0aa6f32f9f21';
 
 export function RequestBox() {
   const { locale } = usePreferences();

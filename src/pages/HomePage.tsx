@@ -36,7 +36,7 @@ export function HomePage() {
 
         <div className="hero-visual">
           <figure className="hero-microscope-photo">
-            <img src="/specimens/microscope-apparatus.jpg" alt={isArabic ? 'مجهر ضوئي حقيقي على منضدة معمل' : 'A compound light microscope on a laboratory bench'} />
+            <img src="/specimens/microscope-apparatus.webp" alt={isArabic ? 'مجهر ضوئي حقيقي على منضدة معمل' : 'A compound light microscope on a laboratory bench'} />
             <figcaption>
               <span>{isArabic ? 'مجهر ضوئي · معمل أحياء' : 'Compound microscope · biology lab'}</span>
               <a href="https://commons.wikimedia.org/wiki/File:Microscope_01.jpg" target="_blank" rel="noreferrer">{isArabic ? 'الصورة: Abdsomod' : 'Photo: Abdsomod'}</a>

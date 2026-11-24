@@ -1237,3 +1237,18 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 :root[data-theme="light"] .exam-station-tab.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
 .page .back-link { display: block; width: fit-content; margin-bottom: 18px; }
 :root[data-theme="light"] .eyebrow, :root[data-theme="light"] .microscope-page .eyebrow { display: flex; width: fit-content; }
+:root[data-theme="light"] .schema-card { border-radius: 0; border: 1px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); background: var(--surface); transition: transform .12s ease, box-shadow .12s ease; }
+:root[data-theme="light"] .schema-card:hover { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--ink); }
+:root[data-theme="light"] .filter-chip { border-radius: 0; border-color: var(--ink); background: var(--surface); }
+:root[data-theme="light"] .filter-chip.is-selected { background: var(--ink); color: #fff; border-color: var(--ink); }
+:root[data-theme="light"] .filter-chip.is-selected * { color: #fff; }
+:root[data-theme="light"] .schema-card-top, :root[data-theme="light"] .schema-card-body { border-radius: 0; }
+:root[data-theme="light"] .schema-category { color: var(--accent); font-weight: 700; }
+@media (max-width: 820px) {
+  .main-nav { grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .nav-item { flex-direction: column; gap: 3px; min-height: 52px; font-size: 10px; text-align: center; line-height: 1.2; border-radius: 0; }
+  .nav-item svg { width: 18px; height: 18px; }
+  :root[data-theme="light"] .sidebar { border-inline-start: 0; border-bottom: 1px solid var(--ink); padding: 0; }
+  :root[data-theme="dark"] .sidebar { padding: 0; }
+  .sidebar { padding: 0; }
+}

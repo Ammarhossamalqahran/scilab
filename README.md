@@ -54,6 +54,10 @@ This is an educational viewer, not a live feed from a microscope or a calibrated
 
 Each specimen includes an Academic References dialog. Scientific content and source metadata are centralized in `src/data/scientificData.ts` and `src/data/specimenMedia.ts`.
 
+## Licence
+
+The source code is released under the [MIT License](LICENSE) (c) 2026 Ammar Hossam Alqahran. This covers the code only: the specimen photographs and other third-party images keep their own licences, with author and source listed in [`docs/specimen-photo-credits.md`](docs/specimen-photo-credits.md).
+
 ## Credits and sources
 
 **Design and code:** Ammar Hossam Alqahran.

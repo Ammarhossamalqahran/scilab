@@ -549,7 +549,7 @@ export const specimens: ScientificSpecimen[] = [
     id: 'paramecium', department: 'microbiology', kind: 'paramecium',
     title: { en: 'Paramecium', ar: 'البراميسيوم' },
     subtitle: { en: 'Ciliate protist · optical micrograph', ar: 'كائن هدبي وحيد الخلية · صورة بالمجهر الضوئي' },
-    description: { en: 'An optical photomicrograph of Paramecium aurelia. The whole cell and its internal vacuoles are visible.', ar: 'صورة مجهرية للبراميسيوم تُظهر الخلية كاملةً وبعض الفجوات بداخلها.' },
+    description: { en: 'An optical photomicrograph of a Paramecium (Paramecium sp.). The whole cell and its internal vacuoles are visible.', ar: 'صورة مجهرية للبراميسيوم تُظهر الخلية كاملةً وبعض الفجوات بداخلها.' },
     facts: [
       { en: 'Paramecium moves by beating rows of tiny cilia along its surface.', ar: 'يتحرك البراميسيوم بمساعدة أهداب دقيقة تغطي سطحه.' },
       { en: 'Look for the oval outline and round vacuoles. The blurred edge can result from the cilia moving during capture.', ar: 'لاحظ الشكل البيضاوي والفجوات الدائرية. قد تبدو الحافة غير واضحة بسبب حركة الأهداب وقت التصوير.' },
@@ -624,12 +624,12 @@ export const specimens: ScientificSpecimen[] = [
   },
   {
     id: 'compact-bone', department: 'histology', kind: 'bone',
-    title: { en: 'Compact bone · ground section', ar: 'عظم كثيف · مقطع مصقول' },
-    subtitle: { en: 'Unlabelled photomicrograph · 40× source', ar: 'صورة مجهرية بلا تسميات · تكبير أصلي ٤٠×' },
-    description: { en: 'The unlabelled field from a compact-bone ground section, cropped from a paired teaching image.', ar: 'مجال غير مُسمّى من مقطع مصقول لعظم كثيف، قُصّ من صورة تعليمية تضم مجالين.' },
+    title: { en: 'Compact bone · cross-section', ar: 'عظم كثيف · مقطع عرضي' },
+    subtitle: { en: 'Bright-field photomicrograph · 40× source', ar: 'صورة مجهرية بالحقل الساطع · تكبير أصلي ٤٠×' },
+    description: { en: 'A bright-field photomicrograph of a human compact-bone cross-section.', ar: 'صورة مجهرية بالحقل الساطع لمقطع عرضي في عظم بشري كثيف.' },
     facts: [
       { en: 'Look for osteons: concentric rings around central canals in compact bone.', ar: 'ابحث عن الأوستيونات: حلقات متحدة المركز حول قنوات مركزية في العظم الكثيف.' },
-      { en: 'Small spaces called lacunae house osteocytes; fine canaliculi connect the spaces.', ar: 'تحتوي فجوات صغيرة تُسمّى الجُوَيبات على الخلايا العظمية، وتصل بينها قنيّات دقيقة.' },
+      { en: 'The scale bar in the photo marks 1 mm. At this low power you see osteons and their canals; lacunae and canaliculi need a higher magnification.', ar: 'شريط المقياس في الصورة يمثل ١ مم. عند هذا التكبير المنخفض تظهر الأوستيونات وقنواتها؛ أما الجُوَيبات والقنيّات الدقيقة فتحتاج تكبيرًا أعلى.' },
     ],
     references: [...references.animalTissues],
   },

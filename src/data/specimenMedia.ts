@@ -22,6 +22,7 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
   'target-cells': {
     src: '/specimens/target-cells.jpg', title: 'Target cells.jpg', author: 'Prof. Osaro Erhabor', license: 'CC0',
     sourceUrl: 'https://commons.wikimedia.org/wiki/File:Target_cells.jpg',
+    adaptation: 'Cropped to remove the source scale annotation, which was mislabelled.',
   },
   'eosinophil-smear': {
     src: '/specimens/eosinophil-smear.jpg', title: 'Eosinophil blood smear.JPG', author: 'Bobjgalindo', license: 'CC BY-SA 4.0',
@@ -58,12 +59,12 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
   'pond-water': {
     src: '/specimens/pond-water.jpg', title: 'Pond Water Under the Microscope.jpg', author: 'syed sajidul islam', license: 'CC BY 4.0',
     sourceUrl: 'https://commons.wikimedia.org/wiki/File:Pond_Water_Under_the_Microscope.jpg',
-    adaptation: 'Cropped to the circular microscope field; the surrounding black frame is removed.',
+    adaptation: 'Cropped to the original eyepiece field; part of the dark microscope frame remains visible.',
   },
   'dicot-leaf': {
     src: '/specimens/lemon-leaf-cross-section.jpg', title: 'Limonero-al-microscopio2.jpg', author: 'Luke29', license: 'CC BY-SA 4.0',
     sourceUrl: 'https://commons.wikimedia.org/wiki/File:Limonero-al-microscopio2.jpg',
-    adaptation: 'Cropped to the circular microscope field; the surrounding black frame is removed.',
+    adaptation: 'Cropped to the original eyepiece field; part of the dark microscope frame remains visible.',
   },
   'leaf-stomata': {
     src: '/specimens/leaf-stomata.jpg', title: 'Leaf epithelium, stomata and guard cells.jpg', author: 'Emilio Ermini', license: 'CC BY 4.0',
@@ -108,9 +109,9 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     sourceUrl: 'https://commons.wikimedia.org/wiki/File:Sporangium_(255_33)_Male_fern_(Dryopteris_filix-mas);_total_preparation.jpg',
   },
   'compact-bone': {
-    src: '/specimens/compact-bone.png', title: 'Compact bone 093B.png', author: 'RWhitwam', license: 'CC BY-SA 4.0',
-    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Compact_bone_093B.png',
-    adaptation: 'Cropped to retain the unlabelled field and remove the labelled comparison panel.',
+    src: '/specimens/compact-bone.jpg', title: 'Bone (247 29A) Human bone cross-section.jpg', author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Bone_(247_29A)_Human_bone_cross-section.jpg',
+    adaptation: 'Downscaled for web display; bright-field photomicrograph of a human bone cross-section.',
   },
   fibrocartilage: {
     src: '/specimens/fibrocartilage.jpg', title: 'Microscopic Image of Mammal Fibrocartilage Tissue.jpg', author: 'Magda Yurchishin', license: 'CC BY 4.0',

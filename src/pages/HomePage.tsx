@@ -80,6 +80,17 @@ export function HomePage() {
         </div>
       </section>
 
+      <section className="contact-section" aria-labelledby="contact-title">
+        <div className="eyebrow eyebrow-muted">{isArabic ? 'تواصل معنا' : 'CONTACT'}</div>
+        <h2 id="contact-title">{isArabic ? 'عندك شكوى أو اقتراح؟' : 'Have a complaint or a suggestion?'}</h2>
+        <p>{isArabic ? 'لو لقيت خطأ في المحتوى، أو عايز تضيف عينة أو ميزة، ابعتلي وأنا هراجعها.' : 'Found a mistake, or want a specimen or feature added? Send it to me and I will review it.'}</p>
+        <ul className="contact-list">
+          <li><span>{isArabic ? 'الإيميل' : 'Email'}</span><a href="mailto:amarhossam0000@gmail.com">amarhossam0000@gmail.com</a></li>
+          <li><span>{isArabic ? 'موبايل' : 'Phone'}</span><a href="tel:+201102353779" dir="ltr">01102353779</a></li>
+          <li><span>{isArabic ? 'موبايل' : 'Phone'}</span><a href="tel:+201080314586" dir="ltr">01080314586</a></li>
+        </ul>
+      </section>
+
       <footer className="page-footer"><span>{isArabic ? 'كلية العلوم · عملي الأحياء' : 'Faculty of Science · Biology practical'}</span><span>{isArabic ? 'صور مجهرية تعليمية' : 'Photomicrographs for teaching'}</span></footer>
     </div>
   );

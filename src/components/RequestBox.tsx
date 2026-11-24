@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { specimens } from '../data/scientificData';
 import { diagrams } from '../data/diagramData';
@@ -41,6 +41,7 @@ export function RequestBox() {
   const [text, setText] = useState('');
   const [kind, setKind] = useState('specimen');
   const [state, setState] = useState<'idle' | 'sending' | 'sent' | 'error' | 'found'>('idle');
+  const navigate = useNavigate();
   const [hits, setHits] = useState<Hit[]>([]);
   const ready = !ACCESS_KEY.startsWith('REPLACE');
 
@@ -51,6 +52,7 @@ export function RequestBox() {
     if (found.length) {
       setHits(found);
       setState('found');
+      navigate(found[0].to);
       return;
     }
     setState('sending');

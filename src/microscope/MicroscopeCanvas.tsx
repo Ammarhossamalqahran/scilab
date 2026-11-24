@@ -72,8 +72,10 @@ export function MicroscopeCanvas({ imageSrc, magnification, coarseFocus, fineFoc
         const scale = Math.max(fieldSize / image.naturalWidth, fieldSize / image.naturalHeight) * (current.magnification / 4);
         const imageWidth = image.naturalWidth * scale;
         const imageHeight = image.naturalHeight * scale;
-        const left = (width - imageWidth) / 2 + current.pan.x;
-        const top = (height - imageHeight) / 2 + current.pan.y;
+        const limitX = Math.max(0, (imageWidth - fieldSize) / 2);
+        const limitY = Math.max(0, (imageHeight - fieldSize) / 2);
+        const left = (width - imageWidth) / 2 + Math.max(-limitX, Math.min(limitX, current.pan.x));
+        const top = (height - imageHeight) / 2 + Math.max(-limitY, Math.min(limitY, current.pan.y));
         const blur = Math.min(7, Math.abs(50 - current.coarseFocus) * 0.06 + Math.abs(50 - current.fineFocus) * 0.08);
         const brightness = 0.48 + (current.light / 100) * 0.72;
         context.filter = `blur(${blur}px) brightness(${brightness})${current.stainFilter === 'none' ? '' : ` ${current.stainFilter}`}`;
@@ -128,6 +130,16 @@ export function MicroscopeCanvas({ imageSrc, magnification, coarseFocus, fineFoc
     scheduleRef.current();
   }, [imageVersion, imageStatus, imageSrc, magnification, coarseFocus, fineFocus, light, stainFilter, pan.x, pan.y, placeholders]);
 
+  function clampPan(next: { x: number; y: number }) {
+    const image = imageRef.current;
+    const parent = canvasRef.current?.parentElement;
+    if (!image || !parent || !image.naturalWidth) return next;
+    const fieldSize = Math.min(parent.clientWidth, parent.clientHeight) * 0.46 * 2;
+    const scale = Math.max(fieldSize / image.naturalWidth, fieldSize / image.naturalHeight) * (propsRef.current.magnification / 4);
+    const limitX = Math.max(0, (image.naturalWidth * scale - fieldSize) / 2);
+    const limitY = Math.max(0, (image.naturalHeight * scale - fieldSize) / 2);
+    return { x: Math.max(-limitX, Math.min(limitX, next.x)), y: Math.max(-limitY, Math.min(limitY, next.y)) };
+  }
   function pinchDistance() {
     const points = [...pointersRef.current.values()];
     return points.length === 2 ? Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y) : null;
@@ -152,7 +164,7 @@ export function MicroscopeCanvas({ imageSrc, magnification, coarseFocus, fineFoc
       return;
     }
     if (!dragRef.current) return;
-    onPan({ x: dragRef.current.panX + event.clientX - dragRef.current.x, y: dragRef.current.panY + event.clientY - dragRef.current.y });
+    onPan(clampPan({ x: dragRef.current.panX + event.clientX - dragRef.current.x, y: dragRef.current.panY + event.clientY - dragRef.current.y }));
   }
   function endDrag(event: PointerEvent<HTMLCanvasElement>) {
     pointersRef.current.delete(event.pointerId);

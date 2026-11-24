@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  font-family: "IBM Plex Sans", "Noto Sans Arabic", "Segoe UI", sans-serif;
+  font-family: "IBM Plex Sans Arabic", "Segoe UI", system-ui, sans-serif;
   color-scheme: light;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -904,7 +904,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .exam-identify-grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr); gap: 15px; align-items: stretch; }
 .exam-microscope-panel, .exam-answer-panel { min-width: 0; padding: 12px; border: 1px solid #e0e4dd; border-radius: 7px; background: #fafbf8; }
 .exam-panel-label { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 9px; color: #788176; font: 9px var(--mono); letter-spacing: .03em; }
-.exam-panel-label b { color: #34483a; font-family: "IBM Plex Sans", "Noto Sans Arabic", sans-serif; font-size: 10px; letter-spacing: 0; }
+.exam-panel-label b { color: #34483a; font-family: "IBM Plex Sans Arabic", system-ui, sans-serif; font-size: 10px; letter-spacing: 0; }
 .exam-canvas { height: clamp(300px, 39vw, 475px); overflow: hidden; border: 8px solid #343a35; border-radius: 10px; background: #171b17; }
 .exam-microscope-panel > p { margin: 8px 2px 0; color: #7a8378; font-size: 9px; }
 .exam-answer-panel h3 { margin: 14px 0 10px; color: #334036; font-size: 14px; font-weight: 600; }
@@ -1267,3 +1267,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 @media (prefers-reduced-motion: reduce) { .splash-ring { animation: none; } }
 
 .canvas-fallback { margin: 24px; padding: 16px; border: 2px solid currentColor; font-size: 15px; line-height: 1.6; }
+
+/* Fonts: El Messiri for headings (Arabic and Latin), IBM Plex Sans Arabic for body. Both OFL, self-hosted. */
+h1, h2, h3, .brand-name, .page-title, .hero-copy h1 { font-family: "El Messiri", "IBM Plex Sans Arabic", system-ui, sans-serif; }
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] .page-title, [dir="rtl"] .brand-name { letter-spacing: 0; }

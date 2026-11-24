@@ -24,6 +24,7 @@ export function HomePage() {
     <div className="page page-home">
       <section className="home-hero">
         <div className="hero-copy">
+          <div className="hero-brand"><img src="/scilab-logo.svg" alt="SciLab" className="hero-brand-logo" /><img src="/scilab-character.jpg" alt={isArabic ? 'شخصية SciLab' : 'SciLab character'} className="hero-brand-face" /></div>
           <div className="eyebrow">{t('heroEyebrow')}</div>
           <h1>{t('heroTitle')}</h1>
           <p className="hero-description">{t('heroDescription')}</p>

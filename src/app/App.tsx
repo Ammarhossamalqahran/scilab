@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { RouteTitle } from './RouteTitle';
 import { Splash } from '../components/Splash';
 import { AppShell } from '../components/AppShell';
 import { HomePage } from '../pages/HomePage';
@@ -11,6 +12,7 @@ export function App() {
   return (
     <>
     <Splash />
+    <RouteTitle />
     <Routes>
       <Route element={<AppShell />}>
         <Route index element={<HomePage />} />

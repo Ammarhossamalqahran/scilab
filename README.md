@@ -26,7 +26,7 @@ A free bilingual (Arabic / English) virtual biology lab for Faculty of Science s
 - **Sharing and SEO:** title, description and Open Graph / Twitter tags; clear titles in the browser tab.
 - Client-side only: no accounts, backend or database. Preferences, favorites and notes stay in the browser.
 
-**Built with:** React 19, TypeScript, Vite 7, Tailwind CSS 4, React Router 7, Framer Motion. Deployed on Vercel and Cloudflare Workers (`wrangler.jsonc`).
+**Built with:** React 19, TypeScript, Vite 7, Tailwind CSS 4, React Router 7, Framer Motion. The microscope field is drawn with the 2D Canvas API (not WebGL). Static site: no server code. Deployed on Vercel and on Cloudflare Workers (static assets, `wrangler.jsonc`).
 
 ## Run locally
 
@@ -37,7 +37,9 @@ corepack pnpm install --frozen-lockfile
 corepack pnpm dev
 ```
 
-Vite serves the app on `http://localhost:3000`. Create an optimized static build with `corepack pnpm run build`; the output is in `dist/`.
+Vite serves the app on `http://localhost:3000`. Create an optimized static build with `corepack pnpm run build`; the output is in `dist/`. The build also writes one HTML page per route (`scripts/route-pages.mjs`) so shared links get their own title.
+
+To preview the Cloudflare deployment locally after a build: `npx wrangler dev`. To deploy: `npx wrangler deploy` (Cloudflare also builds from `main`). `npm` works too (`npm install`, `npm run dev`).
 
 ## Learning modules
 
@@ -72,7 +74,10 @@ src/i18n/         Typed English/Arabic interface strings
 src/microscope/   Canvas2D microscope field for bundled slide photographs
 src/pages/        Landing, microscope, atlas, and diagram study/exam views
 src/schemas/      SVG schema plates and interactive structure pins
-public/           Logo, social preview image and bundled specimen photographs
+public/           Logo, character, social preview image, WebP specimen photographs and schema images
+scripts/          Post-build script that writes per-route HTML pages
+docs/             Photo credits, sources, research notes and README screenshots
+wrangler.jsonc    Cloudflare Workers static-assets config (vercel.json for Vercel)
 ```
 
 ## Routes

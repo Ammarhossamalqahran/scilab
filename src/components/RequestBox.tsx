@@ -4,7 +4,7 @@ import { usePreferences } from '../app/PreferencesContext';
 import { specimens } from '../data/scientificData';
 import { diagrams } from '../data/diagramData';
 
-const STOP = new Set(['section', 'slide', 'specimen', 'schema', 'drawing', 'cross', 'longitudinal', 'of', 'the', 'in', 'a', 'قطاع', 'شريحة', 'عينة', 'رسمة', 'في', 'عرضي', 'طولي', 'من']);
+const STOP = new Set(['section', 'slide', 'specimen', 'schema', 'drawing', 'cross', 'longitudinal', 'of', 'the', 'in', 'a', 'where', 'is', 'are', 'there', 'do', 'you', 'have', 'find', 'فين', 'فيين', 'موجود', 'موجوده', 'هي', 'هو', 'هل', 'ازاي', 'عايز', 'عاوز', 'اطلب', 'ابي', 'قطاع', 'شريحه', 'شريحة', 'عينة', 'رسمة', 'في', 'عرضي', 'طولي', 'من']);
 
 function norm(v: string) {
   return v.toLowerCase().replace(/[ً-ْـ]/g, '').replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').replace(/(.)\1+/g, '$1');
@@ -83,7 +83,7 @@ export function RequestBox() {
         {!ready && <small>{isArabic ? 'الخانة لسه متفعلتش.' : 'The request box is not active yet.'}</small>}
         {state === 'found' && (
           <div role="status">
-            <small>{isArabic ? 'ده موجود عندنا بالفعل:' : 'We already have this:'}</small>
+            <small>{isArabic ? 'موجود عندنا بالفعل، اضغط على الاسم عشان تفتحه:' : 'We already have this. Click a name to open it:'}</small>
             <ul>{hits.map((h) => <li key={h.key}><Link to={h.to}>{h.label}</Link></li>)}</ul>
           </div>
         )}

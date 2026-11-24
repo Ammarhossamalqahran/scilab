@@ -1232,6 +1232,8 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .request-form button { justify-self: start; padding: 10px 22px; border: 1px solid var(--ink); border-radius: 0; background: var(--ink); color: var(--bg); font-weight: 700; cursor: pointer; }
 .request-form button:disabled { opacity: .5; cursor: not-allowed; }
 :root[data-theme="dark"] .request-form button { background: #fff; color: #000; border-color: #fff; }
-:root[data-theme="light"] .microscope-page .eyebrow { margin-inline-start: 10px; }
+
 :root[data-theme="light"] .exam-stations, :root[data-theme="light"] .exam-station-tab, :root[data-theme="light"] .exam-station-content, :root[data-theme="light"] .exam-microscope-panel, :root[data-theme="light"] .exam-answer-panel, :root[data-theme="light"] .exam-compare-card, :root[data-theme="light"] .exam-answer-option { border-radius: 0; }
 :root[data-theme="light"] .exam-station-tab.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+.page .back-link { display: block; width: fit-content; margin-bottom: 18px; }
+:root[data-theme="light"] .eyebrow, :root[data-theme="light"] .microscope-page .eyebrow { display: flex; width: fit-content; }

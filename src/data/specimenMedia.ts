@@ -2222,4 +2222,264 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Chicken_embryo_at_the_stage_of_formation_of_trunk_and_amniotic_folds.jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
+  'ehrlichia-and-babesia-in-a-dog-blood-film-giemsa': {
+    src: '/specimens/ehrlichia-and-babesia-in-a-dog-blood-film-giemsa.jpg', title: "Ehrlichia-and-babesia-dog-South-Africa.jpg", author: "Alan R Walker", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ehrlichia-and-babesia-dog-South-Africa.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-stain-enterobacter-aerogenes': {
+    src: '/specimens/gram-stain-enterobacter-aerogenes.jpg', title: "Enterobacter aerogenes.jpg", author: "Riraq25", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Enterobacter_aerogenes.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-of-tall-fescue-grass-festuca-arundinacea': {
+    src: '/specimens/leaf-epidermis-of-tall-fescue-grass-festuca-arundinacea.jpg', title: "Epidermis of Festuca arundinacea.jpg", author: "Plantsurfer", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Epidermis_of_Festuca_arundinacea.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'schistocytes-in-haemolytic-anaemia': {
+    src: '/specimens/schistocytes-in-haemolytic-anaemia.jpg', title: "Esquistocitos.jpg", author: "DaFerRod", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Esquistocitos.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'xylem-vessels-of-fig-ficus-sp': {
+    src: '/specimens/xylem-vessels-of-fig-ficus-sp.jpg', title: "Ficusxylem.jpg", author: "The original uploader was Zaoui58 at English Wikipedia.", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ficusxylem.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'firebrat-thermobia-domestica-whole-mount': {
+    src: '/specimens/firebrat-thermobia-domestica-whole-mount.jpg', title: "Firebrat (Thermobia domestica).jpg", author: "KyleCMSmith", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Firebrat_(Thermobia_domestica).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'fibroblast-and-endothelial-co-culture-forming-new-blood-vessels': {
+    src: '/specimens/fibroblast-and-endothelial-co-culture-forming-new-blood-vessels.jpg', title: "Formation of the new blood vessels.jpg", author: "Piotr Cywoniuk, Foundation of Research and Science Development, Poland Fundacja Bada\u0144 i Rozwoju Nauki", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Formation_of_the_new_blood_vessels.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'cypress-pollen-grain-in-a-nasal-cytology-smear': {
+    src: '/specimens/cypress-pollen-grain-in-a-nasal-cytology-smear.jpg', title: "Foto granul of cypress pollen. Nasal citology. Ottical microscopic 100X.jpg", author: "Pietro Pecoraro", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Foto_granul_of_cypress_pollen._Nasal_citology._Ottical_microscopic_100X.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'fungal-hyphae-in-a-urine-sample': {
+    src: '/specimens/fungal-hyphae-in-a-urine-sample.jpg', title: "Fungal hyphae in Urine sample.jpg", author: "Ajay Kumar Chaurasiya", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Fungal_hyphae_in_Urine_sample.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'branching-gram-positive-filaments-in-sputum': {
+    src: '/specimens/branching-gram-positive-filaments-in-sputum.jpg', title: "Gram-Positive Fungal Hyphae Observed in Gram-Stained Sputum.jpg", author: "Ajay Kumar Chaurasiya", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gram-Positive_Fungal_Hyphae_Observed_in_Gram-Stained_Sputum.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'oomycete-spores-among-fungicide-crystals': {
+    src: '/specimens/oomycete-spores-among-fungicide-crystals.jpg', title: "Fungicidecrystals vsoomyctespores.jpg", author: "Irenemaja.nanni", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Fungicidecrystals_vsoomyctespores.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-stain-clostridium-perfringens': {
+    src: '/specimens/gram-stain-clostridium-perfringens.jpg', title: "Gasbrand02.JPG", author: "Andreas Zautner", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gasbrand02.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gonococcal-urethritis-pus-cells-with-gram-negative-diplococci': {
+    src: '/specimens/gonococcal-urethritis-pus-cells-with-gram-negative-diplococci.jpg', title: "Gonococcal urethritis PHIL 4085 lores.jpg", author: "CDC/ Joe Millar", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gonococcal_urethritis_PHIL_4085_lores.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-positive-and-gram-negative-bacilli-with-pus-cells': {
+    src: '/specimens/gram-positive-and-gram-negative-bacilli-with-pus-cells.jpg', title: "Gram positive and negative bacteria and pus cells in Gram staining of sputum.jpg", author: "Ajay Kumar Chaurasiya", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gram_positive_and_negative_bacteria_and_pus_cells_in_Gram_staining_of_sputum.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-positive-cocci-in-chains-gemella': {
+    src: '/specimens/gram-positive-cocci-in-chains-gemella.jpg', title: "Gram positive cocci in chains of Streptococcus agalactiae.jpg", author: "Ajay Kumar Chaurasiya", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gram_positive_cocci_in_chains_of_Streptococcus_agalactiae.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-stain-pseudoglutamicibacter-cumminsii': {
+    src: '/specimens/gram-stain-pseudoglutamicibacter-cumminsii.jpg', title: "Gram stain of Pseudoglutamicibacter cumminsii.jpg", author: "Gustavo Saint-Pierre, Leonardo Chanqueo, Alejandra C\u00e9spedes", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gram_stain_of_Pseudoglutamicibacter_cumminsii.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-stain-rothia-dentocariosa': {
+    src: '/specimens/gram-stain-rothia-dentocariosa.jpg', title: "Gram stain of Rothia dentocariosa.jpg", author: "Alan Ytzeen Mart\u00ednez Castellanos, Mariel Idalid Dom\u00ednguez Zepahua, Mar\u00eda Leticia Acosta Monreal, Armando Rodr\u00edguez Rodr\u00edguez, Luis Fernando P\u00e9rez Gonz\u00e1lez, Lilia Esperanza Fragoso Morales", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gram_stain_of_Rothia_dentocariosa.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-stain-streptococcus-pneumoniae': {
+    src: '/specimens/gram-stain-streptococcus-pneumoniae.jpg', title: "Gram stain of Streptococcus pneumoniae.jpg", author: "Arnold Kaufman", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gram_stain_of_Streptococcus_pneumoniae.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-stain-of-saliva': {
+    src: '/specimens/gram-stain-of-saliva.jpg', title: "Gram stain saliva.jpg", author: "Microrao", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gram_stain_saliva.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-variability-in-cocci': {
+    src: '/specimens/gram-variability-in-cocci.jpg', title: "Gram variability.jpg", author: "Microrao", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gram_variability.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-positive-cocci-probable-staphylococcus-aureus': {
+    src: '/specimens/gram-positive-cocci-probable-staphylococcus-aureus.jpg', title: "Gram-positive stain.jpg", author: "Patho", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gram-positive_stain.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'sputum-gram-stain-haemophilus-influenzae': {
+    src: '/specimens/sputum-gram-stain-haemophilus-influenzae.jpg', title: "Haemophilus influenzae sputum 1000x edited.jpg", author: "Microman12345", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Haemophilus_influenzae_sputum_1000x_edited.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'filamentous-green-alga': {
+    src: '/specimens/filamentous-green-alga.jpg', title: "Green algae .jpg", author: "User:Micropix", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Green_algae_.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'diatom-chain-guinardia-sp': {
+    src: '/specimens/diatom-chain-guinardia-sp.jpg', title: "Guinardia sp.@ALA.jpg", author: "ala.org.au", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Guinardia_sp.@ALA.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'dinoflagellates-of-the-genus-ostreopsis': {
+    src: '/specimens/dinoflagellates-of-the-genus-ostreopsis.jpg', title: "Imag 1 29216c.jpg", author: "Suliman S.\u00a0S. Abuaziz, Suraboyina Pavani, Kanchan Singh", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Imag_1_29216c.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'ivy-hedera-helix-leaf-epidermis-and-stomata-print': {
+    src: '/specimens/ivy-hedera-helix-leaf-epidermis-and-stomata-print.jpg', title: "Hedera helix (Ivy) leaf epidermis and stomata print 100x.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hedera_helix_(Ivy)_leaf_epidermis_and_stomata_print_100x.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'hyacinth-leaf-epidermis-print-with-stomata': {
+    src: '/specimens/hyacinth-leaf-epidermis-print-with-stomata.jpg', title: "Hyacinth var L'Ophir (1770) leaf epidermis print with stomata 10x objective.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hyacinth_var_L'Ophir_(1770)_leaf_epidermis_print_with_stomata_10x_objective.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'ragwort-jacobaea-vulgaris-leaf-epidermis-and-stomata-400x': {
+    src: '/specimens/ragwort-jacobaea-vulgaris-leaf-epidermis-and-stomata-400x.jpg', title: "Jacobaea vulgaris leaf epidermis and stomata print 400x.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Jacobaea_vulgaris_leaf_epidermis_and_stomata_print_400x.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'toxascaris-egg-from-a-dog-bright-field': {
+    src: '/specimens/toxascaris-egg-from-a-dog-bright-field.jpg', title: "Huevo de toascaris en campo claro.jpg", author: "Brandon Antonio Segura Torres & Priscilla Vieto Bonilla", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Huevo_de_toascaris_en_campo_claro.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'hortaea-werneckii-the-fungus-of-tinea-nigra': {
+    src: '/specimens/hortaea-werneckii-the-fungus-of-tinea-nigra.jpg', title: "Hortaea-werneckii-fungus--causes-tinea-nigra.jpg", author: "CDC/Dr. Lucille K. Georg", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hortaea-werneckii-fungus--causes-tinea-nigra.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-peripheral-blood-smear-may-grunwald-stain': {
+    src: '/specimens/human-peripheral-blood-smear-may-grunwald-stain.jpg', title: "Human peripheral blood smear, May-Gr\u00fcnwald stain.jpg", author: "Bondarev.gal", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Human_peripheral_blood_smear,_May-Gr\u00fcnwald_stain.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'hyalomma-female-tick-dorsal-view': {
+    src: '/specimens/hyalomma-female-tick-dorsal-view.jpg', title: "Hyalomma tick female dorsal.jpg", author: "Acarologiste", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hyalomma_tick_female_dorsal.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'hyalomma-rufipes-ticks-female-and-male': {
+    src: '/specimens/hyalomma-rufipes-ticks-female-and-male.jpg', title: "Hyalomma-rufipes-female-male.jpg", author: "Daktaridudu", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hyalomma-rufipes-female-male.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'freshwater-amphipod-hyalella-azteca-with-an-acanthocephalan-parasite': {
+    src: '/specimens/freshwater-amphipod-hyalella-azteca-with-an-acanthocephalan-parasite.jpg', title: "IMGP7610-Hyalella azteca with acanthocephalan in body cavity!.jpg", author: "Nemataslg", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:IMGP7610-Hyalella_azteca_with_acanthocephalan_in_body_cavity!.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'elodea-leaf-cells': {
+    src: '/specimens/elodea-leaf-cells.jpg', title: "Elodea cells under microscope.jpg", author: "~delta", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Elodea_cells_under_microscope.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'moth-wing-scales-with-pollen': {
+    src: '/specimens/moth-wing-scales-with-pollen.jpg', title: "Escamas de ala de polilla con polen.jpg", author: "Brandon Antonio Segura Torres & Priscilla Vieto Bonilla", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Escamas_de_ala_de_polilla_con_polen.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'trichogramma-parasitoid-wasps-on-host-eggs': {
+    src: '/specimens/trichogramma-parasitoid-wasps-on-host-eggs.jpg', title: "Females of Trichogramma dendrolimi on eggs of hawkmoth (Sphingidae), photo was taken by Dr Victor Fursov.jpg", author: "Dr Victor Fursov", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Females_of_Trichogramma_dendrolimi_on_eggs_of_hawkmoth_(Sphingidae),_photo_was_taken_by_Dr_Victor_Fursov.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'mouse-embryos-at-the-4-8-and-16-cell-stage': {
+    src: '/specimens/mouse-embryos-at-the-4-8-and-16-cell-stage.jpg', title: "Geometric Progression.jpg", author: "Vitalii Kyryk", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Geometric_Progression.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'glandular-hairs-on-a-geranium-pedicel-geranium-dissectum': {
+    src: '/specimens/glandular-hairs-on-a-geranium-pedicel-geranium-dissectum.jpg', title: "Geranium dissectum sl10.jpg", author: "Stefan.lefnaer", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Geranium_dissectum_sl10.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gynoecium-and-androecium-of-a-prickly-pear-flower-opuntia': {
+    src: '/specimens/gynoecium-and-androecium-of-a-prickly-pear-flower-opuntia.jpg', title: "Gineceo y androceo en flor de nopal (Opuntia sp.).jpg", author: "Juan Carlos Fonseca Mata", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gineceo_y_androceo_en_flor_de_nopal_(Opuntia_sp.).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'grain-mite-glycyphagus-sp': {
+    src: '/specimens/grain-mite-glycyphagus-sp.jpg', title: "Glycyphagus-spp-mite.jpg", author: "Daktaridudu", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Glycyphagus-spp-mite.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'tsetse-fly-glossina-adult-and-puparium': {
+    src: '/specimens/tsetse-fly-glossina-adult-and-puparium.jpg', title: "Glossina adult puparium.jpg", author: "Acarologiste", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Glossina_adult_puparium.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'amaryllis-hippeastrum-pollen-on-a-stamen': {
+    src: '/specimens/amaryllis-hippeastrum-pollen-on-a-stamen.jpg', title: "Hippeastrum - py\u0142ek.jpg", author: "Kruczy89", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hippeastrum_-_py\u0142ek.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'howell-jolly-bodies-in-red-blood-cells': {
+    src: '/specimens/howell-jolly-bodies-in-red-blood-cells.jpg', title: "Howell-Jolly smear 2010-11-17.JPG", author: "Paulo Henrique Orlandi Mourao", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Howell-Jolly_smear_2010-11-17.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'hydrurus-foetidus-a-cold-water-chrysophyte-alga': {
+    src: '/specimens/hydrurus-foetidus-a-cold-water-chrysophyte-alga.jpg', title: "Hydrurus foetidius.jpg", author: "Dionaea-muscipula-meow", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hydrurus_foetidius.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'root-hairs-of-a-monocot-root': {
+    src: '/specimens/root-hairs-of-a-monocot-root.jpg', title: "IMG-b6ca6ae6158644399cb0c153d19c1aa4-V.jpg", author: "Babdou ahmed", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:IMG-b6ca6ae6158644399cb0c153d19c1aa4-V.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'ideal-blood-smear-head-body-and-tail': {
+    src: '/specimens/ideal-blood-smear-head-body-and-tail.jpg', title: "Ideal blood smear showing tongue shape having head, body and tail portions.jpg", author: "Ajay Kumar Chaurasiya", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ideal_blood_smear_showing_tongue_shape_having_head,_body_and_tail_portions.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'sputum-smear-with-pus-cells-quality-check': {
+    src: '/specimens/sputum-smear-with-pus-cells-quality-check.jpg', title: "Ideal smear of Sputum.jpg", author: "Ajay Kumar Chaurasiya", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ideal_smear_of_Sputum.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'stem-and-leaf-of-dame-s-rocket-hesperis-sylvestris': {
+    src: '/specimens/stem-and-leaf-of-dame-s-rocket-hesperis-sylvestris.jpg', title: "Hesperis sylvestris sl15.jpg", author: "Stefan.lefnaer", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hesperis_sylvestris_sl15.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'diatom-eucampia-zodiacus-light-and-electron-microscopy': {
+    src: '/specimens/diatom-eucampia-zodiacus-light-and-electron-microscopy.jpg', title: "Img09-03-v2.jpg", author: "Patricio Rivera, Sergio Avaria, Fabiola Cruces", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Img09-03-v2.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'foraminifera-globigerinidae-in-mudstone-polarised-light': {
+    src: '/specimens/foraminifera-globigerinidae-in-mudstone-polarised-light.jpg', title: "Globigerine.JPG", author: "Strekeisen", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Globigerine.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'mould-growth-under-the-microscope-200x': {
+    src: '/specimens/mould-growth-under-the-microscope-200x.jpg', title: "Grzyb i ple\u015b\u0144 w \u0142azience.jpg", author: "Cent9", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Grzyb_i_ple\u015b\u0144_w_\u0142azience.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
 };

@@ -2097,4 +2097,129 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:169_Allium_cepa_Spring_Onion_outer_LEAF_epidermis_print.jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
+  'gram-stain-brucella-gram-negative-coccobacilli': {
+    src: '/specimens/gram-stain-brucella-gram-negative-coccobacilli.jpg', title: "Brucella spp.JPG", author: "Photo Credit:", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Brucella_spp.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'moss-bryum-caespiticium-leaf-cells-400x': {
+    src: '/specimens/moss-bryum-caespiticium-leaf-cells-400x.jpg', title: "Bryum caespiticium lamina.jpg", author: "Kristian Peters -- Fabelfroh 06:26, 17 June 2007 (UTC)", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bryum_caespiticium_lamina.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'liverwort-cephalozia-connivens-side-leaf-250x': {
+    src: '/specimens/liverwort-cephalozia-connivens-side-leaf-250x.jpg', title: "Cephalozia connivens flankenblatt.jpeg", author: "Kristian Peters -- Fabelfroh 12:17, 8 February 2007 (UTC)", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cephalozia_connivens_flankenblatt.jpeg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-stain-candida-dubliniensis-yeast-1000x': {
+    src: '/specimens/gram-stain-candida-dubliniensis-yeast-1000x.jpg', title: "Candida dubliniensis.jpg", author: "Stefan Walkowski", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Candida_dubliniensis.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'hookworm-ancylostoma-caninum-egg-from-a-dog-fecal-sample': {
+    src: '/specimens/hookworm-ancylostoma-caninum-egg-from-a-dog-fecal-sample.jpg', title: "Canine hookworm egg 1.JPG", author: "Joel Mills", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Canine_hookworm_egg_1.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'cat-fur-mite-cheyletiella-parasitivorax': {
+    src: '/specimens/cat-fur-mite-cheyletiella-parasitivorax.jpg', title: "Cheyletiella-parasitivorax-mite.jpg", author: "Daktaridudu", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cheyletiella-parasitivorax-mite.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'cattle-mange-mite-chorioptes-bovis': {
+    src: '/specimens/cattle-mange-mite-chorioptes-bovis.jpg', title: "Chorioptes-bovis-mite.jpg", author: "Daktaridudu", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Chorioptes-bovis-mite.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'poultry-red-mite-dermanyssus-gallinae': {
+    src: '/specimens/poultry-red-mite-dermanyssus-gallinae.jpg', title: "Dermanyssus mite of birds.jpg", author: "Daktaridudu", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Dermanyssus_mite_of_birds.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'fungus-choanephora-sporangia-with-spores': {
+    src: '/specimens/fungus-choanephora-sporangia-with-spores.jpg', title: "Choanephhora sporangia.jpg", author: "Vmeashi", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Choanephhora_sporangia.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'fungus-choanephora-sporangiophore-bearing-sporangiola': {
+    src: '/specimens/fungus-choanephora-sporangiophore-bearing-sporangiola.jpg', title: "Choanephora.jpg", author: "Vmeashi", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Choanephora.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'ciliate-protozoan-cinetochilum-margaritaceum-400x': {
+    src: '/specimens/ciliate-protozoan-cinetochilum-margaritaceum-400x.jpg', title: "Cinetochilium magaritaceum - 400x (13895749243).jpg", author: "Picturepest", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cinetochilium_magaritaceum_-_400x_(13895749243).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-stain-citrobacter-freundii-gram-negative-rods': {
+    src: '/specimens/gram-stain-citrobacter-freundii-gram-negative-rods.jpg', title: "Citrobacter freundii Gram stain.jpg", author: "Riraq25", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Citrobacter_freundii_Gram_stain.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-stain-corynebacterium-xerosis-1000x': {
+    src: '/specimens/gram-stain-corynebacterium-xerosis-1000x.jpg', title: "Corynebacterium xerosis Gram stain.jpg", author: "Wen F, Xing X, Bao S, Hu Y, Hao BC", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Corynebacterium_xerosis_Gram_stain.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'red-cell-agglutination-by-cold-agglutinins': {
+    src: '/specimens/red-cell-agglutination-by-cold-agglutinins.jpg', title: "Crioaglutininas.jpg", author: "DaFerRod", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Crioaglutininas.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'cryptococcus-in-india-ink-capsule-visible': {
+    src: '/specimens/cryptococcus-in-india-ink-capsule-visible.jpg', title: "Cryptococcus in India Ink.jpg", author: "Ajay Kumar Chaurasiya", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cryptococcus_in_India_Ink.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'cyanobacteria-blue-green-algae-from-a-freshwater-bloom': {
+    src: '/specimens/cyanobacteria-blue-green-algae-from-a-freshwater-bloom.jpg', title: "Cyanoprocaryota.JPG", author: "Riparia1977", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cyanoprocaryota.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'umbrella-plant-cyperus-alternifolius-stalk-etzold-green': {
+    src: '/specimens/umbrella-plant-cyperus-alternifolius-stalk-etzold-green.jpg', title: "Cyperus alternifolius, stalk, Etzold green 9.jpg", author: "User:Micropix", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cyperus_alternifolius,_stalk,_Etzold_green_9.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'b-lymphoblastic-cell-line-in-culture-phase-contrast-100x': {
+    src: '/specimens/b-lymphoblastic-cell-line-in-culture-phase-contrast-100x.jpg', title: "C\u00e9lulas B-linfobl\u00e1sticas 100x.jpg", author: "Ca.garcia.s", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:C\u00e9lulas_B-linfobl\u00e1sticas_100x.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'fish-tapeworm-diphyllobothrium-latum-egg-with-operculum': {
+    src: '/specimens/fish-tapeworm-diphyllobothrium-latum-egg-with-operculum.jpg', title: "Diphyllobothrium latum egg.jpg", author: "Stefan Walkowski", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Diphyllobothrium_latum_egg.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'echinococcus-granulosus-protoscolex-with-hooks': {
+    src: '/specimens/echinococcus-granulosus-protoscolex-with-hooks.jpg', title: "E.granulosus-protoscolex.jpg", author: "Stefan Walkowski", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:E.granulosus-protoscolex.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'liver-fluke-fasciola-egg': {
+    src: '/specimens/liver-fluke-fasciola-egg.jpg', title: "Egg of Liver Fluke.jpg", author: "Ajay Kumar Chaurasiya", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Egg_of_Liver_Fluke.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'pinworm-egg-urine-microscopy': {
+    src: '/specimens/pinworm-egg-urine-microscopy.jpg', title: "Egg of Pinworm found during Urine Microscopy.jpg", author: "Ajay Kumar Chaurasiya", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Egg_of_Pinworm_found_during_Urine_Microscopy.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'whipworm-trichuris-trichiura-egg': {
+    src: '/specimens/whipworm-trichuris-trichiura-egg.jpg', title: "Egg of Trichuris trichiura.jpg", author: "Microrao", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Egg_of_Trichuris_trichiura.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'chlamydia-in-a-cervical-smear-giemsa-stain': {
+    src: '/specimens/chlamydia-in-a-cervical-smear-giemsa-stain.jpg', title: "Chlamydia-22Feb25.jpg", author: "Bondarev.gal", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Chlamydia-22Feb25.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'chicken-embryo-trunk-fold-stage': {
+    src: '/specimens/chicken-embryo-trunk-fold-stage.jpg', title: "Chicken embryo at the stage of formation of trunk and amniotic folds.jpg", author: "Agentkot", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Chicken_embryo_at_the_stage_of_formation_of_trunk_and_amniotic_folds.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
 };

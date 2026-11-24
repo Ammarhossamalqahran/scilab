@@ -1,6 +1,6 @@
 export type Bilingual = { en: string; ar: string };
-export type DepartmentId = 'hematology' | 'histology' | 'microbiology' | 'botany' | 'aquatic-life';
-export type SpecimenKind = 'blood' | 'onion' | 'yeast' | 'leaf' | 'cheek' | 'muscle' | 'bacteria' | 'pond' | 'stoma' | 'root-tip' | 'pollen' | 'paramecium' | 'euglena' | 'diatom' | 'spirogyra' | 'fern' | 'daphnia' | 'hydra' | 'bone' | 'cartilage' | 'cardiac-muscle' | 'amoeba' | 'rotifer' | 'hyaline-cartilage' | 'adipose' | 'smooth-muscle' | 'lung' | 'kidney' | 'pine-needle' | 'anther' | 'blood-sickle' | 'blood-target' | 'blood-eosinophil' | 'reticulocyte' | 'malaria';
+export type DepartmentId = 'hematology' | 'histology' | 'microbiology' | 'botany' | 'aquatic-life' | 'zoology';
+export type SpecimenKind = 'blood' | 'onion' | 'yeast' | 'leaf' | 'cheek' | 'muscle' | 'bacteria' | 'pond' | 'stoma' | 'root-tip' | 'pollen' | 'paramecium' | 'euglena' | 'diatom' | 'spirogyra' | 'fern' | 'daphnia' | 'hydra' | 'bone' | 'cartilage' | 'cardiac-muscle' | 'amoeba' | 'rotifer' | 'hyaline-cartilage' | 'adipose' | 'smooth-muscle' | 'lung' | 'kidney' | 'pine-needle' | 'anther' | 'blood-sickle' | 'blood-target' | 'blood-eosinophil' | 'reticulocyte' | 'malaria' | 'plant-section' | 'zoology-section' | 'tissue-section';
 
 export type ScientificReference = {
   id: string;
@@ -753,5 +753,214 @@ export const specimens: ScientificSpecimen[] = [
       { en: 'Compare the pollen sacs in this section with the separate pollen-grain slide.', ar: 'قارِن أكياس حبوب اللقاح في هذا المقطع بشريحة حبوب اللقاح المنفصلة.' },
     ],
     references: [...references.pollen],
+  },
+  {
+    id: 'maize-stem', department: 'botany', kind: 'plant-section',
+    title: { en: "Maize stem cross-section", ar: "مقطع عرضي في ساق الذرة" },
+    subtitle: { en: "Monocot stem \u00b7 light micrograph", ar: "ساق أحادية الفلقة · صورة بالمجهر الضوئي" },
+    description: { en: "A transverse section of a maize stem showing vascular bundles scattered in ground tissue.", ar: "مقطع مستعرض في ساق ذرة تظهر فيه حزم وعائية مبعثرة داخل النسيج الأساسي." },
+    facts: [
+      { en: "In monocot stems the vascular bundles are scattered rather than arranged in a ring.", ar: "في سيقان أحاديات الفلقة تكون الحزم الوعائية مبعثرة وليست في حلقة." },
+      { en: "The bundles are smaller and more crowded toward the outer edge of the section.", ar: "الحزم أصغر وأكثر تزاحماً ناحية الحافة الخارجية للمقطع." },
+    ],
+    references: [{ id: 'commons-maize-stem', title: "Plant stem (255 04) Cross-section of maize stem.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Plant_stem_(255_04)_Cross-section_of_maize_stem.jpg", supports: 'Source photograph, author and licence for this slide.' }],
+  },
+  {
+    id: 'pine-needle-brightfield', department: 'botany', kind: 'plant-section',
+    title: { en: "Pine needle cross-section (bright field)", ar: "مقطع عرضي في إبرة صنوبر (حقل مضيء)" },
+    subtitle: { en: "Pinus nigra \u00b7 light micrograph", ar: "صنوبر أسود · صورة بالمجهر الضوئي" },
+    description: { en: "A stained transverse section of a Pinus nigra needle.", ar: "مقطع مستعرض مصبوغ في إبرة Pinus nigra." },
+    facts: [
+      { en: "Look for the thick outer wall, resin canals and the central vascular tissue.", ar: "ابحث عن الجدار الخارجي السميك والقنوات الراتنجية والنسيج الوعائي المركزي." },
+      { en: "Compare it with the autofluorescence pine needle slide in this list.", ar: "قارنها بشريحة إبرة الصنوبر بالتألق الذاتي في القائمة." },
+    ],
+    references: [{ id: 'commons-pine-needle-brightfield', title: "Pinus nigra needle (255 22) Needle cross section.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Pinus_nigra_needle_(255_22)_Needle_cross_section.jpg", supports: 'Source photograph, author and licence for this slide.' }],
+  },
+  {
+    id: 'broad-bean-root', department: 'botany', kind: 'plant-section',
+    title: { en: "Broad bean root cross-section", ar: "مقطع عرضي في جذر الفول" },
+    subtitle: { en: "Vicia faba \u00b7 light micrograph", ar: "فول Vicia faba · صورة بالمجهر الضوئي" },
+    description: { en: "A transverse section through a broad bean (Vicia faba) root.", ar: "مقطع مستعرض في جذر فول (Vicia faba)." },
+    facts: [
+      { en: "The central vascular cylinder is surrounded by a wide cortex of parenchyma cells.", ar: "الأسطوانة الوعائية المركزية يحيط بها قشرة عريضة من خلايا برانشيمية." },
+      { en: "This field is a close view; the outer edge of the root is only partly in frame.", ar: "هذا المجال مقرّب؛ الحافة الخارجية للجذر ظاهرة جزئياً فقط." },
+    ],
+    references: [{ id: 'commons-broad-bean-root', title: "Root (255 00F) Cross-section; broad bean; Vicia faba.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Root_(255_00F)_Cross-section;_broad_bean;_Vicia_faba.jpg", supports: 'Source photograph, author and licence for this slide.' }],
+  },
+  {
+    id: 'tilia-woody-stem', department: 'botany', kind: 'plant-section',
+    title: { en: "Lime (Tilia) woody stem cross-section", ar: "مقطع عرضي في ساق خشبية للزيزفون (Tilia)" },
+    subtitle: { en: "Woody stem \u00b7 light micrograph", ar: "ساق خشبية · صورة بالمجهر الضوئي" },
+    description: { en: "A transverse section through the woody stem of Tilia at high magnification.", ar: "مقطع مستعرض في الساق الخشبية لنبات Tilia بتكبير عالٍ." },
+    facts: [
+      { en: "Secondary xylem cells appear in radial rows.", ar: "خلايا الخشب الثانوي تظهر في صفوف شعاعية." },
+      { en: "This is a high-power field, so it shows part of the wood and not the whole stem.", ar: "هذا مجال بقوة عالية، فيظهر جزءاً من الخشب وليس الساق كلها." },
+    ],
+    references: [{ id: 'commons-tilia-woody-stem', title: "Plant stem (250 29) Cross-section of woody stem of Tilia.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Plant_stem_(250_29)_Cross-section_of_woody_stem_of_Tilia.jpg", supports: 'Source photograph, author and licence for this slide.' }],
+  },
+  {
+    id: 'medicago-stem', department: 'botany', kind: 'plant-section',
+    title: { en: "Medicago stem cross-section", ar: "مقطع عرضي في ساق نبات Medicago (البرسيم الحجازي)" },
+    subtitle: { en: "Dicot stem \u00b7 light micrograph", ar: "ساق ثنائية الفلقة · صورة بالمجهر الضوئي" },
+    description: { en: "A transverse section through the stem of Medicago, a dicot.", ar: "مقطع مستعرض في ساق Medicago، وهو نبات ثنائي الفلقة." },
+    facts: [
+      { en: "A dicot stem has its vascular tissue arranged in a ring around a central pith.", ar: "في الساق ثنائية الفلقة يكون النسيج الوعائي في حلقة حول لب مركزي." },
+      { en: "The ring of dark-stained tissue marks the vascular region.", ar: "حلقة النسيج الغامق الصبغة تحدد المنطقة الوعائية." },
+    ],
+    references: [{ id: 'commons-medicago-stem', title: "Plant stem (255 05) Cross-section of stem of Medicago.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Plant_stem_(255_05)_Cross-section_of_stem_of_Medicago.jpg", supports: 'Source photograph, author and licence for this slide.' }],
+  },
+  {
+    id: 'ascaris-section', department: 'zoology', kind: 'zoology-section',
+    title: { en: "Ascaris cross-section", ar: "مقطع عرضي في الأسكارس" },
+    subtitle: { en: "Giant roundworm \u00b7 light micrograph", ar: "الدودة الأسطوانية العملاقة · صورة بالمجهر الضوئي" },
+    description: { en: "A transverse section of a giant roundworm showing the body wall, intestine and coiled reproductive tubes.", ar: "مقطع مستعرض في دودة أسطوانية عملاقة يظهر جدار الجسم والأمعاء والأنابيب التناسلية الملتفة." },
+    facts: [
+      { en: "Nematodes have a complete gut and a body wall of cuticle and longitudinal muscle.", ar: "الديدان الخيطية لها قناة هضمية كاملة وجدار جسم من كيوتكل وعضلات طولية." },
+      { en: "See the labelled version in Study diagrams (Ascaris slide schema).", ar: "شوف النسخة الموسومة في رسومات المذاكرة (schema الأسكارس)." },
+    ],
+    references: [{ id: 'commons-ascaris-section', title: "Giant roundworm (265 11) Cross-section.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Giant_roundworm_(265_11)_Cross-section.jpg", supports: 'Source photograph, author and licence for this slide.' }],
+  },
+  {
+    id: 'earthworm-section', department: 'zoology', kind: 'zoology-section',
+    title: { en: "Earthworm cross-section", ar: "مقطع عرضي في دودة الأرض" },
+    subtitle: { en: "Common earthworm \u00b7 light micrograph", ar: "دودة الأرض الشائعة · صورة بالمجهر الضوئي" },
+    description: { en: "A stained transverse section of the common earthworm.", ar: "مقطع مستعرض مصبوغ في دودة الأرض الشائعة." },
+    facts: [
+      { en: "The earthworm is an annelid: its body wall surrounds a fluid-filled body cavity and a gut tube.", ar: "دودة الأرض من الحلقيات: جدار جسمها يحيط بتجويف مملوء سائلاً وأنبوب هضمي." },
+      { en: "This is a partial field at 0.1 mm scale, so not every organ is in view.", ar: "هذا مجال جزئي بمقياس 0.1 مم، فلا تظهر كل الأعضاء." },
+    ],
+    references: [{ id: 'commons-earthworm-section', title: "Common earthworm (250 13) Cross-section.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Common_earthworm_(250_13)_Cross-section.jpg", supports: 'Source photograph, author and licence for this slide.' }],
+  },
+  {
+    id: 'leech-section', department: 'zoology', kind: 'zoology-section',
+    title: { en: "Leech cross-section", ar: "مقطع عرضي في العلقة" },
+    subtitle: { en: "Hirudinea \u00b7 light micrograph", ar: "العلق (Hirudinea) · صورة بالمجهر الضوئي" },
+    description: { en: "A whole transverse section of a leech, with the scale bar at 1 mm.", ar: "مقطع مستعرض كامل في علقة، ومقياس الرسم 1 مم." },
+    facts: [
+      { en: "Leeches are annelids with a thick muscular body wall.", ar: "العلق من الحلقيات وله جدار جسم عضلي سميك." },
+      { en: "The whole body outline is visible in this section, which makes it a good scanning-power slide.", ar: "يظهر محيط الجسم كله في المقطع، وهي شريحة مناسبة لقوة المسح." },
+    ],
+    references: [{ id: 'commons-leech-section', title: "Leech (265 10) Cross-section of leech (Hirudinea).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Leech_(265_10)_Cross-section_of_leech_(Hirudinea).jpg", supports: 'Source photograph, author and licence for this slide.' }],
+  },
+  {
+    id: 'tapeworm-section', department: 'zoology', kind: 'zoology-section',
+    title: { en: "Tapeworm body section", ar: "مقطع في جسم الدودة الشريطية" },
+    subtitle: { en: "Cestoda \u00b7 light micrograph", ar: "الديدان الشريطية · صورة بالمجهر الضوئي" },
+    description: { en: "A stained section through the body of a tapeworm.", ar: "مقطع مصبوغ في جسم دودة شريطية." },
+    facts: [
+      { en: "Tapeworms have no gut; the surface of the body takes in nutrients.", ar: "الديدان الشريطية بلا قناة هضمية؛ وسطح الجسم يمتص الغذاء." },
+      { en: "The dark outer edge is the body surface (tegument).", ar: "الحافة الخارجية الغامقة هي سطح الجسم (التغلّف)." },
+    ],
+    references: [{ id: 'commons-tapeworm-section', title: "Tapeworm (265 15) Cross-section.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Tapeworm_(265_15)_Cross-section.jpg", supports: 'Source photograph, author and licence for this slide.' }],
+  },
+  {
+    id: 'medusa-whole-mount', department: 'zoology', kind: 'zoology-section',
+    title: { en: "Small medusa, whole mount", ar: "ميدوزا صغيرة، تحضير كامل" },
+    subtitle: { en: "Cnidaria \u00b7 light micrograph", ar: "اللاسعات · صورة بالمجهر الضوئي" },
+    description: { en: "A whole mount of a small medusa (jellyfish stage) with ring-shaped tentacle loops around the bell.", ar: "تحضير كامل لميدوزا صغيرة (طور قنديل البحر) تظهر فيه عروة اللوامس حول الجرس." },
+    facts: [
+      { en: "Medusae are the free-swimming body form of cnidarians.", ar: "الميدوزا هي الشكل السابح الحر في اللاسعات." },
+      { en: "The source gives no species name, so this card identifies it only as a medusa.", ar: "المصدر لا يذكر الاسم العلمي، فالبطاقة تسمّيها ميدوزا فقط." },
+    ],
+    references: [{ id: 'commons-medusa-whole-mount', title: "Medusa (265 13).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Medusa_(265_13).jpg", supports: 'Source photograph, author and licence for this slide.' }],
+  },
+  {
+    id: 'fish-scale', department: 'zoology', kind: 'zoology-section',
+    title: { en: "Fish scale, whole mount", ar: "حرشفة سمكة، تحضير كامل" },
+    subtitle: { en: "Total preparation \u00b7 polarised-style colours", ar: "تحضير كامل · صورة بالمجهر الضوئي" },
+    description: { en: "A whole mount of a fish scale showing its growth ridges.", ar: "تحضير كامل لحرشفة سمكة تظهر فيها خطوط النمو." },
+    facts: [
+      { en: "Fish scales carry concentric ridges that record growth.", ar: "حراشف الأسماك عليها خطوط متحدة المركز تسجل النمو." },
+      { en: "The strong colours come from the lighting used for the photograph, not a stain.", ar: "الألوان القوية من الإضاءة المستخدمة في التصوير وليست صبغة." },
+    ],
+    references: [{ id: 'commons-fish-scale', title: "Fish scale (250 02) Total preparation.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Fish_scale_(250_02)_Total_preparation.jpg", supports: 'Source photograph, author and licence for this slide.' }],
+  },
+  {
+    id: 'testis-section', department: 'histology', kind: 'tissue-section',
+    title: { en: "Testis section", ar: "مقطع في الخصية" },
+    subtitle: { en: "Mammalian testis \u00b7 light micrograph", ar: "خصية ثديي · صورة بالمجهر الضوئي" },
+    description: { en: "A section through a mammalian testis showing seminiferous tubules cut across.", ar: "مقطع في خصية ثديي تظهر فيه أنيبيبات منوية مقطوعة عرضياً." },
+    facts: [
+      { en: "Sperm develop inside the seminiferous tubules; interstitial tissue lies between them.", ar: "تتكوّن الحيوانات المنوية داخل الأنيبيبات المنوية، والنسيج البيني بينها." },
+      { en: "See the labelled version in Study diagrams (Testis slide schema).", ar: "شوف النسخة الموسومة في رسومات المذاكرة (schema الخصية)." },
+    ],
+    references: [{ id: 'commons-testis-section', title: "Testicles (26 2 11) Cross-section.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Testicles_(26_2_11)_Cross-section.jpg", supports: 'Source photograph, author and licence for this slide.' }],
+  },
+  {
+    id: 'liver-section', department: 'histology', kind: 'tissue-section',
+    title: { en: "Liver section", ar: "مقطع في الكبد" },
+    subtitle: { en: "Mammalian liver \u00b7 light micrograph", ar: "كبد ثديي · صورة بالمجهر الضوئي" },
+    description: { en: "A stained high-power field of liver tissue showing sheets of hepatocytes.", ar: "مجال بقوة عالية لنسيج كبد مصبوغ تظهر فيه صفوف من الخلايا الكبدية." },
+    facts: [
+      { en: "Hepatocytes form plates separated by blood spaces called sinusoids.", ar: "تكوّن الخلايا الكبدية صفائح تفصل بينها فراغات دموية تسمى الجيوب." },
+      { en: "The pale round gap in the upper middle of the field is a vessel lumen.", ar: "الفراغ المستدير الباهت في أعلى منتصف المجال هو تجويف وعاء." },
+    ],
+    references: [{ id: 'commons-liver-section', title: "Liver (26 2 07) Cross-section.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Liver_(26_2_07)_Cross-section.jpg", supports: 'Source photograph, author and licence for this slide.' }],
+  },
+  {
+    id: 'duodenum-section', department: 'histology', kind: 'tissue-section',
+    title: { en: "Duodenum section", ar: "مقطع في الاثني عشر" },
+    subtitle: { en: "Small intestine \u00b7 light micrograph", ar: "أمعاء دقيقة · صورة بالمجهر الضوئي" },
+    description: { en: "A stained high-power field of duodenal wall.", ar: "مجال بقوة عالية لجدار الاثني عشر المصبوغ." },
+    facts: [
+      { en: "The intestinal wall has a lining epithelium over connective tissue and muscle.", ar: "جدار الأمعاء له طلائية مبطّنة فوق نسيج ضام وعضلات." },
+      { en: "Crypts and lining cells are seen at high power; villi are not clearly in this field.", ar: "تظهر الغدد المعوية والخلايا المبطنة بقوة عالية؛ والزغابات غير واضحة في هذا المجال." },
+    ],
+    references: [{ id: 'commons-duodenum-section', title: "Duodenum (26 2 08) Cross-section.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Duodenum_(26_2_08)_Cross-section.jpg", supports: 'Source photograph, author and licence for this slide.' }],
+  },
+  {
+    id: 'spinal-cord-section', department: 'histology', kind: 'tissue-section',
+    title: { en: "Spinal cord section", ar: "مقطع في الحبل الشوكي" },
+    subtitle: { en: "Mammalian spinal cord \u00b7 light micrograph", ar: "حبل شوكي ثديي · صورة بالمجهر الضوئي" },
+    description: { en: "A cross-section of mammalian spinal cord, with the dark region marking grey matter.", ar: "مقطع عرضي في حبل شوكي ثديي، والمنطقة الغامقة تمثل المادة الرمادية." },
+    facts: [
+      { en: "Grey matter holds neuron cell bodies and white matter holds the myelinated tracts.", ar: "المادة الرمادية فيها أجسام الخلايا العصبية والبيضاء فيها المسارات المغمّدة." },
+      { en: "The strong colours come from the imaging method and are not a standard stain.", ar: "الألوان القوية من طريقة التصوير وليست صبغة معتادة." },
+    ],
+    references: [{ id: 'commons-spinal-cord-section', title: "Spinal cord (254 21) Mammal; cross-section.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Spinal_cord_(254_21)_Mammal;_cross-section.jpg", supports: 'Source photograph, author and licence for this slide.' }],
+  },
+  {
+    id: 'spleen-section', department: 'histology', kind: 'tissue-section',
+    title: { en: "Spleen section", ar: "مقطع في الطحال" },
+    subtitle: { en: "Mammalian spleen \u00b7 light micrograph", ar: "طحال ثديي · صورة بالمجهر الضوئي" },
+    description: { en: "A stained section of mammalian spleen.", ar: "مقطع مصبوغ في طحال ثديي." },
+    facts: [
+      { en: "The spleen has white pulp (lymphoid tissue) and red pulp (blood-filled spaces).", ar: "الطحال فيه لب أبيض (نسيج لمفاوي) ولب أحمر (فراغات مملوءة دماً)." },
+      { en: "It filters blood and takes part in immune responses.", ar: "يرشّح الدم ويشارك في الاستجابات المناعية." },
+    ],
+    references: [{ id: 'commons-spleen-section', title: "Spleen (254 07) Section; mammal.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Spleen_(254_07)_Section;_mammal.jpg", supports: 'Source photograph, author and licence for this slide.' }],
+  },
+  {
+    id: 'tongue-section', department: 'histology', kind: 'tissue-section',
+    title: { en: "Human tongue section", ar: "مقطع في لسان بشري" },
+    subtitle: { en: "Human tongue \u00b7 light micrograph", ar: "لسان بشري · صورة بالمجهر الضوئي" },
+    description: { en: "A section of human tongue with its surface epithelium at the top and muscle and fat beneath.", ar: "مقطع في لسان بشري تظهر فيه الطلائية السطحية بأعلى وتحتها عضلات ودهون." },
+    facts: [
+      { en: "The tongue surface is covered by a stratified squamous epithelium.", ar: "سطح اللسان مغطى بطلائية حرشفية متعددة الطبقات." },
+      { en: "Most of the body of the tongue is skeletal muscle.", ar: "معظم جسم اللسان عضلات هيكلية." },
+    ],
+    references: [{ id: 'commons-tongue-section', title: "Human tongue (251 09) Section.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Human_tongue_(251_09)_Section.jpg", supports: 'Source photograph, author and licence for this slide.' }],
+  },
+  {
+    id: 'trachea-section', department: 'histology', kind: 'tissue-section',
+    title: { en: "Mouse trachea section", ar: "مقطع في قصبة هوائية لفأر" },
+    subtitle: { en: "Semi-thin section \u00b7 light micrograph", ar: "مقطع شبه رقيق · صورة بالمجهر الضوئي" },
+    description: { en: "A semi-thin section of mouse trachea embedded in resin and stained blue.", ar: "مقطع شبه رقيق في قصبة هوائية لفأر مطمورة في راتنج ومصبوغة بالأزرق." },
+    facts: [
+      { en: "The airway is lined by a ciliated epithelium over connective tissue and cartilage.", ar: "المجرى الهوائي مبطّن بطلائية مهدّبة فوق نسيج ضام وغضروف." },
+      { en: "The blue colour is from the stain used for resin sections.", ar: "اللون الأزرق من صبغة مقاطع الراتنج." },
+    ],
+    references: [{ id: 'commons-trachea-section', title: "Trachea (26 2 06) Mouse trachea cross-section, embedded in Epon.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Trachea_(26_2_06)_Mouse_trachea_cross-section,_embedded_in_Epon.jpg", supports: 'Source photograph, author and licence for this slide.' }],
+  },
+  {
+    id: 'cerebellum-section', department: 'histology', kind: 'tissue-section',
+    title: { en: "Cerebellum section", ar: "مقطع في المخيخ" },
+    subtitle: { en: "Mammalian cerebellum \u00b7 light micrograph", ar: "مخيخ ثديي · صورة بالمجهر الضوئي" },
+    description: { en: "A section of mammalian cerebellum showing a densely packed granular layer next to a paler molecular layer.", ar: "مقطع في مخيخ ثديي يظهر فيه طبقة حبيبية كثيفة بجانب طبقة جزيئية أفتح." },
+    facts: [
+      { en: "The granular layer holds a very dense population of small neurons.", ar: "الطبقة الحبيبية فيها عدد كبير جداً من الخلايا العصبية الصغيرة." },
+      { en: "The pale area on the left has far fewer nuclei than the dense area on the right.", ar: "المنطقة الباهتة على اليسار فيها أنوية أقل بكثير من المنطقة الكثيفة على اليمين." },
+    ],
+    references: [{ id: 'commons-cerebellum-section', title: "Cerebellum (254 24) Mammal.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Cerebellum_(254_24)_Mammal.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
 ];

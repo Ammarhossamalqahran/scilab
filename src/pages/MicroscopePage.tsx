@@ -13,6 +13,7 @@ const departments: { id: DepartmentId; label: { en: string; ar: string } }[] = [
   { id: 'microbiology', label: { en: 'Microorganisms', ar: 'كائنات دقيقة' } },
   { id: 'botany', label: { en: 'Plant slides', ar: 'شرائح نباتية' } },
   { id: 'aquatic-life', label: { en: 'Freshwater life', ar: 'كائنات المياه العذبة' } },
+  { id: 'zoology', label: { en: 'Zoology', ar: 'علم الحيوان' } },
 ];
 const objectives: { value: 4 | 10 | 40 | 100; en: string; ar: string }[] = [
   { value: 4, en: 'Scanning', ar: 'مسح' },
@@ -60,6 +61,7 @@ export function MicroscopePage() {
     microbiology: requestedSpecimen?.department === 'microbiology' ? requestedSpecimen.id : 'budding-yeast',
     botany: requestedSpecimen?.department === 'botany' ? requestedSpecimen.id : 'dicot-leaf',
     'aquatic-life': requestedSpecimen?.department === 'aquatic-life' ? requestedSpecimen.id : 'daphnia',
+    zoology: requestedSpecimen?.department === 'zoology' ? requestedSpecimen.id : 'ascaris-section',
   });
   const selectedSpecimenId = selectedByDepartment[department];
   const specimen = availableSpecimens.find((sample) => sample.id === selectedSpecimenId) ?? availableSpecimens[0];

@@ -1482,4 +1482,419 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Bacteria_(26_2_27)_Airborne_microbes.jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
+  'yew-leaf-epidermis-and-stomata-10x': {
+    src: '/specimens/yew-leaf-epidermis-and-stomata-10x.jpg', title: "05-Stack 75 Yew 10x obj leaf print.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:05-Stack_75_Yew_10x_obj_leaf_print.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'yew-leaf-epidermis-and-stomata-40x': {
+    src: '/specimens/yew-leaf-epidermis-and-stomata-40x.jpg', title: "05-Stack 76 Yew 40x obj leaf print.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:05-Stack_76_Yew_40x_obj_leaf_print.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'spinal-cord-stacked-photograph': {
+    src: '/specimens/spinal-cord-stacked-photograph.jpg', title: "20180427SpinalCord11stack (26875138687).jpg", author: "MostlyDross from Springfield, VA, USA", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:20180427SpinalCord11stack_(26875138687).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'acinar-cells-of-an-exocrine-gland': {
+    src: '/specimens/acinar-cells-of-an-exocrine-gland.jpg', title: "Acinar cells.JPG", author: "Jpogi at English Wikipedia", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Acinar_cells.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'active-mammary-gland': {
+    src: '/specimens/active-mammary-gland.jpg', title: "Active mammary gland.jpg", author: "Abdulrazakca", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Active_mammary_gland.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'garlic-mustard-alliaria-petiolata-stalk-longitudinal-section': {
+    src: '/specimens/garlic-mustard-alliaria-petiolata-stalk-longitudinal-section.jpg', title: "Alliaria petiolata, stalk, longitudinal section, Etzold green.jpg", author: "User:Micropix", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Alliaria_petiolata,_stalk,_longitudinal_section,_Etzold_green.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'arabidopsis-shoot-apical-meristem-flat': {
+    src: '/specimens/arabidopsis-shoot-apical-meristem-flat.jpg', title: "Arabidopsis flat SAM.jpg", author: "Kingfiser", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Arabidopsis_flat_SAM.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'arabidopsis-shoot-apical-meristem-rounded': {
+    src: '/specimens/arabidopsis-shoot-apical-meristem-rounded.jpg', title: "Arabidopsis round SAM.jpg", author: "Kingfiser", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Arabidopsis_round_SAM.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'blood-cells-under-the-microscope': {
+    src: '/specimens/blood-cells-under-the-microscope.jpg', title: "Blood cells under the microscope 01.jpg", author: "Korinna", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Blood_cells_under_the_microscope_01.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'rat-breast-tissue-normal': {
+    src: '/specimens/rat-breast-tissue-normal.jpg', title: "Breast of rat (normal).jpg", author: "Farahamar", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Breast_of_rat_(normal).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-thyroid-gland-capsule': {
+    src: '/specimens/human-thyroid-gland-capsule.jpg', title: "Capsule of the Human Thyroid Gland (32534056467).jpg", author: "Berkshire Community College  Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Capsule_of_the_Human_Thyroid_Gland_(32534056467).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'choroid-plexus-human': {
+    src: '/specimens/choroid-plexus-human.jpg', title: "Choroid plexus (human).jpg", author: "Tulemo", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Choroid_plexus_(human).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'circumvallate-papilla': {
+    src: '/specimens/circumvallate-papilla.jpg', title: "Circumvallate.jpg", author: "Abdulrazakca", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Circumvallate.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'coleus-stem-tip-longitudinal-section': {
+    src: '/specimens/coleus-stem-tip-longitudinal-section.jpg', title: "Coleus stemtip.jpg", author: "Jon Houseman", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Coleus_stemtip.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'thyroid-follicles-with-colloid': {
+    src: '/specimens/thyroid-follicles-with-colloid.jpg', title: "Colloid Filled Lumens in Human Thyroid Gland (32546734627).jpg", author: "Berkshire Community College  Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Colloid_Filled_Lumens_in_Human_Thyroid_Gland_(32546734627).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'cuboidal-epithelium': {
+    src: '/specimens/cuboidal-epithelium.jpg', title: "Cuboidal Epithelium Lining Intralobular Duct by Phase Contrast (33859250438).jpg", author: "Berkshire Community College  Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cuboidal_Epithelium_Lining_Intralobular_Duct_by_Phase_Contrast_(33859250438).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-cuticle-and-upper-epidermis': {
+    src: '/specimens/leaf-cuticle-and-upper-epidermis.jpg', title: "Cuticle overlying upper epidermis in mesophyte leaf (35103215772).jpg", author: "Berkshire Community College  Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cuticle_overlying_upper_epidermis_in_mesophyte_leaf_(35103215772).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-cuticle-and-upper-epidermis-second-field': {
+    src: '/specimens/leaf-cuticle-and-upper-epidermis-second-field.jpg', title: "Cuticle overlying upper epidermis of mesophyte leaf (34686901852).jpg", author: "Berkshire Community College  Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cuticle_overlying_upper_epidermis_of_mesophyte_leaf_(34686901852).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'peritoneal-fluid-cells-cytospin': {
+    src: '/specimens/peritoneal-fluid-cells-cytospin.jpg', title: "Cytospin slide of peritoneal fluid (Wright Giemsa stain).jpg", author: "SpicyMilkBoy", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cytospin_slide_of_peritoneal_fluid_(Wright_Giemsa_stain).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'decalcified-compact-bone': {
+    src: '/specimens/decalcified-compact-bone.jpg', title: "Decalcified Compact Bone slide.jpg", author: "\u0639\u0644\u0627\u0621", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Decalcified_Compact_Bone_slide.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'thyroid-gland-septated-lobes': {
+    src: '/specimens/thyroid-gland-septated-lobes.jpg', title: "Deeply Septated Lobes of the Human Thyroid Gland (32546733667).jpg", author: "Berkshire Community College  Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Deeply_Septated_Lobes_of_the_Human_Thyroid_Gland_(32546733667).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'slug-deroceras-laeve-epithelium-400x': {
+    src: '/specimens/slug-deroceras-laeve-epithelium-400x.jpg', title: "Deroceras laeve epithelium 400 saturn.jpg", author: "Michal Ma\u0148as", license: "CC BY 2.5",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Deroceras_laeve_epithelium_400_saturn.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'slug-deroceras-laeve-muscle-h-e-200x': {
+    src: '/specimens/slug-deroceras-laeve-muscle-h-e-200x.jpg', title: "Deroceras laeve muscle 200 HE.jpg", author: "Michal Ma\u0148as", license: "CC BY 2.5",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Deroceras_laeve_muscle_200_HE.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'slug-deroceras-laeve-muscle-orcein-400x': {
+    src: '/specimens/slug-deroceras-laeve-muscle-orcein-400x.jpg', title: "Deroceras laeve muscle 400 orcein.jpg", author: "Michal Ma\u0148as", license: "CC BY 2.5",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Deroceras_laeve_muscle_400_orcein.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'male-fern-dryopteris-filix-mas-dictyostele': {
+    src: '/specimens/male-fern-dryopteris-filix-mas-dictyostele.jpg', title: "Dryopteris filix-mas Dictyostele.jpg", author: "Chernova & Ageeva", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Dryopteris_filix-mas_Dictyostele.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'barnyard-grass-echinochloa-crus-galli-stem': {
+    src: '/specimens/barnyard-grass-echinochloa-crus-galli-stem.jpg', title: "Echinochloa crus-galli - stem, longitudinal section.jpg", author: "Pawe\u0142 Jarzembowski", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Echinochloa_crus-galli_-_stem,_longitudinal_section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'thick-skin-epidermis-100x': {
+    src: '/specimens/thick-skin-epidermis-100x.jpg', title: "Epidermis histology 2014.jpg", author: "Athikhun.suw", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Epidermis_histology_2014.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'simple-squamous-epithelium': {
+    src: '/specimens/simple-squamous-epithelium.jpg', title: "Epithelial Tissues Simple Squamous Epithelium (40823230315).jpg", author: "Berkshire Community College  Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Epithelial_Tissues_Simple_Squamous_Epithelium_(40823230315).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'horsetail-equisetum-apical-cell-longitudinal-section': {
+    src: '/specimens/horsetail-equisetum-apical-cell-longitudinal-section.jpg', title: "Equisetum apical cell L.jpg", author: "Jon Houseman", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Equisetum_apical_cell_L.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'female-urethra-transitional-epithelium-40x': {
+    src: '/specimens/female-urethra-transitional-epithelium-40x.jpg', title: "Female urethra histology.jpg", author: "Athikhun.suw", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Female_urethra_histology.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'globus-pallidus-and-putamen': {
+    src: '/specimens/globus-pallidus-and-putamen.jpg', title: "Globus pallidus and putamen - very low mag.jpg", author: "Nephron", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Globus_pallidus_and_putamen_-_very_low_mag.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'renal-glomerulus': {
+    src: '/specimens/renal-glomerulus.jpg', title: "Glomerulus.jpg", author: "Nadvin", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Glomerulus.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'pine-two-needle-leaf-phloem': {
+    src: '/specimens/pine-two-needle-leaf-phloem.jpg', title: "Gymnosperm Leaves Phloem Two Needle Pinus (36363883221).jpg", author: "Berkshire Community College  Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gymnosperm_Leaves_Phloem_Two_Needle_Pinus_(36363883221).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'pine-two-needle-leaf-xylem': {
+    src: '/specimens/pine-two-needle-leaf-xylem.jpg', title: "Gymnosperm Leaves Xylem in Two Needle Pinus (36501130325).jpg", author: "Berkshire Community College  Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gymnosperm_Leaves_Xylem_in_Two_Needle_Pinus_(36501130325).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'hale-s-colloidal-iron-stain': {
+    src: '/specimens/hale-s-colloidal-iron-stain.jpg', title: "Hales colloidal iron staining.jpg", author: "Mark ong", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hales_colloidal_iron_staining.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'castor-ricinus-stem-xylem-vessels': {
+    src: '/specimens/castor-ricinus-stem-xylem-vessels.jpg', title: "Herbaceoaus Dicot Stem Xylem Vessels in Older Richinus (35474133884).jpg", author: "Berkshire Community College  Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Herbaceoaus_Dicot_Stem_Xylem_Vessels_in_Older_Richinus_(35474133884).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'pumpkin-cucurbita-stem-cambium-and-phloem': {
+    src: '/specimens/pumpkin-cucurbita-stem-cambium-and-phloem.jpg', title: "Herbaceous Dicot Stem Cambium and Phloem in Cucurbita (37411755521).jpg", author: "Berkshire Community College  Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Herbaceous_Dicot_Stem_Cambium_and_Phloem_in_Cucurbita_(37411755521).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'liver-histology-slide': {
+    src: '/specimens/liver-histology-slide.jpg', title: "Histologi Hepar.jpg", author: "Nadvin", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Histologi_Hepar.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'muscle-histology-slide': {
+    src: '/specimens/muscle-histology-slide.jpg', title: "Histologi Otot.jpg", author: "Nadvin", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Histologi_Otot.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gland-histology-slide': {
+    src: '/specimens/gland-histology-slide.jpg', title: "Histologi kelenjar.jpg", author: "Nadvin", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Histologi_kelenjar.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'lung-histology-slide': {
+    src: '/specimens/lung-histology-slide.jpg', title: "Histologi paru-paru.jpg", author: "Nadvin", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Histologi_paru-paru.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'digestive-system-histology-slide': {
+    src: '/specimens/digestive-system-histology-slide.jpg', title: "Histologi sistem pencernaan.jpg", author: "Nadvin", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Histologi_sistem_pencernaan.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'mesothelial-lining-of-a-hernia-sac': {
+    src: '/specimens/mesothelial-lining-of-a-hernia-sac.jpg', title: "Histology of the mesothelial lining of a hernia sac.jpg", author: "Mikael H\u00e4ggstr\u00f6m, M.D.", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Histology_of_the_mesothelial_lining_of_a_hernia_sac.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-ovarian-follicle': {
+    src: '/specimens/human-ovarian-follicle.jpg', title: "Human Ovarian Follicle with Growing oocyte seen through Compound Microscope at 400x Magnification.jpg", author: "C.Abare8624", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Human_Ovarian_Follicle_with_Growing_oocyte_seen_through_Compound_Microscope_at_400x_Magnification.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-blood': {
+    src: '/specimens/human-blood.jpg', title: "Human blood.jpg", author: "Olena Hohulia, \u041a\u0443\u0446\u0438\u043a \u0412\u043b\u0430\u0434\u0430, \u041a\u0440\u0435\u043c\u0456\u043d\u044c \u0412\u0430\u043b\u0435\u043d\u0442\u0438\u043d\u0430, Ivanchik Marya", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Human_blood.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-tonsil': {
+    src: '/specimens/human-tonsil.jpg', title: "Human tonsils (26 2 05) Cross-section; embedded in Epon.jpg", author: "Doc. RNDr. Josef Reischig, CSc.", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Human_tonsils_(26_2_05)_Cross-section;_embedded_in_Epon.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-skin-with-sweat-glands-100x': {
+    src: '/specimens/human-skin-with-sweat-glands-100x.jpg', title: "Humanskinsweatglands100x1.jpg", author: "John Alan Elson", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Humanskinsweatglands100x1.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-skin-with-sweat-glands-400x': {
+    src: '/specimens/human-skin-with-sweat-glands-400x.jpg', title: "Humanskinsweatglands400x6.jpg", author: "John Alan Elson", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Humanskinsweatglands400x6.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-skin-with-sweat-glands-40x': {
+    src: '/specimens/human-skin-with-sweat-glands-40x.jpg', title: "Humanskinsweatglands40x8.jpg", author: "John Alan Elson", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Humanskinsweatglands40x8.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'hydra-cross-section-100x': {
+    src: '/specimens/hydra-cross-section-100x.jpg', title: "Hydracs100x.jpg", author: "John Alan Elson", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hydracs100x.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'hydra-cross-section-40x': {
+    src: '/specimens/hydra-cross-section-40x.jpg', title: "Hydracs40x.jpg", author: "John Alan Elson", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hydracs40x.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'hypersegmented-neutrophil': {
+    src: '/specimens/hypersegmented-neutrophil.jpg', title: "Hypersegmented PMN.JPG", author: "Bobjgalindo", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hypersegmented_PMN.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'mouse-hypothalamus-immunohistochemistry': {
+    src: '/specimens/mouse-hypothalamus-immunohistochemistry.jpg', title: "Hypothalamus of a mouse tissue stained by ABC-Immunohistochemistry.jpg", author: "zabbn", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hypothalamus_of_a_mouse_tissue_stained_by_ABC-Immunohistochemistry.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'ileum-with-peyer-patch-azan-stain': {
+    src: '/specimens/ileum-with-peyer-patch-azan-stain.jpg', title: "Ileon-Payer-AZAN.jpg", author: "J3D3", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ileon-Payer-AZAN.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'kidney-cortex': {
+    src: '/specimens/kidney-cortex.jpg', title: "Kidney-Cortex.JPG", author: "Jpogi at English Wikipedia", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Kidney-Cortex.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'large-artery': {
+    src: '/specimens/large-artery.jpg', title: "Large artery.jpg", author: "Pottella kavyasree", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Large_artery.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'large-intestine': {
+    src: '/specimens/large-intestine.jpg', title: "Large intestine histology.jpg", author: "Juan Carlos Fonseca Mata", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Large_intestine_histology.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'large-vein': {
+    src: '/specimens/large-vein.jpg', title: "Large vein histology.jpg", author: "Pottella kavyasree", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Large_vein_histology.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'large-vein-second-field': {
+    src: '/specimens/large-vein-second-field.jpg', title: "Large vein.jpg", author: "Netha Hussain", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Large_vein.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'medium-sized-artery': {
+    src: '/specimens/medium-sized-artery.jpg', title: "Medium sized artery.jpg", author: "Pottella kavyasree", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Medium_sized_artery.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'megakaryocyte-bone-marrow': {
+    src: '/specimens/megakaryocyte-bone-marrow.jpg', title: "Megakaryocyte.jpg", author: "Simon Caulton", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Megakaryocyte.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'mixed-salivary-gland': {
+    src: '/specimens/mixed-salivary-gland.jpg', title: "Mixed salivary gland.jpg", author: "Sushma sri. mande", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Mixed_salivary_gland.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'nasal-mucosa-cross-section': {
+    src: '/specimens/nasal-mucosa-cross-section.jpg', title: "Nasal mucosa (26 2 17) Cross-section.jpg", author: "Doc. RNDr. Josef Reischig, CSc.", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Nasal_mucosa_(26_2_17)_Cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'nissl-bodies-in-neurons': {
+    src: '/specimens/nissl-bodies-in-neurons.jpg', title: "Nissl bodies in neurons of the spinal cord.jpg", author: "Tulemo", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Nissl_bodies_in_neurons_of_the_spinal_cord.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'normal-breast-acinus': {
+    src: '/specimens/normal-breast-acinus.jpg', title: "Normal breast acinus.jpg", author: "Mikael H\u00e4ggstr\u00f6m, M.D.", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Normal_breast_acinus.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'oesophagus': {
+    src: '/specimens/oesophagus.jpg', title: "Oesophagus.jpg", author: "\u0414\u0438\u043c\u0438\u0442\u044a\u0440 \u041c\u0438\u0442\u0435\u0432", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Oesophagus.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'muscle-transverse-section': {
+    src: '/specimens/muscle-transverse-section.jpg', title: "Otot transversal.jpg", author: "Nadvin", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Otot_transversal.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'ovary': {
+    src: '/specimens/ovary.jpg', title: "Ovary slide.jpg", author: "\u0639\u0644\u0627\u0621", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ovary_slide.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'pine-xylem-ducts': {
+    src: '/specimens/pine-xylem-ducts.jpg', title: "Pine tree xylem ducts.jpg", author: "thuggyec", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pine_tree_xylem_ducts.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'monocot-stem': {
+    src: '/specimens/monocot-stem.jpg', title: "Plant Specimen - Monocot Stem - Metaxylem and Protoxylem.jpg", author: "Soumyajits42", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Plant_Specimen_-_Monocot_Stem_-_Metaxylem_and_Protoxylem.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'uterus-proliferative-phase': {
+    src: '/specimens/uterus-proliferative-phase.jpg', title: "Prolifrative Uterus slide.jpg", author: "\u0639\u0644\u0627\u0621", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Prolifrative_Uterus_slide.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'rubricyte-nucleated-red-cell-precursor': {
+    src: '/specimens/rubricyte-nucleated-red-cell-precursor.jpg', title: "Rubricyte.jpg", author: "Bobjgalindo", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Rubricyte.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'butcher-s-broom-ruscus-hypophyllum-stem-cross-section': {
+    src: '/specimens/butcher-s-broom-ruscus-hypophyllum-stem-cross-section.jpg', title: "Ruscus hypophyllum - cross section of phylloclade.jpg", author: "TCdeOLiveira", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ruscus_hypophyllum_-_cross_section_of_phylloclade.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'ruscus-hypophyllum-root-cross-section': {
+    src: '/specimens/ruscus-hypophyllum-root-cross-section.jpg', title: "Ruscus hypophyllum root - cross section detail.jpg", author: "TCdeOLiveira", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ruscus_hypophyllum_root_-_cross_section_detail.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'ruscus-hypophyllum-root-cross-section-second-field': {
+    src: '/specimens/ruscus-hypophyllum-root-cross-section-second-field.jpg', title: "Ruscus hypophyllum root - cross section surface detail.jpg", author: "TCdeOLiveira", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ruscus_hypophyllum_root_-_cross_section_surface_detail.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'blood-smear-40x': {
+    src: '/specimens/blood-smear-40x.jpg', title: "SangPouleMicroscopeX40.jpg", author: "Patbio", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:SangPouleMicroscopeX40.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'seminal-vesicle': {
+    src: '/specimens/seminal-vesicle.jpg', title: "Seminal vesicle slide.jpg", author: "\u0639\u0644\u0627\u0621", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Seminal_vesicle_slide.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'bud-stem-tip-longitudinal-section': {
+    src: '/specimens/bud-stem-tip-longitudinal-section.jpg', title: "SeminalBudStemTipls40x2.jpg", author: "John Alan Elson", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:SeminalBudStemTipls40x2.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'sperm-in-a-giemsa-stained-smear': {
+    src: '/specimens/sperm-in-a-giemsa-stained-smear.jpg', title: "Sperms in Giemsa Stained smear of Semen.jpg", author: "Ajay Kumar Chaurasiya", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Sperms_in_Giemsa_Stained_smear_of_Semen.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'stem-collenchyma-100x': {
+    src: '/specimens/stem-collenchyma-100x.jpg', title: "Stem-Collenchyma100x6.jpg", author: "John Alan Elson", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Stem-Collenchyma100x6.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'stem-collenchyma-400x': {
+    src: '/specimens/stem-collenchyma-400x.jpg', title: "Stem-Collenchyma400x5.jpg", author: "John Alan Elson", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Stem-Collenchyma400x5.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'stomach': {
+    src: '/specimens/stomach.jpg', title: "Stomaco.JPG", author: "Etinterra", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Stomaco.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'water-lily-nymphaea-stem-xylem-elements': {
+    src: '/specimens/water-lily-nymphaea-stem-xylem-elements.jpg', title: "Submerged Dicot Stem Xylem Elements in Nymphaea (35487609682).jpg", author: "Berkshire Community College  Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Submerged_Dicot_Stem_Xylem_Elements_in_Nymphaea_(35487609682).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
 };

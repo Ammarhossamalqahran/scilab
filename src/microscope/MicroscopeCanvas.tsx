@@ -10,15 +10,19 @@ type Props = {
   pan: { x: number; y: number };
   placeholders: { empty: string; loading: string; failed: string };
   onPan: (pan: { x: number; y: number }) => void;
+  onZoom?: (direction: 1 | -1) => void;
   ariaLabel: string;
 };
 
-export function MicroscopeCanvas({ imageSrc, magnification, coarseFocus, fineFocus, light, stainFilter = 'none', pan, placeholders, onPan, ariaLabel }: Props) {
+export function MicroscopeCanvas({ imageSrc, magnification, coarseFocus, fineFocus, light, stainFilter = 'none', pan, placeholders, onPan, onZoom, ariaLabel }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
   const scheduleRef = useRef<() => void>(() => {});
   const dragRef = useRef<{ x: number; y: number; panX: number; panY: number } | null>(null);
   const [dragging, setDragging] = useState(false);
+  const [unsupported, setUnsupported] = useState(false);
+  const pointersRef = useRef(new Map<number, { x: number; y: number }>());
+  const pinchRef = useRef<number | null>(null);
   const [imageVersion, setImageVersion] = useState(0);
   const [imageStatus, setImageStatus] = useState<'empty' | 'loading' | 'loaded' | 'failed'>('empty');
   const propsRef = useRef({ imageSrc, magnification, coarseFocus, fineFocus, light, stainFilter, pan, placeholders, imageStatus });
@@ -39,6 +43,7 @@ export function MicroscopeCanvas({ imageSrc, magnification, coarseFocus, fineFoc
     const canvas = canvasRef.current;
     const parent = canvas?.parentElement;
     const context = canvas?.getContext('2d');
+    if (canvas && !context) { setUnsupported(true); return; }
     if (!canvas || !parent || !context) return;
 
     let width = 1;
@@ -123,17 +128,44 @@ export function MicroscopeCanvas({ imageSrc, magnification, coarseFocus, fineFoc
     scheduleRef.current();
   }, [imageVersion, imageStatus, imageSrc, magnification, coarseFocus, fineFocus, light, stainFilter, pan.x, pan.y, placeholders]);
 
+  function pinchDistance() {
+    const points = [...pointersRef.current.values()];
+    return points.length === 2 ? Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y) : null;
+  }
   function startDrag(event: PointerEvent<HTMLCanvasElement>) {
-    if (event.button !== 0) return;
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
     event.currentTarget.setPointerCapture(event.pointerId);
+    pointersRef.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    if (pointersRef.current.size === 2) { pinchRef.current = pinchDistance(); dragRef.current = null; return; }
     dragRef.current = { x: event.clientX, y: event.clientY, panX: pan.x, panY: pan.y };
     setDragging(true);
   }
   function drag(event: PointerEvent<HTMLCanvasElement>) {
+    if (pointersRef.current.has(event.pointerId)) pointersRef.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    if (pointersRef.current.size === 2) {
+      const distance = pinchDistance();
+      if (distance && pinchRef.current && onZoom) {
+        const ratio = distance / pinchRef.current;
+        if (ratio > 1.35) { onZoom(1); pinchRef.current = distance; }
+        else if (ratio < 0.74) { onZoom(-1); pinchRef.current = distance; }
+      }
+      return;
+    }
     if (!dragRef.current) return;
     onPan({ x: dragRef.current.panX + event.clientX - dragRef.current.x, y: dragRef.current.panY + event.clientY - dragRef.current.y });
   }
-  function endDrag() { dragRef.current = null; setDragging(false); }
+  function endDrag(event: PointerEvent<HTMLCanvasElement>) {
+    pointersRef.current.delete(event.pointerId);
+    pinchRef.current = null;
+    if (pointersRef.current.size === 1) {
+      const [remaining] = [...pointersRef.current.values()];
+      dragRef.current = { x: remaining.x, y: remaining.y, panX: pan.x, panY: pan.y };
+      return;
+    }
+    dragRef.current = null;
+    setDragging(false);
+  }
 
+  if (unsupported) return <p className="canvas-fallback" role="alert">This browser cannot draw the microscope view. Please update your browser or try another one. / متصفحك لا يستطيع عرض المجهر. حدّث المتصفح أو جرّب متصفحاً آخر.</p>;
   return <canvas ref={canvasRef} className={`microscope-canvas${dragging ? ' is-dragging' : ''}`} onPointerDown={startDrag} onPointerMove={drag} onPointerUp={endDrag} onPointerCancel={endDrag} role="img" aria-label={ariaLabel} />;
 }

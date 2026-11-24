@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { specimens } from '../data/scientificData';
+import { RequestBox } from '../components/RequestBox';
 import { specimenMedia } from '../data/specimenMedia';
 
 const featuredSlides = [
@@ -90,6 +91,8 @@ export function HomePage() {
           <li><span>{isArabic ? 'موبايل' : 'Phone'}</span><a href="tel:+201080314586" dir="ltr">01080314586</a></li>
         </ul>
       </section>
+
+      <RequestBox />
 
       <footer className="page-footer"><span>{isArabic ? 'كلية العلوم · عملي الأحياء' : 'Faculty of Science · Biology practical'}</span><span>{isArabic ? 'صور مجهرية تعليمية' : 'Photomicrographs for teaching'}</span></footer>
     </div>

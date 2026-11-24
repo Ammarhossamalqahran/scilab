@@ -75,7 +75,7 @@ export function SchemaStudyPage() {
       <div className="module-page-head study-page-head">
         <div>
           <Link to="/schemas" className="back-link">← {t('backToOverview')}</Link>
-          <div className="eyebrow"><span className="eyebrow-line" />{diagram.category.toUpperCase()} / {diagram.photo ? 'SLIDE SCHEMA' : 'VECTOR PLATE'}</div>
+          <div className="eyebrow"><span className="eyebrow-line" />{diagram.category.toUpperCase()} / {diagram.photo ? 'SLIDE SCHEMA' : 'VECTOR PLATE'}{diagram.needsReview && <> · <b className="needs-review-tag">{lang === 'ar' ? 'تحتاج مراجعة' : 'NEEDS REVIEW'}</b></>}</div>
           <h1 className="page-title">{diagram.title[lang]}</h1>
           <p className="page-intro">{diagram.summary[lang]}</p>
         </div>

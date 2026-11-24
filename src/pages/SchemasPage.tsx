@@ -35,7 +35,7 @@ export function SchemasPage() {
               <div className="schema-thumb"><DiagramArtwork diagram={diagram} compact /></div>
               <div className="schema-card-body">
                 <div className="schema-card-top"><span className="schema-category">{categoryTitle}</span><span className="schema-card-index">PLATE / {String(index + 1).padStart(2, '0')}</span></div>
-                <h2>{diagram.title[lang]}</h2>
+                <h2>{diagram.title[lang]}{diagram.needsReview && <small className="needs-review-tag"> · {lang === 'ar' ? 'تحتاج مراجعة' : 'needs review'}</small>}</h2>
                 <p>{diagram.summary[lang]}</p>
                 <div className="schema-card-footer"><span>{diagram.structures.length} {lang === 'ar' ? 'تراكيب تفاعلية' : 'INTERACTIVE STRUCTURES'}</span><span className="schema-open">↗</span></div>
               </div>

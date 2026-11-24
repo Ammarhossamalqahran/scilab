@@ -1,4 +1,5 @@
 import { slideSchemas } from './slideSchemas';
+import { specimenSchemas } from './specimenSchemas';
 import { references, type Bilingual, type ScientificReference } from './scientificData';
 
 export type SlidePhoto = { src: string; title: string; author: string; license: string; sourceUrl: string };
@@ -22,6 +23,7 @@ export type ScientificDiagram = {
   references: ScientificReference[];
   structures: DiagramStructure[];
   photo?: SlidePhoto;
+  needsReview?: boolean;
 };
 
 export const diagramCategories: { id: DiagramCategory; title: Bilingual; code: string }[] = [
@@ -112,7 +114,7 @@ const baseDiagrams: ScientificDiagram[] = [
   },
 ];
 
-export const diagrams: ScientificDiagram[] = [...baseDiagrams, ...slideSchemas];
+export const diagrams: ScientificDiagram[] = [...baseDiagrams, ...slideSchemas, ...specimenSchemas];
 
 export function getDiagram(id: string | undefined) {
   return diagrams.find((diagram) => diagram.id === id);

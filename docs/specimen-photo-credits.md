@@ -43,3 +43,16 @@ The landing page also uses a locally bundled microscope photograph by Abdsomod, 
 | P. falciparum gametocyte | Plasmodium falciparum malaria, 1000x.jpg | Department of Pathology, Calicut Medical College | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Plasmodium_falciparum_malaria,_1000x.jpg) |
 
 The author and license are also shown under each built-in microscope view. The source image file itself is linked there for attribution and license details; the specimen is displayed from the local bundle and does not require an external page to load. The blood-smear capture removes browser margins; the pond-water and lemon-leaf images are crops of the original eyepiece fields and still show part of the dark microscope frame. Among the earlier additions, the Daphnia scale annotation was cropped, the Spirogyra scale and embedded caption were cropped, the compact-bone image is the source photograph downscaled to 1280 px wide, and the target-cells image is cropped to remove the embedded scale annotation, which was mislabelled in the source. The Euglena and fern images keep their original scale bars. The rotifer source describes the identification as probable, which is also stated in the specimen card. Stain choices in the web app apply color filters to the photograph for comparison; they do not alter the bundled source image or reproduce stain chemistry.
+
+
+## Slide schema photographs
+
+The labelled slide schemas use photographs from the archive of Josef Reischig, shared by his heirs under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) (licence read from the Wikimedia Commons metadata of each file). Images are stored at the source size (1280 px wide), uncropped, with the original scale bar.
+
+| Schema | Image | Author | Source |
+| --- | --- | --- | --- |
+| Maize stem schema | Plant stem (255 04) Cross-section of maize stem.jpg | Josef Reischig (archive, shared by heirs) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Plant_stem_(255_04)_Cross-section_of_maize_stem.jpg) |
+| Ascaris schema | Giant roundworm (265 11) Cross-section.jpg | Josef Reischig (archive, shared by heirs) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Giant_roundworm_(265_11)_Cross-section.jpg) |
+| Pine needle schema | Pinus nigra needle (255 22) Needle cross section.jpg | Josef Reischig (archive, shared by heirs) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pinus_nigra_needle_(255_22)_Needle_cross_section.jpg) |
+| Kidney schema | Kidney (254 16) Human.jpg | Josef Reischig (archive, shared by heirs) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kidney_(254_16)_Human.jpg) |
+| Testis schema | Testicles (26 2 11) Cross-section.jpg | Josef Reischig (archive, shared by heirs) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Testicles_(26_2_11)_Cross-section.jpg) |

@@ -75,7 +75,7 @@ export function SchemaStudyPage() {
       <div className="module-page-head study-page-head">
         <div>
           <Link to="/schemas" className="back-link">← {t('backToOverview')}</Link>
-          <div className="eyebrow"><span className="eyebrow-line" />{diagram.category.toUpperCase()} / VECTOR PLATE</div>
+          <div className="eyebrow"><span className="eyebrow-line" />{diagram.category.toUpperCase()} / {diagram.photo ? 'SLIDE SCHEMA' : 'VECTOR PLATE'}</div>
           <h1 className="page-title">{diagram.title[lang]}</h1>
           <p className="page-intro">{diagram.summary[lang]}</p>
         </div>
@@ -92,9 +92,9 @@ export function SchemaStudyPage() {
 
       <div className="schema-study-grid">
         <section className="diagram-stage-panel">
-          <div className="diagram-stage-top"><span><i className="live-indicator" />{mode === 'exam' ? t('examMode') : t('studyMode')}</span><span>{t('vectorSchemaScale')}</span></div>
+          <div className="diagram-stage-top"><span><i className="live-indicator" />{mode === 'exam' ? t('examMode') : t('studyMode')}</span><span>{diagram.photo ? `PHOTO: ${diagram.photo.author} · ${diagram.photo.license}` : t('vectorSchemaScale')}</span></div>
           <DiagramArtwork diagram={diagram} activeId={mode === 'study' ? selectedId : undefined} examMode={mode === 'exam'} onSelect={handleTargetSelect} />
-          <div className="diagram-stage-bottom"><span>FACULTY OF SCIENCE · LEARNING ATLAS</span><span>{diagram.disclaimer[lang]}</span></div>
+          <div className="diagram-stage-bottom"><span>{diagram.photo ? <a href={diagram.photo.sourceUrl} target="_blank" rel="noreferrer">{diagram.photo.title} ↗</a> : 'FACULTY OF SCIENCE · LEARNING ATLAS'}</span><span>{diagram.disclaimer[lang]}</span></div>
         </section>
 
         <aside className="structure-panel">

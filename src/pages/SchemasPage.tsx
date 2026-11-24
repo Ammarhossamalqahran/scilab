@@ -18,12 +18,12 @@ export function SchemasPage() {
           <h1 className="page-title">{t('schemasTitle')}</h1>
           <p className="page-intro">{t('schemasDescription')}</p>
         </div>
-        <div className="atlas-total"><b>04</b><span>{lang === 'ar' ? 'صفائح علمية أولية' : 'VERIFIED PLATES'}</span></div>
+        <div className="atlas-total"><b>{String(diagrams.length).padStart(2, '0')}</b><span>{lang === 'ar' ? 'صفائح علمية أولية' : 'VERIFIED PLATES'}</span></div>
       </div>
       <div className="schema-toolbar">
         <div className="schema-filter-label"><span className="filter-reticle">⌖</span>{t('allCategories')}</div>
         <div className="schema-filters" role="group" aria-label={t('allCategories')}>
-          <button type="button" className={`filter-chip${category === 'all' ? ' is-selected' : ''}`} onClick={() => setCategory('all')} aria-pressed={category === 'all'}>{t('allCategories')}<b>04</b></button>
+          <button type="button" className={`filter-chip${category === 'all' ? ' is-selected' : ''}`} onClick={() => setCategory('all')} aria-pressed={category === 'all'}>{t('allCategories')}<b>{String(diagrams.length).padStart(2, '0')}</b></button>
           {diagramCategories.map((item) => <button key={item.id} type="button" className={`filter-chip${category === item.id ? ' is-selected' : ''}`} onClick={() => setCategory(item.id)} aria-pressed={category === item.id}><span>{item.title[lang]}</span></button>)}
         </div>
       </div>

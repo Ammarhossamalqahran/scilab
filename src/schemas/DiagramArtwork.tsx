@@ -122,9 +122,9 @@ export function DiagramArtwork({ diagram, activeId, examMode = false, compact = 
         <rect width="900" height="560" fill="#121a16" />
         <rect width="900" height="560" fill={`url(#${gridId})`} />
         <ellipse cx="450" cy="280" rx="390" ry="250" fill={`url(#${diagram.id}-wash)`} />
-        <PlateBase diagram={diagram} />
+        {diagram.photo ? <image href={diagram.photo.src} x="0" y="-8" width="900" height="576" preserveAspectRatio="none" /> : <PlateBase diagram={diagram} />}
         {diagram.structures.map((structure, index) => {
-          const x = structure.x * 9; const y = structure.y * 5.6;
+          const x = structure.x * 9; const y = diagram.photo ? structure.y * 5.76 - 8 : structure.y * 5.6;
           const active = activeId === structure.id;
           const accent = active ? '#7bdec3' : '#b7c5bb';
           const label = examMode ? (lang === 'ar' ? 'تركيب مخفي' : 'Hidden structure') : structure.name[lang];

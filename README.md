@@ -6,13 +6,13 @@ A free bilingual (Arabic / English) virtual biology lab for Faculty of Science s
 
 > **Designed and built by Ammar Hossam Alqahran.** The interface, layout, interactions, exam logic and bilingual content structure are my own work. The specimen photographs are **not** mine: they come from Wikimedia Commons and other open sources, credited below.
 
-| Home | Practical exams |
+| Home | Virtual microscope |
 | --- | --- |
-| ![Home page](docs/screenshots/home.png) | ![Practical exam room](docs/screenshots/exams.png) |
+| ![Home page](docs/screenshots/home.png) | ![Virtual microscope](docs/screenshots/microscope.png) |
 
-| Study diagrams |
-| --- |
-| ![Interactive heart diagram](docs/screenshots/schemas.png) |
+| Practical exams | Study diagrams |
+| --- | --- |
+| ![Practical exam room](docs/screenshots/exams.png) | ![Interactive heart diagram](docs/screenshots/schemas.png) |
 
 ## Features
 

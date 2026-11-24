@@ -1897,4 +1897,204 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Submerged_Dicot_Stem_Xylem_Elements_in_Nymphaea_(35487609682).jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
+  'gram-stain-ligilactobacillus-1000x': {
+    src: '/specimens/gram-stain-ligilactobacillus-1000x.jpg', title: "1000x Magnification of Gram Stain of Ligilactobacillus animalis Under Brightfield Microscopy.jpg", author: "Varun Punnam", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:1000x_Magnification_of_Gram_Stain_of_Ligilactobacillus_animalis_Under_Brightfield_Microscopy.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-stain-staphylococcus-xylosus-1000x': {
+    src: '/specimens/gram-stain-staphylococcus-xylosus-1000x.jpg', title: "1000x Magnification of Gram Stain of Staphylococcus xylosus Under Brightfield Microscopy.jpg", author: "Varun Punnam", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:1000x_Magnification_of_Gram_Stain_of_Staphylococcus_xylosus_Under_Brightfield_Microscopy.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-stain-alcaligenes-faecalis': {
+    src: '/specimens/gram-stain-alcaligenes-faecalis.jpg', title: "11G0002 lores.jpg", author: "CDC/ Dr. W.A. Clark", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:11G0002_lores.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'three-basophil-granulocytes': {
+    src: '/specimens/three-basophil-granulocytes.jpg', title: "20100313 005313 BasophilGranulocytes.jpg", author: "Bob Blaylock (talk)", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:20100313_005313_BasophilGranulocytes.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'staphylococcus-gram-stain-with-scale-ticks': {
+    src: '/specimens/staphylococcus-gram-stain-with-scale-ticks.jpg', title: "20101017 231210 Staphylococcus.jpg", author: "Bob Blaylock", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:20101017_231210_Staphylococcus.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'lactobacillus-acidophilus-gram-stain': {
+    src: '/specimens/lactobacillus-acidophilus-gram-stain.jpg', title: "20101212 205549 LactobacillusAcidophilus.jpg", author: "Bob Blaylock", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:20101212_205549_LactobacillusAcidophilus.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-stain-aerococcus-urinae-gram-positive-cocci': {
+    src: '/specimens/gram-stain-aerococcus-urinae-gram-positive-cocci.jpg', title: "Aerococcus urinae - microscopy.jpg", author: "Mikael H\u00e4ggstr\u00f6m, M.D.", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Aerococcus_urinae_-_microscopy.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-stain-aeromonas-veronii-gram-negative-rods': {
+    src: '/specimens/gram-stain-aeromonas-veronii-gram-negative-rods.jpg', title: "Aeromonas veronii biovar sobria Gram Stain on Microscope Slide.jpg", author: "B. Domangue", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Aeromonas_veronii_biovar_sobria_Gram_Stain_on_Microscope_Slide.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'onion-allium-cepa-root-tip-longitudinal-section-differentiation-zone': {
+    src: '/specimens/onion-allium-cepa-root-tip-longitudinal-section-differentiation-zone.jpg', title: "Allium-Differenzierung02-DM100x HF ba1.jpg", author: "Dr. phil.nat Thomas Geier, Fachgebiet Botanik der Forschungsanstalt Geisenheim.", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Allium-Differenzierung02-DM100x_HF_ba1.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'mitosis-in-onion-root-meristem-anaphase': {
+    src: '/specimens/mitosis-in-onion-root-meristem-anaphase.jpg', title: "Anafase Mitosis Cebolla.jpg", author: "Viascos", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Anafase_Mitosis_Cebolla.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'anaphase-of-plant-cell-mitosis': {
+    src: '/specimens/anaphase-of-plant-cell-mitosis.jpg', title: "Anaphase of plant cell mitosis.jpg", author: "\u0414\u0430\u0432\u0438\u0434 \u0410\u043d\u0434\u0440\u043e\u043d\u043e\u0432", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Anaphase_of_plant_cell_mitosis.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-stain-bacillus-anthracis': {
+    src: '/specimens/gram-stain-bacillus-anthracis.jpg', title: "Bacillus anthracis Gram.jpg", author: "Photo Credit:", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bacillus_anthracis_Gram.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-stain-bacillus-coagulans': {
+    src: '/specimens/gram-stain-bacillus-coagulans.jpg', title: "Bacillus coagulans 01.jpg", author: "Dr. William A. Clark", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bacillus_coagulans_01.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-stain-bacillus-subtilis': {
+    src: '/specimens/gram-stain-bacillus-subtilis.jpg', title: "Bacillus subtilis Gram stain.jpg", author: "Riraq25", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bacillus_subtilis_Gram_stain.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'gram-stain-bacteroides-fragilis': {
+    src: '/specimens/gram-stain-bacteroides-fragilis.jpg', title: "BacteroidesFragilis Gram.jpg", author: "Content Providers(s): CDC/Dr. V.R. Dowell, Jr.", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:BacteroidesFragilis_Gram.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'band-neutrophil-in-a-wright-stained-blood-smear': {
+    src: '/specimens/band-neutrophil-in-a-wright-stained-blood-smear.jpg', title: "Band form neutrophil in Wright stained PBS microscopy.jpg", author: "Ajay Kumar Chaurasiya", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Band_form_neutrophil_in_Wright_stained_PBS_microscopy.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'band-neutrophil-in-a-blood-smear-40x': {
+    src: '/specimens/band-neutrophil-in-a-blood-smear-40x.jpg', title: "Band neutrophil.JPG", author: "Bobjgalindo", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Band_neutrophil.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'moss-barbula-unguiculata-leaf-cells-400x': {
+    src: '/specimens/moss-barbula-unguiculata-leaf-cells-400x.jpg', title: "Barbula unguiculata lamina.jpeg", author: "Kristian Peters -- Fabelfroh 13:26, 29 December 2006 (UTC)", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Barbula_unguiculata_lamina.jpeg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'moss-bartramia-ithyphylla-leaf-sheath-125x': {
+    src: '/specimens/moss-bartramia-ithyphylla-leaf-sheath-125x.jpg', title: "Bartramia ithyphylla blattscheide.jpeg", author: "Kristian Peters -- Fabelfroh 13:24, 23 September 2007 (UTC)", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bartramia_ithyphylla_blattscheide.jpeg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'stained-plant-section-xylem-with-secondary-thickening': {
+    src: '/specimens/stained-plant-section-xylem-with-secondary-thickening.jpg', title: "Barwiony preparat ro\u015blinny.jpg", author: "Figafiga888", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Barwiony_preparat_ro\u015blinny.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'basophil-in-blood-giemsa-stain': {
+    src: '/specimens/basophil-in-blood-giemsa-stain.jpg', title: "Basophil in blood.jpg", author: "Animalculist", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Basophil_in_blood.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'binucleated-neutrophil-in-a-blood-smear': {
+    src: '/specimens/binucleated-neutrophil-in-a-blood-smear.jpg', title: "Binucleated neutrophil smear 2009-11-16.JPG", author: "Paulo Henrique Orlandi Mourao", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Binucleated_neutrophil_smear_2009-11-16.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-blood-smear': {
+    src: '/specimens/human-blood-smear.jpg', title: "Blood smear (265 21) Human.jpg", author: "Doc. RNDr. Josef Reischig, CSc.", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Blood_smear_(265_21)_Human.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'blood-erythrocytes-and-platelets-1': {
+    src: '/specimens/blood-erythrocytes-and-platelets-1.jpg', title: "Blood1.jpg", author: "Echinaceapallida", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Blood1.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-and-stomata-print-equisetum-arvense-horsetail': {
+    src: '/specimens/leaf-epidermis-and-stomata-print-equisetum-arvense-horsetail.jpg', title: "01-Stack 201 Equisetum 10x obj leaf print.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:01-Stack_201_Equisetum_10x_obj_leaf_print.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-and-stomata-print-dryopteris-sp-fern': {
+    src: '/specimens/leaf-epidermis-and-stomata-print-dryopteris-sp-fern.jpg', title: "02-Stack 174 Fern 40x obj leaf print.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:02-Stack_174_Fern_40x_obj_leaf_print.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-and-stomata-print-ginkgo-biloba': {
+    src: '/specimens/leaf-epidermis-and-stomata-print-ginkgo-biloba.jpg', title: "03-Stack 175 Ginkgo 10x obj leaf print 01.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:03-Stack_175_Ginkgo_10x_obj_leaf_print_01.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-and-stomata-print-araucaria-araucana': {
+    src: '/specimens/leaf-epidermis-and-stomata-print-araucaria-araucana.jpg', title: "04-Stack 101 Monkeypuzzle 10x obj leaf print.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:04-Stack_101_Monkeypuzzle_10x_obj_leaf_print.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-and-stomata-print-picea-abies': {
+    src: '/specimens/leaf-epidermis-and-stomata-print-picea-abies.jpg', title: "07-Stack 98 Norway spruce 40x obj leaf print.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:07-Stack_98_Norway_spruce_40x_obj_leaf_print.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-and-stomata-print-hordeum-murinum': {
+    src: '/specimens/leaf-epidermis-and-stomata-print-hordeum-murinum.jpg', title: "09-Stack 28 Wall Barley 40x obj leaf print.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:09-Stack_28_Wall_Barley_40x_obj_leaf_print.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-and-stomata-print-triticum-aestivum': {
+    src: '/specimens/leaf-epidermis-and-stomata-print-triticum-aestivum.jpg', title: "10-Stack 31 Wheat 10x obj leaf print.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:10-Stack_31_Wheat_10x_obj_leaf_print.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-and-stomata-print-zea-mays': {
+    src: '/specimens/leaf-epidermis-and-stomata-print-zea-mays.jpg', title: "13-Stack 199 Maize 10x obj leaf print.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:13-Stack_199_Maize_10x_obj_leaf_print.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-and-stomata-print-ananas-comosus': {
+    src: '/specimens/leaf-epidermis-and-stomata-print-ananas-comosus.jpg', title: "14-Stack 133 Pineapple 10x obj leaf print.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:14-Stack_133_Pineapple_10x_obj_leaf_print.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-and-stomata-print-iris-sp': {
+    src: '/specimens/leaf-epidermis-and-stomata-print-iris-sp.jpg', title: "15-Stack 01 Iris 10x obj leaf print.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:15-Stack_01_Iris_10x_obj_leaf_print.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-and-stomata-print-zantedeschia-aethiopica': {
+    src: '/specimens/leaf-epidermis-and-stomata-print-zantedeschia-aethiopica.jpg', title: "15-Stack 104 Arum lily 40x obj leaf print.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:15-Stack_104_Arum_lily_40x_obj_leaf_print.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-and-stomata-print-holly-ilex-aquifolium': {
+    src: '/specimens/leaf-epidermis-and-stomata-print-holly-ilex-aquifolium.jpg', title: "151 Holly Ilex aquifolium LEAF print.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:151_Holly_Ilex_aquifolium_LEAF_print.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-and-stomata-print-brassica-oleracea-green-cabbage': {
+    src: '/specimens/leaf-epidermis-and-stomata-print-brassica-oleracea-green-cabbage.jpg', title: "158 Brassica oleracea Green Cabbage LEAF epidermis print.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:158_Brassica_oleracea_Green_Cabbage_LEAF_epidermis_print.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-and-stomata-print-eucalyptus-gunni-lower-side': {
+    src: '/specimens/leaf-epidermis-and-stomata-print-eucalyptus-gunni-lower-side.jpg', title: "166 Eucalyptus gunni lower side LEAF epidermis print.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:166_Eucalyptus_gunni_lower_side_LEAF_epidermis_print.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-and-stomata-print-ricinus-communis-castor-oil': {
+    src: '/specimens/leaf-epidermis-and-stomata-print-ricinus-communis-castor-oil.jpg', title: "167 Ricinus communis Castor oil LEAF epidermis print.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:167_Ricinus_communis_Castor_oil_LEAF_epidermis_print.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-and-stomata-print-allium-cepa-spring-onion-outer': {
+    src: '/specimens/leaf-epidermis-and-stomata-print-allium-cepa-spring-onion-outer.jpg', title: "169 Allium cepa Spring Onion outer LEAF epidermis print.jpg", author: "ChrisInMilton", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:169_Allium_cepa_Spring_Onion_outer_LEAF_epidermis_print.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
 };

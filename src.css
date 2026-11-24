@@ -1029,3 +1029,45 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .exam-schema-copy { min-height: 175px; }
   .notebook-paper { padding: 11px; }
 }
+
+/* Dark-mode fixes: light hard-coded colors in the microscope, sidebar and exam panels */
+:root[data-theme="dark"] .sidebar { background: var(--surface); }
+:root[data-theme="dark"] .microscope-page .eyebrow, :root[data-theme="dark"] .eyebrow, :root[data-theme="dark"] .challenge-note .eyebrow { color: #a9bfae; }
+:root[data-theme="dark"] .microscope-page .eyebrow-line { background: #6f8575; }
+:root[data-theme="dark"] .microscope-page .page-intro { color: var(--ink-soft); }
+:root[data-theme="dark"] .scope-view-panel, :root[data-theme="dark"] .scope-control-panel { border-color: var(--line-strong); background: var(--surface-raised); box-shadow: none; }
+:root[data-theme="dark"] .specimen-id, :root[data-theme="dark"] .scope-control-panel .panel-index, :root[data-theme="dark"] .specimen-heading p, :root[data-theme="dark"] .objective-readout > span, :root[data-theme="dark"] .view-status-line, :root[data-theme="dark"] .photo-credit { color: var(--ink-soft); }
+:root[data-theme="dark"] .scope-control-panel .panel-index { color: var(--ink); }
+:root[data-theme="dark"] .scope-control-panel .panel-live { color: #9fc79a; }
+:root[data-theme="dark"] .view-status-line b { color: #e5bd72; }
+:root[data-theme="dark"] .photo-credit { text-decoration-color: var(--line-strong); }
+:root[data-theme="dark"] .department-button, :root[data-theme="dark"] .objective-button, :root[data-theme="dark"] .specimen-search-wrap, :root[data-theme="dark"] .favorites-filter { border-color: var(--line-strong); background: var(--surface); color: var(--ink-soft); }
+:root[data-theme="dark"] .department-button.is-selected, :root[data-theme="dark"] .objective-button.is-selected, :root[data-theme="dark"] .specimen-pick-button.is-selected, :root[data-theme="dark"] .specimen-pick-row.is-selected, :root[data-theme="dark"] .favorites-filter.is-active { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, var(--surface)); color: var(--ink); }
+:root[data-theme="dark"] .specimen-pick-button:hover, :root[data-theme="dark"] .specimen-pick-row:hover, :root[data-theme="dark"] .favorites-filter:hover { background: var(--surface-hover); }
+:root[data-theme="dark"] .specimen-search-wrap input { color: var(--ink); }
+:root[data-theme="dark"] .specimen-search-wrap input::placeholder { color: var(--muted); }
+:root[data-theme="dark"] .specimen-thumbnail { background: var(--surface-hover); border-color: var(--line-strong); }
+:root[data-theme="dark"] .specimen-favorite { color: var(--muted); }
+:root[data-theme="dark"] .specimen-empty { border-color: var(--line-strong); color: var(--ink-soft); }
+:root[data-theme="dark"] .challenge-note { background: var(--surface); border-inline-start-color: var(--accent); }
+:root[data-theme="dark"] .challenge-note p { color: var(--ink); }
+:root[data-theme="dark"] .challenge-note small { color: var(--ink-soft); }
+:root[data-theme="dark"] .microscope-workspace.is-challenge .scope-view-panel { border-color: var(--line-strong); }
+:root[data-theme="dark"] .active-stain-readout { color: #c3b2e6; }
+:root[data-theme="dark"] .exam-scoreboard span { border-color: var(--line-strong); color: var(--ink-soft); }
+:root[data-theme="dark"] .exam-scoreboard b { color: var(--accent); }
+:root[data-theme="dark"] .exam-start-card { border-color: var(--line-strong); background: var(--surface); }
+:root[data-theme="dark"] .exam-start-card p, :root[data-theme="dark"] .exam-panel-label { color: var(--ink-soft); }
+:root[data-theme="dark"] .exam-panel-label b { color: var(--ink); }
+:root[data-theme="dark"] .exam-question-mark, :root[data-theme="dark"] .exam-step-badge { border-color: var(--line-strong); color: var(--accent); }
+:root[data-theme="dark"] .exam-answer-feedback, :root[data-theme="dark"] .prep-feedback { color: var(--ink-soft); background: var(--surface-hover); }
+:root[data-theme="dark"] .exam-answer-feedback.is-correct, :root[data-theme="dark"] .prep-feedback.is-correct { color: #a8dfb5; background: #1b2e22; }
+:root[data-theme="dark"] .exam-answer-feedback.is-wrong, :root[data-theme="dark"] .prep-feedback.is-wrong { color: #f0b3a8; background: #33211e; }
+:root[data-theme="dark"] .prep-restart, :root[data-theme="dark"] .notebook-save-note { color: var(--accent); }
+:root[data-theme="dark"] .exam-schema-art { border-color: var(--line-strong); background: var(--surface); }
+
+/* Phones: the "Academic references" label is hidden with font-size 0, but on schema pages
+   the icon is a text glyph (not an svg), so the button was empty. Keep the glyph visible. */
+@media (max-width: 620px) {
+  .module-page-head .source-trigger > span { font-size: 17px; line-height: 1; }
+}

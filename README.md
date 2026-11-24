@@ -68,7 +68,7 @@ src/i18n/         Typed English/Arabic interface strings
 src/microscope/   Canvas2D microscope field for bundled slide photographs
 src/pages/        Landing, microscope, atlas, and diagram study/exam views
 src/schemas/      SVG schema plates and interactive structure pins
-public/           Static branding asset and route manifest
+public/           Logo, social preview image and bundled specimen photographs
 ```
 
 ## Routes
@@ -78,5 +78,3 @@ public/           Static branding asset and route manifest
 - `/exams` practical exam room and lab notebook
 - `/schemas` schema atlas
 - `/schemas/:diagramId` schema study or exam view
-
-`public/manus-routes.json` mirrors this route set for Manus Preview.

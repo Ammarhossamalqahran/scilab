@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { Splash } from '../components/Splash';
 import { AppShell } from '../components/AppShell';
 import { HomePage } from '../pages/HomePage';
 import { MicroscopePage } from '../pages/MicroscopePage';
@@ -8,6 +9,8 @@ import { SchemaStudyPage } from '../pages/SchemaStudyPage';
 
 export function App() {
   return (
+    <>
+    <Splash />
     <Routes>
       <Route element={<AppShell />}>
         <Route index element={<HomePage />} />
@@ -18,5 +21,6 @@ export function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
+    </>
   );
 }

@@ -252,4 +252,1234 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Cerebellum_(254_24)_Mammal.jpg",
     adaptation: 'Downscaled to 1280 px wide; not cropped.',
   },
+  'mite-acari-265-02': {
+    src: '/specimens/mite-acari-265-02.jpg', title: "Acari (265 02) Total preparation.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Acari_(265_02)_Total_preparation.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'aedes-mosquito-247-27a': {
+    src: '/specimens/aedes-mosquito-247-27a.jpg', title: "Aedes mosquito (247 27A) With biting lice.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Aedes_mosquito_(247_27A)_With_biting_lice.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'aerial-root-255-01': {
+    src: '/specimens/aerial-root-255-01.jpg', title: "Aerial root (255 01).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Aerial_root_(255_01).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'ant-leg-250-09': {
+    src: '/specimens/ant-leg-250-09.jpg', title: "Ant leg (250 09) Ant leg (Formicidae).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ant_leg_(250_09)_Ant_leg_(Formicidae).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'articular-head-joint-254-03': {
+    src: '/specimens/articular-head-joint-254-03.jpg', title: "Articular head (254 03) Section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Articular_head_(254_03)_Section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'aspergillus-fumigatus-257-15': {
+    src: '/specimens/aspergillus-fumigatus-257-15.jpg', title: "Aspergillus fumigatus (257 15).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Aspergillus_fumigatus_(257_15).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'airborne-bacteria-248-28': {
+    src: '/specimens/airborne-bacteria-248-28.jpg', title: "Bacteria (248 28) Airborne microbes.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bacteria_(248_28)_Airborne_microbes.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'basidiobolus-257-20': {
+    src: '/specimens/basidiobolus-257-20.jpg', title: "Basidiobolus (257 20).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Basidiobolus_(257_20).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'basidiocarp-hymenium-257-26': {
+    src: '/specimens/basidiocarp-hymenium-257-26.jpg', title: "Basidiocarp hymenium (257 26) Basidiomycota; cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Basidiocarp_hymenium_(257_26)_Basidiomycota;_cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'bed-bug-265-17': {
+    src: '/specimens/bed-bug-265-17.jpg', title: "Bed bug (265 17).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bed_bug_(265_17).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'bird-feather-248-20': {
+    src: '/specimens/bird-feather-248-20.jpg', title: "Bird feather (248 20).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bird_feather_(248_20).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'blood-smear-248-36': {
+    src: '/specimens/blood-smear-248-36.jpg', title: "Blood smear (248 36) Fish.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Blood_smear_(248_36)_Fish.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'bone-section-248-12': {
+    src: '/specimens/bone-section-248-12.jpg', title: "Bone (248 12) Bone cross section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bone_(248_12)_Bone_cross_section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'rat-brain-section-247-28a': {
+    src: '/specimens/rat-brain-section-247-28a.jpg', title: "Brain (247 28A) Rat brain.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Brain_(247_28A)_Rat_brain.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'bud-lilac-255-28': {
+    src: '/specimens/bud-lilac-255-28.jpg', title: "Bud (255 28) Longitudal section of lilac (Syringa vulgaris).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bud_(255_28)_Longitudal_section_of_lilac_(Syringa_vulgaris).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'candida-albicans-248-35': {
+    src: '/specimens/candida-albicans-248-35.jpg', title: "Candida albicans (248 35).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Candida_albicans_(248_35).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'caryopsis-grain-255-31': {
+    src: '/specimens/caryopsis-grain-255-31.jpg', title: "Caryopsis (grain) (255 31) Cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Caryopsis_(grain)_(255_31)_Cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'castor-bean-tick-248-14': {
+    src: '/specimens/castor-bean-tick-248-14.jpg', title: "Castor bean tick (248 14) Total preparation - larva and egg.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Castor_bean_tick_(248_14)_Total_preparation_-_larva_and_egg.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'cat-fetus-section-247-30a': {
+    src: '/specimens/cat-fetus-section-247-30a.jpg', title: "Cat fetus (247 30A) Cat fetus section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cat_fetus_(247_30A)_Cat_fetus_section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'cultured-cells-261-20': {
+    src: '/specimens/cultured-cells-261-20.jpg', title: "Cell culture (fibroblasts) (261 20) Fibroblasts (metaphase, anaphase).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cell_culture_(fibroblasts)_(261_20)_Fibroblasts_(metaphase,_anaphase).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'trematode-cercaria-259-21': {
+    src: '/specimens/trematode-cercaria-259-21.jpg', title: "Cercaria of trematode (259 21) Cercaria of trematode.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cercaria_of_trematode_(259_21)_Cercaria_of_trematode.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'cerebellum-26-2-12': {
+    src: '/specimens/cerebellum-26-2-12.jpg', title: "Cerebellum (26 2 12) Cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cerebellum_(26_2_12)_Cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'chromatin-fibres-261-19': {
+    src: '/specimens/chromatin-fibres-261-19.jpg', title: "Chromatin fibers (261 19) Mitosis; Xenopus egg.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Chromatin_fibers_(261_19)_Mitosis;_Xenopus_egg.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'ciliates-250-21': {
+    src: '/specimens/ciliates-250-21.jpg', title: "Ciliates (250 21).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ciliates_(250_21).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'earthworm-section-26-2-18': {
+    src: '/specimens/earthworm-section-26-2-18.jpg', title: "Common earthworm (26 2 18) Cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Common_earthworm_(26_2_18)_Cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'house-mosquito-larva-247-26a': {
+    src: '/specimens/house-mosquito-larva-247-26a.jpg', title: "Common house mosquito (247 26A) Total preparation; larva.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Common_house_mosquito_(247_26A)_Total_preparation;_larva.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'corynebacterium-257-29': {
+    src: '/specimens/corynebacterium-257-29.jpg', title: "Corynebacterium pseudodiphteriae (257 29).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Corynebacterium_pseudodiphteriae_(257_29).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'crab-larva-265-08': {
+    src: '/specimens/crab-larva-265-08.jpg', title: "Crab larva (265 08).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Crab_larva_(265_08).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'crab-louse-250-18': {
+    src: '/specimens/crab-louse-250-18.jpg', title: "Crab louse (250 18) Male adult, from a human host.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Crab_louse_(250_18)_Male_adult,_from_a_human_host.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'cyanobacteria-248-07': {
+    src: '/specimens/cyanobacteria-248-07.jpg', title: "Cyanobacteria (248 07) Mixture; native preparation; green filter.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cyanobacteria_(248_07)_Mixture;_native_preparation;_green_filter.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'daphnia-water-flea-248-29': {
+    src: '/specimens/daphnia-water-flea-248-29.jpg', title: "Daphnia (248 29) Total preparation.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Daphnia_(248_29)_Total_preparation.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'diatomaceous-earth-251-10': {
+    src: '/specimens/diatomaceous-earth-251-10.jpg', title: "Diatomaceous earth (251 10) Diatomaceous earth.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Diatomaceous_earth_(251_10)_Diatomaceous_earth.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'diatoms-248-05': {
+    src: '/specimens/diatoms-248-05.jpg', title: "Diatoms (248 05) Various diatoms.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Diatoms_(248_05)_Various_diatoms.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'duodenum-254-14': {
+    src: '/specimens/duodenum-254-14.jpg', title: "Duodenum (254 14).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Duodenum_(254_14).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'entamoeba-histolytica-251-32': {
+    src: '/specimens/entamoeba-histolytica-251-32.jpg', title: "Entamoeba histolytica (251 32).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Entamoeba_histolytica_(251_32).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'escherichia-coli-257-06': {
+    src: '/specimens/escherichia-coli-257-06.jpg', title: "Escherichia coli (257 06) Gramnegative rods.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Escherichia_coli_(257_06)_Gramnegative_rods.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'eubacteria-257-04': {
+    src: '/specimens/eubacteria-257-04.jpg', title: "Eubacteria (257 04) Various eubacteria.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Eubacteria_(257_04)_Various_eubacteria.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'euglena-250-19': {
+    src: '/specimens/euglena-250-19.jpg', title: "Euglena sp (250 19) Euglena sp. (protozoan).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Euglena_sp_(250_19)_Euglena_sp._(protozoan).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'fish-scale-248-33': {
+    src: '/specimens/fish-scale-248-33.jpg', title: "Fish scale (248 33) Ctenoid scale; total preparation.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Fish_scale_(248_33)_Ctenoid_scale;_total_preparation.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'flea-251-01': {
+    src: '/specimens/flea-251-01.jpg', title: "Flea (251 01) Aphaniptera; total preparation.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Flea_(251_01)_Aphaniptera;_total_preparation.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'lily-flower-bud-250-30': {
+    src: '/specimens/lily-flower-bud-250-30.jpg', title: "Flower bud (250 30) Cross-section through a flower bud of Lilium martagon.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Flower_bud_(250_30)_Cross-section_through_a_flower_bud_of_Lilium_martagon.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'foraminifera-251-02': {
+    src: '/specimens/foraminifera-251-02.jpg', title: "Foraminifera (251 02) Mediterranean Sea.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Foraminifera_(251_02)_Mediterranean_Sea.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'fusarium-solani-257-25': {
+    src: '/specimens/fusarium-solani-257-25.jpg', title: "Fusarium solani (257 25) Cultured and stained deuteromycetes.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Fusarium_solani_(257_25)_Cultured_and_stained_deuteromycetes.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'germinating-pollen-255-27': {
+    src: '/specimens/germinating-pollen-255-27.jpg', title: "Germination of pollen (255 27) Total preparation (pollen tube visible).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Germination_of_pollen_(255_27)_Total_preparation_(pollen_tube_visible).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'giant-roundworm-ascaris-259-23': {
+    src: '/specimens/giant-roundworm-ascaris-259-23.jpg', title: "Giant roundworm (259 23) Eggs.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Giant_roundworm_(259_23)_Eggs.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'giardia-intestinalis-259-17': {
+    src: '/specimens/giardia-intestinalis-259-17.jpg', title: "Giardia intestinalis (259 17).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Giardia_intestinalis_(259_17).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'head-louse-250-17': {
+    src: '/specimens/head-louse-250-17.jpg', title: "Head louse (250 17) Adult, from a human host.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Head_louse_(250_17)_Adult,_from_a_human_host.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'heart-muscle-section-254-11': {
+    src: '/specimens/heart-muscle-section-254-11.jpg', title: "Heart (254 11) Mammal.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Heart_(254_11)_Mammal.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'snail-radula-helix-250-14': {
+    src: '/specimens/snail-radula-helix-250-14.jpg', title: "Helix pomatia radula (250 14) radula.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Helix_pomatia_radula_(250_14)_radula.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'honeybee-leg-250-10': {
+    src: '/specimens/honeybee-leg-250-10.jpg', title: "Honeybee leg (250 10) Honeybee (Apis mellifera) leg.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Honeybee_leg_(250_10)_Honeybee_(Apis_mellifera)_leg.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'housefly-leg-250-11': {
+    src: '/specimens/housefly-leg-250-11.jpg', title: "Housefly leg (250 11) Housefly leg (Musca domestica).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Housefly_leg_(250_11)_Housefly_leg_(Musca_domestica).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-karyotype-248-26': {
+    src: '/specimens/human-karyotype-248-26.jpg', title: "Human karyotype (248 26) Karyotype Human, green filter.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Human_karyotype_(248_26)_Karyotype_Human,_green_filter.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-tongue-254-12': {
+    src: '/specimens/human-tongue-254-12.jpg', title: "Human tongue (254 12) Section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Human_tongue_(254_12)_Section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-tonsil-26-2-05': {
+    src: '/specimens/human-tonsil-26-2-05.jpg', title: "Human tonsils (26 2 05) Cross-section; embedded in Epon.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Human_tonsils_(26_2_05)_Cross-section;_embedded_in_Epon.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'iceland-moss-lichen-thallus-255-37r': {
+    src: '/specimens/iceland-moss-lichen-thallus-255-37r.jpg', title: "Iceland moss thallus (255 37R) Thallus of iceland moss (Cetraria islandica).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Iceland_moss_thallus_(255_37R)_Thallus_of_iceland_moss_(Cetraria_islandica).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'insect-compound-eye-250-07': {
+    src: '/specimens/insect-compound-eye-250-07.jpg', title: "Insect eye (250 07) Composite eye of insects.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Insect_eye_(250_07)_Composite_eye_of_insects.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'insect-wing-250-04': {
+    src: '/specimens/insect-wing-250-04.jpg', title: "Insect wing (250 04) Butterfly wing.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Insect_wing_(250_04)_Butterfly_wing.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'intestinal-smooth-muscle-26-2-01': {
+    src: '/specimens/intestinal-smooth-muscle-26-2-01.jpg', title: "Intestinal smooth muscle (26 2 01) Longitudal section through the muscle, cross-section through intestine.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Intestinal_smooth_muscle_(26_2_01)_Longitudal_section_through_the_muscle,_cross-section_through_intestine.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'itch-mite-247-32a': {
+    src: '/specimens/itch-mite-247-32a.jpg', title: "Itch mite (247 32A).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Itch_mite_(247_32A).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'kidney-cortex-947-21': {
+    src: '/specimens/kidney-cortex-947-21.jpg', title: "Kidney cortex (947 21) Human.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Kidney_cortex_(947_21)_Human.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'lactobacillus-acidophilus-251-33': {
+    src: '/specimens/lactobacillus-acidophilus-251-33.jpg', title: "Lactobacillus acidophilus (251 33) Lactobacillus acidophilus (D\u00f6derlein bacillus).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Lactobacillus_acidophilus_(251_33)_Lactobacillus_acidophilus_(D\u00f6derlein_bacillus).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'large-intestine-248-21': {
+    src: '/specimens/large-intestine-248-21.jpg', title: "Large intestine (248 21) Mouse; embedded in Epon.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Large_intestine_(248_21)_Mouse;_embedded_in_Epon.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-section-251-13': {
+    src: '/specimens/leaf-section-251-13.jpg', title: "Leaf (251 13) Leaf of Sphagnum.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Leaf_(251_13)_Leaf_of_Sphagnum.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-stalk-petiole-255-24': {
+    src: '/specimens/leaf-stalk-petiole-255-24.jpg', title: "Leaf stalk (255 24) Cross-section Syringa vulgaris.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Leaf_stalk_(255_24)_Cross-section_Syringa_vulgaris.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leech-section-26-2-29': {
+    src: '/specimens/leech-section-26-2-29.jpg', title: "Leech (26 2 29) Cross-section of leech (Hirudinea).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Leech_(26_2_29)_Cross-section_of_leech_(Hirudinea).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leishmania-tropica-259-19': {
+    src: '/specimens/leishmania-tropica-259-19.jpg', title: "Leishmania tropica (259 19) Cultured.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Leishmania_tropica_(259_19)_Cultured.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'liver-254-13': {
+    src: '/specimens/liver-254-13.jpg', title: "Liver (254 13).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Liver_(254_13).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'bird-louse-265-05': {
+    src: '/specimens/bird-louse-265-05.jpg', title: "Louse (265 05) Columbicola columbae (Mallophaga).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Louse_(265_05)_Columbicola_columbae_(Mallophaga).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'lung-265-24': {
+    src: '/specimens/lung-265-24.jpg', title: "Lung (265 24) Mammal.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Lung_(265_24)_Mammal.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'lymph-node-254-06': {
+    src: '/specimens/lymph-node-254-06.jpg', title: "Lymph node (254 06) Mammal.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Lymph_node_(254_06)_Mammal.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'mammal-hair-250-00f': {
+    src: '/specimens/mammal-hair-250-00f.jpg', title: "Mammal hair (250 00F) Mammal.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Mammal_hair_(250_00F)_Mammal.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'meiosis-248-22': {
+    src: '/specimens/meiosis-248-22.jpg', title: "Meiosis (248 22).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Meiosis_(248_22).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'metaphase-onion-root-tip-261-04': {
+    src: '/specimens/metaphase-onion-root-tip-261-04.jpg', title: "Metaphase (261 04) Pressed; meristem of root; onion.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Metaphase_(261_04)_Pressed;_meristem_of_root;_onion.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'microsporum-gypseum-257-16': {
+    src: '/specimens/microsporum-gypseum-257-16.jpg', title: "Microsporum gypseum (257 16) Microculture.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Microsporum_gypseum_(257_16)_Microculture.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'mitosis-root-tip-248-17': {
+    src: '/specimens/mitosis-root-tip-248-17.jpg', title: "Mitosis (248 17) Pressed; root meristem of Vicia faba.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Mitosis_(248_17)_Pressed;_root_meristem_of_Vicia_faba.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'housefly-mouthparts-250-12': {
+    src: '/specimens/housefly-mouthparts-250-12.jpg', title: "Mouthparts (250 12) Housefly (Musca domestica).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Mouthparts_(250_12)_Housefly_(Musca_domestica).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'mucor-257-22': {
+    src: '/specimens/mucor-257-22.jpg', title: "Mucor (257 22) Fungus (genus Mucor).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Mucor_(257_22)_Fungus_(genus_Mucor).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'nasal-mucosa-26-2-17': {
+    src: '/specimens/nasal-mucosa-26-2-17.jpg', title: "Nasal mucosa (26 2 17) Cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Nasal_mucosa_(26_2_17)_Cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-nasal-mucosa-254-09': {
+    src: '/specimens/human-nasal-mucosa-254-09.jpg', title: "Nasal mucosa - human (254 09).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Nasal_mucosa_-_human_(254_09).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'sponge-coral-and-sea-cucumber-ossicles-265-12': {
+    src: '/specimens/sponge-coral-and-sea-cucumber-ossicles-265-12.jpg', title: "Ossicles and sclerites - various (265 12) From bodies of Porifera, sea corals and holuthureans.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ossicles_and_sclerites_-_various_(265_12)_From_bodies_of_Porifera,_sea_corals_and_holuthureans.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'tulip-ovary-255-30': {
+    src: '/specimens/tulip-ovary-255-30.jpg', title: "Ovary (botany) (255 30) Tulip; cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ovary_(botany)_(255_30)_Tulip;_cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'paramecium-caudatum-248-06': {
+    src: '/specimens/paramecium-caudatum-248-06.jpg', title: "Paramecium caudatum (248 06) Native preparation.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Paramecium_caudatum_(248_06)_Native_preparation.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'pearl-mussel-shell-265-09': {
+    src: '/specimens/pearl-mussel-shell-265-09.jpg', title: "Pearl mussel (265 09) Shell wall.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pearl_mussel_(265_09)_Shell_wall.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'bryozoan-statoblast-263-23': {
+    src: '/specimens/bryozoan-statoblast-263-23.jpg', title: "Pectinatella magnifica statoblasts (263 23) Statoblast of Pectinatella magnifica, a species of Bryozoa.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pectinatella_magnifica_statoblasts_(263_23)_Statoblast_of_Pectinatella_magnifica,_a_species_of_Bryozoa.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'penicillium-257-14': {
+    src: '/specimens/penicillium-257-14.jpg', title: "Penicillium sp (257 14) Microculture.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Penicillium_sp_(257_14)_Microculture.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'pine-needle-248-31': {
+    src: '/specimens/pine-needle-248-31.jpg', title: "Pinus nigra needle (248 31) Needle cross section; fluorescence B Exc.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pinus_nigra_needle_(248_31)_Needle_cross_section;_fluorescence_B_Exc.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-placenta-254-17': {
+    src: '/specimens/human-placenta-254-17.jpg', title: "Placenta (254 17) Section of human placenta.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Placenta_(254_17)_Section_of_human_placenta.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'onion-epidermis-248-04': {
+    src: '/specimens/onion-epidermis-248-04.jpg', title: "Plant epidermis (248 04) Epidermis of onion bulb; dry.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Plant_epidermis_(248_04)_Epidermis_of_onion_bulb;_dry.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-248-34': {
+    src: '/specimens/leaf-epidermis-248-34.jpg', title: "Plant leaf epidermis (248 34) Tulip leaf epidermis.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Plant_leaf_epidermis_(248_34)_Tulip_leaf_epidermis.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'plant-stem-section-248-01': {
+    src: '/specimens/plant-stem-section-248-01.jpg', title: "Plant stem (248 01) Cross-section of stem of Berberis; autofluorescence.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Plant_stem_(248_01)_Cross-section_of_stem_of_Berberis;_autofluorescence.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'plasmodium-257-33': {
+    src: '/specimens/plasmodium-257-33.jpg', title: "Plasmodium (257 33).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Plasmodium_(257_33).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'pneumococcus-259-06': {
+    src: '/specimens/pneumococcus-259-06.jpg', title: "Pneumococcus (259 06).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pneumococcus_(259_06).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'pollen-grains-251-20': {
+    src: '/specimens/pollen-grains-251-20.jpg', title: "Pollen grains (251 20) Pollen grains of common hazel (Corylus avellana); total preparation.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pollen_grains_(251_20)_Pollen_grains_of_common_hazel_(Corylus_avellana);_total_preparation.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'polytene-chromosomes-248-30': {
+    src: '/specimens/polytene-chromosomes-248-30.jpg', title: "Polytene chromosomes (248 30) Salivary glands of nonbiting midges larvae (Chironomidae).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Polytene_chromosomes_(248_30)_Salivary_glands_of_nonbiting_midges_larvae_(Chironomidae).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'potato-tuber-248-03': {
+    src: '/specimens/potato-tuber-248-03.jpg', title: "Potato tuber (248 03) Potato tuber cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Potato_tuber_(248_03)_Potato_tuber_cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-prostate-238-13a': {
+    src: '/specimens/human-prostate-238-13a.jpg', title: "Prostate (238 13A) Human.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Prostate_(238_13A)_Human.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'psocopteran-booklouse-265-04': {
+    src: '/specimens/psocopteran-booklouse-265-04.jpg', title: "Psocoptera (265 04) specimen of Psocoptera.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Psocoptera_(265_04)_specimen_of_Psocoptera.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'pythium-248-24': {
+    src: '/specimens/pythium-248-24.jpg', title: "Pythium (248 24).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pythium_(248_24).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'rat-fetus-section-263-24a': {
+    src: '/specimens/rat-fetus-section-263-24a.jpg', title: "Rat fetus (263 24A) Rat; section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Rat_fetus_(263_24A)_Rat;_section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'red-spider-mite-265-01': {
+    src: '/specimens/red-spider-mite-265-01.jpg', title: "Red spider mite (265 01) Total preparation.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Red_spider_mite_(265_01)_Total_preparation.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'rhizome-251-17': {
+    src: '/specimens/rhizome-251-17.jpg', title: "Rhizome (251 17) Male fern (Dryopteris filix-mas); cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Rhizome_(251_17)_Male_fern_(Dryopteris_filix-mas);_cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'rhizopus-257-21': {
+    src: '/specimens/rhizopus-257-21.jpg', title: "Rhizopus (257 21).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Rhizopus_(257_21).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-salivary-gland-254-10': {
+    src: '/specimens/human-salivary-gland-254-10.jpg', title: "Salivary gland (254 10) Human.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Salivary_gland_(254_10)_Human.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'sensory-epithelium-254-08': {
+    src: '/specimens/sensory-epithelium-254-08.jpg', title: "Sensory epithelium (254 08).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Sensory_epithelium_(254_08).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'skin-with-hair-265-27': {
+    src: '/specimens/skin-with-hair-265-27.jpg', title: "Skin with hair (265 27).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Skin_with_hair_(265_27).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'mouse-skin-with-hairs-254-00f': {
+    src: '/specimens/mouse-skin-with-hairs-254-00f.jpg', title: "Skin with hairs (254 00F) House mouse (Mus musculus); skin with hairs.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Skin_with_hairs_(254_00F)_House_mouse_(Mus_musculus);_skin_with_hairs.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'sludge-worm-265-31': {
+    src: '/specimens/sludge-worm-265-31.jpg', title: "Sludge worm (265 31) Total preparation.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Sludge_worm_(265_31)_Total_preparation.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-small-intestine-265-23': {
+    src: '/specimens/human-small-intestine-265-23.jpg', title: "Small intestine (265 23) Human.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Small_intestine_(265_23)_Human.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'smooth-muscle-251-08': {
+    src: '/specimens/smooth-muscle-251-08.jpg', title: "Smooth muscle (251 08) Smooth muscle.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Smooth_muscle_(251_08)_Smooth_muscle.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-sperm-254-19': {
+    src: '/specimens/human-sperm-254-19.jpg', title: "Sperm (254 19) human.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Sperm_(254_19)_human.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'spider-leg-250-08': {
+    src: '/specimens/spider-leg-250-08.jpg', title: "Spider leg (250 08) Spider leg (Arachnida).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Spider_leg_(250_08)_Spider_leg_(Arachnida).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'spinal-cord-254-22': {
+    src: '/specimens/spinal-cord-254-22.jpg', title: "Spinal cord (254 22) Mammal; cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Spinal_cord_(254_22)_Mammal;_cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'spirogyra-248-00': {
+    src: '/specimens/spirogyra-248-00.jpg', title: "Spirogyra (248 00) Native preparation.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Spirogyra_(248_00)_Native_preparation.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'spleen-26-2-04': {
+    src: '/specimens/spleen-26-2-04.jpg', title: "Spleen (26 2 04) Semi-thick section; embedded in Epon; mouse.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Spleen_(26_2_04)_Semi-thick_section;_embedded_in_Epon;_mouse.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'staphylococcus-257-08': {
+    src: '/specimens/staphylococcus-257-08.jpg', title: "Staphylococcus (257 08) Staphylococcus (grampositive bacterium).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Staphylococcus_(257_08)_Staphylococcus_(grampositive_bacterium).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'arachnid-spiracle-250-03': {
+    src: '/specimens/arachnid-spiracle-250-03.jpg', title: "Stigma of arachnid trachea (250 03) Stigma of arachnid trachea.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Stigma_of_arachnid_trachea_(250_03)_Stigma_of_arachnid_trachea.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'streptococcus-251-34': {
+    src: '/specimens/streptococcus-251-34.jpg', title: "Streptococcus (251 34) grampositive bacterium.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Streptococcus_(251_34)_grampositive_bacterium.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'swan-mussel-glochidium-263-21': {
+    src: '/specimens/swan-mussel-glochidium-263-21.jpg', title: "Swan mussel (263 21) Glochidium (larva).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Swan_mussel_(263_21)_Glochidium_(larva).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'tapeworm-26-2-14': {
+    src: '/specimens/tapeworm-26-2-14.jpg', title: "Tapeworm (26 2 14) Cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Tapeworm_(26_2_14)_Cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'testis-254-18': {
+    src: '/specimens/testis-254-18.jpg', title: "Testicles (254 18).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Testicles_(254_18).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'thamnidium-257-27': {
+    src: '/specimens/thamnidium-257-27.jpg', title: "Thamnidium (257 27).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Thamnidium_(257_27).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'thrips-265-03': {
+    src: '/specimens/thrips-265-03.jpg', title: "Thrips (265 03).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Thrips_(265_03).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'thymus-265-25': {
+    src: '/specimens/thymus-265-25.jpg', title: "Thymus (265 25) Mammal.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Thymus_(265_25)_Mammal.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'tongue-26-2-02': {
+    src: '/specimens/tongue-26-2-02.jpg', title: "Tongue (26 2 02) Cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Tongue_(26_2_02)_Cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'tooth-248-15': {
+    src: '/specimens/tooth-248-15.jpg', title: "Tooth (248 15) Histologic section of tooth.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Tooth_(248_15)_Histologic_section_of_tooth.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'trematode-fluke-265-18': {
+    src: '/specimens/trematode-fluke-265-18.jpg', title: "Trematode (265 18) Dicrocoelium lanceolatum.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Trematode_(265_18)_Dicrocoelium_lanceolatum.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'trichinella-in-muscle-265-16': {
+    src: '/specimens/trichinella-in-muscle-265-16.jpg', title: "Trichinella spiralis in muscle tissue (265 16) In skeletal (striated) muscle tissue.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Trichinella_spiralis_in_muscle_tissue_(265_16)_In_skeletal_(striated)_muscle_tissue.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'trichomonas-251-29': {
+    src: '/specimens/trichomonas-251-29.jpg', title: "Trichomonas (251 29) Cultured.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Trichomonas_(251_29)_Cultured.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'trichophyton-mentagrophytes-257-18': {
+    src: '/specimens/trichophyton-mentagrophytes-257-18.jpg', title: "Trichophyton mentagrophytes (257 18) Cultured.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Trichophyton_mentagrophytes_(257_18)_Cultured.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'tritrichomonas-foetus-259-26': {
+    src: '/specimens/tritrichomonas-foetus-259-26.jpg', title: "Tritrichomonas foetus (259 26) Cultured.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Tritrichomonas_foetus_(259_26)_Cultured.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'trypanosoma-248-09': {
+    src: '/specimens/trypanosoma-248-09.jpg', title: "Trypanosoma (248 09) Trypanosoma equiperdum.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Trypanosoma_(248_09)_Trypanosoma_equiperdum.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'umbilical-cord-254-20': {
+    src: '/specimens/umbilical-cord-254-20.jpg', title: "Umbilical cord (254 20).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Umbilical_cord_(254_20).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'stream-water-protists-247-33a': {
+    src: '/specimens/stream-water-protists-247-33a.jpg', title: "Unknown protists (247 33A) From a stream water.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Unknown_protists_(247_33A)_From_a_stream_water.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'venule-with-valve-238-10a': {
+    src: '/specimens/venule-with-valve-238-10a.jpg', title: "Venule (238 10A) With a vein valve; cross-section; human.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Venule_(238_10A)_With_a_vein_valve;_cross-section;_human.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'verticillium-257-24': {
+    src: '/specimens/verticillium-257-24.jpg', title: "Verticillium (257 24).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Verticillium_(257_24).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'vessels-cross-section-248-18': {
+    src: '/specimens/vessels-cross-section-248-18.jpg', title: "Vessels (248 18) Cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Vessels_(248_18)_Cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'volvox-250-23': {
+    src: '/specimens/volvox-250-23.jpg', title: "Volvox (250 23) Native preparation.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Volvox_(250_23)_Native_preparation.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'white-worms-265-30': {
+    src: '/specimens/white-worms-265-30.jpg', title: "White worms (265 30) Total preparation.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:White_worms_(265_30)_Total_preparation.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'yeast-257-11': {
+    src: '/specimens/yeast-257-11.jpg', title: "Yeast (257 11).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Yeast_(257_11).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'aedes-mosquito-257-00k': {
+    src: '/specimens/aedes-mosquito-257-00k.jpg', title: "Aedes mosquito (257 00K) With biting lice.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Aedes_mosquito_(257_00K)_With_biting_lice.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'airborne-bacteria-251-31': {
+    src: '/specimens/airborne-bacteria-251-31.jpg', title: "Bacteria (251 31) Airborne microbes.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bacteria_(251_31)_Airborne_microbes.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'basidiocarp-hymenium-257-35': {
+    src: '/specimens/basidiocarp-hymenium-257-35.jpg', title: "Basidiocarp hymenium (257 35) Basidiomycota; cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Basidiocarp_hymenium_(257_35)_Basidiomycota;_cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'bird-feather-250-01': {
+    src: '/specimens/bird-feather-250-01.jpg', title: "Bird feather (250 01).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bird_feather_(250_01).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'blood-smear-251-03': {
+    src: '/specimens/blood-smear-251-03.jpg', title: "Blood smear (251 03) Amphibian.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Blood_smear_(251_03)_Amphibian.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'bone-section-254-02': {
+    src: '/specimens/bone-section-254-02.jpg', title: "Bone (254 02) Bird bone cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bone_(254_02)_Bird_bone_cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'rat-brain-section-248-13': {
+    src: '/specimens/rat-brain-section-248-13.jpg', title: "Brain (248 13) Rat brain.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Brain_(248_13)_Rat_brain.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'candida-albicans-251-12': {
+    src: '/specimens/candida-albicans-251-12.jpg', title: "Candida albicans (251 12).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Candida_albicans_(251_12).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'caryopsis-grain-255-32': {
+    src: '/specimens/caryopsis-grain-255-32.jpg', title: "Caryopsis (grain) (255 32) Cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Caryopsis_(grain)_(255_32)_Cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'castor-bean-tick-250-16': {
+    src: '/specimens/castor-bean-tick-250-16.jpg', title: "Castor bean tick (250 16) Adult.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Castor_bean_tick_(250_16)_Adult.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'cat-fetus-section-247-31a': {
+    src: '/specimens/cat-fetus-section-247-31a.jpg', title: "Cat fetus (247 31A) Cat fetus section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cat_fetus_(247_31A)_Cat_fetus_section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'cultured-cells-261-16': {
+    src: '/specimens/cultured-cells-261-16.jpg', title: "Cell culture (HeLa cells) (261 16) Cell culture (HeLa cells) - metaphase, prophase.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cell_culture_(HeLa_cells)_(261_16)_Cell_culture_(HeLa_cells)_-_metaphase,_prophase.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'trematode-cercaria-259-22': {
+    src: '/specimens/trematode-cercaria-259-22.jpg', title: "Cercaria of trematode (259 22).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cercaria_of_trematode_(259_22).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'earthworm-section-265-14': {
+    src: '/specimens/earthworm-section-265-14.jpg', title: "Common earthworm (265 14) Cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Common_earthworm_(265_14)_Cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'house-mosquito-larva-257-00f': {
+    src: '/specimens/house-mosquito-larva-257-00f.jpg', title: "Common house mosquito (257 00F) Total preparation; larva.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Common_house_mosquito_(257_00F)_Total_preparation;_larva.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'crab-louse-251-23': {
+    src: '/specimens/crab-louse-251-23.jpg', title: "Crab louse (251 23) Female, from a human host.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Crab_louse_(251_23)_Female,_from_a_human_host.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'cyanobacteria-248-08': {
+    src: '/specimens/cyanobacteria-248-08.jpg', title: "Cyanobacteria (248 08) Mixture; native preparation; green filter.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cyanobacteria_(248_08)_Mixture;_native_preparation;_green_filter.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'daphnia-water-flea-250-15': {
+    src: '/specimens/daphnia-water-flea-250-15.jpg', title: "Daphnia (250 15) Total preparation.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Daphnia_(250_15)_Total_preparation.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'escherichia-coli-259-02': {
+    src: '/specimens/escherichia-coli-259-02.jpg', title: "Escherichia coli (259 02) Gramnegative rods.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Escherichia_coli_(259_02)_Gramnegative_rods.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'eubacteria-259-00f': {
+    src: '/specimens/eubacteria-259-00f.jpg', title: "Eubacteria (259 00F) Micrococcus luteus bacteria.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Eubacteria_(259_00F)_Micrococcus_luteus_bacteria.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'euglena-947-12': {
+    src: '/specimens/euglena-947-12.jpg', title: "Euglena sp (947 12).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Euglena_sp_(947_12).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'fish-scale-250-36': {
+    src: '/specimens/fish-scale-250-36.jpg', title: "Fish scale (250 36) Total preparation.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Fish_scale_(250_36)_Total_preparation.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'lily-flower-bud-255-29': {
+    src: '/specimens/lily-flower-bud-255-29.jpg', title: "Flower bud (255 29) Cross-section through a flower bud of Lilium martagon.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Flower_bud_(255_29)_Cross-section_through_a_flower_bud_of_Lilium_martagon.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'foraminifera-265-36': {
+    src: '/specimens/foraminifera-265-36.jpg', title: "Foraminifera (265 36) Various.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Foraminifera_(265_36)_Various.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'giant-roundworm-ascaris-263-20': {
+    src: '/specimens/giant-roundworm-ascaris-263-20.jpg', title: "Giant roundworm (263 20) Cross-section of uterus with eggs.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Giant_roundworm_(263_20)_Cross-section_of_uterus_with_eggs.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'giardia-intestinalis-259-18': {
+    src: '/specimens/giardia-intestinalis-259-18.jpg', title: "Giardia intestinalis (259 18).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Giardia_intestinalis_(259_18).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'head-louse-251-27': {
+    src: '/specimens/head-louse-251-27.jpg', title: "Head louse (251 27) Adult and egg, from a human host.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Head_louse_(251_27)_Adult_and_egg,_from_a_human_host.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'heart-muscle-section-265-22': {
+    src: '/specimens/heart-muscle-section-265-22.jpg', title: "Heart (265 22) Mammal.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Heart_(265_22)_Mammal.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-karyotype-248-27': {
+    src: '/specimens/human-karyotype-248-27.jpg', title: "Human karyotype (248 27) Human karyotype.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Human_karyotype_(248_27)_Human_karyotype.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'insect-wing-250-05': {
+    src: '/specimens/insect-wing-250-05.jpg', title: "Insect wing (250 05) Housefly (Musca domestica) wing.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Insect_wing_(250_05)_Housefly_(Musca_domestica)_wing.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'kidney-cortex-947-22': {
+    src: '/specimens/kidney-cortex-947-22.jpg', title: "Kidney cortex (947 22) Human.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Kidney_cortex_(947_22)_Human.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'lactobacillus-acidophilus-259-08': {
+    src: '/specimens/lactobacillus-acidophilus-259-08.jpg', title: "Lactobacillus acidophilus (259 08) Lactobacillus acidophilus (D\u00f6derlein bacillus).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Lactobacillus_acidophilus_(259_08)_Lactobacillus_acidophilus_(D\u00f6derlein_bacillus).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'large-intestine-254-15': {
+    src: '/specimens/large-intestine-254-15.jpg', title: "Large intestine (254 15) Human large intestine.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Large_intestine_(254_15)_Human_large_intestine.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-section-255-14': {
+    src: '/specimens/leaf-section-255-14.jpg', title: "Leaf (255 14) Leaf semi-thick section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Leaf_(255_14)_Leaf_semi-thick_section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-stalk-petiole-255-25': {
+    src: '/specimens/leaf-stalk-petiole-255-25.jpg', title: "Leaf stalk (255 25) Cross-section Syringa vulgaris.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Leaf_stalk_(255_25)_Cross-section_Syringa_vulgaris.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leishmania-tropica-259-20': {
+    src: '/specimens/leishmania-tropica-259-20.jpg', title: "Leishmania tropica (259 20) Cultured.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Leishmania_tropica_(259_20)_Cultured.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'lymph-node-265-34': {
+    src: '/specimens/lymph-node-265-34.jpg', title: "Lymph node (265 34) Mammal.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Lymph_node_(265_34)_Mammal.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'meiosis-248-23': {
+    src: '/specimens/meiosis-248-23.jpg', title: "Meiosis (248 23).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Meiosis_(248_23).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'metaphase-onion-root-tip-261-05': {
+    src: '/specimens/metaphase-onion-root-tip-261-05.jpg', title: "Metaphase (261 05) Pressed; meristem of root; onion.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Metaphase_(261_05)_Pressed;_meristem_of_root;_onion.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'microsporum-gypseum-257-17': {
+    src: '/specimens/microsporum-gypseum-257-17.jpg', title: "Microsporum gypseum (257 17) Microculture.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Microsporum_gypseum_(257_17)_Microculture.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'mitosis-root-tip-251-21': {
+    src: '/specimens/mitosis-root-tip-251-21.jpg', title: "Mitosis (251 21) Pressed; root meristem of Vicia faba.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Mitosis_(251_21)_Pressed;_root_meristem_of_Vicia_faba.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'paramecium-caudatum-250-20': {
+    src: '/specimens/paramecium-caudatum-250-20.jpg', title: "Paramecium caudatum (250 20) Cultured.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Paramecium_caudatum_(250_20)_Cultured.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'pine-needle-251-14': {
+    src: '/specimens/pine-needle-251-14.jpg', title: "Pinus nigra needle (251 14) Needle cross section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pinus_nigra_needle_(251_14)_Needle_cross_section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-placenta-26-2-10': {
+    src: '/specimens/human-placenta-26-2-10.jpg', title: "Placenta (26 2 10) Cross-section of human placenta.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Placenta_(26_2_10)_Cross-section_of_human_placenta.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'onion-epidermis-255-19': {
+    src: '/specimens/onion-epidermis-255-19.jpg', title: "Plant epidermis (255 19) Epidermis of onion bulb ; wet.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Plant_epidermis_(255_19)_Epidermis_of_onion_bulb_;_wet.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-251-15': {
+    src: '/specimens/leaf-epidermis-251-15.jpg', title: "Plant leaf epidermis (251 15) Upper epidermis of lime tree (Tilia).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Plant_leaf_epidermis_(251_15)_Upper_epidermis_of_lime_tree_(Tilia).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'plant-stem-section-248-02': {
+    src: '/specimens/plant-stem-section-248-02.jpg', title: "Plant stem (248 02) Aristolochia stem cross-section; visualised by fluorescence.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Plant_stem_(248_02)_Aristolochia_stem_cross-section;_visualised_by_fluorescence.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'plasmodium-257-34': {
+    src: '/specimens/plasmodium-257-34.jpg', title: "Plasmodium (257 34).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Plasmodium_(257_34).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'pneumococcus-259-07': {
+    src: '/specimens/pneumococcus-259-07.jpg', title: "Pneumococcus (259 07).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pneumococcus_(259_07).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'pollen-grains-255-26': {
+    src: '/specimens/pollen-grains-255-26.jpg', title: "Pollen grains (255 26) Pine tree.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pollen_grains_(255_26)_Pine_tree.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'polytene-chromosomes-26-2-97': {
+    src: '/specimens/polytene-chromosomes-26-2-97.jpg', title: "Polytene chromosomes (26 2 97) Salivary glands of nonbiting midges larvae (Chironomidae).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Polytene_chromosomes_(26_2_97)_Salivary_glands_of_nonbiting_midges_larvae_(Chironomidae).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'potato-tuber-250-35': {
+    src: '/specimens/potato-tuber-250-35.jpg', title: "Potato tuber (250 35) Potato tuber cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Potato_tuber_(250_35)_Potato_tuber_cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'pythium-257-23': {
+    src: '/specimens/pythium-257-23.jpg', title: "Pythium (257 23).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pythium_(257_23).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'rhizome-254-27': {
+    src: '/specimens/rhizome-254-27.jpg', title: "Rhizome (254 27) Lily of the Valley (Convallaria majalis).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Rhizome_(254_27)_Lily_of_the_Valley_(Convallaria_majalis).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-sperm-265-33': {
+    src: '/specimens/human-sperm-265-33.jpg', title: "Sperm (265 33) human.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Sperm_(265_33)_human.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'spinal-cord-254-23': {
+    src: '/specimens/spinal-cord-254-23.jpg', title: "Spinal cord (254 23) Lower end; rabbit (Oryctolagus cuniculus).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Spinal_cord_(254_23)_Lower_end;_rabbit_(Oryctolagus_cuniculus).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'spirogyra-250-24': {
+    src: '/specimens/spirogyra-250-24.jpg', title: "Spirogyra (250 24) Total preparation.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Spirogyra_(250_24)_Total_preparation.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'spleen-265-19': {
+    src: '/specimens/spleen-265-19.jpg', title: "Spleen (265 19) Section; mammal.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Spleen_(265_19)_Section;_mammal.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'streptococcus-257-32': {
+    src: '/specimens/streptococcus-257-32.jpg', title: "Streptococcus (257 32) grampositive bacterium.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Streptococcus_(257_32)_grampositive_bacterium.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'swan-mussel-glochidium-263-22': {
+    src: '/specimens/swan-mussel-glochidium-263-22.jpg', title: "Swan mussel (263 22) Glochidium (larva).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Swan_mussel_(263_22)_Glochidium_(larva).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'tapeworm-265-06': {
+    src: '/specimens/tapeworm-265-06.jpg', title: "Tapeworm (265 06) Body segment.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Tapeworm_(265_06)_Body_segment.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'testis-26-2-15': {
+    src: '/specimens/testis-26-2-15.jpg', title: "Testicles (26 2 15) Testicles cross-section (mouse).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Testicles_(26_2_15)_Testicles_cross-section_(mouse).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'trematode-fluke-265-32': {
+    src: '/specimens/trematode-fluke-265-32.jpg', title: "Trematode (265 32) Eggs in liver.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Trematode_(265_32)_Eggs_in_liver.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'trichophyton-mentagrophytes-257-19': {
+    src: '/specimens/trichophyton-mentagrophytes-257-19.jpg', title: "Trichophyton mentagrophytes (257 19) From a microculture and an infected hair.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Trichophyton_mentagrophytes_(257_19)_From_a_microculture_and_an_infected_hair.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'tritrichomonas-foetus-259-27': {
+    src: '/specimens/tritrichomonas-foetus-259-27.jpg', title: "Tritrichomonas foetus (259 27) Cultured.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Tritrichomonas_foetus_(259_27)_Cultured.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'trypanosoma-251-30': {
+    src: '/specimens/trypanosoma-251-30.jpg', title: "Trypanosoma (251 30).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Trypanosoma_(251_30).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'venule-with-valve-238-11a': {
+    src: '/specimens/venule-with-valve-238-11a.jpg', title: "Venule (238 11A) With a vein valve; cross-section; human.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Venule_(238_11A)_With_a_vein_valve;_cross-section;_human.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'airborne-bacteria-259-04': {
+    src: '/specimens/airborne-bacteria-259-04.jpg', title: "Bacteria (259 04) Airborne microbes.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bacteria_(259_04)_Airborne_microbes.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'blood-smear-251-04': {
+    src: '/specimens/blood-smear-251-04.jpg', title: "Blood smear (251 04) Bird.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Blood_smear_(251_04)_Bird.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'bone-section-26-2-20': {
+    src: '/specimens/bone-section-26-2-20.jpg', title: "Bone (26 2 20) Human bone cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bone_(26_2_20)_Human_bone_cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'rat-brain-section-254-25': {
+    src: '/specimens/rat-brain-section-254-25.jpg', title: "Brain (254 25) Rat brain.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Brain_(254_25)_Rat_brain.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'candida-albicans-257-12': {
+    src: '/specimens/candida-albicans-257-12.jpg', title: "Candida albicans (257 12).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Candida_albicans_(257_12).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'castor-bean-tick-265-28': {
+    src: '/specimens/castor-bean-tick-265-28.jpg', title: "Castor bean tick (265 28) Total preparation - larva and part of an egg.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Castor_bean_tick_(265_28)_Total_preparation_-_larva_and_part_of_an_egg.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'cat-fetus-section-26-2-03': {
+    src: '/specimens/cat-fetus-section-26-2-03.jpg', title: "Cat fetus (26 2 03) Cat embryo longitudal section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cat_fetus_(26_2_03)_Cat_embryo_longitudal_section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'cultured-cells-261-17': {
+    src: '/specimens/cultured-cells-261-17.jpg', title: "Cell culture (HeLa cells) (261 17) Cell culture (HeLa cells) - anaphase, metaphase.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cell_culture_(HeLa_cells)_(261_17)_Cell_culture_(HeLa_cells)_-_anaphase,_metaphase.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'crab-louse-251-24': {
+    src: '/specimens/crab-louse-251-24.jpg', title: "Crab louse (251 24) Female adult and eggs, from a human host.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Crab_louse_(251_24)_Female_adult_and_eggs,_from_a_human_host.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'cyanobacteria-250-22': {
+    src: '/specimens/cyanobacteria-250-22.jpg', title: "Cyanobacteria (250 22) Native preparation.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cyanobacteria_(250_22)_Native_preparation.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'escherichia-coli-259-03': {
+    src: '/specimens/escherichia-coli-259-03.jpg', title: "Escherichia coli (259 03) Gramnegative rods.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Escherichia_coli_(259_03)_Gramnegative_rods.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'eubacteria-259-01': {
+    src: '/specimens/eubacteria-259-01.jpg', title: "Eubacteria (259 01) Micrococcus luteus bacteria.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Eubacteria_(259_01)_Micrococcus_luteus_bacteria.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'head-louse-251-28': {
+    src: '/specimens/head-louse-251-28.jpg', title: "Head louse (251 28) Larva and eggs, from a human host.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Head_louse_(251_28)_Larva_and_eggs,_from_a_human_host.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-karyotype-259-28': {
+    src: '/specimens/human-karyotype-259-28.jpg', title: "Human karyotype (259 28) Karyotype Human, 46,XY t15-20.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Human_karyotype_(259_28)_Karyotype_Human,_46,XY_t15-20.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'insect-wing-250-06': {
+    src: '/specimens/insect-wing-250-06.jpg', title: "Insect wing (250 06) Honeybee (Apis mellifera) wing.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Insect_wing_(250_06)_Honeybee_(Apis_mellifera)_wing.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'lactobacillus-acidophilus-259-09': {
+    src: '/specimens/lactobacillus-acidophilus-259-09.jpg', title: "Lactobacillus acidophilus (259 09) Lactobacillus acidophilus (D\u00f6derlein bacillus).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Lactobacillus_acidophilus_(259_09)_Lactobacillus_acidophilus_(D\u00f6derlein_bacillus).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'large-intestine-26-2-09': {
+    src: '/specimens/large-intestine-26-2-09.jpg', title: "Large intestine (26 2 09) Mouse; embedded in Epon.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Large_intestine_(26_2_09)_Mouse;_embedded_in_Epon.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-section-255-21': {
+    src: '/specimens/leaf-section-255-21.jpg', title: "Leaf (255 21) Cross-section through a leaf of Iris plant.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Leaf_(255_21)_Cross-section_through_a_leaf_of_Iris_plant.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-stalk-petiole-255-34': {
+    src: '/specimens/leaf-stalk-petiole-255-34.jpg', title: "Leaf stalk (255 34) Cross-section Nuphar lutea.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Leaf_stalk_(255_34)_Cross-section_Nuphar_lutea.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'meiosis-254-30': {
+    src: '/specimens/meiosis-254-30.jpg', title: "Meiosis (254 30).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Meiosis_(254_30).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'metaphase-onion-root-tip-261-06': {
+    src: '/specimens/metaphase-onion-root-tip-261-06.jpg', title: "Metaphase (261 06) Pressed; meristem of root; onion.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Metaphase_(261_06)_Pressed;_meristem_of_root;_onion.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'mitosis-root-tip-251-22': {
+    src: '/specimens/mitosis-root-tip-251-22.jpg', title: "Mitosis (251 22) Pressed; root meristem of onion.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Mitosis_(251_22)_Pressed;_root_meristem_of_onion.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'pine-needle-255-23': {
+    src: '/specimens/pine-needle-255-23.jpg', title: "Pinus nigra needle (255 23) Needle cross section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pinus_nigra_needle_(255_23)_Needle_cross_section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'human-placenta-265-26': {
+    src: '/specimens/human-placenta-265-26.jpg', title: "Placenta (265 26) Section of human placenta.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Placenta_(265_26)_Section_of_human_placenta.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'onion-epidermis-255-20': {
+    src: '/specimens/onion-epidermis-255-20.jpg', title: "Plant epidermis (255 20) Epidermis of onion bulb; dry.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Plant_epidermis_(255_20)_Epidermis_of_onion_bulb;_dry.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'leaf-epidermis-251-16': {
+    src: '/specimens/leaf-epidermis-251-16.jpg', title: "Plant leaf epidermis (251 16) Lower epidermis of lime tree (Tilia).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Plant_leaf_epidermis_(251_16)_Lower_epidermis_of_lime_tree_(Tilia).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'plant-stem-section-248-19': {
+    src: '/specimens/plant-stem-section-248-19.jpg', title: "Plant stem (248 19) Longitudal tangential section - woody stem.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Plant_stem_(248_19)_Longitudal_tangential_section_-_woody_stem.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'plasmodium-259-16': {
+    src: '/specimens/plasmodium-259-16.jpg', title: "Plasmodium (259 16).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Plasmodium_(259_16).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'polytene-chromosomes-260-02': {
+    src: '/specimens/polytene-chromosomes-260-02.jpg', title: "Polytene chromosomes (260 02) Salivary glands of nonbiting midges larvae (Chironomidae).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Polytene_chromosomes_(260_02)_Salivary_glands_of_nonbiting_midges_larvae_(Chironomidae).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'rhizome-254-28': {
+    src: '/specimens/rhizome-254-28.jpg', title: "Rhizome (254 28) Lily of the Valley (Convallaria majalis).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Rhizome_(254_28)_Lily_of_the_Valley_(Convallaria_majalis).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'spinal-cord-26-2-16': {
+    src: '/specimens/spinal-cord-26-2-16.jpg', title: "Spinal cord (26 2 16) Rat; cross-section.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Spinal_cord_(26_2_16)_Rat;_cross-section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'spirogyra-251-11': {
+    src: '/specimens/spirogyra-251-11.jpg', title: "Spirogyra (251 11) Total preparation.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Spirogyra_(251_11)_Total_preparation.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'streptococcus-259-14': {
+    src: '/specimens/streptococcus-259-14.jpg', title: "Streptococcus (259 14) grampositive bacterium.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Streptococcus_(259_14)_grampositive_bacterium.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'tapeworm-265-07': {
+    src: '/specimens/tapeworm-265-07.jpg', title: "Tapeworm (265 07) Body segment.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Tapeworm_(265_07)_Body_segment.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'testis-265-20': {
+    src: '/specimens/testis-265-20.jpg', title: "Testicles (265 20) Cross-section; mouse.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Testicles_(265_20)_Cross-section;_mouse.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'trypanosoma-259-24': {
+    src: '/specimens/trypanosoma-259-24.jpg', title: "Trypanosoma (259 24).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Trypanosoma_(259_24).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'venule-with-valve-238-12a': {
+    src: '/specimens/venule-with-valve-238-12a.jpg', title: "Venule (238 12A) With a vein valve; cross-section; human.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Venule_(238_12A)_With_a_vein_valve;_cross-section;_human.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'airborne-bacteria-259-05': {
+    src: '/specimens/airborne-bacteria-259-05.jpg', title: "Bacteria (259 05).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bacteria_(259_05).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'blood-smear-254-05': {
+    src: '/specimens/blood-smear-254-05.jpg', title: "Blood smear (254 05) Amphibian.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Blood_smear_(254_05)_Amphibian.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  'airborne-bacteria-26-2-27': {
+    src: '/specimens/airborne-bacteria-26-2-27.jpg', title: "Bacteria (26 2 27) Airborne microbes.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bacteria_(26_2_27)_Airborne_microbes.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
 };

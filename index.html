@@ -27,9 +27,18 @@
     <link rel="apple-touch-icon" href="/icon-192.png" />
     <title>SciLab | Virtual microscope and practical exams</title>
       <script>try{document.documentElement.dataset.theme=localStorage.getItem("fs-lab-theme")||"light"}catch(e){}</script>
+    <style>
+      .boot-skeleton { min-height: 100vh; background: var(--boot-bg, #f7f6f2); }
+      :root[data-theme="dark"] .boot-skeleton { --boot-bg: #000; --boot-bar: #1a1a1a; }
+      .boot-bar { height: 64px; border-bottom: 1px solid rgba(128,128,128,.25); display: flex; align-items: center; gap: 12px; padding: 0 20px; }
+      .boot-block { background: var(--boot-bar, #e6e4dc); animation: boot-pulse 1.3s ease-in-out infinite; }
+      .boot-body { display: grid; gap: 16px; padding: 28px 20px; max-width: 900px; }
+      @keyframes boot-pulse { 50% { opacity: .45; } }
+      @media (prefers-reduced-motion: reduce) { .boot-block { animation: none; } }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><div class="boot-skeleton" aria-hidden="true"><div class="boot-bar"><span class="boot-block" style="width:40px;height:40px;border-radius:50%"></span><span class="boot-block" style="width:160px;height:14px"></span></div><div class="boot-body"><span class="boot-block" style="width:60%;height:34px"></span><span class="boot-block" style="width:85%;height:14px"></span><span class="boot-block" style="width:100%;height:240px"></span></div></div></div>
     <noscript><div style="padding:24px;font:16px/1.7 sans-serif;max-width:560px;margin:auto"><h1 style="font-size:22px;margin:0 0 8px">SciLab | Virtual microscope and practical exams</h1><p>SciLab needs JavaScript to run. Please enable JavaScript in your browser settings or use another browser.</p><p dir="rtl" lang="ar">SciLab | المجهر الافتراضي والامتحانات العملية<br>يحتاج الموقع إلى تفعيل JavaScript ليعمل. فعّله من إعدادات المتصفح أو جرّب متصفحاً آخر.</p></div></noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>

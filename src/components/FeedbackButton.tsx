@@ -1,6 +1,7 @@
 import { FormEvent, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
+import { secondsToWait, markSent } from '../lib/formGuard';
 
 // Same Web3Forms public key as the request box: messages arrive in the owner's inbox.
 const ACCESS_KEY = 'c3456be1-ce28-4f41-8c5a-0aa6f32f9f21';
@@ -12,11 +13,15 @@ export function FeedbackButton() {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState('');
   const [contact, setContact] = useState('');
-  const [state, setState] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [state, setState] = useState<'idle' | 'sending' | 'sent' | 'error' | 'wait'>('idle');
+  const [trap, setTrap] = useState('');
 
   async function submit(e: FormEvent) {
     e.preventDefault();
     if (!text.trim()) return;
+    if (trap) { setState('sent'); setText(''); return; }
+    if (state === 'sending') return;
+    if (secondsToWait() > 0) { setState('wait'); return; }
     setState('sending');
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
@@ -26,7 +31,7 @@ export function FeedbackButton() {
       });
       const data = await res.json();
       setState(data.success ? 'sent' : 'error');
-      if (data.success) { setText(''); setContact(''); }
+      if (data.success) { setText(''); setContact(''); markSent(); }
     } catch {
       setState('error');
     }
@@ -44,6 +49,8 @@ export function FeedbackButton() {
             <p>{ar ? 'لقيت غلطة أو عندك اقتراح؟ اكتبه هنا وهيوصل لصاحب الموقع.' : 'Found a mistake or have an idea? Write it here and it goes to the site owner.'}</p>
             <textarea value={text} onChange={(e) => setText(e.target.value)} maxLength={1000} rows={4} required placeholder={ar ? 'ملاحظتك' : 'Your message'} />
             <input value={contact} onChange={(e) => setContact(e.target.value)} maxLength={120} placeholder={ar ? 'إيميل أو رقم للرد (اختياري)' : 'Email or number to reply (optional)'} />
+            <input type="text" name="website" value={trap} onChange={(e) => setTrap(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }} />
+            {state === 'wait' && <small role="status">{ar ? 'استنى نص دقيقة بين كل رسالة والتانية.' : 'Please wait 30 seconds between messages.'}</small>}
             {state === 'sent' && <small role="status">{ar ? 'شكراً! وصلتنا ملاحظتك.' : 'Thank you! Your feedback was received.'}</small>}
             {state === 'error' && <small role="alert">{ar ? 'حصل خطأ، جرّب تاني.' : 'Something went wrong, try again.'}</small>}
             <div className="feedback-actions">

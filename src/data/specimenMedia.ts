@@ -3267,4 +3267,469 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Microscope_view_of_Pollen_from_Hibiscus_01.jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
+  "neutrophil-on-a-blood-smear": {
+    src: '/specimens/neutrophil-on-a-blood-smear.webp', title: "Happy neutrophil.jpg", author: "Markgirton", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Happy_neutrophil.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "neutrophil-phagocytosing-pseudomonas-aeruginosa-gram-stain": {
+    src: '/specimens/neutrophil-phagocytosing-pseudomonas-aeruginosa-gram-stain.webp', title: "Pseudomonas aeruginosa smear Gram 2010-02-10.JPG", author: "Paulo Henrique Orlandi Mourao", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pseudomonas_aeruginosa_smear_Gram_2010-02-10.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "large-intestine-colon-h-e": {
+    src: '/specimens/large-intestine-colon-h-e.webp', title: "Histological section of the large intestine (colon).jpg", author: "Ot\u00e1vio Astor Vaz Costa", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Histological_section_of_the_large_intestine_(colon).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "dog-intestine-with-lagenidiosis-silver-stain-gms": {
+    src: '/specimens/dog-intestine-with-lagenidiosis-silver-stain-gms.webp', title: "Intestine-GMS.jpg", author: "Maiara Ramos", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Intestine-GMS.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "human-thyroid-gland-follicles-h-e-40x": {
+    src: '/specimens/human-thyroid-gland-follicles-h-e-40x.webp', title: "Follicular Arrangement of the Human Thyroid Gland (46560660225).jpg", author: "Berkshire Community College Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Follicular_Arrangement_of_the_Human_Thyroid_Gland_(46560660225).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "thyroid-gland-histological-section": {
+    src: '/specimens/thyroid-gland-histological-section.webp', title: "Thyroid Gland.jpg", author: "Fahd Hashemi", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Thyroid_Gland.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "thyroid-follicles-light-microscope": {
+    src: '/specimens/thyroid-follicles-light-microscope.webp', title: "Thyroid follicle.jpg", author: "Panzer VI-II", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Thyroid_follicle.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "human-pancreas-islet-of-langerhans-phase-contrast-200x": {
+    src: '/specimens/human-pancreas-islet-of-langerhans-phase-contrast-200x.webp', title: "Highly Vascularized Islets of Langerhans by Phase Contrast (33850590688).jpg", author: "Berkshire Community College Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Highly_Vascularized_Islets_of_Langerhans_by_Phase_Contrast_(33850590688).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "human-pancreas-with-islets-of-langerhans-h-e-40x": {
+    src: '/specimens/human-pancreas-with-islets-of-langerhans-h-e-40x.webp', title: "Larger Islets of Langerhans Near the Main Interlobular Ducts in the Human Pancreas (32757253077).jpg", author: "Berkshire Community College Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Larger_Islets_of_Langerhans_Near_the_Main_Interlobular_Ducts_in_the_Human_Pancreas_(32757253077).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "spleen-h-e": {
+    src: '/specimens/spleen-h-e.webp', title: "\u0421\u0435\u043b\u0435\u0437\u0435\u043d\u043a\u0430.jpg", author: "Alexander Klepnev", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:\u0421\u0435\u043b\u0435\u0437\u0435\u043d\u043a\u0430.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "bovine-tongue-epoxy-section": {
+    src: '/specimens/bovine-tongue-epoxy-section.webp', title: "Histological section of bovine tongue.jpg", author: "Anatomist90", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Histological_section_of_bovine_tongue.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "tongue-h-e": {
+    src: '/specimens/tongue-h-e.webp', title: "Histological section of tongue, with zoom.jpg", author: "Ot\u00e1vio Astor Vaz Costa", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Histological_section_of_tongue,_with_zoom.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "human-oesophagus-transverse-section": {
+    src: '/specimens/human-oesophagus-transverse-section.webp', title: "Trasversal histologic section of human esophagus.jpg", author: "Lorenzo Apolloni", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Trasversal_histologic_section_of_human_esophagus.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "ostrich-trachea-section": {
+    src: '/specimens/ostrich-trachea-section.webp', title: "Traquea avestruz.JPG", author: "Lycaon.cl", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Traquea_avestruz.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "human-placenta-section": {
+    src: '/specimens/human-placenta-section.webp', title: "Placenta (265 35) Section of human placenta.jpg", author: "Doc. RNDr. Josef Reischig, CSc.", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Placenta_(265_35)_Section_of_human_placenta.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "paramecium-caudatum-light-microscope": {
+    src: '/specimens/paramecium-caudatum-light-microscope.webp', title: "Paramecium caudatum (Light Microscope).jpg", author: "Fritzmann2002", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Paramecium_caudatum_(Light_Microscope).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "euglena-with-scale": {
+    src: '/specimens/euglena-with-scale.webp', title: "20100306 204728 Euglena.jpg", author: "Bob Blaylock (talk)", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:20100306_204728_Euglena.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "volvox-colonies-differential-interference-contrast-160x": {
+    src: '/specimens/volvox-colonies-differential-interference-contrast-160x.webp', title: "Volvox sp. - Microscopic algae (35891780782).jpg", author: "Picturepest", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Volvox_sp._-_Microscopic_algae_(35891780782).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "spirogyra-filaments-with-visible-nucleus": {
+    src: '/specimens/spirogyra-filaments-with-visible-nucleus.webp', title: "Spirogyra03.jpg", author: "Zuzanna K. Filutowska", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Spirogyra03.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "spirogyra-400x": {
+    src: '/specimens/spirogyra-400x.webp', title: "Spirogyra 400x magnification.jpg", author: "Femtocoulomb", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Spirogyra_400x_magnification.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "spirogyra-40x": {
+    src: '/specimens/spirogyra-40x.webp', title: "Spirogyra Under Light Microscope 40 X.jpg", author: "Iceclanl", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Spirogyra_Under_Light_Microscope_40_X.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "spirogyra-conjugation-tubes": {
+    src: '/specimens/spirogyra-conjugation-tubes.webp', title: "Spirogyra conjugation.jpg", author: "Armando", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Spirogyra_conjugation.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "spirogyra-with-spiral-chloroplasts": {
+    src: '/specimens/spirogyra-with-spiral-chloroplasts.webp', title: "The freshwater alga Spirogyra.jpg", author: "Wiedehopf20", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:The_freshwater_alga_Spirogyra.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "diatoms-light-microscope": {
+    src: '/specimens/diatoms-light-microscope.webp', title: "Diatoms (39816841964).jpg", author: "Kevin Dooley from Chandler, AZ, USA", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Diatoms_(39816841964).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "mixed-diatoms-40x": {
+    src: '/specimens/mixed-diatoms-40x.webp', title: "Various Diatoms.jpeg", author: "User:Kevronichebroni", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Various_Diatoms.jpeg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "daphnia-water-flea-light-microscope": {
+    src: '/specimens/daphnia-water-flea-light-microscope.webp', title: "A Daphnia.jpg", author: "MargusBarnes", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:A_Daphnia.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "daphnia-from-a-lake-light-microscope": {
+    src: '/specimens/daphnia-from-a-lake-light-microscope.webp', title: "Daphnia.JPG", author: "Martinkala", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Daphnia.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "daphnia-with-eggs-dark-field": {
+    src: '/specimens/daphnia-with-eggs-dark-field.webp', title: "\u0414\u0430\u0444\u043d\u0456\u044f, \u0442\u0435\u043c\u043d\u0435 \u043f\u043e\u043b\u0435.jpg", author: "Andrei Savitsky", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:\u0414\u0430\u0444\u043d\u0456\u044f,_\u0442\u0435\u043c\u043d\u0435_\u043f\u043e\u043b\u0435.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "hydra-vulgaris-40x": {
+    src: '/specimens/hydra-vulgaris-40x.webp', title: "Hydravulgaris.jpg", author: "Corvana", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hydravulgaris.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "drosophila-melanogaster-antenna": {
+    src: '/specimens/drosophila-melanogaster-antenna.webp', title: "Drosophila melanogaster antenna microscopic.jpg", author: "AlphaPsi", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Drosophila_melanogaster_antenna_microscopic.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "head-of-an-adult-flea-ctenocephalides": {
+    src: '/specimens/head-of-an-adult-flea-ctenocephalides.webp', title: "Morphology of the head tagma of adult Ctenocephalides spp. obtained from dogs.jpg", author: "MelnychukV", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Morphology_of_the_head_tagma_of_adult_Ctenocephalides_spp._obtained_from_dogs.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "butterfly-wing-scales": {
+    src: '/specimens/butterfly-wing-scales.webp', title: "\u0427\u0435\u0448\u0443\u0439\u043a\u0438 \u043d\u0430 \u043a\u0440\u044b\u043b\u0435 \u0431\u0430\u0431\u043e\u0447\u043a\u0438 \u043f\u043e\u0434 \u043c\u0438\u043a\u0440\u043e\u0441\u043a\u043e\u043f\u043e\u043c.jpg", author: "\u0413\u0440\u0438\u0431\u043a\u043e\u0432 \u043c\u0438\u0445\u0430\u0438\u043b", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:\u0427\u0435\u0448\u0443\u0439\u043a\u0438_\u043d\u0430_\u043a\u0440\u044b\u043b\u0435_\u0431\u0430\u0431\u043e\u0447\u043a\u0438_\u043f\u043e\u0434_\u043c\u0438\u043a\u0440\u043e\u0441\u043a\u043e\u043f\u043e\u043c.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "colour-transition-of-scales-on-a-butterfly-wing-30x": {
+    src: '/specimens/colour-transition-of-scales-on-a-butterfly-wing-30x.webp', title: "Transition of scales color on a butterfly wing (around 30x magnification).jpg", author: "Pawe\u0142 Wa\u0142asiewicz", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Transition_of_scales_color_on_a_butterfly_wing_(around_30x_magnification).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "fly-eye-cornea": {
+    src: '/specimens/fly-eye-cornea.webp', title: "Cornea from fly.jpg", author: "Profdanila", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cornea_from_fly.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "flea-ctenophthalmus-agyrtes": {
+    src: '/specimens/flea-ctenophthalmus-agyrtes.webp', title: "Ctenophthalmus agyrtes through a microscope.jpg", author: "Ruyko", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ctenophthalmus_agyrtes_through_a_microscope.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "mite-from-a-honey-bee-nest": {
+    src: '/specimens/mite-from-a-honey-bee-nest.webp', title: "Bee nest mite (5454286511).jpg", author: "Gilles San Martin from Namur, Belgium", license: "CC BY-SA 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bee_nest_mite_(5454286511).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "clover-mite-bryobia-praetiosa": {
+    src: '/specimens/clover-mite-bryobia-praetiosa.webp', title: "Clover mite (Bryobia praetiosa) viewed with digital microscope.jpg", author: "PerAsperaAdInferos", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Clover_mite_(Bryobia_praetiosa)_viewed_with_digital_microscope.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "demodex-canis-mite-400x": {
+    src: '/specimens/demodex-canis-mite-400x.webp', title: "Demodex mite 1.JPG", author: "Joel Mills", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Demodex_mite_1.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "dust-mite-under-the-microscope": {
+    src: '/specimens/dust-mite-under-the-microscope.webp', title: "Dust mite under the microscope.jpg", author: "Microrao", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Dust_mite_under_the_microscope.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "gorse-spider-mite": {
+    src: '/specimens/gorse-spider-mite.webp', title: "Gorse spider mite, microscope view.jpg", author: "Tony Wills", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gorse_spider_mite,_microscope_view.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "house-dust-mite-dermatophagoides-pteronyssinus": {
+    src: '/specimens/house-dust-mite-dermatophagoides-pteronyssinus.webp', title: "House dust mite (Dermatophagoides pteronyssinus).jpg", author: "Gilles San Martin from Namur, Belgium", license: "CC BY-SA 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:House_dust_mite_(Dermatophagoides_pteronyssinus).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "varroa-mites": {
+    src: '/specimens/varroa-mites.webp', title: "Starr-180406-3200-microscope view of varroa mites-HDOA Hilo-Hawaii (41369453291).jpg", author: "Forest and Kim Starr", license: "CC BY 3.0 us",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Starr-180406-3200-microscope_view_of_varroa_mites-HDOA_Hilo-Hawaii_(41369453291).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "soil-mite-differential-interference-contrast": {
+    src: '/specimens/soil-mite-differential-interference-contrast.webp', title: "\u041f\u043e\u0447\u0432\u0435\u043d\u043d\u044b\u0439 \u043a\u043b\u0435\u0449.jpg", author: "Alexander Klepnev", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:\u041f\u043e\u0447\u0432\u0435\u043d\u043d\u044b\u0439_\u043a\u043b\u0435\u0449.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "babesia-canis-in-dog-red-blood-cells": {
+    src: '/specimens/babesia-canis-in-dog-red-blood-cells.webp', title: "Babesia canis in red blood cells of a dog after tick bite.png", author: "Michael Lippert", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Babesia_canis_in_red_blood_cells_of_a_dog_after_tick_bite.png",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "female-human-head-louse": {
+    src: '/specimens/female-human-head-louse.webp', title: "Female human head louse.jpg", author: "Gilles San Martin", license: "CC BY-SA 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Female_human_head_louse.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "head-louse-egg-nit-on-a-hair": {
+    src: '/specimens/head-louse-egg-nit-on-a-hair.webp', title: "Human head louse egg.jpg", author: "Gilles San Martin", license: "CC BY-SA 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Human_head_louse_egg.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "loxosceles-laeta-cephalothorax": {
+    src: '/specimens/loxosceles-laeta-cephalothorax.webp', title: "Adult specimen of Loxosceles laeta observed in microscope.jpg", author: "Javier apb", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Adult_specimen_of_Loxosceles_laeta_observed_in_microscope.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "spider-body-160x": {
+    src: '/specimens/spider-body-160x.webp', title: "Spinne K\u00f6rper spider body.jpg", author: "Richy Schley", license: "CC BY 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Spinne_K\u00f6rper_spider_body.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "penicillium-conidiophore": {
+    src: '/specimens/penicillium-conidiophore.webp', title: "Penicillium sp. on bread.jpg", author: "Arunbiel", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Penicillium_sp._on_bread.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "penicillium-stained-preparation": {
+    src: '/specimens/penicillium-stained-preparation.webp', title: "Penicillium spp. AO AL.jpg", author: "Federica Viazzi (AO AL)", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Penicillium_spp._AO_AL.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "rhizopus-sporangia-black-mould": {
+    src: '/specimens/rhizopus-sporangia-black-mould.webp', title: "Black mold (rhizopus sp).jpg", author: "Ramy algayar", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Black_mold_(rhizopus_sp).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "rhizopus-fungus-40x": {
+    src: '/specimens/rhizopus-fungus-40x.webp', title: "Fungi Rhizopus.jpg", author: "Aaronantonypaul", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Fungi_Rhizopus.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "candida-albicans-in-a-gram-stained-smear": {
+    src: '/specimens/candida-albicans-in-a-gram-stained-smear.webp', title: "Microscopic morphology of Candida albicans in Gram staining of sputum.jpg", author: "Ajay Kumar Chaurasiya", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Microscopic_morphology_of_Candida_albicans_in_Gram_staining_of_sputum.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "bacillus-subtilis-colonies": {
+    src: '/specimens/bacillus-subtilis-colonies.webp', title: "Bacillus subtilis bacterial colonies under the microscope 02.jpg", author: "Korinna", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bacillus_subtilis_bacterial_colonies_under_the_microscope_02.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "bacillus-cereus-and-escherichia-coli-gram-stain": {
+    src: '/specimens/bacillus-cereus-and-escherichia-coli-gram-stain.webp', title: "Bacillus cereus and Escherichia coli.jpg", author: "Bibliomaniac15", license: "CC BY 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bacillus_cereus_and_Escherichia_coli.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "escherichia-coli-gram-stain": {
+    src: '/specimens/escherichia-coli-gram-stain.webp', title: "Escherichia coli Gram Stain.jpg", author: "Dr Graham Beards", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Escherichia_coli_Gram_Stain.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "escherichia-coli-gram-stain-1000x-oil-immersion": {
+    src: '/specimens/escherichia-coli-gram-stain-1000x-oil-immersion.webp', title: "Gram negative stain e coli.jpg", author: "Owashxd", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gram_negative_stain_e_coli.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "acid-fast-bacilli-in-urine-sediment-ziehl-neelsen": {
+    src: '/specimens/acid-fast-bacilli-in-urine-sediment-ziehl-neelsen.webp', title: "AFB in Ziehl\u2013Neelsen staining of urine sediment.jpg", author: "Ajay Kumar Chaurasiya", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:AFB_in_Ziehl\u2013Neelsen_staining_of_urine_sediment.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "mycobacterium-tuberculosis-acid-fast-stain": {
+    src: '/specimens/mycobacterium-tuberculosis-acid-fast-stain.webp', title: "Acid-Fast Bacilli (Mycobacterium tuberculosis) under microscope after Ziehl Neelsen staining.04.jpg", author: "Siduduziwe Nxumalo", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Acid-Fast_Bacilli_(Mycobacterium_tuberculosis)_under_microscope_after_Ziehl_Neelsen_staining.04.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "acid-fast-bacilli-ziehl-neelsen-stain": {
+    src: '/specimens/acid-fast-bacilli-ziehl-neelsen-stain.webp', title: "Acid fast bacilli, Ziehl Neelsen stain (1).jpg", author: "CoRus13", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Acid_fast_bacilli,_Ziehl_Neelsen_stain_(1).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "mycobacterium-tuberculosis-in-bal-fluid-ziehl-neelsen": {
+    src: '/specimens/mycobacterium-tuberculosis-in-bal-fluid-ziehl-neelsen.webp', title: "Acid fast bacilli of Mycobacterium tuberculosis.jpg", author: "Ajay Kumar Chaurasiya", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Acid_fast_bacilli_of_Mycobacterium_tuberculosis.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "taenia-egg-in-a-faecal-smear-ziehl-neelsen": {
+    src: '/specimens/taenia-egg-in-a-faecal-smear-ziehl-neelsen.webp', title: "An egg of Taenia in Ziehl-Neelsen stained smear of faeces jpg.jpg", author: "Ajay Kumar Chaurasiya", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:An_egg_of_Taenia_in_Ziehl-Neelsen_stained_smear_of_faeces_jpg.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "mycobacterium-leprae-in-a-slit-skin-smear-1000x": {
+    src: '/specimens/mycobacterium-leprae-in-a-slit-skin-smear-1000x.webp', title: "Mycobacterium leprae in Magnification of 1000X.jpg", author: "Ajay Kumar Chaurasiya", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Mycobacterium_leprae_in_Magnification_of_1000X.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "mycobacterium-tuberculosis-in-sputum-ziehl-neelsen": {
+    src: '/specimens/mycobacterium-tuberculosis-in-sputum-ziehl-neelsen.webp', title: "Mycobacterium tuberculosis in Ziehl-Neelsen stained smear of sputum.jpg", author: "Ajay Kumar Chaurasiya", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Mycobacterium_tuberculosis_in_Ziehl-Neelsen_stained_smear_of_sputum.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "nocardia-modified-acid-fast-stain": {
+    src: '/specimens/nocardia-modified-acid-fast-stain.webp', title: "Nocardia in modified Ziehl-Neelsen staining.jpg", author: "Ajay Kumar Chaurasiya", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Nocardia_in_modified_Ziehl-Neelsen_staining.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "acid-fast-bacilli-in-tracheitis-tissue-kinyoun-stain": {
+    src: '/specimens/acid-fast-bacilli-in-tracheitis-tissue-kinyoun-stain.webp', title: "Pseudomembranous Tracheitis, Kinyoun Carbolfuchsin Acid-Fast Stain (7982762329).jpg", author: "Ed Uthman from Houston, TX, USA", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pseudomembranous_Tracheitis,_Kinyoun_Carbolfuchsin_Acid-Fast_Stain_(7982762329).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "acid-fast-bacilli-in-lung-tissue-ziehl-neelsen": {
+    src: '/specimens/acid-fast-bacilli-in-lung-tissue-ziehl-neelsen.webp', title: "Ziehl-Neelsen AFB stain-lung (6544826111).jpg", author: "Yale Rosen from USA", license: "CC BY-SA 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ziehl-Neelsen_AFB_stain-lung_(6544826111).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "bird-blood-smear-with-plasmodium-relictum": {
+    src: '/specimens/bird-blood-smear-with-plasmodium-relictum.webp', title: "Blood-smear-showing-p-relictum-infection-stained-purple-within-red-blood-cells.jpg", author: "USGS", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Blood-smear-showing-p-relictum-infection-stained-purple-within-red-blood-cells.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "plasmodium-falciparum-ring-forms-in-red-blood-cells": {
+    src: '/specimens/plasmodium-falciparum-ring-forms-in-red-blood-cells.webp', title: "Plasmodium falciparum (malaria) parasite in blood.jpg", author: "MichaelZahniser", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Plasmodium_falciparum_(malaria)_parasite_in_blood.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "plasmodium-falciparum-gametocyte-in-a-blood-smear": {
+    src: '/specimens/plasmodium-falciparum-gametocyte-in-a-blood-smear.webp', title: "Plasmodium falciparum gametocyte.jpg", author: "Microrao", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Plasmodium_falciparum_gametocyte.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "plasmodium-falciparum-trophozoites": {
+    src: '/specimens/plasmodium-falciparum-trophozoites.webp', title: "Plasmodium falciparum smear 2010-02-08.JPG", author: "Paulo Henrique Orlandi Mourao", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Plasmodium_falciparum_smear_2010-02-08.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "trichomonas-vaginalis-gram-stain": {
+    src: '/specimens/trichomonas-vaginalis-gram-stain.webp', title: "Trichomonas Gram stain.jpg", author: "Dr Graham Beards", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Trichomonas_Gram_stain.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "ascaris-larva-hatching": {
+    src: '/specimens/ascaris-larva-hatching.webp', title: "Ascaris Larva (Hatched on Microscope Slide) (18306579795).jpg", author: "SuSanA Secretariat", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ascaris_Larva_(Hatched_on_Microscope_Slide)_(18306579795).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "ascaris-egg-early-cell-division": {
+    src: '/specimens/ascaris-egg-early-cell-division.webp', title: "Ascaris in division (15517763569).jpg", author: "SuSanA Secretariat", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ascaris_in_division_(15517763569).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "ascaris-infertile-egg": {
+    src: '/specimens/ascaris-infertile-egg.webp', title: "Ascaris infertile egg (15705214792).jpg", author: "SuSanA Secretariat", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ascaris_infertile_egg_(15705214792).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "toxocara-egg-with-a-developed-larva": {
+    src: '/specimens/toxocara-egg-with-a-developed-larva.webp', title: "Toxocara Larva (15518236248).jpg", author: "SuSanA Secretariat", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Toxocara_Larva_(15518236248).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "trichuris-whipworm-egg": {
+    src: '/specimens/trichuris-whipworm-egg.webp', title: "Trichuris (whipworm) (15703630875).jpg", author: "SuSanA Secretariat", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Trichuris_(whipworm)_(15703630875).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "chicory-cichorium-intybus-leaf-epidermis-with-stomata": {
+    src: '/specimens/chicory-cichorium-intybus-leaf-epidermis-with-stomata.webp', title: "Chicory Stomata.jpg", author: "JHern OW", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Chicory_Stomata.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "leaf-epidermis-with-stomata-and-guard-cells": {
+    src: '/specimens/leaf-epidermis-with-stomata-and-guard-cells.webp', title: "Leaf epithelium, stomata.jpg", author: "Emilio Ermini", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Leaf_epithelium,_stomata.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "tradescantia-spathacea-stomata-400x": {
+    src: '/specimens/tradescantia-spathacea-stomata-400x.webp', title: "Stomata of Tradescantia spathacea leaves.jpg", author: "Tr\u01b0\u01a1ng Minh Kh\u1ea3i", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Stomata_of_Tradescantia_spathacea_leaves.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "onion-epidermis-cells-40x": {
+    src: '/specimens/onion-epidermis-cells-40x.webp', title: "Onion Epidermis Cells W.M. 40x - 107.jpg", author: "loganrickert", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Onion_Epidermis_Cells_W.M._40x_-_107.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "potato-starch-grains-400x": {
+    src: '/specimens/potato-starch-grains-400x.webp', title: "Kartoffel-St\u00e4rkek\u00f6rner.png", author: "Quant8", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Kartoffel-St\u00e4rkek\u00f6rner.png",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "potato-starch-in-polarised-light-100x": {
+    src: '/specimens/potato-starch-in-polarised-light-100x.webp', title: "Potato Starch Polarized light 100x.jpg", author: "Photon 400 750", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Potato_Starch_Polarized_light_100x.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "sweet-flag-acorus-root-cross-section-100x": {
+    src: '/specimens/sweet-flag-acorus-root-cross-section-100x.webp', title: "Monocot Root Acorus (35399384203).jpg", author: "Berkshire Community College Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Monocot_Root_Acorus_(35399384203).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "greenbriar-smilax-root-cross-section-40x": {
+    src: '/specimens/greenbriar-smilax-root-cross-section-40x.webp', title: "Monocot Root Smilax (35165045414).jpg", author: "Berkshire Community College Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Monocot_Root_Smilax_(35165045414).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "maize-zea-root-cross-section-100x": {
+    src: '/specimens/maize-zea-root-cross-section-100x.webp', title: "Monocot Root Zea (34745602191).jpg", author: "Berkshire Community College Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Monocot_Root_Zea_(34745602191).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "dicot-stem-showing-xylem-and-phloem": {
+    src: '/specimens/dicot-stem-showing-xylem-and-phloem.webp', title: "Dicot Stems.jpg", author: "Naz Amann", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Dicot_Stems.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "vicia-root-nodule-cross-section": {
+    src: '/specimens/vicia-root-nodule-cross-section.webp', title: "Cross-section through root nodule of (Vicia spec.).jpg", author: "Marcel M\u00fcller K\u00f6ln", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cross-section_through_root_nodule_of_(Vicia_spec.).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "fern-root-cross-section-40x": {
+    src: '/specimens/fern-root-cross-section-40x.webp', title: "Fern root X40.jpg", author: "OKJaguar", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Fern_root_X40.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "iris-root-cross-section": {
+    src: '/specimens/iris-root-cross-section.webp', title: "Iris sp. root cross-sectional preparation in the microscope.jpg", author: "Mariabrbr", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Iris_sp._root_cross-sectional_preparation_in_the_microscope.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "lycopodium-clavatum-shoot-cross-section-triple-stain": {
+    src: '/specimens/lycopodium-clavatum-shoot-cross-section-triple-stain.webp', title: "Lycopodium shoot cross section.png", author: "Kingfiser", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Lycopodium_shoot_cross_section.png",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "onion-root-cross-section-10x-objective": {
+    src: '/specimens/onion-root-cross-section-10x-objective.webp', title: "Onion Root.jpg", author: "Pksois23", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Onion_Root.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "monocot-root-cross-section": {
+    src: '/specimens/monocot-root-cross-section.webp', title: "Root of Herbaceous Monocotyledon Plant - Cross section microscopic image.jpg", author: "\u77f3\u5ddd Shihchuan from \u53f0\u5317\u5e02 (Taipei City), \u53f0\u7063 (Taiwan)", license: "CC BY-SA 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Root_of_Herbaceous_Monocotyledon_Plant_-_Cross_section_microscopic_image.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
 };

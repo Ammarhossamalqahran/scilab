@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { ReferenceDialog } from '../components/ReferenceDialog';
+import { ErrorScreen } from '../components/ErrorScreen';
 import { getDiagram } from '../data/diagramData';
 import { DiagramArtwork } from '../schemas/DiagramArtwork';
 
@@ -44,7 +45,7 @@ export function SchemaStudyPage() {
   }, [grade, diagram]);
 
   if (!diagram || !target) {
-    return <div className="page not-found-page"><Link to="/schemas" className="back-link">← {t('backToOverview')}</Link><h1>{lang === 'ar' ? 'الرسم غير موجود' : 'Schema not found'}</h1></div>;
+    return <ErrorScreen kind="schemaMissing" />;
   }
 
   function gradeAnswer(isCorrect: boolean) {

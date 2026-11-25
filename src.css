@@ -1274,3 +1274,10 @@ h1, h2, h3, .brand-name, .page-title, .hero-copy h1 { font-family: "El Messiri",
 
 .needs-review-tag { color: #b45309; font-weight: 700; font-size: 0.75em; }
 [data-theme='dark'] .needs-review-tag { color: #fbbf24; }
+
+/* Error screens: 404 and unexpected errors */
+.error-screen { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px; padding: 48px 20px; }
+.error-code { font-family: 'El Messiri', serif; font-size: clamp(88px, 22vw, 190px); font-weight: 700; line-height: 1; color: var(--accent); letter-spacing: .04em; }
+.error-title { margin: 0; font-size: clamp(22px, 4vw, 34px); }
+.error-text { margin: 0; max-width: 460px; color: var(--ink-soft); line-height: 1.7; }
+.error-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 10px; }

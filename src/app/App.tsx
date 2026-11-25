@@ -1,4 +1,5 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import { ErrorBoundary, ErrorScreen } from '../components/ErrorScreen';
 import { RouteTitle } from './RouteTitle';
 import { Splash } from '../components/Splash';
 import { AppShell } from '../components/AppShell';
@@ -13,6 +14,7 @@ export function App() {
     <>
     <Splash />
     <RouteTitle />
+    <ErrorBoundary>
     <Routes>
       <Route element={<AppShell />}>
         <Route index element={<HomePage />} />
@@ -20,9 +22,10 @@ export function App() {
         <Route path="exams" element={<ExamPage />} />
         <Route path="schemas" element={<SchemasPage />} />
         <Route path="schemas/:diagramId" element={<SchemaStudyPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<ErrorScreen kind="notFound" />} />
       </Route>
     </Routes>
+    </ErrorBoundary>
     </>
   );
 }

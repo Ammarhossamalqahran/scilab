@@ -4847,4 +4847,154 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Fliegenfl\u00fcgel_im_Mikroskop_Dunkelfeld.JPG",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
+  "gastrotrich": {
+    src: '/specimens/gastrotrich.webp', title: "Gastrotrich.jpg", author: "Jasper Nance", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gastrotrich.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "vorticella-bell-animalcules-dark-field": {
+    src: '/specimens/vorticella-bell-animalcules-dark-field.webp', title: "Glockentierchen (8157249603).jpg", author: "Picturepest", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Glockentierchen_(8157249603).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "hydra-early-budding": {
+    src: '/specimens/hydra-early-budding.webp', title: "Hidra en fase inicial del proceso de gemaci\u00f3n.jpg", author: "Brandon Antonio Segura Torres & Priscilla Vieto Bonilla", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hidra_en_fase_inicial_del_proceso_de_gemaci\u00f3n.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "mosquito-larva-dark-field-2": {
+    src: '/specimens/mosquito-larva-dark-field-2.webp', title: "Larva de mosquito campo osuro.jpg", author: "Brandon Antonio Segura Torres & Priscilla Vieto Bonilla", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Larva_de_mosquito_campo_osuro.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "pleurosigma-angulatum-diatoms": {
+    src: '/specimens/pleurosigma-angulatum-diatoms.webp', title: "Mikrofoto.de-Pleurosigma angulatum-2.jpg", author: "Frank Fox", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Mikrofoto.de-Pleurosigma_angulatum-2.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "volvox-colonies": {
+    src: '/specimens/volvox-colonies.webp', title: "Mikrofoto.de-volvox-17.jpg", author: "Frank Fox", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Mikrofoto.de-volvox-17.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "volvox-daughter-colonies": {
+    src: '/specimens/volvox-daughter-colonies.webp', title: "Mikrofoto.de-volvox-4.jpg", author: "Frank Fox", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Mikrofoto.de-volvox-4.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "oxytricha-ciliate-dark-field": {
+    src: '/specimens/oxytricha-ciliate-dark-field.webp', title: "Oxytricha - 160x - Dunkelfeld (9463478347).jpg", author: "Picturepest", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Oxytricha_-_160x_-_Dunkelfeld_(9463478347).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "paramecium-and-litonotus-dark-field": {
+    src: '/specimens/paramecium-and-litonotus-dark-field.webp', title: "Paramecium & Litonotus - 160x - Dunkelfeld (8491593271).jpg", author: "Picturepest", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Paramecium_&_Litonotus_-_160x_-_Dunkelfeld_(8491593271).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "diatom-in-rheinberg-illumination": {
+    src: '/specimens/diatom-in-rheinberg-illumination.webp', title: "Rheinberg 6.jpg", author: "Frank Fox", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Rheinberg_6.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "cyanobacteria-colony": {
+    src: '/specimens/cyanobacteria-colony.webp', title: "Sinice.jpg", author: "MarekMi\u015b", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Sinice.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "treponema-pallidum-dark-field": {
+    src: '/specimens/treponema-pallidum-dark-field.webp', title: "Treponema pallidum cropped.png", author: "CDC / C.W. Hubbard", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Treponema_pallidum_cropped.png",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "bloodsucking-mosquito-larva": {
+    src: '/specimens/bloodsucking-mosquito-larva.webp', title: "\u041b\u0438\u0447\u0438\u043d\u043a\u0430 \u043a\u0440\u043e\u0432\u043e\u0441\u043e\u0441\u0443\u0449\u0435\u0433\u043e \u043a\u043e\u043c\u0430\u0440\u0430.jpg", author: "Andrei Savitsky", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:\u041b\u0438\u0447\u0438\u043d\u043a\u0430_\u043a\u0440\u043e\u0432\u043e\u0441\u043e\u0441\u0443\u0449\u0435\u0433\u043e_\u043a\u043e\u043c\u0430\u0440\u0430.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "bacillus-subtilis-microcolony-100x": {
+    src: '/specimens/bacillus-subtilis-microcolony-100x.webp', title: "\u041c\u0438\u043a\u0440\u043e\u043a\u043e\u043b\u043e\u043d\u0438\u044f Bacillus subtilis, \u0442.\u043f. \u0445100 (1).jpg", author: "\u041f\u0430\u0432\u043b\u043e\u0432 \u0412.", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:\u041c\u0438\u043a\u0440\u043e\u043a\u043e\u043b\u043e\u043d\u0438\u044f_Bacillus_subtilis,_\u0442.\u043f._\u0445100_(1).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "cheek-cell-phase-contrast": {
+    src: '/specimens/cheek-cell-phase-contrast.webp', title: "Cheek cell phase contrast.jpg", author: "Spencer Diamond, UC Berkeley Biological Imaging Facility", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cheek_cell_phase_contrast.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "euplotes-ciliate-phase-contrast": {
+    src: '/specimens/euplotes-ciliate-phase-contrast.webp', title: "Euplotes in Wasserblase - 400x - Phako (8492744740).jpg", author: "Picturepest", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Euplotes_in_Wasserblase_-_400x_-_Phako_(8492744740).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "paramecium-bursaria-400x": {
+    src: '/specimens/paramecium-bursaria-400x.webp', title: "Paramecium bursaria - 400x (13263096305).jpg", author: "Picturepest", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Paramecium_bursaria_-_400x_(13263096305).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "frontonia-ciliate": {
+    src: '/specimens/frontonia-ciliate.webp', title: "The ciliate Frontonia sp.jpg", author: "Wiedehopf20", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:The_ciliate_Frontonia_sp.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "actinophrys-sol-heliozoan": {
+    src: '/specimens/actinophrys-sol-heliozoan.webp', title: "Actinophrys sol.jpg", author: "ja:User:NEON / User:NEON_ja", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Actinophrys_sol.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "aurantiochytrium-limacinum": {
+    src: '/specimens/aurantiochytrium-limacinum.webp', title: "Aurantiochytrium limacinum SR21.jpg", author: "NEON ja", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Aurantiochytrium_limacinum_SR21.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "botryococcus-braunii-colony": {
+    src: '/specimens/botryococcus-braunii-colony.webp', title: "Botryococcus braunii.jpg", author: "ja:User:NEON / User:NEON_ja", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Botryococcus_braunii.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "brachionus-calyciflorus-rotifer": {
+    src: '/specimens/brachionus-calyciflorus-rotifer.webp', title: "Brachionuscalyciflorus.jpg", author: "Takehito Yoshida and Randy O. Wayne", license: "CC BY 2.5",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Brachionuscalyciflorus.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "synechococcus-pcc-7002-dic": {
+    src: '/specimens/synechococcus-pcc-7002-dic.webp', title: "Synechococcus PCC 7002 DIC.jpg", author: "Masur", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Synechococcus_PCC_7002_DIC.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "synura-colonies": {
+    src: '/specimens/synura-colonies.webp', title: "Synura spp.jpg", author: "ja:User:NEON / User:NEON_ja", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Synura_spp.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "woody-dicot-stem-lenticel-development-1": {
+    src: '/specimens/woody-dicot-stem-lenticel-development-1.webp', title: "Woody Dicot Stem- Lenticel Development in Sambucus - 36421590740 02.jpg", author: "bccoer", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Woody_Dicot_Stem-_Lenticel_Development_in_Sambucus_-_36421590740_02.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "woody-dicot-stem-lenticel-development-2": {
+    src: '/specimens/woody-dicot-stem-lenticel-development-2.webp', title: "Woody Dicot Stem- Lenticel Development in Sambucus - 36421590740 03.jpg", author: "bccoer", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Woody_Dicot_Stem-_Lenticel_Development_in_Sambucus_-_36421590740_03.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "acacia-stem-cross-section": {
+    src: '/specimens/acacia-stem-cross-section.webp', title: "\u041f\u043e\u043f\u0435\u0440\u0435\u0447\u043d\u0438\u0439 \u0437\u0440\u0456\u0437 \u0441\u0442\u0435\u0431\u043b\u0430 \u0430\u043a\u0430\u0446\u0456\u0457.jpg", author: "Andrei Savitsky", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:\u041f\u043e\u043f\u0435\u0440\u0435\u0447\u043d\u0438\u0439_\u0437\u0440\u0456\u0437_\u0441\u0442\u0435\u0431\u043b\u0430_\u0430\u043a\u0430\u0446\u0456\u0457.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "trigonalid-wasp-hind-tibia-section": {
+    src: '/specimens/trigonalid-wasp-hind-tibia-section.webp', title: "Trigonalid hind tibia section - Frost Entomological Museum at Penn State.jpg", author: "Frost Museum", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Trigonalid_hind_tibia_section_-_Frost_Entomological_Museum_at_Penn_State.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "dog-skin-section": {
+    src: '/specimens/dog-skin-section.webp', title: "\u0158ez ps\u00ed k\u016f\u017e\u00ed pod mikroskopem.jpg", author: "Hagridka", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:\u0158ez_ps\u00ed_k\u016f\u017e\u00ed_pod_mikroskopem.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "common-newt-head-section": {
+    src: '/specimens/common-newt-head-section.webp', title: "\u0417\u0440\u0456\u0437 \u0433\u043e\u043b\u043e\u0432\u0438 \u0442\u0440\u0438\u0442\u043e\u043d\u0430 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u043e\u0433\u043e.jpg", author: "SlavaSSG", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:\u0417\u0440\u0456\u0437_\u0433\u043e\u043b\u043e\u0432\u0438_\u0442\u0440\u0438\u0442\u043e\u043d\u0430_\u0437\u0432\u0438\u0447\u0430\u0439\u043d\u043e\u0433\u043e.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
 };

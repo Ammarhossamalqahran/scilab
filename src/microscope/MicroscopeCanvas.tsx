@@ -140,7 +140,11 @@ export function MicroscopeCanvas({ imageSrc, magnification, coarseFocus, fineFoc
     const canvas = canvasRef.current;
     if (!canvas) return undefined;
     // Mouse wheel and trackpad: one objective step per gesture, not per tick.
+    // Only inside the round lens; outside it the page scrolls as usual.
     const onWheel = (event: WheelEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      const inLens = Math.hypot(event.clientX - (rect.left + rect.width / 2), event.clientY - (rect.top + rect.height / 2)) <= Math.min(rect.width, rect.height) * 0.46;
+      if (!inLens) return;
       event.preventDefault();
       const now = performance.now();
       if (now - lastWheelRef.current < 280 || Math.abs(event.deltaY) < 4) return;

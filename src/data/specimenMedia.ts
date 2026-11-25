@@ -4517,21 +4517,6 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Analysis_of_development_(1955)_(18167047242).jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
-  "fucus-female-conceptacle": {
-    src: '/specimens/fucus-female-conceptacle.webp', title: "Pars distalis 2014.jpg", author: "Athikhun.suw", license: "CC BY-SA 4.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pars_distalis_2014.jpg",
-    adaptation: 'Downscaled to 1000 px wide; not cropped.',
-  },
-  "fucus-female-conceptacles": {
-    src: '/specimens/fucus-female-conceptacles.webp', title: "Pituitary histology.jpg", author: "Lahari krishna", license: "CC BY-SA 4.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pituitary_histology.jpg",
-    adaptation: 'Downscaled to 1000 px wide; not cropped.',
-  },
-  "fucus-male-conceptacle": {
-    src: '/specimens/fucus-male-conceptacle.webp', title: "Rat anterior pituitary.jpg", author: "Jhsteel", license: "CC BY-SA 4.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Rat_anterior_pituitary.jpg",
-    adaptation: 'Downscaled to 1000 px wide; not cropped.',
-  },
   "volvox-aureus-daughter-colonies-160x": {
     src: '/specimens/volvox-aureus-daughter-colonies-160x.webp', title: "Pineal Rata E21.png", author: "Mar\u00eda P. Iba\u00f1ez Rodriguez, Stephen C. Noctor, Estela M. Mu\u00f1oz", license: "CC BY 4.0",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Pineal_Rata_E21.png",

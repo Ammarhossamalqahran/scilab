@@ -10347,39 +10347,6 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-fucus-conceptacle-cross-section-with-oogonia-and-antheridia", title: "Analysis of development (1955) (18167047242).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Analysis_of_development_(1955)_(18167047242).jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "fucus-female-conceptacle", department: 'botany', kind: 'plant-section',
-    title: { en: "Fucus female conceptacle", ar: "مخبأ أنثوي في طحلب Fucus" },
-    subtitle: { en: "Wikimedia Commons \u00b7 Athikhun.suw", ar: "ويكيميديا كومنز · Athikhun.suw" },
-    description: { en: "Fucus female conceptacle. One microscope field from a Wikimedia Commons photograph.", ar: "مخبأ أنثوي في طحلب Fucus. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
-    facts: [
-      { en: "Plant anatomy is studied in thin sections where cell walls, vessels and cuticle can be told apart by shape and stain.", ar: "يُدرس تشريح النبات في مقاطع رقيقة تُميَّز فيها جدر الخلايا والأوعية والأدمة بالشكل والصبغة." },
-      { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
-    ],
-    references: [{ id: "commons-fucus-female-conceptacle", title: "Pars distalis 2014.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Pars_distalis_2014.jpg", supports: 'Source photograph, author and licence for this slide.' }],
-  },
-  {
-    id: "fucus-female-conceptacles", department: 'botany', kind: 'plant-section',
-    title: { en: "Fucus female conceptacles", ar: "مخابئ أنثوية في طحلب Fucus" },
-    subtitle: { en: "Wikimedia Commons \u00b7 Lahari krishna", ar: "ويكيميديا كومنز · Lahari krishna" },
-    description: { en: "Fucus female conceptacles. One microscope field from a Wikimedia Commons photograph.", ar: "مخابئ أنثوية في طحلب Fucus. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
-    facts: [
-      { en: "Plant anatomy is studied in thin sections where cell walls, vessels and cuticle can be told apart by shape and stain.", ar: "يُدرس تشريح النبات في مقاطع رقيقة تُميَّز فيها جدر الخلايا والأوعية والأدمة بالشكل والصبغة." },
-      { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
-    ],
-    references: [{ id: "commons-fucus-female-conceptacles", title: "Pituitary histology.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Pituitary_histology.jpg", supports: 'Source photograph, author and licence for this slide.' }],
-  },
-  {
-    id: "fucus-male-conceptacle", department: 'botany', kind: 'plant-section',
-    title: { en: "Fucus male conceptacle", ar: "مخبأ ذكري في طحلب Fucus" },
-    subtitle: { en: "Wikimedia Commons \u00b7 Jhsteel", ar: "ويكيميديا كومنز · Jhsteel" },
-    description: { en: "Fucus male conceptacle. One microscope field from a Wikimedia Commons photograph.", ar: "مخبأ ذكري في طحلب Fucus. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
-    facts: [
-      { en: "Plant anatomy is studied in thin sections where cell walls, vessels and cuticle can be told apart by shape and stain.", ar: "يُدرس تشريح النبات في مقاطع رقيقة تُميَّز فيها جدر الخلايا والأوعية والأدمة بالشكل والصبغة." },
-      { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
-    ],
-    references: [{ id: "commons-fucus-male-conceptacle", title: "Rat anterior pituitary.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Rat_anterior_pituitary.jpg", supports: 'Source photograph, author and licence for this slide.' }],
-  },
-  {
     id: "volvox-aureus-daughter-colonies-160x", department: 'aquatic-life', kind: 'zoology-section',
     title: { en: "Volvox aureus daughter colonies, 160x", ar: "مستعمرات بنوية في Volvox aureus، 160x" },
     subtitle: { en: "Wikimedia Commons \u00b7 Mar\u00eda P. Iba\u00f1ez Rodriguez, Stephen C. Noctor, Estela M. Mu\u00f1oz", ar: "ويكيميديا كومنز · María P. Ibañez Rodriguez, Stephen C. Noctor, Estela M. Muñoz" },

@@ -14,6 +14,7 @@ import '@fontsource/el-messiri/arabic-700.css';
 import '@fontsource/el-messiri/latin-600.css';
 import '@fontsource/el-messiri/latin-700.css';
 import '../src.css';
+import { startAnalytics } from './analytics';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -25,6 +26,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   </React.StrictMode>,
 );
 
+<<<<<<< HEAD
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
   window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js').catch(() => undefined); });
 }
+=======
+startAnalytics();
+>>>>>>> e9a7d67 (Cloudflare Web Analytics loader (off until token is added))

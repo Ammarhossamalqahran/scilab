@@ -9885,7 +9885,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-elastic-cartilage-fibres-400x", title: "Elast cart fibers.JPG", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Elast_cart_fibers.JPG", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "fibrocartilage", department: 'histology', kind: 'tissue-section',
+    id: "fibrocartilage-histology-low-power", department: 'histology', kind: 'tissue-section',
     title: { en: "Fibrocartilage", ar: "الغضروف الليفي" },
     subtitle: { en: "Wikimedia Commons \u00b7 Netha Hussain", ar: "ويكيميديا كومنز · Netha Hussain" },
     description: { en: "Fibrocartilage. One microscope field from a Wikimedia Commons photograph.", ar: "الغضروف الليفي. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -9893,7 +9893,7 @@ export const specimens: ScientificSpecimen[] = [
       { en: "Histology studies tissues in thin stained sections; the stain and magnification decide which structures stand out.", ar: "علم الأنسجة يدرس الأنسجة في مقاطع رقيقة مصبوغة، والصبغة والتكبير يحددان أي التراكيب تظهر." },
       { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
     ],
-    references: [{ id: "commons-fibrocartilage", title: "Fibrous catilage.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Fibrous_catilage.jpg", supports: 'Source photograph, author and licence for this slide.' }],
+    references: [{ id: "commons-fibrocartilage-histology-low-power", title: "Fibrous catilage.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Fibrous_catilage.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
     id: "neonatal-human-dermal-fibroblasts-calcein-am", department: 'histology', kind: 'tissue-section',

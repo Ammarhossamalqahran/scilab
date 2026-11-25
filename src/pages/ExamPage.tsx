@@ -5,6 +5,7 @@ import { bloodStains, type BloodStainId } from '../data/bloodStains';
 import { diagramCategories, diagrams } from '../data/diagramData';
 import { specimens } from '../data/scientificData';
 import { specimenMedia } from '../data/specimenMedia';
+import { readProgress, recordAnswer, saveProgress, totals, weakPoints, type Progress } from '../data/examProgress';
 import { MicroscopeCanvas } from '../microscope/MicroscopeCanvas';
 import { DiagramArtwork } from '../schemas/DiagramArtwork';
 
@@ -54,6 +55,21 @@ function ExamMicroscope({ imageSrc, locale, pan, onPan }: { imageSrc?: string; l
   return <MicroscopeCanvas imageSrc={imageSrc} magnification={10} coarseFocus={50} fineFocus={50} light={70} pan={pan} onPan={onPan} ariaLabel={locale === 'ar' ? 'مجال مجهري في سؤال امتحان' : 'Microscope field for exam question'} placeholders={{ empty: locale === 'ar' ? 'اختار عينة' : 'Choose a specimen', loading: locale === 'ar' ? 'تحميل الشريحة…' : 'Loading slide…', failed: locale === 'ar' ? 'الصورة غير متاحة' : 'Image unavailable' }} />;
 }
 
+function ProgressPanel({ progress, lang, onReset }: { progress: Progress; lang: 'en' | 'ar'; onReset: () => void }) {
+  const ar = lang === 'ar';
+  const sum = totals(progress);
+  if (!sum.attempts) return <div className="exam-progress"><p>{ar ? 'تقدمك هيظهر هنا بعد أول إجابة. بيتحفظ على جهازك بس.' : 'Your progress shows here after your first answer. It is saved on this device only.'}</p></div>;
+  const pct = Math.round((sum.right / sum.attempts) * 100);
+  const weak = weakPoints(progress);
+  return (
+    <div className="exam-progress">
+      <div className="exam-progress-head"><b>{ar ? 'تقدمك' : 'Your progress'}</b><span>{sum.right}/{sum.attempts} · {pct}%</span><button type="button" className="button button-outline" onClick={onReset}>{ar ? 'امسح التقدم' : 'Reset progress'}</button></div>
+      <div className="exam-progress-bar" role="img" aria-label={`${pct}%`}><span style={{ width: `${pct}%` }} /></div>
+      {weak.length > 0 && <div className="exam-weak"><small>{ar ? 'نقاط ضعفك (راجعها):' : 'Weak points (review these):'}</small><ul>{weak.map((w) => { const sp = specimens.find((x) => x.id === w.id); return <li key={w.id}><Link to={`/microscope?slide=${w.id}`}>{sp ? sp.title[lang] : w.id}</Link><em>{ar ? `${w.wrong} غلط من ${w.right + w.wrong}` : `${w.wrong} wrong of ${w.right + w.wrong}`}</em></li>; })}</ul></div>}
+    </div>
+  );
+}
+
 export function ExamPage() {
   const { locale, t } = usePreferences();
   const lang = locale;
@@ -64,6 +80,7 @@ export function ExamPage() {
   const [score, setScore] = useState(0);
   const [answered, setAnswered] = useState(0);
   const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [progress, setProgress] = useState<Progress>(readProgress);
 
   const [compareAId, setCompareAId] = useState('blood-smear');
   const [compareBId, setCompareBId] = useState('sickle-cell-smear');
@@ -163,7 +180,9 @@ export function ExamPage() {
     setGrade(specimenId === question.specimenId ? 'correct' : 'wrong');
     setAnswered((current) => current + 1);
     if (specimenId === question.specimenId) setScore((current) => current + 1);
+    setProgress((current) => { const next = recordAnswer(current, question.specimenId, specimenId === question.specimenId); saveProgress(next); return next; });
   }
+  function resetProgress() { setProgress({}); saveProgress({}); }
 
   function nextQuestion() {
     setQuestion(makeQuestion(question?.specimenId));
@@ -263,6 +282,7 @@ export function ExamPage() {
 
       {station === 'identify' && <section className="exam-station-content">
         <div className="exam-section-heading"><div><div className="eyebrow">{copy.stations.identify}</div><h2>{copy.identifyTitle}</h2><p>{copy.identifyDescription}</p></div><div className="exam-scoreboard"><span>{copy.score}<b>{score}</b></span><span>{copy.attempts}<b>{answered}</b></span></div></div>
+        <ProgressPanel progress={progress} lang={lang} onReset={resetProgress} />
         {!question ? <div className="exam-start-card"><div className="exam-question-mark">?</div><p>{copy.identifyDescription}</p><button type="button" className="button button-primary" onClick={() => setQuestion(makeQuestion())}>{copy.startQuestion}</button></div> : (
           <div className="exam-identify-grid">
             <div className="exam-microscope-panel"><div className="exam-panel-label"><span>{lang === 'ar' ? 'مجال مجهري' : 'MICROSCOPE FIELD'}</span><span>{lang === 'ar' ? 'الاسم مخفي' : 'IDENTITY HIDDEN'}</span></div><div className="exam-canvas"><ExamMicroscope imageSrc={specimenMedia[question.specimenId]?.src} locale={lang} pan={pan} onPan={setPan} /></div><p>{lang === 'ar' ? 'اسحب الصورة للتنقّل داخل المجال.' : 'Drag the image to inspect the field.'}</p></div>

@@ -1291,3 +1291,16 @@ h1, h2, h3, .brand-name, .page-title, .hero-copy h1 { font-family: "El Messiri",
 .feedback-dialog p { margin: 0; color: var(--ink-soft); line-height: 1.6; font-size: 13px; }
 .feedback-dialog textarea, .feedback-dialog input { width: 100%; padding: 10px 12px; border: 1px solid var(--line-strong); border-radius: 0; background: var(--bg); color: var(--ink); font: inherit; box-sizing: border-box; }
 .feedback-actions { display: flex; gap: 8px; }
+
+/* Exam progress and weak points */
+.exam-progress { display: grid; gap: 8px; padding: 14px 16px; margin-bottom: 14px; border: 1px solid var(--line-strong); background: var(--surface); }
+.exam-progress p { margin: 0; color: var(--ink-soft); font-size: 13px; }
+.exam-progress-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.exam-progress-head span { color: var(--accent); font-weight: 700; }
+.exam-progress-head .button { margin-inline-start: auto; }
+.exam-progress-bar { height: 6px; background: color-mix(in srgb, var(--ink) 14%, transparent); }
+.exam-progress-bar span { display: block; height: 100%; background: var(--accent); }
+.exam-weak ul { margin: 6px 0 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.exam-weak li { display: flex; gap: 10px; align-items: baseline; font-size: 13px; }
+.exam-weak a { color: var(--ink); text-decoration: underline; }
+.exam-weak em { color: var(--ink-soft); font-style: normal; font-size: 12px; }

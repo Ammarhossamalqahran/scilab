@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type PointerEvent } from 'react';
+import { useEffect, useRef, useState, type PointerEvent, type KeyboardEvent } from 'react';
 
 type Props = {
   imageSrc?: string;
@@ -165,6 +165,13 @@ export function MicroscopeCanvas({ imageSrc, magnification, coarseFocus, fineFoc
     const limitY = Math.max(0, (image.naturalHeight * scale - fieldSize) / 2);
     return { x: Math.max(-limitX, Math.min(limitX, next.x)), y: Math.max(-limitY, Math.min(limitY, next.y)) };
   }
+  function onKeyDown(event: KeyboardEvent<HTMLCanvasElement>) {
+    const step = event.shiftKey ? 80 : 30;
+    const delta = { ArrowLeft: [step, 0], ArrowRight: [-step, 0], ArrowUp: [0, step], ArrowDown: [0, -step] }[event.key as string];
+    if (!delta) return;
+    event.preventDefault();
+    onPan(clampPan({ x: propsRef.current.pan.x + delta[0], y: propsRef.current.pan.y + delta[1] }));
+  }
   function pinchDistance() {
     const points = [...pointersRef.current.values()];
     return points.length === 2 ? Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y) : null;
@@ -217,5 +224,5 @@ export function MicroscopeCanvas({ imageSrc, magnification, coarseFocus, fineFoc
   }
 
   if (unsupported) return <p className="canvas-fallback" role="alert">This browser cannot draw the microscope view. Please update your browser or try another one. / متصفحك لا يستطيع عرض المجهر. حدّث المتصفح أو جرّب متصفحاً آخر.</p>;
-  return <canvas ref={canvasRef} className={`microscope-canvas${dragging ? ' is-dragging' : ''}${imageStatus === 'loading' ? ' is-loading' : ''}`} onPointerDown={startDrag} onPointerMove={drag} onPointerUp={endDrag} onPointerCancel={endDrag} role="img" aria-label={ariaLabel} />;
+  return <canvas ref={canvasRef} className={`microscope-canvas${dragging ? ' is-dragging' : ''}${imageStatus === 'loading' ? ' is-loading' : ''}`} onPointerDown={startDrag} onPointerMove={drag} onPointerUp={endDrag} onPointerCancel={endDrag} onKeyDown={onKeyDown} tabIndex={0} role="img" aria-label={ariaLabel} />;
 }

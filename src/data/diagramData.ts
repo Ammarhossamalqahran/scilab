@@ -3,6 +3,7 @@ import { specimenSchemas } from './specimenSchemas';
 import { specimenSchemas2 } from './specimenSchemas2';
 import { specimenSchemas5 } from './specimenSchemas5';
 import { specimenSchemas6 } from './specimenSchemas6';
+import { specimenSchemas7 } from './specimenSchemas7';
 import { specimenSchemas4 } from './specimenSchemas4';
 import { specimenSchemas3 } from './specimenSchemas3';
 import { references, type Bilingual, type ScientificReference } from './scientificData';
@@ -119,7 +120,7 @@ const baseDiagrams: ScientificDiagram[] = [
   },
 ];
 
-export const diagrams: ScientificDiagram[] = [...baseDiagrams, ...slideSchemas, ...specimenSchemas, ...specimenSchemas2, ...specimenSchemas3, ...specimenSchemas4, ...specimenSchemas5, ...specimenSchemas6];
+export const diagrams: ScientificDiagram[] = [...baseDiagrams, ...slideSchemas, ...specimenSchemas, ...specimenSchemas2, ...specimenSchemas3, ...specimenSchemas4, ...specimenSchemas5, ...specimenSchemas6, ...specimenSchemas7];
 
 export function getDiagram(id: string | undefined) {
   return diagrams.find((diagram) => diagram.id === id);

@@ -4307,8 +4307,8 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Elast_cart_fibers.JPG",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
-  "fibrocartilage": {
-    src: '/specimens/fibrocartilage.webp', title: "Fibrous catilage.jpg", author: "Netha Hussain", license: "CC BY-SA 3.0",
+  "fibrocartilage-histology-low-power": {
+    src: '/specimens/fibrocartilage-histology-low-power.webp', title: "Fibrous catilage.jpg", author: "Netha Hussain", license: "CC BY-SA 3.0",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Fibrous_catilage.jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },

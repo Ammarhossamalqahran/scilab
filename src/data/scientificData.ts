@@ -2207,17 +2207,6 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-spirogyra-248-00', title: "Spirogyra (248 00) Native preparation.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Spirogyra_(248_00)_Native_preparation.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'spleen-26-2-04', department: 'histology', kind: 'tissue-section',
-    title: { en: "Spleen \u00b7 Semi-thick section; embedded in Epon; mouse", ar: "طحال" },
-    subtitle: { en: "Reischig archive \u00b7 slide 26 2 04", ar: "أرشيف Reischig · شريحة 26 2 04" },
-    description: { en: "Spleen: Semi-thick section; embedded in Epon; mouse. One field from a catalogued slide in the Reischig archive.", ar: "طحال. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
-    facts: [
-      { en: "The spleen has white pulp and red pulp.", ar: "للطحال لب أبيض ولب أحمر." },
-      { en: "This is a single microscope field, so it shows only part of the preparation. See the source title for the exact preparation.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. راجع عنوان المصدر لمعرفة التحضير بالضبط." },
-    ],
-    references: [{ id: 'commons-spleen-26-2-04', title: "Spleen (26 2 04) Semi-thick section; embedded in Epon; mouse.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Spleen_(26_2_04)_Semi-thick_section;_embedded_in_Epon;_mouse.jpg", supports: 'Source photograph, author and licence for this slide.' }],
-  },
-  {
     id: 'staphylococcus-257-08', department: 'microbiology', kind: 'zoology-section',
     title: { en: "Staphylococcus \u00b7 Staphylococcus (grampositive bacterium)", ar: "المكورات العنقودية" },
     subtitle: { en: "Reischig archive \u00b7 slide 257 08", ar: "أرشيف Reischig · شريحة 257 08" },
@@ -10158,16 +10147,5 @@ export const specimens: ScientificSpecimen[] = [
       { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
     ],
     references: [{ id: "commons-alternaria-muriform-conidia", title: "Conidia of Alternaria under light microscope \u2013 400x.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Conidia_of_Alternaria_under_light_microscope_\u2013_400x.jpg", supports: 'Source photograph, author and licence for this slide.' }],
-  },
-  {
-    id: "fucus-conceptacle-cross-section-with-oogonia-and-antheridia", department: 'botany', kind: 'plant-section',
-    title: { en: "Fucus conceptacle cross section with oogonia and antheridia", ar: "مقطع عرضي في مخبأ الفيوكس مع أوجونات وأنثريديات" },
-    subtitle: { en: "Wikimedia Commons \u00b7 Internet Archive Book Images", ar: "ويكيميديا كومنز · Internet Archive Book Images" },
-    description: { en: "Fucus conceptacle cross section with oogonia and antheridia. One microscope field from a Wikimedia Commons photograph.", ar: "مقطع عرضي في مخبأ الفيوكس مع أوجونات وأنثريديات. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
-    facts: [
-      { en: "Plant anatomy is studied in thin sections where cell walls, vessels and cuticle can be told apart by shape and stain.", ar: "يُدرس تشريح النبات في مقاطع رقيقة تُميَّز فيها جدر الخلايا والأوعية والأدمة بالشكل والصبغة." },
-      { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
-    ],
-    references: [{ id: "commons-fucus-conceptacle-cross-section-with-oogonia-and-antheridia", title: "Analysis of development (1955) (18167047242).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Analysis_of_development_(1955)_(18167047242).jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
 ];

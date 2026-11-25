@@ -2372,16 +2372,6 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Human_peripheral_blood_smear,_May-Gr\u00fcnwald_stain.jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
-  'hyalomma-female-tick-dorsal-view': {
-    src: '/specimens/hyalomma-female-tick-dorsal-view.webp', title: "Hyalomma tick female dorsal.jpg", author: "Acarologiste", license: "CC BY-SA 4.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hyalomma_tick_female_dorsal.jpg",
-    adaptation: 'Downscaled to 1000 px wide; not cropped.',
-  },
-  'hyalomma-rufipes-ticks-female-and-male': {
-    src: '/specimens/hyalomma-rufipes-ticks-female-and-male.webp', title: "Hyalomma-rufipes-female-male.jpg", author: "Daktaridudu", license: "CC BY-SA 4.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hyalomma-rufipes-female-male.jpg",
-    adaptation: 'Downscaled to 1000 px wide; not cropped.',
-  },
   'freshwater-amphipod-hyalella-azteca-with-an-acanthocephalan-parasite': {
     src: '/specimens/freshwater-amphipod-hyalella-azteca-with-an-acanthocephalan-parasite.webp', title: "IMGP7610-Hyalella azteca with acanthocephalan in body cavity!.jpg", author: "Nemataslg", license: "CC BY-SA 4.0",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:IMGP7610-Hyalella_azteca_with_acanthocephalan_in_body_cavity!.jpg",
@@ -2412,19 +2402,9 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Geranium_dissectum_sl10.jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
-  'gynoecium-and-androecium-of-a-prickly-pear-flower-opuntia': {
-    src: '/specimens/gynoecium-and-androecium-of-a-prickly-pear-flower-opuntia.webp', title: "Gineceo y androceo en flor de nopal (Opuntia sp.).jpg", author: "Juan Carlos Fonseca Mata", license: "CC BY-SA 4.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gineceo_y_androceo_en_flor_de_nopal_(Opuntia_sp.).jpg",
-    adaptation: 'Downscaled to 1000 px wide; not cropped.',
-  },
   'grain-mite-glycyphagus-sp': {
     src: '/specimens/grain-mite-glycyphagus-sp.webp', title: "Glycyphagus-spp-mite.jpg", author: "Daktaridudu", license: "CC BY-SA 4.0",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Glycyphagus-spp-mite.jpg",
-    adaptation: 'Downscaled to 1000 px wide; not cropped.',
-  },
-  'tsetse-fly-glossina-adult-and-puparium': {
-    src: '/specimens/tsetse-fly-glossina-adult-and-puparium.webp', title: "Glossina adult puparium.jpg", author: "Acarologiste", license: "CC BY-SA 4.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Glossina_adult_puparium.jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
   'amaryllis-hippeastrum-pollen-on-a-stamen': {
@@ -2445,11 +2425,6 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
   'root-hairs-of-a-monocot-root': {
     src: '/specimens/root-hairs-of-a-monocot-root.webp', title: "IMG-b6ca6ae6158644399cb0c153d19c1aa4-V.jpg", author: "Babdou ahmed", license: "CC BY-SA 4.0",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:IMG-b6ca6ae6158644399cb0c153d19c1aa4-V.jpg",
-    adaptation: 'Downscaled to 1000 px wide; not cropped.',
-  },
-  'ideal-blood-smear-head-body-and-tail': {
-    src: '/specimens/ideal-blood-smear-head-body-and-tail.webp', title: "Ideal blood smear showing tongue shape having head, body and tail portions.jpg", author: "Ajay Kumar Chaurasiya", license: "CC BY-SA 4.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ideal_blood_smear_showing_tongue_shape_having_head,_body_and_tail_portions.jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
   'sputum-smear-with-pus-cells-quality-check': {

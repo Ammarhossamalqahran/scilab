@@ -5628,28 +5628,6 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-human-peripheral-blood-smear-may-grunwald-stain', title: "Human peripheral blood smear, May-Gr\u00fcnwald stain.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Human_peripheral_blood_smear,_May-Gr\u00fcnwald_stain.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'hyalomma-female-tick-dorsal-view', department: 'zoology', kind: 'zoology-section',
-    title: { en: "Hyalomma female tick, dorsal view", ar: "قرادة Hyalomma أنثى، منظر ظهري" },
-    subtitle: { en: "Wikimedia Commons \u00b7 Acarologiste", ar: "ويكيميديا كومنز · Acarologiste" },
-    description: { en: "Hyalomma female tick, dorsal view. One microscope field from a Wikimedia Commons photograph.", ar: "قرادة Hyalomma أنثى، منظر ظهري. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
-    facts: [
-      { en: "Animal tissues are read in section by comparing epithelium, muscle and connective tissue layers.", ar: "تُقرأ أنسجة الحيوان في المقاطع بمقارنة طبقات الظهارة والعضلات والنسيج الضام." },
-      { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
-    ],
-    references: [{ id: 'commons-hyalomma-female-tick-dorsal-view', title: "Hyalomma tick female dorsal.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Hyalomma_tick_female_dorsal.jpg", supports: 'Source photograph, author and licence for this slide.' }],
-  },
-  {
-    id: 'hyalomma-rufipes-ticks-female-and-male', department: 'zoology', kind: 'zoology-section',
-    title: { en: "Hyalomma rufipes ticks, female and male", ar: "قراد Hyalomma rufipes، أنثى وذكر" },
-    subtitle: { en: "Wikimedia Commons \u00b7 Daktaridudu", ar: "ويكيميديا كومنز · Daktaridudu" },
-    description: { en: "Hyalomma rufipes ticks, female and male. One microscope field from a Wikimedia Commons photograph.", ar: "قراد Hyalomma rufipes، أنثى وذكر. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
-    facts: [
-      { en: "Animal tissues are read in section by comparing epithelium, muscle and connective tissue layers.", ar: "تُقرأ أنسجة الحيوان في المقاطع بمقارنة طبقات الظهارة والعضلات والنسيج الضام." },
-      { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
-    ],
-    references: [{ id: 'commons-hyalomma-rufipes-ticks-female-and-male', title: "Hyalomma-rufipes-female-male.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Hyalomma-rufipes-female-male.jpg", supports: 'Source photograph, author and licence for this slide.' }],
-  },
-  {
     id: 'freshwater-amphipod-hyalella-azteca-with-an-acanthocephalan-parasite', department: 'zoology', kind: 'zoology-section',
     title: { en: "Freshwater amphipod Hyalella azteca with an acanthocephalan parasite", ar: "قشريات Hyalella azteca مع طفيلي شوكي الرأس" },
     subtitle: { en: "Wikimedia Commons \u00b7 Nemataslg", ar: "ويكيميديا كومنز · Nemataslg" },
@@ -5716,17 +5694,6 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-glandular-hairs-on-a-geranium-pedicel-geranium-dissectum', title: "Geranium dissectum sl10.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Geranium_dissectum_sl10.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'gynoecium-and-androecium-of-a-prickly-pear-flower-opuntia', department: 'botany', kind: 'plant-section',
-    title: { en: "Gynoecium and androecium of a prickly pear flower (Opuntia)", ar: "المتاع والأسدية في زهرة التين الشوكي (Opuntia)" },
-    subtitle: { en: "Wikimedia Commons \u00b7 Juan Carlos Fonseca Mata", ar: "ويكيميديا كومنز · Juan Carlos Fonseca Mata" },
-    description: { en: "Gynoecium and androecium of a prickly pear flower (Opuntia). One microscope field from a Wikimedia Commons photograph.", ar: "المتاع والأسدية في زهرة التين الشوكي (Opuntia). مجال مجهري واحد من صورة في ويكيميديا كومنز." },
-    facts: [
-      { en: "Plant anatomy is studied in thin sections where cell walls, vessels and cuticle can be told apart by shape and stain.", ar: "يُدرس تشريح النبات في مقاطع رقيقة تُميَّز فيها جدر الخلايا والأوعية والأدمة بالشكل والصبغة." },
-      { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
-    ],
-    references: [{ id: 'commons-gynoecium-and-androecium-of-a-prickly-pear-flower-opuntia', title: "Gineceo y androceo en flor de nopal (Opuntia sp.).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Gineceo_y_androceo_en_flor_de_nopal_(Opuntia_sp.).jpg", supports: 'Source photograph, author and licence for this slide.' }],
-  },
-  {
     id: 'grain-mite-glycyphagus-sp', department: 'zoology', kind: 'zoology-section',
     title: { en: "Grain mite (Glycyphagus sp.)", ar: "عثة الحبوب (Glycyphagus)" },
     subtitle: { en: "Wikimedia Commons \u00b7 Daktaridudu", ar: "ويكيميديا كومنز · Daktaridudu" },
@@ -5736,17 +5703,6 @@ export const specimens: ScientificSpecimen[] = [
       { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
     ],
     references: [{ id: 'commons-grain-mite-glycyphagus-sp', title: "Glycyphagus-spp-mite.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Glycyphagus-spp-mite.jpg", supports: 'Source photograph, author and licence for this slide.' }],
-  },
-  {
-    id: 'tsetse-fly-glossina-adult-and-puparium', department: 'zoology', kind: 'zoology-section',
-    title: { en: "Tsetse fly (Glossina) adult and puparium", ar: "ذبابة التسي تسي (Glossina) والعذراء" },
-    subtitle: { en: "Wikimedia Commons \u00b7 Acarologiste", ar: "ويكيميديا كومنز · Acarologiste" },
-    description: { en: "Tsetse fly (Glossina) adult and puparium. One microscope field from a Wikimedia Commons photograph.", ar: "ذبابة التسي تسي (Glossina) والعذراء. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
-    facts: [
-      { en: "Animal tissues are read in section by comparing epithelium, muscle and connective tissue layers.", ar: "تُقرأ أنسجة الحيوان في المقاطع بمقارنة طبقات الظهارة والعضلات والنسيج الضام." },
-      { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
-    ],
-    references: [{ id: 'commons-tsetse-fly-glossina-adult-and-puparium', title: "Glossina adult puparium.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Glossina_adult_puparium.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
     id: 'amaryllis-hippeastrum-pollen-on-a-stamen', department: 'botany', kind: 'plant-section',
@@ -5791,17 +5747,6 @@ export const specimens: ScientificSpecimen[] = [
       { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
     ],
     references: [{ id: 'commons-root-hairs-of-a-monocot-root', title: "IMG-b6ca6ae6158644399cb0c153d19c1aa4-V.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:IMG-b6ca6ae6158644399cb0c153d19c1aa4-V.jpg", supports: 'Source photograph, author and licence for this slide.' }],
-  },
-  {
-    id: 'ideal-blood-smear-head-body-and-tail', department: 'hematology', kind: 'tissue-section',
-    title: { en: "Ideal blood smear: head, body and tail", ar: "لطاخة دم مثالية: الرأس والجسم والذيل" },
-    subtitle: { en: "Wikimedia Commons \u00b7 Ajay Kumar Chaurasiya", ar: "ويكيميديا كومنز · Ajay Kumar Chaurasiya" },
-    description: { en: "Ideal blood smear: head, body and tail. One microscope field from a Wikimedia Commons photograph.", ar: "لطاخة دم مثالية: الرأس والجسم والذيل. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
-    facts: [
-      { en: "Blood and marrow cells are identified by size, nuclear shape and cytoplasm colour on a stained smear.", ar: "تُعرف خلايا الدم والنخاع بالحجم وشكل النواة ولون السيتوبلازم على لطاخة مصبوغة." },
-      { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
-    ],
-    references: [{ id: 'commons-ideal-blood-smear-head-body-and-tail', title: "Ideal blood smear showing tongue shape having head, body and tail portions.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Ideal_blood_smear_showing_tongue_shape_having_head,_body_and_tail_portions.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
     id: 'sputum-smear-with-pus-cells-quality-check', department: 'microbiology', kind: 'zoology-section',

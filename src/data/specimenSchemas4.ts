@@ -24,12 +24,6 @@ const make = (specimenId: string, category: ScientificDiagram['category'], title
 };
 
 export const specimenSchemas4: ScientificDiagram[] = [
-  make("hyalomma-female-tick-dorsal-view", "anatomy", { en: "Hyalomma tick, dorsal view", ar: "قراد هيالوما، منظر ظهري" }, { en: "Hyalomma tick", ar: "قراد هيالوما" }, { en: "Hard tick with a shield on its back and eight legs.", ar: "قراد صلب بدرع على الظهر وثماني أرجل." }, [
-    pin("capitulum", "Capitulum (mouthparts)", "الرأس الكاذب", "Holds the piercing mouthparts used to feed on blood.", "يحمل أجزاء الفم الثاقبة للتغذي على الدم.", 50, 12),
-    pin("scutum", "Scutum", "الدرع الظهري", "Hard plate behind the mouthparts.", "صفيحة صلبة خلف أجزاء الفم.", 50, 27),
-    pin("idiosoma", "Idiosoma (body)", "جسم القرادة", "Main body that swells when the tick feeds.", "الجسم الرئيسي ينتفخ عند التغذية.", 50, 52),
-    pin("leg", "Leg", "رجل", "Four pairs of legs, a sign of arachnids.", "أربعة أزواج من الأرجل، من صفات العنكبوتيات.", 85, 25),
-  ]),
   make("cat-fur-mite-cheyletiella-parasitivorax", "anatomy", { en: "Cat fur mite, Cheyletiella", ar: "عث فرو القطط شيليتيلا" }, { en: "Fur mite", ar: "عثة الفرو" }, { en: "Mite with large hooked palps for gripping the host.", ar: "عثة بملامس كبيرة معقوفة للتشبث بالعائل." }, [
     pin("palps", "Hooked palps", "الملامس المعقوفة", "Large claw-like mouth appendages.", "زوائد فمية كبيرة تشبه المخالب.", 35, 12),
     pin("body", "Body", "الجسم", "Oval body without a hard shield.", "جسم بيضاوي بلا درع صلب.", 50, 50),
@@ -39,11 +33,6 @@ export const specimenSchemas4: ScientificDiagram[] = [
     pin("mouthparts", "Mouthparts", "أجزاء الفم", "Pierce skin to feed on blood.", "تثقب الجلد للتغذي على الدم.", 50, 17),
     pin("body", "Body", "الجسم", "Red because of the blood meal.", "أحمر بسبب وجبة الدم.", 50, 70),
     pin("leg", "Leg", "رجل", "Long walking leg.", "رجل مشي طويلة.", 82, 25),
-  ]),
-  make("tsetse-fly-glossina-adult-and-puparium", "anatomy", { en: "Tsetse fly and puparium", ar: "ذبابة التسي تسي والشرنقة" }, { en: "Tsetse fly", ar: "ذبابة التسي تسي" }, { en: "Adult fly next to the dark puparium case.", ar: "ذبابة بالغة بجانب غلاف الشرنقة الداكن." }, [
-    pin("eye", "Compound eye", "العين المركبة", "Large eye for detecting movement.", "عين كبيرة لكشف الحركة.", 55, 10),
-    pin("wing", "Wing", "الجناح", "Folded over the abdomen at rest.", "مطوي فوق البطن أثناء الراحة.", 22, 50),
-    pin("puparium", "Puparium", "الشرنقة", "Hardened case in which the pupa develops.", "غلاف متصلب تنمو داخله العذراء.", 85, 35),
   ]),
   make("firebrat-thermobia-domestica-whole-mount", "anatomy", { en: "Firebrat, whole mount", ar: "سمكة الفضة (فايربرات)، تحضير كامل" }, { en: "Firebrat", ar: "فايربرات" }, { en: "Wingless insect covered with scales and tail filaments.", ar: "حشرة بلا أجنحة مغطاة بحراشف وخيوط ذيلية." }, [
     pin("body", "Scaled body", "الجسم المحرشف", "Segmented body covered in scales.", "جسم مقسم مغطى بالحراشف.", 50, 40),

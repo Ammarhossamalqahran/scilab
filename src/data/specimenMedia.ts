@@ -4242,4 +4242,194 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Chironomidae_larvae.jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
+  "cat-cerebellar-cortex-sagittal-section": {
+    src: '/specimens/cat-cerebellar-cortex-sagittal-section.webp', title: "\u041c\u043e\u0437\u0436\u0435\u0447\u043a\u043e\u0432\u0430\u044f \u043a\u043e\u0440\u0430 \u043a\u043e\u0448\u043a\u0438. \u041e\u043a\u0440\u0430\u0441\u043a\u0430 \u0433\u0435\u043c\u0430\u0442\u043e\u043a\u0441\u0438\u043b\u0438\u043d-\u044d\u043e\u0437\u0438\u043d. \u0423\u0432\u0435\u043b\u0438\u0447\u0435\u043d\u0438\u0435 x100.jpg", author: "Polina DTsareva", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:\u041c\u043e\u0437\u0436\u0435\u0447\u043a\u043e\u0432\u0430\u044f_\u043a\u043e\u0440\u0430_\u043a\u043e\u0448\u043a\u0438._\u041e\u043a\u0440\u0430\u0441\u043a\u0430_\u0433\u0435\u043c\u0430\u0442\u043e\u043a\u0441\u0438\u043b\u0438\u043d-\u044d\u043e\u0437\u0438\u043d._\u0423\u0432\u0435\u043b\u0438\u0447\u0435\u043d\u0438\u0435_x100.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "ostrich-secondary-bronchus-van-gieson-stain": {
+    src: '/specimens/ostrich-secondary-bronchus-van-gieson-stain.webp', title: "Bronquio secundario de avestruz.JPG", author: "Lycaon.cl", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bronquio_secundario_de_avestruz.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "feline-hair-follicle-40x": {
+    src: '/specimens/feline-hair-follicle-40x.webp', title: "Hair follicle of feline - Microscopic view 1.jpg", author: "Juan Carlos Fonseca Mata", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hair_follicle_of_feline_-_Microscopic_view_1.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "scalp-hair-follicle-transverse-section-400x": {
+    src: '/specimens/scalp-hair-follicle-transverse-section-400x.webp', title: "Pilosus folicle transv 400.JPG", author: "Gan\u00edmedes", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pilosus_folicle_transv_400.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "dog-cerebellum-purkinje-cells": {
+    src: '/specimens/dog-cerebellum-purkinje-cells.webp', title: "Neurons (Purkinje cells).jpg", author: "Lennart Rikk", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Neurons_(Purkinje_cells).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "olfactory-epithelium-1-5-micron-section": {
+    src: '/specimens/olfactory-epithelium-1-5-micron-section.webp', title: "Olfactory Epithelium Thin Section 1.5 microns H & E Stain Ward's 2.jpg", author: "Iceclanl", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Olfactory_Epithelium_Thin_Section_1.5_microns_H_&_E_Stain_Ward's_2.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "adenohypophysis-anterior-pituitary-h-e": {
+    src: '/specimens/adenohypophysis-anterior-pituitary-h-e.webp', title: "Adenohypof\u00fdza HE.jpg", author: "Dr\u017eiak", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Adenohypof\u00fdza_HE.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "human-pineal-gland-phase-contrast-200x": {
+    src: '/specimens/human-pineal-gland-phase-contrast-200x.webp', title: "Older Human Pituitary Gland by Phase Contrast (40442211443).jpg", author: "Berkshire Community College Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Older_Human_Pituitary_Gland_by_Phase_Contrast_(40442211443).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "thyroid-and-parathyroid-glands": {
+    src: '/specimens/thyroid-and-parathyroid-glands.webp', title: "Thyroid and parathyroid glands histology.jpg", author: "Netha Hussain", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Thyroid_and_parathyroid_glands_histology.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "human-pineal-gland-with-brain-sand-40x": {
+    src: '/specimens/human-pineal-gland-with-brain-sand-40x.webp', title: "Brain Sand in Older Human Pineal Gland (33527661718).jpg", author: "Berkshire Community College Bioscience Image Library", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Brain_Sand_in_Older_Human_Pineal_Gland_(33527661718).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "human-appendix-low-power-h-e": {
+    src: '/specimens/human-appendix-low-power-h-e.webp', title: "Appndix histology.jpg", author: "Netha Hussain", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Appndix_histology.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "elastic-cartilage-400x": {
+    src: '/specimens/elastic-cartilage-400x.webp', title: "Cart elastico 400.JPG", author: "Gan\u00edmedes", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cart_elastico_400.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "elastic-cartilage-fibres-400x": {
+    src: '/specimens/elastic-cartilage-fibres-400x.webp', title: "Elast cart fibers.JPG", author: "Gan\u00edmedes", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Elast_cart_fibers.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "fibrocartilage": {
+    src: '/specimens/fibrocartilage.webp', title: "Fibrous catilage.jpg", author: "Netha Hussain", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Fibrous_catilage.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "neonatal-human-dermal-fibroblasts-calcein-am": {
+    src: '/specimens/neonatal-human-dermal-fibroblasts-calcein-am.webp', title: "Neonatal Human Dermal Fibroblasts.jpg", author: "RobertsBiology", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Neonatal_Human_Dermal_Fibroblasts.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "onion-epidermal-cells": {
+    src: '/specimens/onion-epidermal-cells.webp', title: "Onion cell.jpg", author: "Farhan Sazid", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Onion_cell.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "red-onion-cells": {
+    src: '/specimens/red-onion-cells.webp', title: "Red onion cells (microscope observation).jpg", author: "Edoardo Simon", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Red_onion_cells_(microscope_observation).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "reticulocyte-in-a-blood-smear-4000x": {
+    src: '/specimens/reticulocyte-in-a-blood-smear-4000x.webp', title: "Reticulocyte in PBS.jpg", author: "Ajay Kumar Chaurasiya", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Reticulocyte_in_PBS.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "rainbow-trout-blood-smear": {
+    src: '/specimens/rainbow-trout-blood-smear.webp', title: "A blood smear of rainbow trout.jpg", author: "Bobjgalindo", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:A_blood_smear_of_rainbow_trout.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "lymphocyte-among-red-cells-wright-stain": {
+    src: '/specimens/lymphocyte-among-red-cells-wright-stain.webp', title: "Blood-lymphocyte1.jpg", author: "Echinaceapallida", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Blood-lymphocyte1.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "mouse-blood-smear-for-the-leukocyte-count": {
+    src: '/specimens/mouse-blood-smear-for-the-leukocyte-count.webp', title: "Blood Smear.jpg", author: "\u0410\u043d\u0430\u0441\u0442\u0430\u0441\u0456\u044f \u0413\u0440\u0443\u0449\u0435\u043d\u043a\u043e", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Blood_Smear.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "lymphocytes-in-a-blood-smear": {
+    src: '/specimens/lymphocytes-in-a-blood-smear.webp', title: "Lymphocytosis.JPG", author: "Bobjgalindo", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Lymphocytosis.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "two-basophils-in-a-blood-smear": {
+    src: '/specimens/two-basophils-in-a-blood-smear.webp', title: "\u0411\u0430\u0437\u043e\u0444\u0456\u043b\u0438.jpg", author: "Makysm", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:\u0411\u0430\u0437\u043e\u0444\u0456\u043b\u0438.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "monocytes-in-a-blood-smear": {
+    src: '/specimens/monocytes-in-a-blood-smear.webp', title: "Monocytes.jpg", author: "toryaniknst", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Monocytes.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "turtle-red-blood-cells": {
+    src: '/specimens/turtle-red-blood-cells.webp', title: "A blood smear showing red blood cells of turtle.jpg", author: "Bobjgalindo", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:A_blood_smear_showing_red_blood_cells_of_turtle.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "howell-jolly-bodies-in-normoblasts": {
+    src: '/specimens/howell-jolly-bodies-in-normoblasts.webp', title: "Howell\u2013Jolly bodies.jpg", author: "Makysm", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Howell\u2013Jolly_bodies.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "normoblasts-nucleated-red-cells": {
+    src: '/specimens/normoblasts-nucleated-red-cells.webp', title: "Normoblast.jpg", author: "Prof. Osaro Erhabor", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Normoblast.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "nucleated-red-cells-smear": {
+    src: '/specimens/nucleated-red-cells-smear.webp', title: "Nucleated Red Cells.jpg", author: "Prof. Osaro Erhabor", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Nucleated_Red_Cells.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "nucleated-red-cell-with-cabot-rings-may-grunwald-stain-400x": {
+    src: '/specimens/nucleated-red-cell-with-cabot-rings-may-grunwald-stain-400x.webp', title: "Nucleated red blood cell with Cabot rings and basophilic granules.jpg", author: "Makysm", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Nucleated_red_blood_cell_with_Cabot_rings_and_basophilic_granules.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "howell-jolly-body-in-an-erythrocyte": {
+    src: '/specimens/howell-jolly-body-in-an-erythrocyte.webp', title: "Howell-Jolly body.png", author: "Paulo Henrique Orlandi Mourao and Mikael H\u00e4ggstr\u00f6m", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Howell-Jolly_body.png",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "bacterial-colony-and-fungus": {
+    src: '/specimens/bacterial-colony-and-fungus.webp', title: "Bacterial colony and fungus under the microscope 01.jpg", author: "Korinna", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bacterial_colony_and_fungus_under_the_microscope_01.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "bacterial-colonies-under-the-microscope": {
+    src: '/specimens/bacterial-colonies-under-the-microscope.webp', title: "Bacterial colony under the microscope 06.jpg", author: "Korinna", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bacterial_colony_under_the_microscope_06.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "helicobacter-pylori-in-stomach-mucosa-modified-giemsa-400x": {
+    src: '/specimens/helicobacter-pylori-in-stomach-mucosa-modified-giemsa-400x.webp', title: "400x GiemsaC stomach Hp.jpg", author: "Alexquaas", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:400x_GiemsaC_stomach_Hp.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "candida-albicans-light-microscope": {
+    src: '/specimens/candida-albicans-light-microscope.webp', title: "Candida albicans (optic microscope).jpg", author: "David Arqueas", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Candida_albicans_(optic_microscope).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "fusarium-microconidia-and-macroconidia": {
+    src: '/specimens/fusarium-microconidia-and-macroconidia.webp', title: "Microconidia and Macroconidia of the fungus Fusarium sp.jpg", author: "Tashkoskip", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Microconidia_and_Macroconidia_of_the_fungus_Fusarium_sp.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "mucor-mould": {
+    src: '/specimens/mucor-mould.webp', title: "\u041c\u0443\u043a\u043e\u0440.jpg", author: "\u0415\u043b\u0438\u0437\u0430\u0432\u0435\u0442\u0430 \u041a\u0440\u0438\u0432\u043e\u0447\u043a\u0438\u043d\u0430", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:\u041c\u0443\u043a\u043e\u0440.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "alternaria-alternata-conidia-and-hyphae": {
+    src: '/specimens/alternaria-alternata-conidia-and-hyphae.webp', title: "Alternaria alternata.jpg", author: "Yulianna.x", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Alternaria_alternata.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "alternaria-muriform-conidia": {
+    src: '/specimens/alternaria-muriform-conidia.webp', title: "Conidia of Alternaria under light microscope \u2013 400x.jpg", author: "Arpitoon", license: "CC0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Conidia_of_Alternaria_under_light_microscope_\u2013_400x.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
 };

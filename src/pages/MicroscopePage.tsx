@@ -75,6 +75,7 @@ export function MicroscopePage() {
   const [light, setLight] = useState(62);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [showReferences, setShowReferences] = useState(false);
+  const [showKeys, setShowKeys] = useState(false);
   const [sampleQuery, setSampleQuery] = useState('');
   const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [favoriteIds, setFavoriteIds] = useState<string[]>(readFavorites);
@@ -86,6 +87,35 @@ export function MicroscopePage() {
   const activeObjective = objectives.find((objective) => objective.value === magnification)!;
   const challengeHidden = challengeSpecimenId !== null && !challengeRevealed;
   const resetView = useCallback(() => setPan({ x: 0, y: 0 }), []);
+
+
+  // Keyboard shortcuts (ignored while typing in a field or when a dialog is open).
+  useEffect(() => {
+    const clamp = (value: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, value));
+    const onKey = (event: KeyboardEvent) => {
+      if (event.ctrlKey || event.metaKey || event.altKey) return;
+      const target = event.target as HTMLElement | null;
+      if (target && (target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName))) return;
+      if (showReferences) return;
+      const order: (4 | 10 | 40 | 100)[] = [4, 10, 40, 100];
+      const key = event.key;
+      if (key === '+' || key === '=') setMagnification((m) => order[Math.min(order.length - 1, order.indexOf(m) + 1)]);
+      else if (key === '-' || key === '_') setMagnification((m) => order[Math.max(0, order.indexOf(m) - 1)]);
+      else if (key === ']') setCoarseFocus((v) => clamp(v + 5, 0, 100));
+      else if (key === '[') setCoarseFocus((v) => clamp(v - 5, 0, 100));
+      else if (key === '.') setFineFocus((v) => clamp(v + 2, 0, 100));
+      else if (key === ',') setFineFocus((v) => clamp(v - 2, 0, 100));
+      else if (key === 'l' || key === 'L') setLight((v) => clamp(v + 5, 20, 100));
+      else if (key === 'k' || key === 'K') setLight((v) => clamp(v - 5, 20, 100));
+      else if (key === '0') { setMagnification(4); setPan({ x: 0, y: 0 }); }
+      else if (key === '?') setShowKeys((v) => !v);
+      else if (key === 'Escape') setShowKeys(false);
+      else return;
+      event.preventDefault();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [showReferences]);
 
   const filteredSpecimens = useMemo(() => {
     const query = sampleQuery.trim().toLocaleLowerCase(lang === 'ar' ? 'ar' : 'en');
@@ -152,6 +182,7 @@ export function MicroscopePage() {
           <p className="page-intro">{t('microscopeDescription')}</p>
         </div>
         <div className="module-head-actions">
+          <button type="button" className="button button-outline keys-trigger" onClick={() => setShowKeys((v) => !v)} aria-expanded={showKeys}>⌨ {lang === 'ar' ? 'اختصارات' : 'Shortcuts'}</button>
           {!challengeHidden && <ShareButton path={`/microscope?slide=${specimen.id}`} title={`${specimen.title[locale]} | SciLab`} />}
           {!challengeHidden && <button type="button" className="button button-outline source-trigger" onClick={() => setShowReferences(true)}><ReferenceIcon />{t('sourcesLabel')}</button>}
           {!challengeSpecimenId && <button type="button" className="button button-outline challenge-trigger" onClick={startChallenge}>{t('randomChallenge')}</button>}
@@ -160,6 +191,21 @@ export function MicroscopePage() {
           {challengeSpecimenId && challengeRevealed && <button type="button" className="button button-outline challenge-trigger" onClick={endChallenge}>{t('endChallenge')}</button>}
         </div>
       </div>
+
+      {showKeys && (
+        <div className="keys-panel" role="region" aria-label={lang === 'ar' ? 'اختصارات الكيبورد' : 'Keyboard shortcuts'}>
+          <b>{lang === 'ar' ? 'اختصارات الكيبورد' : 'Keyboard shortcuts'}</b>
+          <ul>
+            <li><kbd>+</kbd> <kbd>-</kbd> <span>{lang === 'ar' ? 'العدسة أقوى / أضعف' : 'Objective stronger / weaker'}</span></li>
+            <li><kbd>[</kbd> <kbd>]</kbd> <span>{lang === 'ar' ? 'بؤرة خشنة' : 'Coarse focus'}</span></li>
+            <li><kbd>,</kbd> <kbd>.</kbd> <span>{lang === 'ar' ? 'بؤرة دقيقة' : 'Fine focus'}</span></li>
+            <li><kbd>K</kbd> <kbd>L</kbd> <span>{lang === 'ar' ? 'إضاءة أقل / أكثر' : 'Light dimmer / brighter'}</span></li>
+            <li><kbd>←</kbd><kbd>↑</kbd><kbd>→</kbd><kbd>↓</kbd> <span>{lang === 'ar' ? 'تحريك الشريحة (بعد الضغط عليها)' : 'Move the slide (click it first)'}</span></li>
+            <li><kbd>0</kbd> <span>{lang === 'ar' ? 'رجوع لـ 4× وتوسيط' : 'Back to 4x, centred'}</span></li>
+            <li><kbd>?</kbd> <span>{lang === 'ar' ? 'إظهار / إخفاء القايمة' : 'Show / hide this list'}</span></li>
+          </ul>
+        </div>
+      )}
 
       <div className={`microscope-workspace${challengeHidden ? ' is-challenge' : ''}`}>
         <section className="scope-view-panel" aria-label={lang === 'ar' ? 'منظر المجهر' : 'Microscope view'}>

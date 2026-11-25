@@ -217,5 +217,5 @@ export function MicroscopeCanvas({ imageSrc, magnification, coarseFocus, fineFoc
   }
 
   if (unsupported) return <p className="canvas-fallback" role="alert">This browser cannot draw the microscope view. Please update your browser or try another one. / متصفحك لا يستطيع عرض المجهر. حدّث المتصفح أو جرّب متصفحاً آخر.</p>;
-  return <canvas ref={canvasRef} className={`microscope-canvas${dragging ? ' is-dragging' : ''}`} onPointerDown={startDrag} onPointerMove={drag} onPointerUp={endDrag} onPointerCancel={endDrag} role="img" aria-label={ariaLabel} />;
+  return <canvas ref={canvasRef} className={`microscope-canvas${dragging ? ' is-dragging' : ''}${imageStatus === 'loading' ? ' is-loading' : ''}`} onPointerDown={startDrag} onPointerMove={drag} onPointerUp={endDrag} onPointerCancel={endDrag} role="img" aria-label={ariaLabel} />;
 }

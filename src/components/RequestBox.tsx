@@ -1,3 +1,4 @@
+import { secondsToWait, markSent } from '../lib/formGuard';
 import { FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
@@ -40,10 +41,11 @@ export function RequestBox() {
   const isArabic = locale === 'ar';
   const [text, setText] = useState('');
   const [kind, setKind] = useState('specimen');
-  const [state, setState] = useState<'idle' | 'sending' | 'sent' | 'error' | 'found'>('idle');
+  const [state, setState] = useState<'idle' | 'sending' | 'sent' | 'error' | 'found' | 'wait'>('idle');
   const navigate = useNavigate();
   const [hits, setHits] = useState<Hit[]>([]);
   const ready = !ACCESS_KEY.startsWith('REPLACE');
+  const [trap, setTrap] = useState('');
 
   async function submit(e: FormEvent) {
     e.preventDefault();
@@ -55,6 +57,9 @@ export function RequestBox() {
       navigate(found[0].to);
       return;
     }
+    if (trap) { setState('sent'); setText(''); return; }
+    if (state === 'sending') return;
+    if (secondsToWait() > 0) { setState('wait'); return; }
     setState('sending');
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
@@ -64,7 +69,7 @@ export function RequestBox() {
       });
       const data = await res.json();
       setState(data.success ? 'sent' : 'error');
-      if (data.success) setText('');
+      if (data.success) { setText(''); markSent(); }
     } catch {
       setState('error');
     }
@@ -81,6 +86,7 @@ export function RequestBox() {
           <option value="schema">{isArabic ? 'رسمة schema' : 'Schema drawing'}</option>
         </select>
         <textarea value={text} onChange={(e) => setText(e.target.value)} maxLength={500} rows={3} required placeholder={isArabic ? 'مثال: قطاع في الكبد' : 'e.g. Liver section'} />
+        <input type="text" name="website" value={trap} onChange={(e) => setTrap(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }} />
         <button type="submit" disabled={state === 'sending' || !ready}>{isArabic ? 'ابعت الطلب' : 'Send request'}</button>
         {!ready && <small>{isArabic ? 'الخانة لسه متفعلتش.' : 'The request box is not active yet.'}</small>}
         {state === 'found' && (
@@ -90,6 +96,7 @@ export function RequestBox() {
           </div>
         )}
         {state === 'sent' && <small>{isArabic ? 'شكراً لمساهمتك في تطوير الموقع! وصل طلبك وهنراجعه ونضيفه لو مناسب.' : 'Thank you for helping improve the website! Your request was received and we will review it.'}</small>}
+        {state === 'wait' && <small role="status">{isArabic ? 'استنى نص دقيقة بين كل رسالة والتانية.' : 'Please wait 30 seconds between messages.'}</small>}
         {state === 'error' && <small>{isArabic ? 'حصل خطأ، جرّب تاني.' : 'Something went wrong, try again.'}</small>}
       </form>
     </section>

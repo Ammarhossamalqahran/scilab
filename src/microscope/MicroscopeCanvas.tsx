@@ -11,10 +11,11 @@ type Props = {
   placeholders: { empty: string; loading: string; failed: string };
   onPan: (pan: { x: number; y: number }) => void;
   onZoom?: (direction: 1 | -1) => void;
+  onZoomReset?: () => void;
   ariaLabel: string;
 };
 
-export function MicroscopeCanvas({ imageSrc, magnification, coarseFocus, fineFocus, light, stainFilter = 'none', pan, placeholders, onPan, onZoom, ariaLabel }: Props) {
+export function MicroscopeCanvas({ imageSrc, magnification, coarseFocus, fineFocus, light, stainFilter = 'none', pan, placeholders, onPan, onZoom, onZoomReset, ariaLabel }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
   const scheduleRef = useRef<() => void>(() => {});
@@ -23,6 +24,11 @@ export function MicroscopeCanvas({ imageSrc, magnification, coarseFocus, fineFoc
   const [unsupported, setUnsupported] = useState(false);
   const pointersRef = useRef(new Map<number, { x: number; y: number }>());
   const pinchRef = useRef<number | null>(null);
+  const tapRef = useRef<{ time: number; x: number; y: number } | null>(null);
+  const downRef = useRef<{ x: number; y: number } | null>(null);
+  const gestureRef = useRef({ onZoom, onZoomReset, magnification });
+  gestureRef.current = { onZoom, onZoomReset, magnification };
+  const lastWheelRef = useRef(0);
   const [imageVersion, setImageVersion] = useState(0);
   const [imageStatus, setImageStatus] = useState<'empty' | 'loading' | 'loaded' | 'failed'>('empty');
   const propsRef = useRef({ imageSrc, magnification, coarseFocus, fineFocus, light, stainFilter, pan, placeholders, imageStatus });
@@ -130,6 +136,21 @@ export function MicroscopeCanvas({ imageSrc, magnification, coarseFocus, fineFoc
     scheduleRef.current();
   }, [imageVersion, imageStatus, imageSrc, magnification, coarseFocus, fineFocus, light, stainFilter, pan.x, pan.y, placeholders]);
 
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return undefined;
+    // Mouse wheel and trackpad: one objective step per gesture, not per tick.
+    const onWheel = (event: WheelEvent) => {
+      event.preventDefault();
+      const now = performance.now();
+      if (now - lastWheelRef.current < 280 || Math.abs(event.deltaY) < 4) return;
+      lastWheelRef.current = now;
+      gestureRef.current.onZoom?.(event.deltaY < 0 ? 1 : -1);
+    };
+    canvas.addEventListener('wheel', onWheel, { passive: false });
+    return () => canvas.removeEventListener('wheel', onWheel);
+  }, [unsupported]);
+
   function clampPan(next: { x: number; y: number }) {
     const image = imageRef.current;
     const parent = canvasRef.current?.parentElement;
@@ -148,6 +169,7 @@ export function MicroscopeCanvas({ imageSrc, magnification, coarseFocus, fineFoc
     if (event.pointerType === 'mouse' && event.button !== 0) return;
     event.currentTarget.setPointerCapture(event.pointerId);
     pointersRef.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    downRef.current = { x: event.clientX, y: event.clientY };
     if (pointersRef.current.size === 2) { pinchRef.current = pinchDistance(); dragRef.current = null; return; }
     dragRef.current = { x: event.clientX, y: event.clientY, panX: pan.x, panY: pan.y };
     setDragging(true);
@@ -167,6 +189,18 @@ export function MicroscopeCanvas({ imageSrc, magnification, coarseFocus, fineFoc
     onPan(clampPan({ x: dragRef.current.panX + event.clientX - dragRef.current.x, y: dragRef.current.panY + event.clientY - dragRef.current.y }));
   }
   function endDrag(event: PointerEvent<HTMLCanvasElement>) {
+    // Double tap or double click: one objective stronger, back to the lowest power after the strongest.
+    if (event.type === 'pointerup' && pointersRef.current.size === 1 && downRef.current && Math.hypot(event.clientX - downRef.current.x, event.clientY - downRef.current.y) < 8) {
+      const now = performance.now();
+      const last = tapRef.current;
+      if (last && now - last.time < 320 && Math.hypot(event.clientX - last.x, event.clientY - last.y) < 30) {
+        tapRef.current = null;
+        const g = gestureRef.current;
+        if (g.magnification === 100) g.onZoomReset?.(); else g.onZoom?.(1);
+      } else {
+        tapRef.current = { time: now, x: event.clientX, y: event.clientY };
+      }
+    }
     pointersRef.current.delete(event.pointerId);
     pinchRef.current = null;
     if (pointersRef.current.size === 1) {

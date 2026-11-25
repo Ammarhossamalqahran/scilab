@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { ShareButton } from '../components/ShareButton';
 import { Link, useSearchParams } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { ReferenceDialog } from '../components/ReferenceDialog';
@@ -151,6 +152,7 @@ export function MicroscopePage() {
           <p className="page-intro">{t('microscopeDescription')}</p>
         </div>
         <div className="module-head-actions">
+          {!challengeHidden && <ShareButton path={`/microscope?slide=${specimen.id}`} title={`${specimen.title[locale]} | SciLab`} />}
           {!challengeHidden && <button type="button" className="button button-outline source-trigger" onClick={() => setShowReferences(true)}><ReferenceIcon />{t('sourcesLabel')}</button>}
           {!challengeSpecimenId && <button type="button" className="button button-outline challenge-trigger" onClick={startChallenge}>{t('randomChallenge')}</button>}
           {challengeHidden && <button type="button" className="button button-primary challenge-trigger" onClick={() => setChallengeRevealed(true)}>{t('revealSlide')}</button>}

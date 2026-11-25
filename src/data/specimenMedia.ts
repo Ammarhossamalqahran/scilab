@@ -4632,4 +4632,219 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Psoroptes_cuniculi.JPG",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
+  "pteromonas": {
+    src: '/specimens/pteromonas.webp', title: "Pteromonas sp.jpg", author: "Panek", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pteromonas_sp.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "rhoeo-discolor-plasmolysis": {
+    src: '/specimens/rhoeo-discolor-plasmolysis.webp', title: "Rhoeo Discolor - Plasmolysis.jpg", author: "Mnolf", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Rhoeo_Discolor_-_Plasmolysis.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "philodina-rotifer-40x": {
+    src: '/specimens/philodina-rotifer-40x.webp', title: "Rotifera (Genus\u02d0 Philodina) - 40X view.jpg", author: "Juan Carlos Fonseca Mata", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Rotifera_(Genus\u02d0_Philodina)_-_40X_view.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "scalp-cross-section-with-hair-follicle": {
+    src: '/specimens/scalp-cross-section-with-hair-follicle.webp', title: "Scalp cross section (negro).jpg", author: "Lazar.zenit", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Scalp_cross_section_(negro).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "pig-liver-section-100x": {
+    src: '/specimens/pig-liver-section-100x.webp', title: "Sea maksa sektsioon (100x, mikroskoop).jpg", author: "Isabellake55", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Sea_maksa_sektsioon_(100x,_mikroskoop).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "pig-liver-section-40x": {
+    src: '/specimens/pig-liver-section-40x.webp', title: "Sea maksa sektsioon (40x, mikroskoop).jpg", author: "Isabellake55", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Sea_maksa_sektsioon_(40x,_mikroskoop).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "pig-liver-section-400x": {
+    src: '/specimens/pig-liver-section-400x.webp', title: "Sea maksa sektsioon (mikroskoobiga 400x).jpg", author: "Isabellake55", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Sea_maksa_sektsioon_(mikroskoobiga_400x).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "leech-middle-section": {
+    src: '/specimens/leech-middle-section.webp', title: "Seccion media hirudineo.jpg", author: "Gan\u00edmedes", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Seccion_media_hirudineo.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "snowella-cyanobacteria-colony": {
+    src: '/specimens/snowella-cyanobacteria-colony.webp', title: "Snowella.jpg", author: "Panek", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Snowella.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "stained-sperm-smear": {
+    src: '/specimens/stained-sperm-smear.webp', title: "Sperm stained.JPG", author: "Bobjgalindo", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Sperm_stained.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "spirogyra-filaments": {
+    src: '/specimens/spirogyra-filaments.webp', title: "Spirogyra sp.jpg", author: "\u73ea\u7d20\u9ce5\uff08Keisotyo, http://www.aikis.or.jp/~keisotyo/\uff09, retouched by NEON (ja:\u5229\u7528\u8005:NEON)", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Spirogyra_sp.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "taenia-egg": {
+    src: '/specimens/taenia-egg.webp', title: "Taenia egg.JPG", author: "Joel Mills", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Taenia_egg.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "healthy-motor-nerve-400x": {
+    src: '/specimens/healthy-motor-nerve-400x.webp', title: "Terve mootori n\u00e4rvirakk (400x, mikroskoop).jpg", author: "Isabellake55", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Terve_mootori_n\u00e4rvirakk_(400x,_mikroskoop).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "healthy-motor-nerve-100x": {
+    src: '/specimens/healthy-motor-nerve-100x.webp', title: "Terve mootori n\u00e4rvirakk, (100x, mikroskoop).jpg", author: "Isabellake55", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Terve_mootori_n\u00e4rvirakk,_(100x,_mikroskoop).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "daphnia-water-fleas": {
+    src: '/specimens/daphnia-water-fleas.webp', title: "Thomas Bresson - Daphnies--5 (by).jpg", author: "Thomas Bresson", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Thomas_Bresson_-_Daphnies--5_(by).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "toxocara-canis-egg": {
+    src: '/specimens/toxocara-canis-egg.webp', title: "Toxocara canis.JPG", author: "Joel Mills", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Toxocara_canis.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "toxocara-cati-egg": {
+    src: '/specimens/toxocara-cati-egg.webp', title: "Toxocara cati 1.JPG", author: "Joel Mills", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Toxocara_cati_1.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "cylindrotheca-closterium-diatom": {
+    src: '/specimens/cylindrotheca-closterium-diatom.webp', title: "Vera veloso cylindrotheca closterium01 xxw 20070621115126 hc.jpg", author: "Vera Veloso (Instituto de Oceanografia, Faculdade Ci\u00eancias da Universidade de Lisboa)", license: "CC BY 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Vera_veloso_cylindrotheca_closterium01_xxw_20070621115126_hc.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "whipworm-egg": {
+    src: '/specimens/whipworm-egg.webp', title: "Whipworm egg.JPG", author: "Joel Mills", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Whipworm_egg.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "woronichinia-cyanobacteria": {
+    src: '/specimens/woronichinia-cyanobacteria.webp', title: "Woronichinia sp.jpg", author: "Panek", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Woronichinia_sp.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "hemiaulus-membranaceus-diatom-chain": {
+    src: '/specimens/hemiaulus-membranaceus-diatom-chain.webp', title: "Alexandra hemi memb a2 ps95 011 20m 20160216134328 hc.jpg", author: "Alexandra Kraberg (alexandra at planktonnet.awi.de)", license: "CC BY 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Alexandra_hemi_memb_a2_ps95_011_20m_20160216134328_hc.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "hemiaulus-membranaceus-diatom-cell": {
+    src: '/specimens/hemiaulus-membranaceus-diatom-cell.webp', title: "Alexandra hemiaulus membranacea ps95 022 axiovert 20151217125333 hc.jpg", author: "Alexandra Kraberg (alexandra at planktonnet.awi.de)", license: "CC BY 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Alexandra_hemiaulus_membranacea_ps95_022_axiovert_20151217125333_hc.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "climacodium-frauenfeldianum-diatom": {
+    src: '/specimens/climacodium-frauenfeldianum-diatom.webp', title: "Climacodium frauenfeldianum (ancien Hemiaulus membranaceus -1).jpg", author: "Claire Carr\u00e9, Juliette Fabre", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Climacodium_frauenfeldianum_(ancien_Hemiaulus_membranaceus_-1).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "daphnia-micrograph-200x": {
+    src: '/specimens/daphnia-micrograph-200x.webp', title: "Daphnia micrograph. Green x200.jpg", author: "Kamil Kulawik", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Daphnia_micrograph._Green_x200.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "daphnia-micrograph-40x": {
+    src: '/specimens/daphnia-micrograph-40x.webp', title: "Daphnia micrograph. Green x40.jpg", author: "Kamil Kulawik", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Daphnia_micrograph._Green_x40.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "daphnia-micrograph-red-stain-100x": {
+    src: '/specimens/daphnia-micrograph-red-stain-100x.webp', title: "Daphnia micrograph. Red x100.jpg", author: "Kamil Kulawik", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Daphnia_micrograph._Red_x100.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "lacrymaria-olor-with-extended-proboscis": {
+    src: '/specimens/lacrymaria-olor-with-extended-proboscis.webp', title: "Lacrymaria olor with extended proboscis-enhc.jpg", author: "Polypompholyx", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Lacrymaria_olor_with_extended_proboscis-enhc.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "licmophora-diatoms-1": {
+    src: '/specimens/licmophora-diatoms-1.webp', title: "Licmophora - Ryan Watson - 55350006.jpg", author: "Ryan Watson", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Licmophora_-_Ryan_Watson_-_55350006.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "licmophora-diatoms-2": {
+    src: '/specimens/licmophora-diatoms-2.webp', title: "Licmophora - Ryan Watson-55349991.jpg", author: "Ryan Watson", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Licmophora_-_Ryan_Watson-55349991.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "black-widow-abdomen-section": {
+    src: '/specimens/black-widow-abdomen-section.webp', title: "Light Micrograph L. Hesperus Abdomen.png", author: "Wendy Ouriel", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Light_Micrograph_L._Hesperus_Abdomen.png",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "metzgeriothallus-thallus": {
+    src: '/specimens/metzgeriothallus-thallus.webp', title: "Metzgeriothallus sharonae thallus.jpg", author: "Josep Mercadal, Susan Tremblay, Leonie Kraska, Martin A. Hutten, and Pau Formosa-Jordan", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Metzgeriothallus_sharonae_thallus.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "larva-whole-mount": {
+    src: '/specimens/larva-whole-mount.webp', title: "Microscopic enlargement of a larva caught in a spider's web, 1853, by Alois Auer.jpg", author: "Aloiz Auer", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Microscopic_enlargement_of_a_larva_caught_in_a_spider's_web,_1853,_by_Alois_Auer.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "artemia-salina-dark-field": {
+    src: '/specimens/artemia-salina-dark-field.webp', title: "Artemia salina campo oscuro.jpg", author: "Brandon Antonio Segura Torres & Priscilla Vieto Bonilla", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Artemia_salina_campo_oscuro.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "ascaris-female-section-200x": {
+    src: '/specimens/ascaris-female-section-200x.webp', title: "Ascaris female 200x section.jpg", author: "Massimo brizzi", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ascaris_female_200x_section.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "bloodworm": {
+    src: '/specimens/bloodworm.webp', title: "Bloodworm.jpg", author: "lamiot, from english wikipedia with : \"Photo by me, Jasper Nance. 4X lomo objective, 10X ocular. Taken with a Pentax K10D and a substage flash using a condenser stop for darkfield effect.\"", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bloodworm.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "borrelia-burgdorferi": {
+    src: '/specimens/borrelia-burgdorferi.webp', title: "Borrelia burgdorferi (CDC-PHIL -6631) lores.jpg", author: "CDC Public Health Image Library", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Borrelia_burgdorferi_(CDC-PHIL_-6631)_lores.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "ceriodaphnia-dubia-dark-field": {
+    src: '/specimens/ceriodaphnia-dubia-dark-field.webp', title: "Ceripdaphnia Dubia vista con campo oscuro.jpg", author: "Brandon Antonio Segura Torres & Priscilla Vieto Bonilla", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ceripdaphnia_Dubia_vista_con_campo_oscuro.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "copepod-dark-field": {
+    src: '/specimens/copepod-dark-field.webp', title: "Cop\u00e9podo campo oscuro.jpg", author: "Brandon Antonio Segura Torres & Priscilla Vieto Bonilla", license: "CC BY-SA 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cop\u00e9podo_campo_oscuro.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "chlorophytum-comosum-stolon-section": {
+    src: '/specimens/chlorophytum-comosum-stolon-section.webp', title: "Cut through Stolon of Chlorophytum comosum.jpg", author: "Simon A. Eugster", license: "CC BY-SA 3.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cut_through_Stolon_of_Chlorophytum_comosum.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "daphnia-magna-adult-female": {
+    src: '/specimens/daphnia-magna-adult-female.webp', title: "Daphnia magna-female adult.jpg", author: "Hajime Watanabe", license: "CC BY 2.5",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Daphnia_magna-female_adult.jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "vorticella-bell-animalcules-160x": {
+    src: '/specimens/vorticella-bell-animalcules-160x.webp', title: "Dunkelfeld - 160x - Glockentierchen (10837449146).jpg", author: "Picturepest", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Dunkelfeld_-_160x_-_Glockentierchen_(10837449146).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "hypotrich-ciliate-and-vorticella": {
+    src: '/specimens/hypotrich-ciliate-and-vorticella.webp', title: "Dunkelfeld - 160x - Hypotricher Ciliat & Glockentierchen (10837380475).jpg", author: "Picturepest", license: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Dunkelfeld_-_160x_-_Hypotricher_Ciliat_&_Glockentierchen_(10837380475).jpg",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
+  "fly-wing-dark-field": {
+    src: '/specimens/fly-wing-dark-field.webp', title: "Fliegenfl\u00fcgel im Mikroskop Dunkelfeld.JPG", author: "Jan Homann", license: "Public domain",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Fliegenfl\u00fcgel_im_Mikroskop_Dunkelfeld.JPG",
+    adaptation: 'Downscaled to 1000 px wide; not cropped.',
+  },
 };

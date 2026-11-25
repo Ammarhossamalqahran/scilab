@@ -817,11 +817,6 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Spirogyra_(248_00)_Native_preparation.jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
-  'spleen-26-2-04': {
-    src: '/specimens/spleen-26-2-04.webp', title: "Spleen (26 2 04) Semi-thick section; embedded in Epon; mouse.jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Spleen_(26_2_04)_Semi-thick_section;_embedded_in_Epon;_mouse.jpg",
-    adaptation: 'Downscaled to 1000 px wide; not cropped.',
-  },
   'staphylococcus-257-08': {
     src: '/specimens/staphylococcus-257-08.webp', title: "Staphylococcus (257 08) Staphylococcus (grampositive bacterium).jpg", author: 'Josef Reischig (archive, shared by heirs)', license: 'CC BY-SA 3.0',
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Staphylococcus_(257_08)_Staphylococcus_(grampositive_bacterium).jpg",
@@ -4430,11 +4425,6 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
   "alternaria-muriform-conidia": {
     src: '/specimens/alternaria-muriform-conidia.webp', title: "Conidia of Alternaria under light microscope \u2013 400x.jpg", author: "Arpitoon", license: "CC0",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Conidia_of_Alternaria_under_light_microscope_\u2013_400x.jpg",
-    adaptation: 'Downscaled to 1000 px wide; not cropped.',
-  },
-  "fucus-conceptacle-cross-section-with-oogonia-and-antheridia": {
-    src: '/specimens/fucus-conceptacle-cross-section-with-oogonia-and-antheridia.webp', title: "Analysis of development (1955) (18167047242).jpg", author: "Internet Archive Book Images", license: "Public domain",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Analysis_of_development_(1955)_(18167047242).jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
 };

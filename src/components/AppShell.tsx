@@ -1,6 +1,7 @@
 import { NavLink, Link, Outlet } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { LogoMark } from './LogoMark';
+import { FeedbackButton } from './FeedbackButton';
 
 function ThemeGlyph({ theme }: { theme: 'dark' | 'light' }) {
   return theme === 'dark'
@@ -64,6 +65,7 @@ export function AppShell() {
           </nav>
         </aside>
         <main className="main-content"><Outlet /></main>
+        <FeedbackButton />
       </div>
     </div>
   );

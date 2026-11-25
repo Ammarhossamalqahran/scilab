@@ -49,7 +49,7 @@ export function FeedbackButton() {
             <p>{ar ? 'لقيت غلطة أو عندك اقتراح؟ اكتبه هنا وهيوصل لصاحب الموقع.' : 'Found a mistake or have an idea? Write it here and it goes to the site owner.'}</p>
             <textarea value={text} onChange={(e) => setText(e.target.value)} maxLength={1000} rows={4} required placeholder={ar ? 'ملاحظتك' : 'Your message'} />
             <input value={contact} onChange={(e) => setContact(e.target.value)} maxLength={120} placeholder={ar ? 'إيميل أو رقم للرد (اختياري)' : 'Email or number to reply (optional)'} />
-            <input type="text" name="website" value={trap} onChange={(e) => setTrap(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }} />
+            <input type="text" name="website" value={trap} onChange={(e) => setTrap(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" className="hp-field" />
             {state === 'wait' && <small role="status">{ar ? 'استنى نص دقيقة بين كل رسالة والتانية.' : 'Please wait 30 seconds between messages.'}</small>}
             {state === 'sent' && <small role="status">{ar ? 'شكراً! وصلتنا ملاحظتك.' : 'Thank you! Your feedback was received.'}</small>}
             {state === 'error' && <small role="alert">{ar ? 'حصل خطأ، جرّب تاني.' : 'Something went wrong, try again.'}</small>}

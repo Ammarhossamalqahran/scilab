@@ -2,6 +2,7 @@ import { NavLink, Link, Outlet } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { LogoMark } from './LogoMark';
 import { FeedbackButton } from './FeedbackButton';
+import { InstallButton } from './InstallButton';
 
 function ThemeGlyph({ theme }: { theme: 'dark' | 'light' }) {
   return theme === 'dark'
@@ -43,6 +44,7 @@ export function AppShell() {
           <button className="icon-button" onClick={toggleTheme} aria-label={t('switchTheme')} title={t('switchTheme')}>
             <ThemeGlyph theme={theme} />
           </button>
+          <InstallButton />
         </div>
       </header>
 

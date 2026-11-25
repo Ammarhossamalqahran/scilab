@@ -840,6 +840,8 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .microscope-workspace.is-challenge .scope-view-panel { border-color: #c8d0c3; }
 
 @media (max-width: 720px) {
+  .module-page-head { flex-direction: column; align-items: stretch; gap: 0; }
+  .module-page-head > div:first-child { min-width: 0; }
   .module-head-actions { justify-content: flex-start; width: 100%; margin-top: 10px; }
   .microscope-page .module-page-head { flex-direction: column; align-items: stretch; gap: 0; }
   .microscope-page .module-page-head .source-trigger { margin: 0; padding-inline: 10px; font-size: 10px; }

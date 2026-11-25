@@ -86,7 +86,7 @@ export function RequestBox() {
           <option value="schema">{isArabic ? 'رسمة schema' : 'Schema drawing'}</option>
         </select>
         <textarea value={text} onChange={(e) => setText(e.target.value)} maxLength={500} rows={3} required placeholder={isArabic ? 'مثال: قطاع في الكبد' : 'e.g. Liver section'} />
-        <input type="text" name="website" value={trap} onChange={(e) => setTrap(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }} />
+        <input type="text" name="website" value={trap} onChange={(e) => setTrap(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" className="hp-field" />
         <button type="submit" disabled={state === 'sending' || !ready}>{isArabic ? 'ابعت الطلب' : 'Send request'}</button>
         {!ready && <small>{isArabic ? 'الخانة لسه متفعلتش.' : 'The request box is not active yet.'}</small>}
         {state === 'found' && (

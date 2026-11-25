@@ -1330,3 +1330,6 @@ img[loading="lazy"], .specimen-thumbnail, .module-card-photo { background: color
 .keys-panel span { color: var(--ink-soft); margin-inline-start: 6px; }
 .microscope-canvas:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 @media (hover: none) and (pointer: coarse) { .keys-trigger { display: none; } }
+
+/* Honeypot field: hidden without moving off-screen (a -9999px offset widens the page in RTL on Chrome Android). */
+.hp-field { position: absolute; top: 0; inset-inline-start: 0; width: 1px; height: 1px; opacity: 0; overflow: hidden; pointer-events: none; clip-path: inset(50%); }

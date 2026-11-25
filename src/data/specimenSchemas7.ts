@@ -94,11 +94,6 @@ export const specimenSchemas7: ScientificDiagram[] = [
     pin("p3", "Purkinje cell, third", "خلية بركنجي ثالثة", "Third cell body, lower.", "جسم خلية ثالث في الأسفل.", 69, 70),
     pin("dend", "Dendrite", "تفرع شجيري", "Branch reaching into the molecular layer.", "فرع يمتد إلى الطبقة الجزيئية.", 39, 24),
   ]),
-  make("horsetail-equisetum-stem-cross-section-25x", "botany", { en: "Horsetail stem, cross section", ar: "ساق ذيل الحصان، مقطع عرضي" }, { en: "Equisetum stem", ar: "ساق الإكويسيتم" }, { en: "Ridged stem with a large hollow centre.", ar: "ساق مضلعة بتجويف مركزي كبير." }, [
-    pin("hollow", "Central hollow", "التجويف المركزي", "Large air space in the middle of the stem.", "فراغ هوائي كبير في وسط الساق.", 49, 40),
-    pin("cortex", "Cortex", "القشرة", "Tissue between the hollow and the surface.", "نسيج بين التجويف والسطح.", 22, 55),
-    pin("epi", "Outer edge", "الحافة الخارجية", "Ridged surface with the epidermis.", "سطح مضلع فيه البشرة.", 50, 93),
-  ]),
   make("cardiac-muscle-100x", "anatomy", { en: "Cardiac muscle, longitudinal", ar: "العضلة القلبية، مقطع طولي" }, { en: "Cardiac muscle", ar: "العضلة القلبية" }, { en: "Pink fibres with central nuclei.", ar: "ألياف وردية بنوى مركزية." }, [
     pin("fibre", "Cardiac fibre", "ليف قلبي", "Branched striated muscle cell.", "خلية عضلية مخططة متفرعة.", 62, 40),
     pin("nuc", "Nucleus", "نواة", "Dark oval nucleus in the fibre.", "نواة بيضاوية داكنة في الليف.", 27, 28),

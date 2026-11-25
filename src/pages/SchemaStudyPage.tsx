@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { ReferenceDialog } from '../components/ReferenceDialog';
+import { ShareButton } from '../components/ShareButton';
 import { ErrorScreen } from '../components/ErrorScreen';
 import { getDiagram } from '../data/diagramData';
 import { DiagramArtwork } from '../schemas/DiagramArtwork';
@@ -80,7 +81,10 @@ export function SchemaStudyPage() {
           <h1 className="page-title">{diagram.title[lang]}</h1>
           <p className="page-intro">{diagram.summary[lang]}</p>
         </div>
-        <button type="button" className="button button-outline source-trigger" onClick={() => setShowReferences(true)}><span>◈</span>{t('sourcesLabel')}</button>
+        <div className="module-head-actions">
+          <ShareButton path={`/schemas/${diagram.id}`} title={`${diagram.title[lang]} | SciLab`} />
+          <button type="button" className="button button-outline source-trigger" onClick={() => setShowReferences(true)}><span>◈</span>{t('sourcesLabel')}</button>
+        </div>
       </div>
 
       <div className="study-toolbar">

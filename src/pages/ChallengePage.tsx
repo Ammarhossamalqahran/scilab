@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { specimens } from '../data/scientificData';
 import { specimenMedia } from '../data/specimenMedia';
+import { fetchBoard, startTicket, submitScore, savedNick, saveNick, type Entry } from '../lib/leaderboardApi';
 import { readStats, recordGame, badges, DOCTOR_SCORE, type Stats } from '../data/gameStats';
 
 const pool = specimens.filter((s) => specimenMedia[s.id]);
@@ -36,10 +37,17 @@ export function ChallengePage() {
   const [correct, setCorrect] = useState(0);
   const [feedback, setFeedback] = useState<{ chosen: string; right: string } | null>(null);
   const ref = useRef({ score: 0, streak: 0, best: 0, correct: 0 });
+  const ticketRef = useRef<string | null>(null);
+  const [period, setPeriod] = useState<'week' | 'all'>('week');
+  const [board, setBoard] = useState<Entry[] | null>(null);
+  const [nick, setNick] = useState(savedNick);
+  const [submitState, setSubmitState] = useState<'idle' | 'sending' | 'done' | 'taken' | 'badnick' | 'limited' | 'failed'>('idle');
+  const [weekRank, setWeekRank] = useState<number | null>(null);
+  useEffect(() => { let live = true; fetchBoard(period).then((b) => { if (live) setBoard(b); }); return () => { live = false; }; }, [period, submitState]);
 
   const start = useCallback(() => {
     ref.current = { score: 0, streak: 0, best: 0, correct: 0 };
-    setScore(0); setStreak(0); setBestStreak(0); setCorrect(0); setFeedback(null); setLeft(SECONDS); setQ(makeQuestion(lang)); setPhase('play');
+    setScore(0); setStreak(0); setBestStreak(0); setCorrect(0); setFeedback(null); setLeft(SECONDS); setQ(makeQuestion(lang)); setSubmitState('idle'); ticketRef.current = null; void startTicket().then((t) => { ticketRef.current = t; }); setPhase('play');
   }, [lang]);
 
   useEffect(() => {
@@ -68,6 +76,14 @@ export function ChallengePage() {
     window.setTimeout(() => { setFeedback(null); setQ((cur) => makeQuestion(lang, cur?.id)); }, ok ? 350 : 900);
   }
 
+  async function submit() {
+    const clean = nick.trim().replace(/\s+/g, ' ');
+    if (!ticketRef.current) { setSubmitState('failed'); return; }
+    setSubmitState('sending');
+    const r = await submitScore(ticketRef.current, clean, score, correct, bestStreak);
+    if (r.ok) { saveNick(clean); setWeekRank(r.weekRank); setSubmitState('done'); ticketRef.current = null; }
+    else setSubmitState(r.reason === 'nick_taken' ? 'taken' : r.reason === 'bad_nick' ? 'badnick' : r.reason === 'rate_limited' ? 'limited' : 'failed');
+  }
   const earned = badges(stats);
   const beat = score >= DOCTOR_SCORE;
   const taunt = beat
@@ -78,7 +94,7 @@ export function ChallengePage() {
     <div className="page page-challenge">
       <div className="eyebrow">{ar ? 'تحدي' : 'CHALLENGE'}</div>
       <h1 className="chal-title">{ar ? 'تحدي الـ 60 ثانية' : '60-second challenge'}</h1>
-      <p className="chal-lead">{ar ? `اعرف أكتر عدد عينات في دقيقة. النقط على جهازك بس. الدكتور جاب ${DOCTOR_SCORE}.` : `Name as many specimens as you can in one minute. Scores stay on your device. The Doctor's score: ${DOCTOR_SCORE}.`}</p>
+      <p className="chal-lead">{ar ? `اعرف أكتر عدد عينات في دقيقة. أحسن نتيجة بتتحفظ على جهازك، وتقدر تسجلها في لوحة الشرف باسم شهرة. الدكتور جاب ${DOCTOR_SCORE}.` : `Name as many specimens as you can in one minute. Your best stays on your device, and you can post it to the leaderboard with a nickname. The Doctor's score: ${DOCTOR_SCORE}.`}</p>
 
       {phase === 'idle' && (
         <div className="chal-panel">
@@ -106,8 +122,35 @@ export function ChallengePage() {
           <h2>{ar ? `نتيجتك: ${score}` : `Your score: ${score}`}</h2>
           <p>{ar ? `${correct} صح · أطول سلسلة ${bestStreak} · أحسن نتيجة ${stats.best}` : `${correct} correct · best streak ${bestStreak} · personal best ${stats.best}`}</p>
           <p className="chal-taunt">{taunt}</p>
+          {board !== null && score > 0 && ticketRef.current && submitState !== 'done' && (
+            <div className="chal-submit">
+              <input value={nick} maxLength={16} onChange={(e) => { setNick(e.target.value); if (submitState !== 'sending') setSubmitState('idle'); }} placeholder={ar ? 'اسم الشهرة (بدون بياناتك الحقيقية)' : 'Nickname (not your real name)'} aria-label={ar ? 'اسم الشهرة' : 'Nickname'} />
+              <button className="button" onClick={submit} disabled={nick.trim().length < 2 || submitState === 'sending'}>{ar ? 'سجّل في لوحة الشرف' : 'Post to leaderboard'}</button>
+              {submitState === 'taken' && <small>{ar ? 'الاسم ده مأخوذ. جرب اسم تاني.' : 'That nickname is taken. Try another.'}</small>}
+              {submitState === 'badnick' && <small>{ar ? 'الاسم لازم 2 لـ 16 حرف أو رقم.' : 'Use 2 to 16 letters or numbers.'}</small>}
+              {submitState === 'limited' && <small>{ar ? 'حاولت كتير. جرب بعد شوية.' : 'Too many tries. Try again later.'}</small>}
+              {submitState === 'failed' && <small>{ar ? 'ماقدرناش نسجل النتيجة. جرب تاني.' : 'Could not post the score. Try again.'}</small>}
+            </div>
+          )}
+          {submitState === 'done' && <p className="chal-taunt">{ar ? `اتسجلت! ترتيبك الأسبوع ده: ${weekRank ?? '-'}` : `Posted! Your rank this week: ${weekRank ?? '-'}`}</p>}
           <button className="button button-primary" onClick={start}>{ar ? 'العب تاني' : 'Play again'}</button>
         </div>
+      )}
+
+      {board !== null && (
+        <section className="chal-board">
+          <div className="chal-board-head">
+            <h2 className="chal-sub">{ar ? 'لوحة الشرف' : 'Leaderboard'}</h2>
+            <div className="chal-tabs">
+              <button className={period === 'week' ? 'is-active' : ''} onClick={() => setPeriod('week')}>{ar ? 'الأسبوع' : 'This week'}</button>
+              <button className={period === 'all' ? 'is-active' : ''} onClick={() => setPeriod('all')}>{ar ? 'كل الأوقات' : 'All time'}</button>
+            </div>
+          </div>
+          {board.length === 0 ? <p className="chal-hint">{ar ? 'لسه محدش سجل. كن الأول!' : 'No scores yet. Be the first!'}</p> : (
+            <ol className="chal-rows">{board.map((e, i) => <li key={`${e.nick}-${i}`} className={e.score >= DOCTOR_SCORE ? 'is-doctor' : ''}><span>{i + 1}</span><b>{e.nick}</b><em>{e.score}</em></li>)}</ol>
+          )}
+          <p className="chal-hint">{ar ? 'اسم الشهرة بس. النقط بتتراجع على السيرفر، لكن مفيش نظام يمنع الغش بالكامل.' : 'Nicknames only. Scores are checked on the server, but no browser game is fully cheat-proof.'}</p>
+        </section>
       )}
 
       <h2 className="chal-sub">{ar ? 'الشارات' : 'Badges'}</h2>

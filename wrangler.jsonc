@@ -1,9 +1,16 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "scilab",
+  "main": "worker/index.ts",
   "compatibility_date": "2026-11-01",
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "single-page-application"
-  }
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  // D1 database for the leaderboard and push reminders (created in the Cloudflare dashboard).
+  "d1_databases": [
+    { "binding": "DB", "database_name": "scilab", "database_id": "f1cdc269-9664-4b38-a84a-64421b00045a" }
+  ]
 }

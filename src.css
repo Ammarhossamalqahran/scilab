@@ -1434,3 +1434,20 @@ img[loading="lazy"], .specimen-thumbnail, .module-card-photo { background: color
 .speak-button svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .speak-button.is-speaking { color: var(--accent); border-color: var(--accent); }
 .study-speak { margin-top: 6px; }
+
+/* Leaderboard */
+.chal-submit { display: grid; gap: 8px; max-width: 360px; margin: 12px auto; }
+.chal-submit input { min-height: 40px; padding: 0 10px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); font: inherit; text-align: center; }
+.chal-submit small { color: var(--coral); }
+.chal-board { margin-top: 26px; }
+.chal-board-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.chal-board-head .chal-sub { margin: 0; }
+.chal-tabs { display: flex; gap: 6px; }
+.chal-tabs button { padding: 5px 10px; border: 1px solid var(--line-strong); background: transparent; color: var(--ink-soft); font: inherit; font-size: 12px; cursor: pointer; }
+.chal-tabs button.is-active { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.chal-rows { list-style: none; margin: 12px 0 0; padding: 0; border: 1px solid var(--line-strong); }
+.chal-rows li { display: grid; grid-template-columns: 36px 1fr auto; gap: 10px; padding: 9px 12px; border-top: 1px solid var(--line); font-size: 14px; }
+.chal-rows li:first-child { border-top: 0; }
+.chal-rows li span { color: var(--muted); font-family: var(--mono); }
+.chal-rows li em { font-style: normal; font-family: var(--mono); color: var(--accent); }
+.chal-rows li.is-doctor b::after { content: ' ♛'; color: var(--amber); }

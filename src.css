@@ -1542,3 +1542,8 @@ img[loading="lazy"], .specimen-thumbnail, .module-card-photo { background: color
 
 .profile-google { display: grid; gap: 8px; justify-items: center; padding: 10px; border: 1px dashed var(--line-strong); border-radius: 12px; }
 .google-btn { min-height: 44px; display: flex; justify-content: center; }
+
+.hero-quote { margin: 18px 0 0; padding: 4px 14px 4px 0; border-inline-start: 3px solid var(--line-strong); max-width: 440px; }
+.hero-quote blockquote { margin: 0; font-size: 15px; line-height: 1.7; color: var(--ink); }
+.hero-quote figcaption { margin-top: 2px; font-size: 13px; color: var(--muted); }
+.hero-quote figcaption::before { content: '— '; }

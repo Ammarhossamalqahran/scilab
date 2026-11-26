@@ -32,6 +32,10 @@ export function HomePage() {
             <Link to="/microscope" className="button button-primary">{t('enterLab')}<ArrowMark /></Link>
           </div>
           <p className="hero-footnote">{isArabic ? 'صور الشرائح محفوظة داخل الموقع وتظهر مباشرة.' : 'Prepared-slide photos are included and open right here.'}</p>
+          <figure className="hero-quote" dir="rtl" lang="ar">
+            <blockquote>فخور بيك والله يا عمار، ربنا يوفقك دايما</blockquote>
+            <figcaption>د. عمرو أشرف الشبراوي</figcaption>
+          </figure>
         </div>
 
         <div className="hero-visual">

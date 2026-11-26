@@ -7,6 +7,7 @@ import { HomePage } from '../pages/HomePage';
 import { MicroscopePage } from '../pages/MicroscopePage';
 import { ExamPage } from '../pages/ExamPage';
 import { SchemasPage } from '../pages/SchemasPage';
+import { StudyPage } from '../pages/StudyPage';
 import { SchemaStudyPage } from '../pages/SchemaStudyPage';
 
 export function App() {
@@ -20,6 +21,7 @@ export function App() {
         <Route index element={<HomePage />} />
         <Route path="microscope" element={<MicroscopePage />} />
         <Route path="exams" element={<ExamPage />} />
+        <Route path="study" element={<StudyPage />} />
         <Route path="schemas" element={<SchemasPage />} />
         <Route path="schemas/:diagramId" element={<SchemaStudyPage />} />
         <Route path="*" element={<ErrorScreen kind="notFound" />} />

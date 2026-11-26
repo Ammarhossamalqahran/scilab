@@ -24,6 +24,10 @@ function SchemaGlyph() {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" /><circle cx="12" cy="12" r="2" /><path d="m12 3.5-3 6.7m3 0 6.5 3.5M10.5 13l-5 5" /></svg>;
 }
 
+function StudyGlyph() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="14" height="12" rx="1.5" /><path d="M7 3h13a1 1 0 0 1 1 1v11M7 11h6" /></svg>;
+}
+
 export function AppShell() {
   const { locale, setLocale, theme, toggleTheme, t } = usePreferences();
 
@@ -63,6 +67,9 @@ export function AppShell() {
             </NavLink>
             <NavLink to="/schemas" className={({ isActive }) => `nav-item${isActive ? ' is-active' : ''}`}>
               <SchemaGlyph /><span>{t('navSchemas')}</span>
+            </NavLink>
+            <NavLink to="/study" className={({ isActive }) => `nav-item${isActive ? ' is-active' : ''}`}>
+              <StudyGlyph /><span>{locale === 'ar' ? 'فلاش كاردز' : 'Flashcards'}</span>
             </NavLink>
           </nav>
         </aside>

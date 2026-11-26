@@ -6,6 +6,7 @@ const base = 'https://scilab-wheat.vercel.app';
 const pages = {
   microscope: ['Virtual microscope | SciLab / المجهر الافتراضي', 'Examine hundreds of real prepared slides with adjustable magnification, focus and light. / افحص مئات الشرائح المجهرية الحقيقية مع التحكم في التكبير والبؤرة والإضاءة.'],
   exams: ['Practical exam practice | SciLab / تدريب الامتحان العملي', 'Practise identifying slides and structures with practical-exam style questions. / تدرّب على التعرف على الشرائح والتراكيب بأسئلة بنمط الامتحان العملي.'],
+  study: ['Specimen flashcards | SciLab / فلاش كاردز العينات', 'Study microscope specimens with flashcards. / ذاكر عينات المجهر بالفلاش كاردز.'],
   schemas: ['Labelled diagrams (schemas) | SciLab / الرسومات المسمّاة', 'Study labelled biology diagrams and slide drawings for practical exams. / ادرس الرسومات المسمّاة وشرائح الرسم لامتحان العملي.'],
 };
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;');

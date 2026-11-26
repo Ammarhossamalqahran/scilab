@@ -1,4 +1,4 @@
-export type RouteKey = 'home' | 'microscope' | 'exams' | 'schemas' | 'study' | 'daily';
+export type RouteKey = 'home' | 'microscope' | 'exams' | 'schemas' | 'study' | 'daily' | 'compare';
 type Meta = { title: string; description: string };
 export const routeMeta: Record<RouteKey, { en: Meta; ar: Meta }> = {
   home: {
@@ -24,5 +24,9 @@ export const routeMeta: Record<RouteKey, { en: Meta; ar: Meta }> = {
   daily: {
     en: { title: 'Specimen of the day | SciLab', description: 'A new microscope specimen every day, with a share card for your story.' },
     ar: { title: 'عينة اليوم | SciLab', description: 'عينة مجهرية جديدة كل يوم، مع كارت جاهز للمشاركة في الستوري.' },
+  },
+  compare: {
+    en: { title: 'Compare slides | SciLab', description: 'Put two microscope specimens side by side and compare their photos and facts.' },
+    ar: { title: 'مقارنة العينات | SciLab', description: 'حط عينتين مجهريتين جنب بعض وقارن صورهم ومعلوماتهم.' },
   },
 };

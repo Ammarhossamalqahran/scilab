@@ -8,6 +8,7 @@ const pages = {
   exams: ['Practical exam practice | SciLab / تدريب الامتحان العملي', 'Practise identifying slides and structures with practical-exam style questions. / تدرّب على التعرف على الشرائح والتراكيب بأسئلة بنمط الامتحان العملي.'],
   study: ['Specimen flashcards | SciLab / فلاش كاردز العينات', 'Study microscope specimens with flashcards. / ذاكر عينات المجهر بالفلاش كاردز.'],
   daily: ['Specimen of the day | SciLab / عينة اليوم', 'A new microscope specimen every day. / عينة مجهرية جديدة كل يوم.'],
+  compare: ['Compare slides | SciLab / مقارنة العينات', 'Put two microscope specimens side by side. / حط عينتين مجهريتين جنب بعض.'],
   schemas: ['Labelled diagrams (schemas) | SciLab / الرسومات المسمّاة', 'Study labelled biology diagrams and slide drawings for practical exams. / ادرس الرسومات المسمّاة وشرائح الرسم لامتحان العملي.'],
 };
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;');

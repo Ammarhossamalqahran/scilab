@@ -31,6 +31,10 @@ function DailyGlyph() {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="1.5" /><path d="M4 10h16M9 3v4m6-4v4" /></svg>;
 }
 
+function CompareGlyph() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="8" height="14" rx="1" /><rect x="13" y="5" width="8" height="14" rx="1" /></svg>;
+}
+
 export function AppShell() {
   const { locale, setLocale, theme, toggleTheme, t } = usePreferences();
 
@@ -76,6 +80,9 @@ export function AppShell() {
             </NavLink>
             <NavLink to="/daily" className={({ isActive }) => `nav-item${isActive ? ' is-active' : ''}`}>
               <DailyGlyph /><span>{locale === 'ar' ? 'عينة اليوم' : 'Specimen of the day'}</span>
+            </NavLink>
+            <NavLink to="/compare" className={({ isActive }) => `nav-item${isActive ? ' is-active' : ''}`}>
+              <CompareGlyph /><span>{locale === 'ar' ? 'مقارنة' : 'Compare'}</span>
             </NavLink>
           </nav>
         </aside>

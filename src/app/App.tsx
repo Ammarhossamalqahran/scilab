@@ -9,6 +9,7 @@ import { ExamPage } from '../pages/ExamPage';
 import { SchemasPage } from '../pages/SchemasPage';
 import { StudyPage } from '../pages/StudyPage';
 import { DailyPage } from '../pages/DailyPage';
+import { ComparePage } from '../pages/ComparePage';
 import { SchemaStudyPage } from '../pages/SchemaStudyPage';
 
 export function App() {
@@ -24,6 +25,7 @@ export function App() {
         <Route path="exams" element={<ExamPage />} />
         <Route path="study" element={<StudyPage />} />
         <Route path="daily" element={<DailyPage />} />
+        <Route path="compare" element={<ComparePage />} />
         <Route path="schemas" element={<SchemasPage />} />
         <Route path="schemas/:diagramId" element={<SchemaStudyPage />} />
         <Route path="*" element={<ErrorScreen kind="notFound" />} />

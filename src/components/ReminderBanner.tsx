@@ -35,7 +35,8 @@ export function ReminderBanner() {
   useEffect(() => { void currentState().then(setState); }, []);
   useEffect(() => { void rememberLanguage(ar ? 'ar' : 'en'); }, [ar]);
 
-  const testMode = new URLSearchParams(window.location.search).has('pushtest');
+  const [taps, setTaps] = useState(0);
+  const testMode = taps >= 5 || new URLSearchParams(window.location.search).has('pushtest');
   if (hidden && !testMode) return null;
   const left = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate() - new Date().getDate();
   const monthEnd = left <= 2;
@@ -64,7 +65,7 @@ export function ReminderBanner() {
 
   return (
     <aside className="remind-banner" role="status">
-      <p><b>{tease}</b>{days}</p>
+      <p onClick={() => setTaps((n) => n + 1)}><b>{tease}</b>{days}</p>
       <div className="remind-actions">
         <Link className="quiet-button" to="/challenge" onClick={close}>{ar ? 'ابدأ التحدي' : 'Start the challenge'}</Link>
         {(state === 'off' || state === 'on') && (

@@ -60,6 +60,20 @@ export async function handlePush(request: Request, db: D1Database, url: URL): Pr
     const row = await db.prepare("SELECT v FROM kv WHERE k = 'kind'").first<{ v: string }>();
     return json({ kind: row?.v === 'monthly' ? 'monthly' : 'daily' });
   }
+  if (url.pathname === '/api/push/test' && request.method === 'POST') {
+    // Sends one month-end push to the caller's own subscription only. No secret is needed because it
+    // can only reach an endpoint the caller already holds, and it is throttled globally.
+    const body = await request.json().catch(() => null) as { endpoint?: unknown } | null;
+    if (!body || !validEndpoint(body.endpoint)) return json({ error: 'bad_subscription' }, 400);
+    const own = await db.prepare('SELECT endpoint FROM push_subs WHERE endpoint = ?').bind(body.endpoint).first<{ endpoint: string }>();
+    if (!own) return json({ error: 'not_subscribed' }, 404);
+    const last = await db.prepare("SELECT v FROM kv WHERE k = 'last_test'").first<{ v: string }>();
+    if (last && Date.now() - Number(last.v) < 20_000) return json({ error: 'slow_down' }, 429);
+    await db.prepare("INSERT INTO kv (k, v) VALUES ('last_test', ?) ON CONFLICT(k) DO UPDATE SET v = excluded.v").bind(String(Date.now())).run();
+    await db.prepare("INSERT INTO kv (k, v) VALUES ('kind', 'monthly') ON CONFLICT(k) DO UPDATE SET v = excluded.v").run();
+    const res = await fetch(body.endpoint, { method: 'POST', headers: { Authorization: await vapidHeader(body.endpoint, await getKeys(db)), TTL: '300', Urgency: 'high', 'Content-Length': '0' } });
+    return json({ ok: res.ok, status: res.status }, res.ok ? 200 : 502);
+  }
   if (url.pathname === '/api/push/subscribe' && request.method === 'POST') {
     const body = await request.json().catch(() => null) as { endpoint?: unknown } | null;
     if (!body || !validEndpoint(body.endpoint)) return json({ error: 'bad_subscription' }, 400);

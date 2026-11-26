@@ -50,3 +50,12 @@ export async function disableReminders(): Promise<PushState> {
   }
   return 'off';
 }
+
+// Test helper: asks the Worker to push one month-end notification to this device only.
+export async function sendTestPush(): Promise<boolean> {
+  const reg = await navigator.serviceWorker.getRegistration('/sw.js');
+  const sub = await reg?.pushManager.getSubscription();
+  if (!sub) return false;
+  const res = await fetch('/api/push/test', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ endpoint: sub.endpoint }) });
+  return res.ok;
+}

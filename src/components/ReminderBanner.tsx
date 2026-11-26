@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { readStats, DOCTOR_SCORE } from '../data/gameStats';
-import { currentState, enableReminders, disableReminders, rememberLanguage, type PushState } from '../lib/pushReminders';
+import { currentState, enableReminders, disableReminders, sendTestPush, rememberLanguage, type PushState } from '../lib/pushReminders';
 
 const VISIT = 'scilab-visit';
 const HIDE = 'scilab-banner-hidden';
@@ -35,7 +35,8 @@ export function ReminderBanner() {
   useEffect(() => { void currentState().then(setState); }, []);
   useEffect(() => { void rememberLanguage(ar ? 'ar' : 'en'); }, [ar]);
 
-  if (hidden) return null;
+  const testMode = new URLSearchParams(window.location.search).has('pushtest');
+  if (hidden && !testMode) return null;
   const left = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate() - new Date().getDate();
   const monthEnd = left <= 2;
   const tease = monthEnd
@@ -48,6 +49,12 @@ export function ReminderBanner() {
   const days = streak > 1 ? (ar ? ` ${streak} أيام ورا بعض عندنا.` : ` ${streak} days in a row.`) : '';
 
   function close() { try { localStorage.setItem(HIDE, day()); } catch { /* session only */ } setHidden(true); }
+  async function test() {
+    setBusy(true); setNote('');
+    const ok = await sendTestPush().catch(() => false);
+    setNote(ok ? (ar ? 'اتبعت. الإشعار يوصل خلال ثواني.' : 'Sent. It should arrive within seconds.') : (ar ? 'ماتبعتش. استنى شوية وجرّب تاني.' : 'Not sent. Wait a bit and try again.'));
+    setBusy(false);
+  }
   async function toggle() {
     setBusy(true); setNote('');
     try { setState(state === 'on' ? await disableReminders() : await enableReminders(ar ? 'ar' : 'en')); }
@@ -65,6 +72,7 @@ export function ReminderBanner() {
             {state === 'on' ? (ar ? 'وقّف التذكير اليومي' : 'Turn off daily reminder') : (ar ? 'فعّل التذكير اليومي' : 'Enable daily reminder')}
           </button>
         )}
+        {testMode && state === 'on' && <button type="button" className="quiet-button" onClick={test} disabled={busy}>{ar ? 'ابعت إشعار تجريبي' : 'Send test notification'}</button>}
         <button type="button" className="quiet-button" onClick={close}>{ar ? 'اخفي' : 'Hide'}</button>
       </div>
       {state === 'needs-install' && <small>{ar ? 'عشان التذكير يشتغل على الآيفون: من زر المشاركة اختار "إضافة إلى الشاشة الرئيسية"، افتح التطبيق من هناك وفعّله.' : 'For reminders on iPhone: tap Share, "Add to Home Screen", open SciLab from there, then enable.'}</small>}

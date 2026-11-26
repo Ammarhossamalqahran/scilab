@@ -1485,3 +1485,5 @@ img[loading="lazy"], .specimen-thumbnail, .module-card-photo { background: color
 .winner-note { color: var(--muted) !important; }
 .admin-msg { display: grid; gap: 6px; margin: 6px 0 12px; max-width: 420px; }
 .admin-msg textarea { min-height: 70px; padding: 8px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); font: inherit; }
+
+.chal-submit small.chal-ok { color: var(--accent); }

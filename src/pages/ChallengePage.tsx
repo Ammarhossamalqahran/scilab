@@ -41,7 +41,7 @@ export function ChallengePage() {
   const [period, setPeriod] = useState<'week' | 'all'>('week');
   const [board, setBoard] = useState<Entry[] | null>(null);
   const [nick, setNick] = useState(savedNick);
-  const [submitState, setSubmitState] = useState<'idle' | 'sending' | 'done' | 'taken' | 'badnick' | 'limited' | 'failed'>('idle');
+  const [submitState, setSubmitState] = useState<'idle' | 'sending' | 'done' | 'taken' | 'badnick' | 'limited' | 'failed' | 'noticket'>('idle');
   const [weekRank, setWeekRank] = useState<number | null>(null);
   useEffect(() => { let live = true; fetchBoard(period).then((b) => { if (live) setBoard(b); }); return () => { live = false; }; }, [period, submitState]);
 
@@ -78,12 +78,17 @@ export function ChallengePage() {
 
   async function submit() {
     const clean = nick.trim().replace(/\s+/g, ' ');
-    if (!ticketRef.current) { setSubmitState('failed'); return; }
+    if (!ticketRef.current) { setSubmitState('noticket'); return; }
     setSubmitState('sending');
     const r = await submitScore(ticketRef.current, clean, score, correct, bestStreak);
     if (r.ok) { saveNick(clean); setWeekRank(r.weekRank); setSubmitState('done'); ticketRef.current = null; }
     else setSubmitState(r.reason === 'nick_taken' ? 'taken' : r.reason === 'bad_nick' ? 'badnick' : r.reason === 'rate_limited' ? 'limited' : 'failed');
   }
+  // With a saved name the score is posted automatically when the game ends, so it cannot be forgotten.
+  useEffect(() => {
+    if (phase === 'over' && score > 0 && savedNick().length >= 2 && ticketRef.current) void submit();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase]);
   const earned = badges(stats);
   const beat = score >= DOCTOR_SCORE;
   const taunt = beat
@@ -122,13 +127,15 @@ export function ChallengePage() {
           <h2>{ar ? `نتيجتك: ${score}` : `Your score: ${score}`}</h2>
           <p>{ar ? `${correct} صح · أطول سلسلة ${bestStreak} · أحسن نتيجة ${stats.best}` : `${correct} correct · best streak ${bestStreak} · personal best ${stats.best}`}</p>
           <p className="chal-taunt">{taunt}</p>
-          {board !== null && score > 0 && ticketRef.current && submitState !== 'done' && (
+          {score > 0 && submitState !== 'done' && (
             <div className="chal-submit">
               <input value={nick} maxLength={16} onChange={(e) => { setNick(e.target.value); if (submitState !== 'sending') setSubmitState('idle'); }} placeholder={ar ? 'اسمك (بيظهر في لوحة الشرف)' : 'Your name (shown on the leaderboard)'} aria-label={ar ? 'اسمك' : 'Your name'} />
               <button className="button" onClick={submit} disabled={nick.trim().length < 2 || submitState === 'sending'}>{ar ? 'سجّل في لوحة الشرف' : 'Post to leaderboard'}</button>
               {submitState === 'taken' && <small>{ar ? 'الاسم ده مأخوذ. جرب اسم تاني.' : 'That nickname is taken. Try another.'}</small>}
               {submitState === 'badnick' && <small>{ar ? 'الاسم لازم 2 لـ 16 حرف أو رقم. تقدر تغيره هنا.' : 'Use 2 to 16 letters or numbers. You can change it here.'}</small>}
               {submitState === 'limited' && <small>{ar ? 'حاولت كتير. جرب بعد شوية.' : 'Too many tries. Try again later.'}</small>}
+              {submitState === 'sending' && <small className="chal-ok">{ar ? 'بنسجل نتيجتك...' : 'Posting your score...'}</small>}
+              {submitState === 'noticket' && <small>{ar ? 'ماقدرناش نوصل للسيرفر عشان نسجل النتيجة (النتيجة محفوظة على جهازك). تأكد من النت وابدأ جولة جديدة.' : 'Could not reach the server to post this score (it is saved on your device). Check your connection and play another round.'}</small>}
               {submitState === 'failed' && <small>{ar ? 'ماقدرناش نسجل النتيجة. جرب تاني.' : 'Could not post the score. Try again.'}</small>}
             </div>
           )}

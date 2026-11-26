@@ -4,6 +4,7 @@ import { usePreferences } from '../app/PreferencesContext';
 import { bloodStains, type BloodStainId } from '../data/bloodStains';
 import { diagramCategories, diagrams } from '../data/diagramData';
 import { specimens } from '../data/scientificData';
+import { PrintNotes } from '../components/PrintNotes';
 import { specimenMedia } from '../data/specimenMedia';
 import { readProgress, recordAnswer, saveProgress, totals, weakPoints, type Progress } from '../data/examProgress';
 import { MicroscopeCanvas } from '../microscope/MicroscopeCanvas';
@@ -135,7 +136,7 @@ export function ExamPage() {
     prepCaveat: 'اللون هنا فلتر رقمي فقط؛ لا يحاكي ارتباط الصبغة كيميائيًا ولا يغيّر الصورة الأصلية.',
     prepWorkflowTitle: 'رتّب خطوات تحضير اللطاخة', prepWorkflowPrompt: 'اختار الخطوة التالية بالترتيب. هذا مخطط تعليمي عام؛ اتبع تعليمات المعمل لكل صبغة.', prepWorkflowWaiting: 'اختار أول خطوة للبدء.', prepWorkflowWrong: 'مش دي الخطوة التالية؛ راجع ترتيب التحضير وحاول تاني.', prepWorkflowDone: 'اكتمل التسلسل. راجع بروتوكول المعمل قبل العمل الحقيقي.', resetWorkflow: 'ابدأ الترتيب من جديد',
     notebookTitle: 'دفتر ملاحظات الطالب', notebookDescription: 'ملاحظاتك تتحفظ تلقائيًا في هذا المتصفح ولكل شريحة سجل مستقل.',
-    chooseNoteSlide: 'اختار الشريحة', notePlaceholder: 'اكتب ملاحظاتك: شكل الخلايا، التراكيب الظاهرة، والصبغة…', exportNotes: 'نزّل الدفتر', noteSaved: 'الحفظ تلقائي على هذا الجهاز.',
+    chooseNoteSlide: 'اختار الشريحة', notePlaceholder: 'اكتب ملاحظاتك: شكل الخلايا، التراكيب الظاهرة، والصبغة…', exportNotes: 'نزّل الدفتر', printNotes: 'اطبع / PDF', noteSaved: 'الحفظ تلقائي على هذا الجهاز.',
     schemasTitle: 'امتحان رسومات الاسكيما', schemasDescription: 'اختار لوحة، اخفِ التسميات، وسمّ التراكيب من الرسم التفاعلي.',
     schemaExam: 'ابدأ الامتحان', schemaStudy: 'افتح للمذاكرة', structureNumber: 'تراكيب للاختبار',
     score: 'الإجابات الصحيحة', attempts: 'المحاولات',
@@ -160,7 +161,7 @@ export function ExamPage() {
     prepCaveat: 'This is a digital filter only; it does not reproduce chemical binding or alter the original photo.',
     prepWorkflowTitle: 'Order the blood-film steps', prepWorkflowPrompt: 'Choose the next step in sequence. This is a general teaching outline; follow the local protocol for each stain.', prepWorkflowWaiting: 'Choose the first step to begin.', prepWorkflowWrong: 'That is not the next step. Review the sequence and try again.', prepWorkflowDone: 'Sequence complete. Check the laboratory protocol before practical work.', resetWorkflow: 'Restart the sequence',
     notebookTitle: 'Student lab notebook', notebookDescription: 'Notes save automatically in this browser, with a separate entry for each slide.',
-    chooseNoteSlide: 'Choose a slide', notePlaceholder: 'Record cell shapes, visible structures, stain, and observations…', exportNotes: 'Download notebook', noteSaved: 'Saved automatically on this device.',
+    chooseNoteSlide: 'Choose a slide', notePlaceholder: 'Record cell shapes, visible structures, stain, and observations…', exportNotes: 'Download notebook', printNotes: 'Print / save as PDF', noteSaved: 'Saved automatically on this device.',
     schemasTitle: 'Schema drawing exam', schemasDescription: 'Choose a plate, hide its labels, and identify structures on the interactive drawing.',
     schemaExam: 'Start exam', schemaStudy: 'Open for study', structureNumber: 'structures to identify',
     score: 'Correct answers', attempts: 'Attempts',
@@ -316,7 +317,7 @@ export function ExamPage() {
       </section>}
 
       {station === 'notebook' && <section className="exam-station-content">
-        <div className="exam-section-heading"><div><div className="eyebrow">{copy.stations.notebook}</div><h2>{copy.notebookTitle}</h2><p>{copy.notebookDescription}</p></div><button type="button" className="button button-outline" onClick={exportNotebook}>{copy.exportNotes}</button></div>
+        <div className="exam-section-heading"><div><div className="eyebrow">{copy.stations.notebook}</div><h2>{copy.notebookTitle}</h2><p>{copy.notebookDescription}</p></div><div className="notebook-actions"><button type="button" className="button button-outline" onClick={exportNotebook}>{copy.exportNotes}</button><button type="button" className="button button-outline" onClick={() => window.print()}>{copy.printNotes}</button></div></div><PrintNotes notes={notebook} lang={lang} comparisonKey={compareNoteKey} comparisonTitle={copy.comparisonNote} title={copy.notebookTitle} />
         <div className="notebook-paper"><label className="exam-field-label"><span>{copy.chooseNoteSlide}</span><select value={notebookSpecimenId} onChange={(event) => setNotebookSpecimenId(event.target.value)}>{specimens.map((sample) => <option key={sample.id} value={sample.id}>{sample.title[lang]}</option>)}</select></label><div className="notebook-entry-head"><img src={specimenMedia[notebookSpecimenId]?.src} alt="" /><div><span>{lang === 'ar' ? 'شريحة عملية' : 'PRACTICAL SLIDE'}</span><h3>{notebookSpecimen.title[lang]}</h3><small>{notebookSpecimen.subtitle[lang]}</small></div></div><label className="exam-note-field"><span>{lang === 'ar' ? 'ملاحظات الشريحة' : 'SLIDE OBSERVATIONS'}</span><textarea value={notebook[notebookSpecimenId] ?? ''} onChange={(event) => setNotebookText(notebookSpecimenId, event.target.value)} placeholder={copy.notePlaceholder} /></label><p className="notebook-save-note">✓ {copy.noteSaved}</p></div>
       </section>}
 

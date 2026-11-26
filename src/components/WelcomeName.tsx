@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { usePreferences } from '../app/PreferencesContext';
-import { checkNick, createCode, restoreCode, NICK_OK, saveNick, savedNick } from '../lib/leaderboardApi';
+import { checkNick, createCode, restoreCode, updateProfile, saveAvatar, NICK_OK, saveNick, savedNick } from '../lib/leaderboardApi';
+import { AVATARS, Avatar } from '../data/avatars';
 import { LogoMark } from './LogoMark';
 
 const KEY = 'scilab-welcome';
@@ -15,13 +16,19 @@ export function WelcomeName() {
   const [name, setName] = useState('');
   const [msg, setMsg] = useState<'' | 'bad' | 'taken'>('');
   const [busy, setBusy] = useState(false);
-  const [step, setStep] = useState<'name' | 'code' | 'restore'>('name');
+  const [step, setStep] = useState<'name' | 'code' | 'avatar' | 'restore'>('name');
+  const [pick, setPick] = useState('');
   const [code, setCode] = useState('');
   const [copied, setCopied] = useState(false);
   const [restoreErr, setRestoreErr] = useState('');
   const input = useRef<HTMLInputElement>(null);
 
-  useEffect(() => { if (open) input.current?.focus(); }, [open]);
+  useEffect(() => { if (open) input.current?.focus(); }, [open, step]);
+  useEffect(() => {
+    const on = () => { setStep('name'); setName(''); setMsg(''); setOpen(true); };
+    window.addEventListener('scilab-open-welcome', on);
+    return () => window.removeEventListener('scilab-open-welcome', on);
+  }, []);
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') skip(); };
@@ -71,7 +78,19 @@ export function WelcomeName() {
             <p>{ar ? 'احفظ الكود ده. بيرجعلك اسمك ونتايجك لو غيرت الموبايل أو مسحت البيانات. بيظهر مرة واحدة بس.' : 'Save this code. It brings back your name and scores on a new phone or after clearing data. It is shown only once.'}</p>
             <output className="welcome-code" dir="ltr">{code}</output>
             <button type="button" className="button welcome-go" onClick={copy}>{copied ? (ar ? 'اتنسخ' : 'Copied') : (ar ? 'انسخ الكود' : 'Copy code')}</button>
-            <button type="button" className="button button-primary welcome-go" onClick={() => setOpen(false)}>{ar ? 'تمام، حفظته' : 'Done, I saved it'}</button>
+            <button type="button" className="button button-primary welcome-go" onClick={() => setStep('avatar')}>{ar ? 'تمام، حفظته' : 'Done, I saved it'}</button>
+          </div>
+        ) : step === 'avatar' ? (
+          <div className="welcome-body">
+            <h2 id="welcome-title">{ar ? 'اختار شخصيتك' : 'Pick your character'}</h2>
+            <div className="avatar-grid" role="listbox" aria-label={ar ? 'الشخصيات' : 'Characters'}>
+              {AVATARS.map((a) => (
+                <button type="button" key={a.id} role="option" aria-selected={pick === a.id} className={`avatar-pick${pick === a.id ? ' is-picked' : ''}`} onClick={() => setPick(a.id)}>
+                  <Avatar id={a.id} size={48} /><span>{a.label[ar ? 'ar' : 'en']}</span>
+                </button>
+              ))}
+            </div>
+            <button type="button" className="button button-primary welcome-go" onClick={() => { const id = pick || 'cell'; saveAvatar(id); void updateProfile({ avatar: id }); setOpen(false); }}>{ar ? 'خلاص' : 'Finish'}</button>
           </div>
         ) : step === 'restore' ? (
           <div className="welcome-body">

@@ -4,6 +4,7 @@ import { LogoMark } from './LogoMark';
 import { FeedbackButton } from './FeedbackButton';
 import { InstallButton } from './InstallButton';
 import { WelcomeName } from './WelcomeName';
+import { ProfileButton } from './ProfileButton';
 import { WinnerInbox } from './WinnerInbox';
 import { ReminderBanner } from './ReminderBanner';
 
@@ -56,6 +57,7 @@ export function AppShell() {
           </span>
         </Link>
         <div className="topbar-tools">
+          <ProfileButton />
           <button className="quiet-button language-button" onClick={() => setLocale(locale === 'en' ? 'ar' : 'en')} aria-label={t('switchLanguage')}>
             {t('switchLanguage')}
           </button>

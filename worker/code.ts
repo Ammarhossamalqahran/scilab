@@ -62,7 +62,7 @@ export async function handleCode(request: Request, db: D1Database, url: URL, now
 
   // POST /api/code/create {player, nick}: registers the name (if new) and makes a fresh code. A new code replaces the old one.
   if (url.pathname === '/api/code/create' && request.method === 'POST') {
-    const body = await request.json().catch(() => null) as { player?: unknown; nick?: unknown } | null;
+    const body = await request.json().catch(() => null) as { player?: unknown; nick?: unknown; avatar?: unknown } | null;
     const player = typeof body?.player === 'string' && /^[0-9a-f-]{36}$/.test(body.player) ? body.player : '';
     if (!player) return json({ error: 'bad_request' }, 400);
     if (await count(db, 'create', ip, now - 3600_000) >= CREATES_PER_HOUR) return json({ error: 'rate_limited' }, 429);
@@ -82,6 +82,7 @@ export async function handleCode(request: Request, db: D1Database, url: URL, now
         ? 'UPDATE players SET code_hash = ? WHERE id = ?'
         : 'INSERT INTO players (code_hash, id, nick, nick_lc, created) VALUES (?, ?, ?, ?, ?)')
         .bind(...(existing ? [h, player] : [h, player, nick, nick.toLowerCase(), now])).run();
+      if (typeof body?.avatar === 'string' && /^[a-z0-9-]{1,20}$/.test(body.avatar)) await db.prepare('UPDATE players SET avatar = ? WHERE id = ?').bind(body.avatar, player).run();
     } catch { return json({ error: 'nick_taken' }, 409); }
     return json({ code, nick });
   }
@@ -94,7 +95,8 @@ export async function handleCode(request: Request, db: D1Database, url: URL, now
     if (normalizeCode(code).length !== 10) { await note(db, 'fail', ip, now); return json({ error: 'bad_code' }, 400); }
     const row = await db.prepare('SELECT id, nick FROM players WHERE code_hash = ?').bind(await hashCode(db, code)).first<{ id: string; nick: string }>();
     if (!row) { await note(db, 'fail', ip, now); return json({ error: 'bad_code' }, 404); }
-    return json({ player: row.id, nick: row.nick });
+    const av = await db.prepare('SELECT avatar FROM players WHERE id = ?').bind(row.id).first<{ avatar: string | null }>();
+    return json({ player: row.id, nick: row.nick, avatar: av?.avatar ?? null });
   }
   return json({ error: 'not_found' }, 404);
 }

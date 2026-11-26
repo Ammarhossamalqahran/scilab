@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { specimens } from '../data/scientificData';
 import { specimenMedia } from '../data/specimenMedia';
-import { AccountCode } from '../components/AccountCode';
+import { Avatar } from '../data/avatars';
 import { fetchBoard, startTicket, submitScore, savedNick, saveNick, type Entry } from '../lib/leaderboardApi';
 import { readStats, recordGame, badges, DOCTOR_SCORE, type Stats } from '../data/gameStats';
 
@@ -155,13 +155,11 @@ export function ChallengePage() {
             </div>
           </div>
           {board.length === 0 ? <p className="chal-hint">{ar ? 'لسه محدش سجل. كن الأول!' : 'No scores yet. Be the first!'}</p> : (
-            <ol className="chal-rows">{board.map((e, i) => <li key={`${e.nick}-${i}`} className={e.score >= DOCTOR_SCORE ? 'is-doctor' : ''}><span>{i + 1}</span><b>{e.nick}</b><em>{e.score}</em></li>)}</ol>
+            <ol className="chal-rows">{board.map((e, i) => <li key={`${e.nick}-${i}`} className={e.score >= DOCTOR_SCORE ? 'is-doctor' : ''}><span>{i + 1}</span><b><Avatar id={e.avatar} size={22} className="lb-avatar" />{e.nick}</b><em>{e.score}</em></li>)}</ol>
           )}
           <p className="chal-hint">{ar ? 'النقط بتتراجع على السيرفر قبل ما تظهر.' : 'Scores are checked on the server before they appear.'}</p>
         </section>
       )}
-
-      <AccountCode />
 
       <h2 className="chal-sub">{ar ? 'الشارات' : 'Badges'}</h2>
       <div className="chal-badges">

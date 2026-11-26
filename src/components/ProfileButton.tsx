@@ -1,0 +1,110 @@
+import { useEffect, useState } from 'react';
+import { usePreferences } from '../app/PreferencesContext';
+import { Avatar, AVATARS, DEFAULT_AVATAR } from '../data/avatars';
+import { readStats } from '../data/gameStats';
+import { createCode, savedAvatar, savedCode, savedNick, saveAvatar, saveNick, updateProfile } from '../lib/leaderboardApi';
+
+// Profile icon in the top bar. Tapping it opens the profile: name, character, scores, personal code,
+// language and theme.
+export function ProfileButton() {
+  const { locale, setLocale, theme, toggleTheme } = usePreferences();
+  const ar = locale === 'ar';
+  const [open, setOpen] = useState(false);
+  const [, bump] = useState(0);
+  const [name, setName] = useState('');
+  const [msg, setMsg] = useState('');
+  const [picking, setPicking] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [busy, setBusy] = useState(false);
+
+  useEffect(() => {
+    const on = () => bump((n) => n + 1);
+    window.addEventListener('scilab-profile-changed', on);
+    return () => window.removeEventListener('scilab-profile-changed', on);
+  }, []);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
+
+  const nick = savedNick();
+  const avatar = savedAvatar() || DEFAULT_AVATAR;
+  const stats = readStats();
+  const code = savedCode();
+
+  function show() { setName(nick); setMsg(''); setPicking(false); setCopied(false); setOpen(true); }
+  async function saveName() {
+    const clean = name.trim().replace(/\s+/g, ' ');
+    if (clean === nick) return;
+    setBusy(true); setMsg('');
+    const r = await updateProfile({ nick: clean });
+    setBusy(false);
+    if (r.ok) { saveNick(r.nick); setMsg(ar ? 'اتحفظ.' : 'Saved.'); }
+    else setMsg(r.reason === 'nick_taken' ? (ar ? 'الاسم ده مأخوذ.' : 'That name is taken.') : r.reason === 'bad_nick' ? (ar ? 'الاسم لازم 2 لـ 16 حرف أو رقم.' : 'Use 2 to 16 letters or numbers.') : r.reason === 'no_profile' ? (ar ? 'اعمل حساب الأول.' : 'Sign in first.') : (ar ? 'ماقدرناش نحفظ. جرب تاني.' : 'Could not save. Try again.'));
+  }
+  async function pickAvatar(id: string) {
+    saveAvatar(id); setPicking(false);
+    if (nick) void updateProfile({ avatar: id });
+  }
+  async function newCode() {
+    setBusy(true); setMsg('');
+    const r = await createCode(nick, avatar);
+    setBusy(false);
+    if (!r.ok) setMsg(ar ? 'ماقدرناش نعمل كود جديد.' : 'Could not make a new code.');
+  }
+  async function copy() { try { await navigator.clipboard.writeText(code); setCopied(true); } catch { /* select by hand */ } }
+
+  return (
+    <>
+      <button type="button" className="profile-btn" onClick={show} aria-label={ar ? 'البروفايل' : 'Profile'} title={ar ? 'البروفايل' : 'Profile'}>
+        <Avatar id={avatar} size={34} />
+      </button>
+      {open && (
+        <div className="welcome-backdrop" role="dialog" aria-modal="true" aria-labelledby="profile-title" onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }}>
+          <div className="welcome-card profile-card">
+            <button type="button" className="welcome-lang" onClick={() => setOpen(false)} aria-label={ar ? 'إغلاق' : 'Close'}>×</button>
+            <div className="welcome-body">
+              <button type="button" className="profile-btn" style={{ justifySelf: 'center' }} onClick={() => setPicking((v) => !v)} aria-label={ar ? 'غيّر الشخصية' : 'Change character'}><Avatar id={avatar} size={76} /></button>
+              <h2 id="profile-title">{nick || (ar ? 'ضيف' : 'Guest')}</h2>
+              {picking && (
+                <div className="avatar-grid">
+                  {AVATARS.map((a) => (
+                    <button type="button" key={a.id} className={`avatar-pick${avatar === a.id ? ' is-picked' : ''}`} onClick={() => void pickAvatar(a.id)}><Avatar id={a.id} size={44} /><span>{a.label[ar ? 'ar' : 'en']}</span></button>
+                  ))}
+                </div>
+              )}
+              {nick ? (
+                <>
+                  <div className="profile-row">
+                    <input value={name} maxLength={16} onChange={(e) => { setName(e.target.value); setMsg(''); }} aria-label={ar ? 'اسمك' : 'Your name'} />
+                    <button type="button" className="button" onClick={saveName} disabled={busy || name.trim().length < 2 || name.trim() === nick}>{ar ? 'احفظ الاسم' : 'Save name'}</button>
+                  </div>
+                  <div className="profile-stat"><span>{ar ? 'أحسن نتيجة' : 'Best score'}</span><b>{stats.best}</b></div>
+                  <div className="profile-stat"><span>{ar ? 'عدد التحديات' : 'Challenges played'}</span><b>{stats.games}</b></div>
+                  <div className="profile-stat"><span>{ar ? 'كودك الشخصي' : 'Personal code'}</span><b dir="ltr">{code || (ar ? 'غير محفوظ على الجهاز' : 'not on this device')}</b></div>
+                  <div className="profile-row">
+                    {code && <button type="button" className="button" onClick={copy}>{copied ? (ar ? 'اتنسخ' : 'Copied') : (ar ? 'انسخ الكود' : 'Copy code')}</button>}
+                    <button type="button" className="quiet-button" onClick={newCode} disabled={busy}>{ar ? 'كود جديد' : 'New code'}</button>
+                  </div>
+                  <small className="winner-note">{ar ? 'الكود بينقل اسمك ونتايجك لجهاز تاني. كود جديد بيلغي القديم.' : 'The code moves your name and scores to another device. A new code replaces the old one.'}</small>
+                </>
+              ) : (
+                <>
+                  <p>{ar ? 'لسه ما سجلتش اسمك.' : 'You have not set a name yet.'}</p>
+                  <button type="button" className="button button-primary welcome-go" onClick={() => { setOpen(false); window.dispatchEvent(new Event('scilab-open-welcome')); }}>{ar ? 'سجّل اسمك' : 'Set your name'}</button>
+                </>
+              )}
+              {msg && <small>{msg}</small>}
+              <div className="profile-row">
+                <button type="button" className="quiet-button" onClick={() => setLocale(ar ? 'en' : 'ar')}>{ar ? 'English' : 'عربي'}</button>
+                <button type="button" className="quiet-button" onClick={toggleTheme}>{theme === 'dark' ? (ar ? 'الوضع الفاتح' : 'Light mode') : (ar ? 'الوضع الداكن' : 'Dark mode')}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}

@@ -23,7 +23,9 @@ export function ensureSchema(db: D1Database): Promise<void> {
     db.prepare('CREATE INDEX IF NOT EXISTS scores_at ON scores (at)'),
     db.prepare('CREATE INDEX IF NOT EXISTS scores_player ON scores (player_id)'),
     db.prepare('CREATE TABLE IF NOT EXISTS games (id TEXT PRIMARY KEY, started INTEGER NOT NULL, used INTEGER NOT NULL DEFAULT 0, ip TEXT NOT NULL)'),
-  ]).then(() => undefined).catch((e) => { ready = null; throw e; });
+  ]).then(async () => {
+    for (const col of ['code_hash TEXT', 'avatar TEXT']) await db.prepare(`ALTER TABLE players ADD COLUMN ${col}`).run().then(() => undefined, () => undefined); // already there
+  }).catch((e) => { ready = null; throw e; });
   return ready;
 }
 
@@ -48,8 +50,8 @@ export async function handleLeaderboard(request: Request, db: D1Database, url: U
     const period = url.searchParams.get('period') === 'all' ? 'all' : 'week';
     const since = period === 'week' ? now - 7 * 86400_000 : 0;
     const rows = await db.prepare(
-      'SELECT p.nick AS nick, MAX(s.score) AS score FROM scores s JOIN players p ON p.id = s.player_id WHERE s.at >= ? GROUP BY s.player_id ORDER BY score DESC, MIN(s.at) ASC LIMIT 20',
-    ).bind(since).all<{ nick: string; score: number }>();
+      'SELECT p.nick AS nick, p.avatar AS avatar, MAX(s.score) AS score FROM scores s JOIN players p ON p.id = s.player_id WHERE s.at >= ? GROUP BY s.player_id ORDER BY score DESC, MIN(s.at) ASC LIMIT 20',
+    ).bind(since).all<{ nick: string; avatar: string | null; score: number }>();
     return json({ period, entries: rows.results }, 200, { 'cache-control': 'public, max-age=30' });
   }
 

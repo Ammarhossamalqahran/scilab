@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { specimenMedia } from '../data/specimenMedia';
-import { specimenOfTheDay } from '../lib/dailySpecimen';
+import { specimenOfTheDay, PROD_URL } from '../lib/dailySpecimen';
 import { renderShareCard } from '../lib/shareCard';
 
 export function DailyPage() {
@@ -22,11 +22,11 @@ export function DailyPage() {
     try {
       const blob = await renderShareCard({
         imageSrc: media.src, title: specimen.title, subtitle: specimen.subtitle, fact: specimen.facts[0], lang,
-        heading: ar ? 'عينة اليوم من SciLab' : 'SciLab specimen of the day', url: window.location.origin, dark: theme === 'dark',
+        heading: ar ? 'عينة اليوم من SciLab' : 'SciLab specimen of the day', url: PROD_URL, dark: theme === 'dark',
       });
       const file = new File([blob], `scilab-${specimen.id}.png`, { type: 'image/png' });
       if (navigator.canShare?.({ files: [file] })) {
-        try { await navigator.share({ files: [file], title: specimen.title[lang], url: window.location.origin }); return; } catch (e) { if ((e as Error).name === 'AbortError') return; }
+        try { await navigator.share({ files: [file], title: specimen.title[lang], url: PROD_URL }); return; } catch (e) { if ((e as Error).name === 'AbortError') return; }
       }
       const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = file.name; a.click();
       window.setTimeout(() => URL.revokeObjectURL(a.href), 4000);

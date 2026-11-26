@@ -50,6 +50,15 @@ function ResetIcon() {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7v5h5M5 12a7 7 0 1 0 2-5" /><path d="M12 8v4l3 2" /></svg>;
 }
 
+function normalizeSearch(value: string) {
+  return value.normalize('NFD').replace(/[\u0300-\u036f\u064b-\u065f\u0670\u0640]/g, '').replace(/[أإآٱ]/g, 'ا').toLowerCase().trim();
+}
+
+// Small 160x138 list thumbnails live in /specimens/thumbs; the microscope view still uses the full image.
+function thumbSrc(src?: string) {
+  return src ? src.replace('/specimens/', '/specimens/thumbs/') : src;
+}
+
 export function MicroscopePage() {
   const { locale, t } = usePreferences();
   const lang = locale;
@@ -118,14 +127,15 @@ export function MicroscopePage() {
   }, [showReferences]);
 
   const filteredSpecimens = useMemo(() => {
-    const query = sampleQuery.trim().toLocaleLowerCase(lang === 'ar' ? 'ar' : 'en');
+    // Match both languages, the source photo title and the diacritic-free form, so English and Latin names work in the Arabic UI.
+    const query = normalizeSearch(sampleQuery);
     return availableSpecimens.filter((sample) => {
       if (favoritesOnly && !favoriteIds.includes(sample.id)) return false;
       if (!query) return true;
-      return [sample.title[lang], sample.subtitle[lang], sample.description[lang]]
-        .some((value) => value.toLocaleLowerCase(lang === 'ar' ? 'ar' : 'en').includes(query));
+      return [sample.title.ar, sample.title.en, sample.subtitle.ar, sample.subtitle.en, sample.description.ar, sample.description.en, specimenMedia[sample.id]?.title ?? '']
+        .some((value) => normalizeSearch(value).includes(query));
     });
-  }, [availableSpecimens, favoriteIds, favoritesOnly, lang, sampleQuery]);
+  }, [availableSpecimens, favoriteIds, favoritesOnly, sampleQuery]);
 
   useEffect(() => {
     try {
@@ -260,7 +270,7 @@ export function MicroscopePage() {
                     return (
                       <div key={sample.id} className={`specimen-pick-row${isSelected ? ' is-selected' : ''}`}>
                         <button type="button" className="specimen-pick-button" onClick={() => changeSpecimen(sample.id)} aria-pressed={isSelected}>
-                          <img className="specimen-thumbnail" src={specimenMedia[sample.id]?.src} alt="" loading="lazy" />
+                          <img className="specimen-thumbnail" src={thumbSrc(specimenMedia[sample.id]?.src)} alt="" width="50" height="43" loading="lazy" decoding="async" />
                           <span><b>{sample.title[lang]}</b><small>{sample.subtitle[lang]}</small></span>
                         </button>
                         <button type="button" className={`specimen-favorite${isFavorite ? ' is-favorite' : ''}`} onClick={() => toggleFavorite(sample.id)} aria-label={`${isFavorite ? t('removeFavorite') : t('addFavorite')}: ${sample.title[lang]}`} aria-pressed={isFavorite} title={isFavorite ? t('removeFavorite') : t('addFavorite')}>{isFavorite ? '★' : '☆'}</button>

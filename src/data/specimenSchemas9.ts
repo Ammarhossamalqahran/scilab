@@ -1,6 +1,6 @@
 import type { DiagramStructure, ScientificDiagram, SlidePhoto } from './diagramData';
 import type { Bilingual, ScientificReference } from './scientificData';
-import { specimenMedia } from './specimenMedia';
+import { mediaAlias, specimenMedia } from './specimenMedia';
 
 // Specimen schemas: labelled drawings on photographs already on the site.
 // Pins are placed by eye and every schema here is marked needsReview until checked against the course atlas.
@@ -11,7 +11,7 @@ const pin = (id: string, en: string, ar: string, fEn: string, fAr: string, x: nu
 });
 
 const make = (specimenId: string, category: ScientificDiagram['category'], title: Bilingual, shortTitle: Bilingual, summary: Bilingual, structures: DiagramStructure[]): ScientificDiagram => {
-  const media = specimenMedia[specimenId];
+  const media = specimenMedia[mediaAlias[specimenId] ?? specimenId];
   const photo: SlidePhoto = { src: media.src, title: media.title, author: media.author, license: media.license, sourceUrl: media.sourceUrl };
   const reference: ScientificReference = { id: `commons-schema-${specimenId}`, title: media.title, provider: 'Wikimedia Commons', url: media.sourceUrl, supports: 'Source photograph, author and licence for this schema.' };
   return {
@@ -62,7 +62,7 @@ export const specimenSchemas9: ScientificDiagram[] = [
     pin("wall", "Follicle wall", "جدار الحويصلة", "Ring of cells around the oocyte.", "حلقة من الخلايا حول البويضة.", 27, 43),
     pin("stroma", "Ovarian stroma", "سدى المبيض", "Dense tissue outside the follicle.", "نسيج كثيف خارج الحويصلة.", 75, 80),
   ]),
-  make("mouse-liver-section", "anatomy", { en: "Mouse liver", ar: "كبد الفأر" }, { en: "Liver", ar: "الكبد" }, { en: "Liver tissue around a central vein.", ar: "نسيج كبدي حول وريد مركزي." }, [
+  make("mouse-liver-section", "anatomy", { en: "Liver", ar: "كبد" }, { en: "Liver", ar: "الكبد" }, { en: "Liver tissue around a central vein.", ar: "نسيج كبدي حول وريد مركزي." }, [
     pin("cv", "Central vein", "وريد مركزي", "Vessel that drains the lobule.", "وعاء يصرف الفصيص.", 43, 36),
     pin("cords", "Hepatic cords", "حبال كبدية", "Plates of liver cells.", "صفائح من خلايا الكبد.", 25, 65),
     pin("lobule", "Liver tissue", "نسيج كبدي", "Cells of the lobule.", "خلايا الفصيص.", 75, 45),

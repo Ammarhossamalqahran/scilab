@@ -1,6 +1,6 @@
 import type { DiagramStructure, ScientificDiagram, SlidePhoto } from './diagramData';
 import type { Bilingual, ScientificReference } from './scientificData';
-import { specimenMedia } from './specimenMedia';
+import { mediaAlias, specimenMedia } from './specimenMedia';
 
 // Specimen schemas: labelled drawings on photographs already on the site.
 // Pins are placed by eye and every schema here is marked needsReview until checked against the course atlas.
@@ -11,7 +11,7 @@ const pin = (id: string, en: string, ar: string, fEn: string, fAr: string, x: nu
 });
 
 const make = (specimenId: string, category: ScientificDiagram['category'], title: Bilingual, shortTitle: Bilingual, summary: Bilingual, structures: DiagramStructure[]): ScientificDiagram => {
-  const media = specimenMedia[specimenId];
+  const media = specimenMedia[mediaAlias[specimenId] ?? specimenId];
   const photo: SlidePhoto = { src: media.src, title: media.title, author: media.author, license: media.license, sourceUrl: media.sourceUrl };
   const reference: ScientificReference = { id: `commons-schema-${specimenId}`, title: media.title, provider: 'Wikimedia Commons', url: media.sourceUrl, supports: 'Source photograph, author and licence for this schema.' };
   return {

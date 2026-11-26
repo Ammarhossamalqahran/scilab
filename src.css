@@ -1457,3 +1457,12 @@ img[loading="lazy"], .specimen-thumbnail, .module-card-photo { background: color
 .remind-banner small { display: block; margin-top: 8px; font-size: 12px; line-height: 1.5; opacity: .8; }
 .remind-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .remind-actions a.quiet-button { text-decoration: none; display: inline-flex; align-items: center; }
+
+.welcome-backdrop { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 16px; background: rgba(8, 12, 10, .72); }
+.welcome-card { position: relative; display: grid; gap: 12px; width: min(420px, 100%); padding: 28px 22px 22px; background: var(--surface); color: var(--ink); border: 1px solid var(--line-strong); }
+.welcome-card h2 { margin: 0; font-size: 22px; }
+.welcome-card p { margin: 0; font-size: 14px; line-height: 1.7; }
+.welcome-card input { min-height: 44px; padding: 0 12px; border: 1px solid var(--line-strong); background: var(--bg, var(--surface)); color: var(--ink); font: inherit; font-size: 16px; }
+.welcome-card small { color: var(--coral); }
+.welcome-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.welcome-lang { position: absolute; top: 8px; inset-inline-end: 8px; }

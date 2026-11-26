@@ -94,7 +94,7 @@ export function ChallengePage() {
     <div className="page page-challenge">
       <div className="eyebrow">{ar ? 'تحدي' : 'CHALLENGE'}</div>
       <h1 className="chal-title">{ar ? 'تحدي الـ 60 ثانية' : '60-second challenge'}</h1>
-      <p className="chal-lead">{ar ? `اعرف أكتر عدد عينات في دقيقة. أحسن نتيجة بتتحفظ على جهازك، وتقدر تسجلها في لوحة الشرف باسم شهرة. الدكتور جاب ${DOCTOR_SCORE}.` : `Name as many specimens as you can in one minute. Your best stays on your device, and you can post it to the leaderboard with a nickname. The Doctor's score: ${DOCTOR_SCORE}.`}</p>
+      <p className="chal-lead">{ar ? `اعرف أكتر عدد عينات في دقيقة. أحسن نتيجة بتتحفظ على جهازك، وتقدر تسجلها في لوحة الشرف باسمك. الدكتور جاب ${DOCTOR_SCORE}.` : `Name as many specimens as you can in one minute. Your best stays on your device, and you can post it to the leaderboard with your name. The Doctor's score: ${DOCTOR_SCORE}.`}</p>
 
       {phase === 'idle' && (
         <div className="chal-panel">
@@ -124,10 +124,10 @@ export function ChallengePage() {
           <p className="chal-taunt">{taunt}</p>
           {board !== null && score > 0 && ticketRef.current && submitState !== 'done' && (
             <div className="chal-submit">
-              <input value={nick} maxLength={16} onChange={(e) => { setNick(e.target.value); if (submitState !== 'sending') setSubmitState('idle'); }} placeholder={ar ? 'اسم الشهرة (بدون بياناتك الحقيقية)' : 'Nickname (not your real name)'} aria-label={ar ? 'اسم الشهرة' : 'Nickname'} />
+              <input value={nick} maxLength={16} onChange={(e) => { setNick(e.target.value); if (submitState !== 'sending') setSubmitState('idle'); }} placeholder={ar ? 'اسمك (بيظهر في لوحة الشرف)' : 'Your name (shown on the leaderboard)'} aria-label={ar ? 'اسمك' : 'Your name'} />
               <button className="button" onClick={submit} disabled={nick.trim().length < 2 || submitState === 'sending'}>{ar ? 'سجّل في لوحة الشرف' : 'Post to leaderboard'}</button>
               {submitState === 'taken' && <small>{ar ? 'الاسم ده مأخوذ. جرب اسم تاني.' : 'That nickname is taken. Try another.'}</small>}
-              {submitState === 'badnick' && <small>{ar ? 'الاسم لازم 2 لـ 16 حرف أو رقم.' : 'Use 2 to 16 letters or numbers.'}</small>}
+              {submitState === 'badnick' && <small>{ar ? 'الاسم لازم 2 لـ 16 حرف أو رقم. تقدر تغيره هنا.' : 'Use 2 to 16 letters or numbers. You can change it here.'}</small>}
               {submitState === 'limited' && <small>{ar ? 'حاولت كتير. جرب بعد شوية.' : 'Too many tries. Try again later.'}</small>}
               {submitState === 'failed' && <small>{ar ? 'ماقدرناش نسجل النتيجة. جرب تاني.' : 'Could not post the score. Try again.'}</small>}
             </div>
@@ -149,7 +149,7 @@ export function ChallengePage() {
           {board.length === 0 ? <p className="chal-hint">{ar ? 'لسه محدش سجل. كن الأول!' : 'No scores yet. Be the first!'}</p> : (
             <ol className="chal-rows">{board.map((e, i) => <li key={`${e.nick}-${i}`} className={e.score >= DOCTOR_SCORE ? 'is-doctor' : ''}><span>{i + 1}</span><b>{e.nick}</b><em>{e.score}</em></li>)}</ol>
           )}
-          <p className="chal-hint">{ar ? 'اسم الشهرة بس. النقط بتتراجع على السيرفر، لكن مفيش نظام يمنع الغش بالكامل.' : 'Nicknames only. Scores are checked on the server, but no browser game is fully cheat-proof.'}</p>
+          <p className="chal-hint">{ar ? 'النقط بتتراجع على السيرفر قبل ما تظهر.' : 'Scores are checked on the server before they appear.'}</p>
         </section>
       )}
 

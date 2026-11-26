@@ -35,3 +35,13 @@ export async function submitScore(ticket: string, nick: string, score: number, c
     return { ok: false, reason: e === 'nick_taken' || e === 'bad_nick' || e === 'rate_limited' ? e : 'other' };
   } catch { return { ok: false, reason: 'other' }; }
 }
+
+export const NICK_OK = /^[\p{L}\p{N}][\p{L}\p{N} _\-.]{1,15}$/u;
+// 'free' | 'taken' | 'unknown' (API unreachable: accept the name, the server checks again when a score is posted).
+export async function checkNick(nick: string): Promise<'free' | 'taken' | 'unknown'> {
+  try {
+    const r = await call(`/api/nick?n=${encodeURIComponent(nick)}&player=${playerId()}`);
+    if (!r.ok) return 'unknown';
+    return r.data.available ? 'free' : 'taken';
+  } catch { return 'unknown'; }
+}

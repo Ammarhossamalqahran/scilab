@@ -3,6 +3,7 @@ import { usePreferences } from '../app/PreferencesContext';
 import { LogoMark } from './LogoMark';
 import { FeedbackButton } from './FeedbackButton';
 import { InstallButton } from './InstallButton';
+import { WelcomeName } from './WelcomeName';
 import { ReminderBanner } from './ReminderBanner';
 
 function ThemeGlyph({ theme }: { theme: 'dark' | 'light' }) {
@@ -96,6 +97,7 @@ export function AppShell() {
         </aside>
         <main className="main-content"><ReminderBanner /><Outlet /></main>
         <FeedbackButton />
+        <WelcomeName />
       </div>
     </div>
   );

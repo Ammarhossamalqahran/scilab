@@ -53,6 +53,15 @@ export async function handleLeaderboard(request: Request, db: D1Database, url: U
     return json({ period, entries: rows.results }, 200, { 'cache-control': 'public, max-age=30' });
   }
 
+  if (url.pathname === '/api/nick' && request.method === 'GET') {
+    // Is this name free for this player? Final check still happens when a score is posted.
+    const n = (url.searchParams.get('n') ?? '').trim().replace(/\s+/g, ' ');
+    const player = url.searchParams.get('player') ?? '';
+    if (!NICK_RE.test(n)) return json({ available: false, reason: 'bad_nick' });
+    const owner = await db.prepare('SELECT id FROM players WHERE nick_lc = ?').bind(n.toLowerCase()).first<{ id: string }>();
+    return json({ available: !owner || owner.id === player });
+  }
+
   if (url.pathname === '/api/game/start' && request.method === 'POST') {
     const ip = await ipHash(request);
     const recent = await db.prepare('SELECT COUNT(*) AS n FROM games WHERE ip = ? AND started > ?').bind(ip, now - 600_000).first<{ n: number }>();

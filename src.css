@@ -1498,3 +1498,4 @@ img[loading="lazy"], .specimen-thumbnail, .module-card-photo { background: color
   .welcome-body input, .welcome-go { min-height: 42px; }
 }
 @media (max-height: 420px) { .welcome-hero { display: none; } .welcome-lang { background: rgba(0,0,0,.35); } }
+.chal-submit small.chal-ok { color: var(--accent); }

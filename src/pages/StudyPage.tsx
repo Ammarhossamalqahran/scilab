@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { SpeakButton } from '../components/SpeakButton';
 import { usePreferences } from '../app/PreferencesContext';
 import { specimens, type DepartmentId } from '../data/scientificData';
 import { specimenMedia } from '../data/specimenMedia';
@@ -105,6 +106,7 @@ export function StudyPage() {
               </div>
             )}
           </button>
+          {flipped && <div className="study-speak"><SpeakButton text={current.title.en} lang="en" /></div>}
           {flipped && (
             <div className="study-actions">
               <button className="button study-again" onClick={() => answer(false)}>{ar ? 'مش فاكره، ورّيني تاني' : 'Again'}</button>

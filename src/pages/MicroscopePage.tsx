@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { SpeakButton } from '../components/SpeakButton';
 import { ShareButton } from '../components/ShareButton';
 import { Link, useSearchParams } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
@@ -224,6 +225,7 @@ export function MicroscopePage() {
               <span className="specimen-id">{challengeHidden ? t('unknownSlide') : (lang === 'ar' ? 'شريحة مجهّزة' : 'Prepared slide')}</span>
               <h2>{challengeHidden ? (lang === 'ar' ? 'عينة غير معروفة' : 'Unknown specimen') : specimen.title[lang]}</h2>
               <p>{challengeHidden ? t('challengePrompt') : specimen.subtitle[lang]}</p>
+              {!challengeHidden && <SpeakButton text={specimen.title.en} lang="en" />}
             </div>
             <div className="view-head-right">
               <div className="objective-readout"><span>{t('fieldOfView')}</span><b>{magnification}<small>×</small></b><i>{activeObjective[lang]}</i></div>

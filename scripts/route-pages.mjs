@@ -9,6 +9,7 @@ const pages = {
   study: ['Specimen flashcards | SciLab / فلاش كاردز العينات', 'Study microscope specimens with flashcards. / ذاكر عينات المجهر بالفلاش كاردز.'],
   daily: ['Specimen of the day | SciLab / عينة اليوم', 'A new microscope specimen every day. / عينة مجهرية جديدة كل يوم.'],
   compare: ['Compare slides | SciLab / مقارنة العينات', 'Put two microscope specimens side by side. / حط عينتين مجهريتين جنب بعض.'],
+  challenge: ['60-second challenge | SciLab / تحدي الـ 60 ثانية', 'Name as many specimens as you can in one minute. / اعرف أكبر عدد من العينات في دقيقة.'],
   schemas: ['Labelled diagrams (schemas) | SciLab / الرسومات المسمّاة', 'Study labelled biology diagrams and slide drawings for practical exams. / ادرس الرسومات المسمّاة وشرائح الرسم لامتحان العملي.'],
 };
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;');

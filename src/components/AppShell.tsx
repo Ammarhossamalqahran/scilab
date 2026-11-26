@@ -35,6 +35,10 @@ function CompareGlyph() {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="8" height="14" rx="1" /><rect x="13" y="5" width="8" height="14" rx="1" /></svg>;
 }
 
+function ChallengeGlyph() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8" /><path d="M12 9v4l3 2M9 2h6" /></svg>;
+}
+
 export function AppShell() {
   const { locale, setLocale, theme, toggleTheme, t } = usePreferences();
 
@@ -83,6 +87,9 @@ export function AppShell() {
             </NavLink>
             <NavLink to="/compare" className={({ isActive }) => `nav-item${isActive ? ' is-active' : ''}`}>
               <CompareGlyph /><span>{locale === 'ar' ? 'مقارنة' : 'Compare'}</span>
+            </NavLink>
+            <NavLink to="/challenge" className={({ isActive }) => `nav-item${isActive ? ' is-active' : ''}`}>
+              <ChallengeGlyph /><span>{locale === 'ar' ? 'تحدي الـ 60 ثانية' : '60-second challenge'}</span>
             </NavLink>
           </nav>
         </aside>

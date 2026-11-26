@@ -1,4 +1,4 @@
-export type RouteKey = 'home' | 'microscope' | 'exams' | 'schemas' | 'study' | 'daily' | 'compare';
+export type RouteKey = 'home' | 'microscope' | 'exams' | 'schemas' | 'study' | 'daily' | 'compare' | 'challenge';
 type Meta = { title: string; description: string };
 export const routeMeta: Record<RouteKey, { en: Meta; ar: Meta }> = {
   home: {
@@ -28,5 +28,9 @@ export const routeMeta: Record<RouteKey, { en: Meta; ar: Meta }> = {
   compare: {
     en: { title: 'Compare slides | SciLab', description: 'Put two microscope specimens side by side and compare their photos and facts.' },
     ar: { title: 'مقارنة العينات | SciLab', description: 'حط عينتين مجهريتين جنب بعض وقارن صورهم ومعلوماتهم.' },
+  },
+  challenge: {
+    en: { title: '60-second challenge | SciLab', description: 'Name as many microscope specimens as you can in one minute. Beat the Doctor\'s score.' },
+    ar: { title: 'تحدي الـ 60 ثانية | SciLab', description: 'اعرف أكبر عدد من العينات المجهرية في دقيقة. اغلب درجة الدكتور.' },
   },
 };

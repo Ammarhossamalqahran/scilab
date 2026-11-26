@@ -1,4 +1,4 @@
-import { NavLink, Link, Outlet } from 'react-router-dom';
+import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { LogoMark } from './LogoMark';
 import { FeedbackButton } from './FeedbackButton';
@@ -46,6 +46,7 @@ function ChallengeGlyph() {
 
 export function AppShell() {
   const { locale, setLocale, theme, toggleTheme, t } = usePreferences();
+  const { pathname } = useLocation();
 
   return (
     <div className="app-shell">
@@ -99,7 +100,7 @@ export function AppShell() {
             </NavLink>
           </nav>
         </aside>
-        <main className="main-content"><ReminderBanner /><Outlet /></main>
+        <main className="main-content"><ReminderBanner /><div key={pathname} className="page-enter"><Outlet /></div></main>
         <FeedbackButton />
         <WelcomeName />
         <UpdateNotice />

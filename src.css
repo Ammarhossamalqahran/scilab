@@ -1528,3 +1528,14 @@ img[loading="lazy"], .specimen-thumbnail, .module-card-photo { background: color
 .admin-photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
 .admin-photo { display: grid; gap: 6px; justify-items: center; text-align: center; padding: 10px; border: 1px solid var(--line); border-radius: 12px; }
 .admin-photo img { border-radius: 12px; object-fit: cover; }
+
+/* Smooth page change: the new page fades and slides in a little. Off for people who ask for less motion. */
+.page-enter { animation: page-in .28s ease-out both; }
+@keyframes page-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+/* Shimmering placeholder rows while the leaderboard loads */
+.skeleton-rows { display: grid; gap: 10px; margin-top: 12px; }
+.skeleton-line { height: 38px; border-radius: 10px; background: linear-gradient(90deg, color-mix(in srgb, var(--ink) 8%, transparent) 25%, color-mix(in srgb, var(--ink) 16%, transparent) 50%, color-mix(in srgb, var(--ink) 8%, transparent) 75%); background-size: 200% 100%; animation: skeleton-shimmer 1.3s linear infinite; }
+.skeleton-title { height: 24px; width: 40%; }
+@keyframes skeleton-shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+.chal-photo, .compare-photo, .daily-figure, .study-card-image { min-height: 140px; background: color-mix(in srgb, var(--ink) 8%, transparent); }
+@media (prefers-reduced-motion: reduce) { .page-enter, .skeleton-line { animation: none; } }

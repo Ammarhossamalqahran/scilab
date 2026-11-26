@@ -41,10 +41,11 @@ export function ChallengePage() {
   const ticketRef = useRef<string | null>(null);
   const [period, setPeriod] = useState<'week' | 'all'>('week');
   const [board, setBoard] = useState<Entry[] | null>(null);
+  const [boardDone, setBoardDone] = useState(false);
   const [nick, setNick] = useState(savedNick);
   const [submitState, setSubmitState] = useState<'idle' | 'sending' | 'done' | 'taken' | 'badnick' | 'limited' | 'failed' | 'noticket'>('idle');
   const [weekRank, setWeekRank] = useState<number | null>(null);
-  useEffect(() => { let live = true; fetchBoard(period).then((b) => { if (live) setBoard(b); }); return () => { live = false; }; }, [period, submitState]);
+  useEffect(() => { let live = true; fetchBoard(period).then((b) => { if (live) { setBoard(b); setBoardDone(true); } }); return () => { live = false; }; }, [period, submitState]);
 
   const start = useCallback(() => {
     ref.current = { score: 0, streak: 0, best: 0, correct: 0 };
@@ -145,6 +146,12 @@ export function ChallengePage() {
         </div>
       )}
 
+      {!boardDone && (
+        <section className="chal-board" aria-busy="true" aria-label={ar ? 'بنحمّل لوحة الشرف' : 'Loading the leaderboard'}>
+          <div className="skeleton-line skeleton-title" />
+          <div className="skeleton-rows">{[0, 1, 2, 3, 4].map((i) => <div key={i} className="skeleton-line" />)}</div>
+        </section>
+      )}
       {board !== null && (
         <section className="chal-board">
           <div className="chal-board-head">

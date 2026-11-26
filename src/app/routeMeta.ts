@@ -1,4 +1,4 @@
-export type RouteKey = 'home' | 'microscope' | 'exams' | 'schemas' | 'study';
+export type RouteKey = 'home' | 'microscope' | 'exams' | 'schemas' | 'study' | 'daily';
 type Meta = { title: string; description: string };
 export const routeMeta: Record<RouteKey, { en: Meta; ar: Meta }> = {
   home: {
@@ -20,5 +20,9 @@ export const routeMeta: Record<RouteKey, { en: Meta; ar: Meta }> = {
   study: {
     en: { title: 'Specimen flashcards | SciLab', description: 'Study microscope specimens with flashcards. Cards you miss come back, in Arabic and English.' },
     ar: { title: 'فلاش كاردز العينات | SciLab', description: 'ذاكر عينات المجهر بالفلاش كاردز. الكروت اللي بتغلط فيها بترجعلك، بالعربية والإنجليزية.' },
+  },
+  daily: {
+    en: { title: 'Specimen of the day | SciLab', description: 'A new microscope specimen every day, with a share card for your story.' },
+    ar: { title: 'عينة اليوم | SciLab', description: 'عينة مجهرية جديدة كل يوم، مع كارت جاهز للمشاركة في الستوري.' },
   },
 };

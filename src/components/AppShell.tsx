@@ -26,6 +26,8 @@ function SchemaGlyph() {
 
 function StudyGlyph() {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="14" height="12" rx="1.5" /><path d="M7 3h13a1 1 0 0 1 1 1v11M7 11h6" /></svg>;
+function DailyGlyph() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="1.5" /><path d="M4 10h16M9 3v4m6-4v4" /></svg>;
 }
 
 export function AppShell() {
@@ -70,6 +72,8 @@ export function AppShell() {
             </NavLink>
             <NavLink to="/study" className={({ isActive }) => `nav-item${isActive ? ' is-active' : ''}`}>
               <StudyGlyph /><span>{locale === 'ar' ? 'فلاش كاردز' : 'Flashcards'}</span>
+            <NavLink to="/daily" className={({ isActive }) => `nav-item${isActive ? ' is-active' : ''}`}>
+              <DailyGlyph /><span>{locale === 'ar' ? 'عينة اليوم' : 'Specimen of the day'}</span>
             </NavLink>
           </nav>
         </aside>

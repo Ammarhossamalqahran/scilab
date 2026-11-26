@@ -1,25 +1,29 @@
 import { playerId, saveNick, saveAvatar } from './leaderboardApi';
 
-// Optional Google link (Google Identity Services). Hidden when the site has no Client ID configured.
+// Optional Google link. A plain full-page redirect to Google and back (no popup), so it also works inside
+// the installed app and in mobile browsers that block or lose popups. We come back to "/" with the signed
+// ID token in the URL fragment, send it to our server (which verifies it) and show a clear result.
 let clientIdPromise: Promise<string> | null = null;
 export function googleClientId(): Promise<string> {
   clientIdPromise ??= fetch('/api/google/config').then((r) => r.json()).then((d: { clientId?: string }) => d.clientId ?? '').catch(() => '');
   return clientIdPromise;
 }
 
-type Gis = { accounts: { id: { initialize(o: unknown): void; renderButton(el: HTMLElement, o: unknown): void } } };
-let gisPromise: Promise<Gis | null> | null = null;
-export function loadGis(): Promise<Gis | null> {
-  gisPromise ??= new Promise((resolve) => {
-    const w = window as unknown as { google?: Gis };
-    if (w.google?.accounts) return resolve(w.google);
-    const s = document.createElement('script');
-    s.src = 'https://accounts.google.com/gsi/client'; s.async = true;
-    s.onload = () => resolve(w.google ?? null);
-    s.onerror = () => { gisPromise = null; resolve(null); };
-    document.head.appendChild(s);
-  });
-  return gisPromise;
+const PENDING = 'scilab-google-pending';
+const RESULT = 'scilab-google-result';
+export type GoogleResult = { kind: 'linked' | 'signedin' | 'error'; reason?: 'already_linked' | 'no_account' | 'no_profile' | 'cancelled' | 'other'; nick?: string };
+
+const randomNonce = () => [...crypto.getRandomValues(new Uint8Array(16))].map((b) => b.toString(16).padStart(2, '0')).join('');
+
+// Sends the browser to Google. `mode` says what to do when it comes back.
+export async function startGoogle(mode: 'link' | 'signin'): Promise<boolean> {
+  const id = await googleClientId();
+  if (!id) return false;
+  const nonce = randomNonce();
+  try { window.localStorage.setItem(PENDING, JSON.stringify({ mode, nonce, at: Date.now(), player: playerId() })); } catch { return false; }
+  const q = new URLSearchParams({ client_id: id, redirect_uri: `${window.location.origin}/`, response_type: 'id_token', scope: 'openid', nonce, prompt: 'select_account', state: mode });
+  window.location.assign(`https://accounts.google.com/o/oauth2/v2/auth?${q}`);
+  return true;
 }
 
 async function post(path: string, body: Record<string, unknown>) {
@@ -28,26 +32,44 @@ async function post(path: string, body: Record<string, unknown>) {
     return { ok: res.ok, data: await res.json().catch(() => ({})) as Record<string, unknown> };
   } catch { return { ok: false, data: {} as Record<string, unknown> }; }
 }
-export type LinkResult = 'ok' | 'already_linked' | 'no_profile' | 'bad_token' | 'other';
-export async function linkGoogle(credential: string): Promise<LinkResult> {
-  const r = await post('/api/google/link', { player: playerId(), credential });
-  if (r.ok) return 'ok';
-  const e = r.data.error;
-  return e === 'already_linked' || e === 'no_profile' || e === 'bad_token' ? e : 'other';
+
+function publish(r: GoogleResult) {
+  try { window.localStorage.setItem(RESULT, JSON.stringify({ ...r, at: Date.now() })); } catch { /* ignored */ }
+  window.dispatchEvent(new Event('scilab-google-result'));
 }
-export type SignInResult = { ok: true; nick: string } | { ok: false; reason: 'no_account' | 'bad_token' | 'other' };
-// Puts this device on the player linked to the Google account (like entering the code).
-export async function signInGoogle(credential: string): Promise<SignInResult> {
-  const r = await post('/api/google/signin', { credential });
-  if (r.ok && typeof r.data.player === 'string' && typeof r.data.nick === 'string') {
-    try { window.localStorage.setItem('scilab-player-id', r.data.player); } catch { /* ignored */ }
-    saveNick(r.data.nick);
-    if (typeof r.data.avatar === 'string') saveAvatar(r.data.avatar);
-    return { ok: true, nick: r.data.nick };
+export function takeGoogleResult(): GoogleResult | null {
+  try {
+    const v = JSON.parse(window.localStorage.getItem(RESULT) ?? 'null') as (GoogleResult & { at: number }) | null;
+    window.localStorage.removeItem(RESULT);
+    return v && Date.now() - v.at < 600_000 ? v : null;
+  } catch { return null; }
+}
+
+// Runs once at app start: if we just came back from Google, finish the job and publish the result.
+export async function completeGoogleFromHash(): Promise<void> {
+  const hash = window.location.hash.replace(/^#/, '');
+  if (!hash || !/(^|&)(id_token|error)=/.test(hash)) return;
+  const params = new URLSearchParams(hash);
+  window.history.replaceState(null, '', window.location.pathname + window.location.search); // never leave the token in the address bar
+  let pending: { mode?: string; nonce?: string; at?: number } | null = null;
+  try { pending = JSON.parse(window.localStorage.getItem(PENDING) ?? 'null'); window.localStorage.removeItem(PENDING); } catch { /* ignored */ }
+  const credential = params.get('id_token');
+  if (!credential || !pending?.nonce || !pending.at || Date.now() - pending.at > 900_000) { publish({ kind: 'error', reason: params.get('error') === 'access_denied' ? 'cancelled' : 'other' }); return; }
+  if (pending.mode === 'signin') {
+    const r = await post('/api/google/signin', { credential, nonce: pending.nonce });
+    if (r.ok && typeof r.data.player === 'string' && typeof r.data.nick === 'string') {
+      try { window.localStorage.setItem('scilab-player-id', r.data.player); } catch { /* ignored */ }
+      saveNick(r.data.nick);
+      if (typeof r.data.avatar === 'string') saveAvatar(r.data.avatar);
+      publish({ kind: 'signedin', nick: r.data.nick });
+    } else publish({ kind: 'error', reason: r.data.error === 'no_account' ? 'no_account' : 'other' });
+    return;
   }
-  const e = r.data.error;
-  return { ok: false, reason: e === 'no_account' || e === 'bad_token' ? e : 'other' };
+  const r = await post('/api/google/link', { player: playerId(), credential, nonce: pending.nonce });
+  if (r.ok) publish({ kind: 'linked' });
+  else publish({ kind: 'error', reason: r.data.error === 'already_linked' ? 'already_linked' : r.data.error === 'no_profile' ? 'no_profile' : 'other' });
 }
+
 export async function googleLinked(): Promise<boolean> {
   const r = await post('/api/google/status', { player: playerId() });
   return r.ok && r.data.linked === true;

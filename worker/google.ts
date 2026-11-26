@@ -22,7 +22,7 @@ async function googleKeys(fetchImpl: typeof fetch, now: number): Promise<Jwk[]> 
 const b64uBytes = (s: string) => Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/').padEnd(Math.ceil(s.length / 4) * 4, '=')), (c) => c.charCodeAt(0));
 
 // Returns Google's user id ("sub") when the token is genuine, for this app, and not expired. Otherwise null.
-export async function verifyIdToken(token: unknown, clientId: string, now = Date.now(), fetchImpl: typeof fetch = fetch): Promise<string | null> {
+export async function verifyIdToken(token: unknown, clientId: string, now = Date.now(), fetchImpl: typeof fetch = fetch, nonce?: string): Promise<string | null> {
   if (typeof token !== 'string' || !clientId || token.length > 4000) return null;
   const parts = token.split('.');
   if (parts.length !== 3) return null;
@@ -34,9 +34,10 @@ export async function verifyIdToken(token: unknown, clientId: string, now = Date
     const key = await crypto.subtle.importKey('jwk', jwk, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['verify']);
     const ok = await crypto.subtle.verify('RSASSA-PKCS1-v1_5', key, b64uBytes(parts[2]), new TextEncoder().encode(`${parts[0]}.${parts[1]}`));
     if (!ok) return null;
-    const c = JSON.parse(new TextDecoder().decode(b64uBytes(parts[1]))) as { iss?: string; aud?: string; exp?: number; sub?: string };
+    const c = JSON.parse(new TextDecoder().decode(b64uBytes(parts[1]))) as { iss?: string; aud?: string; exp?: number; sub?: string; nonce?: string };
     if (c.iss !== 'accounts.google.com' && c.iss !== 'https://accounts.google.com') return null;
     if (c.aud !== clientId) return null;
+    if (nonce !== undefined && c.nonce !== nonce) return null; // ties the token to the sign-in this browser started
     if (typeof c.exp !== 'number' || c.exp * 1000 < now) return null;
     return typeof c.sub === 'string' && c.sub.length > 0 && c.sub.length < 64 ? c.sub : null;
   } catch { return null; }
@@ -59,14 +60,15 @@ export async function handleGoogle(request: Request, db: D1Database, url: URL, c
   const n = await db.prepare("SELECT COUNT(*) AS n FROM code_rl WHERE kind = 'google' AND ip = ? AND at > ?").bind(ip, now - 600_000).first<{ n: number }>();
   if ((n?.n ?? 0) >= 30) return json({ error: 'rate_limited' }, 429);
   await db.prepare("INSERT INTO code_rl (kind, ip, at) VALUES ('google', ?, ?)").bind(ip, now).run();
-  const body = await request.json().catch(() => null) as { player?: unknown; credential?: unknown } | null;
+  const body = await request.json().catch(() => null) as { player?: unknown; credential?: unknown; nonce?: unknown } | null;
   const player = typeof body?.player === 'string' && PLAYER_RE.test(body.player) ? body.player : '';
+  const nonce = typeof body?.nonce === 'string' && /^[0-9a-f]{32}$/.test(body.nonce) ? body.nonce : null;
   const hashSub = async (sub: string) => hashCode(db, `google:${sub}`);
 
   // Link this player (name) to a Google account.
   if (url.pathname === '/api/google/link') {
     if (!player) return json({ error: 'bad_request' }, 400);
-    const sub = await verifyIdToken(body?.credential, clientId, now, fetchImpl);
+    const sub = nonce ? await verifyIdToken(body?.credential, clientId, now, fetchImpl, nonce) : null;
     if (!sub) return json({ error: 'bad_token' }, 401);
     const me = await db.prepare('SELECT id FROM players WHERE id = ?').bind(player).first();
     if (!me) return json({ error: 'no_profile' }, 404);
@@ -78,7 +80,7 @@ export async function handleGoogle(request: Request, db: D1Database, url: URL, c
   }
   // Sign in on a new device: find the player linked to this Google account.
   if (url.pathname === '/api/google/signin') {
-    const sub = await verifyIdToken(body?.credential, clientId, now, fetchImpl);
+    const sub = nonce ? await verifyIdToken(body?.credential, clientId, now, fetchImpl, nonce) : null;
     if (!sub) return json({ error: 'bad_token' }, 401);
     const row = await db.prepare('SELECT id, nick, avatar FROM players WHERE google_hash = ?').bind(await hashSub(sub)).first<{ id: string; nick: string; avatar: string | null }>();
     if (!row) return json({ error: 'no_account' }, 404);

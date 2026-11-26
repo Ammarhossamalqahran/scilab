@@ -1,25 +1,19 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { usePreferences } from '../app/PreferencesContext';
-import { googleClientId, loadGis } from '../lib/google';
+import { googleClientId, startGoogle } from '../lib/google';
 
-// Google's own sign-in button. Renders nothing when no Client ID is configured or the script is blocked.
-export function GoogleButton({ onCredential, text = 'continue_with' }: { onCredential: (credential: string) => void; text?: 'continue_with' | 'signin_with' }) {
-  const { locale, theme } = usePreferences();
-  const box = useRef<HTMLDivElement>(null);
-  const [ready, setReady] = useState(true);
-  const cb = useRef(onCredential); cb.current = onCredential;
-  useEffect(() => {
-    let live = true;
-    (async () => {
-      const id = await googleClientId();
-      const gis = id ? await loadGis() : null;
-      if (!live) return;
-      if (!id || !gis || !box.current) { setReady(false); return; }
-      gis.accounts.id.initialize({ client_id: id, callback: (r: { credential?: string }) => { if (r.credential) cb.current(r.credential); }, ux_mode: 'popup' });
-      gis.accounts.id.renderButton(box.current, { type: 'standard', theme: theme === 'dark' ? 'filled_black' : 'outline', size: 'large', text, shape: 'pill', locale: locale === 'ar' ? 'ar' : 'en', width: 240 });
-    })();
-    return () => { live = false; };
-  }, [locale, theme, text]);
-  if (!ready) return null;
-  return <div ref={box} className="google-btn" />;
+// "Link / sign in with Google". Hidden when the site has no Client ID.
+export function GoogleButton({ mode }: { mode: 'link' | 'signin' }) {
+  const { locale } = usePreferences();
+  const ar = locale === 'ar';
+  const [on, setOn] = useState(false);
+  const [busy, setBusy] = useState(false);
+  useEffect(() => { void googleClientId().then((id) => setOn(!!id)); }, []);
+  if (!on) return null;
+  return (
+    <button type="button" className="button google-btn" disabled={busy} onClick={() => { setBusy(true); void startGoogle(mode).then((ok) => { if (!ok) setBusy(false); }); }}>
+      <svg viewBox="0 0 48 48" width="20" height="20" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.5 17.7 9.5 24 9.5z" /><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z" /><path fill="#FBBC05" d="M10.5 28.7c-.5-1.5-.8-3-.8-4.7s.3-3.2.8-4.7l-7.9-6.1C.9 16.4 0 20.1 0 24s.9 7.6 2.6 10.8l7.9-6.1z" /><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.8 2.3-8.4 2.3-6.3 0-11.6-4-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z" /></svg>
+      <span>{busy ? (ar ? 'بنفتح جوجل...' : 'Opening Google...') : mode === 'link' ? (ar ? 'اربط حساب جوجل' : 'Link Google account') : (ar ? 'ادخل بحساب جوجل' : 'Sign in with Google')}</span>
+    </button>
+  );
 }

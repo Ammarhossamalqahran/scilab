@@ -5,6 +5,7 @@ import { FeedbackButton } from './FeedbackButton';
 import { InstallButton } from './InstallButton';
 import { WelcomeName } from './WelcomeName';
 import { ProfileButton } from './ProfileButton';
+import { GoogleResultDialog } from './GoogleResultDialog';
 import { UpdateNotice } from './UpdateNotice';
 import { WinnerInbox } from './WinnerInbox';
 import { ReminderBanner } from './ReminderBanner';
@@ -103,6 +104,7 @@ export function AppShell() {
         <main className="main-content"><ReminderBanner /><div key={pathname} className="page-enter"><Outlet /></div></main>
         <FeedbackButton />
         <WelcomeName />
+        <GoogleResultDialog />
         <UpdateNotice />
         <WinnerInbox />
       </div>

@@ -5,7 +5,7 @@ import { readStats } from '../data/gameStats';
 import { createCode, savedAvatar, savedCode, savedNick, saveAvatar, saveNick, updateProfile, savedPhoto, refreshPhoto, removePhoto } from '../lib/leaderboardApi';
 import { PhotoPicker } from './PhotoPicker';
 import { GoogleButton } from './GoogleButton';
-import { googleClientId, googleLinked, linkGoogle, unlinkGoogle } from '../lib/google';
+import { googleClientId, googleLinked, unlinkGoogle } from '../lib/google';
 
 // Profile icon in the top bar. Tapping it opens the profile: name, character, scores, personal code,
 // language and theme.
@@ -46,11 +46,6 @@ export function ProfileButton() {
     if (!open || !nick) return;
     void googleClientId().then((id) => { setGOn(!!id); if (id) void googleLinked().then(setGLinked); });
   }, [open, nick]);
-  async function onGoogle(credential: string) {
-    const r = await linkGoogle(credential);
-    if (r === 'ok') { setGLinked(true); setMsg(ar ? 'اتربط حساب جوجل.' : 'Google account linked.'); }
-    else setMsg(r === 'already_linked' ? (ar ? 'حساب جوجل ده مربوط باسم تاني.' : 'That Google account is linked to another name.') : (ar ? 'ماقدرناش نربط. جرب تاني.' : 'Could not link. Try again.'));
-  }
   function show() { setName(nick); setMsg(''); setPicking(false); setCopied(false); setOpen(true); }
   async function saveName() {
     const clean = name.trim().replace(/\s+/g, ' ');
@@ -119,7 +114,7 @@ export function ProfileButton() {
                       <span>{ar ? 'حساب جوجل (اختياري)' : 'Google account (optional)'}</span>
                       {gLinked
                         ? <div className="profile-row"><b>{ar ? 'مربوط' : 'Linked'}</b><button type="button" className="quiet-button" onClick={() => void unlinkGoogle().then((ok) => ok && setGLinked(false))}>{ar ? 'فك الربط' : 'Unlink'}</button></div>
-                        : <GoogleButton onCredential={(c) => void onGoogle(c)} />}
+                        : <GoogleButton mode="link" />}
                       <small className="winner-note">{ar ? 'بنحفظ بصمة مشفرة لمعرّف حسابك بس، من غير إيميل أو اسم. بتفيدك تدخل من أي جهاز.' : 'We keep only a hashed account id, no email or name. It lets you sign in from any device.'}</small>
                     </div>
                   )}

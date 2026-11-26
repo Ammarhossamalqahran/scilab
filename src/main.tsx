@@ -15,7 +15,9 @@ import '@fontsource/el-messiri/latin-600.css';
 import '@fontsource/el-messiri/latin-700.css';
 import '../src.css';
 import { startAnalytics } from './analytics';
+import { completeGoogleFromHash } from './lib/google';
 
+void completeGoogleFromHash();
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <PreferencesProvider>

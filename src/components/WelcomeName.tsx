@@ -4,7 +4,6 @@ import { checkNick, createCode, restoreCode, updateProfile, saveAvatar, NICK_OK,
 import { AVATARS, Avatar } from '../data/avatars';
 import { PhotoPicker } from './PhotoPicker';
 import { GoogleButton } from './GoogleButton';
-import { signInGoogle } from '../lib/google';
 import { LogoMark } from './LogoMark';
 
 const KEY = 'scilab-welcome';
@@ -108,7 +107,7 @@ export function WelcomeName() {
             <p>{ar ? 'اكتب كودك الشخصي عشان يرجعلك اسمك ونتايجك.' : 'Enter your personal code to bring back your name and scores.'}</p>
             <input value={name} maxLength={14} dir="ltr" onChange={(e) => { setName(e.target.value); setRestoreErr(''); }} placeholder="ABCDE-FGHIJ" aria-label={ar ? 'الكود' : 'Code'} autoCapitalize="characters" autoComplete="off" />
             {restoreErr && <small>{restoreErr}</small>}
-            <GoogleButton text="signin_with" onCredential={(c) => { void signInGoogle(c).then((r) => { if (r.ok) setOpen(false); else setRestoreErr(r.reason === 'no_account' ? (ar ? 'مفيش حساب مربوط بجوجل ده.' : 'No name is linked to this Google account.') : (ar ? 'ماقدرناش ندخل. جرب تاني.' : 'Could not sign in. Try again.')); }); }} />
+            <GoogleButton mode="signin" />
             
             <button type="submit" className="button button-primary welcome-go" disabled={busy || name.replace(/[^A-Za-z0-9]/g, '').length < 10}>{ar ? 'استرجع' : 'Restore'}</button>
             <button type="button" className="welcome-skip" onClick={() => { setStep('name'); setName(''); setRestoreErr(''); }}>{ar ? 'رجوع' : 'Back'}</button>

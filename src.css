@@ -1541,4 +1541,6 @@ img[loading="lazy"], .specimen-thumbnail, .module-card-photo { background: color
 @media (prefers-reduced-motion: reduce) { .page-enter, .skeleton-line { animation: none; } }
 
 .profile-google { display: grid; gap: 8px; justify-items: center; padding: 10px; border: 1px dashed var(--line-strong); border-radius: 12px; }
-.google-btn { min-height: 44px; display: flex; justify-content: center; }
+
+
+.button.google-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; }

@@ -1,8 +1,9 @@
 import type { Env } from './types';
 import { handleLeaderboard, purgeLeaderboard } from './leaderboard';
-import { handlePush, sendDaily } from './push';
+import { handlePush, sendDaily, isLastDayOfMonth } from './push';
 
 const MONTHLY_CRON = '0 3 1 * *'; // keep in sync with wrangler.jsonc
+const MONTH_END_CRON = '0 18 28-31 * *'; // fires on days 28-31, only the real last day sends
 
 // Serves /api/* only (wrangler.jsonc run_worker_first). Everything else is static assets.
 export default {
@@ -21,6 +22,7 @@ export default {
   async scheduled(event: { cron?: string }, env: Env): Promise<void> {
     if (!env.DB) return;
     if (event.cron === MONTHLY_CRON) await purgeLeaderboard(env.DB);
+    else if (event.cron === MONTH_END_CRON) { if (isLastDayOfMonth()) await sendDaily(env.DB, fetch, 'monthly'); }
     else await sendDaily(env.DB);
   },
 };

@@ -1,7 +1,7 @@
 // SciLab service worker: lets the site open offline after a first visit.
 // App shell is cached on install; pages, scripts, fonts and photos are cached as they are used.
 // The 500 specimen photos (about 58 MB) are NOT preloaded, only the ones a student opens.
-const CACHE = 'scilab-v3';
+const CACHE = 'scilab-v4';
 const SHELL = ['/', '/index.html', '/manifest.webmanifest', '/favicon.svg', '/scilab-logo.svg'];
 
 self.addEventListener('install', (event) => {
@@ -35,6 +35,21 @@ self.addEventListener('fetch', (event) => {
 });
 
 // Daily reminder. The server sends an empty push; the teasing line is chosen here.
+const MONTH_END = {
+  ar: [
+    "آخر الشهر يا ضعيف! الليدربورد هيتصفّر، تعالى كمّل التحدي.",
+    "الدكتور مستنيك قبل ما الشهر يخلص. هتسيبه يكسب يا بطل؟",
+    "كل يوم بتقول بكرة. بكرة الشهر بيتصفّر يا ضعيف.",
+    "الشهر هيقفل ولسه ما غلبتش الدكتور. كمّل التحدي!",
+    "ضعيف؟ ورّينا إنك مش كده. دقيقة واحدة قبل التصفير.",
+  ],
+  en: [
+    "Last day of the month, weakling! The leaderboard resets tonight. Finish the challenge.",
+    "The Doctor is waiting before the month ends. Will you let him win?",
+    "You keep saying tomorrow. Tomorrow the board is wiped.",
+    "One minute before the reset. Show us you are not that weak.",
+  ],
+};
 const TEASE = {
   en: [
     "The Doctor scored 120 in 60 seconds. Think you can beat that?",
@@ -58,12 +73,14 @@ self.addEventListener('push', (event) => {
       const hit = await (await caches.open('scilab-prefs')).match('/lang');
       if (hit) lang = (await hit.text()) === 'ar' ? 'ar' : 'en';
     } catch (e) { /* default language */ }
-    const lines = TEASE[lang];
+    let monthly = false;
+    try { const r = await fetch('/api/push/kind', { cache: 'no-store' }); monthly = (await r.json()).kind === 'monthly'; } catch (e) { /* daily line */ }
+    const lines = (monthly ? MONTH_END : TEASE)[lang];
     await self.registration.showNotification('SciLab', {
       body: lines[Math.floor(Math.random() * lines.length)],
       icon: '/icon-192.png',
       badge: '/icon-192.png',
-      tag: 'scilab-daily',
+      tag: monthly ? 'scilab-month-end' : 'scilab-daily',
       lang,
       dir: lang === 'ar' ? 'rtl' : 'ltr',
       data: { url: '/challenge' },

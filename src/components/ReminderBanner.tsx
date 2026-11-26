@@ -36,7 +36,11 @@ export function ReminderBanner() {
   useEffect(() => { void rememberLanguage(ar ? 'ar' : 'en'); }, [ar]);
 
   if (hidden) return null;
-  const tease = best >= DOCTOR_SCORE
+  const left = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate() - new Date().getDate();
+  const monthEnd = left <= 2;
+  const tease = monthEnd
+    ? (ar ? 'آخر الشهر يا ضعيف! الليدربورد هيتصفّر قريب، تعالى كمّل التحدي.' : 'Month end, weakling! The leaderboard resets soon. Come finish the challenge.')
+    : best >= DOCTOR_SCORE
     ? (ar ? `إنت غلبت الدكتور (${best}). بس هو بيتدرب في السر. تعالى ثبّت مكانك.` : `You beat the Doctor (${best}). He is training in secret. Come defend your spot.`)
     : best > 0
       ? (ar ? `أحسن نتيجة ليك ${best} والدكتور جاب ${DOCTOR_SCORE}. ناقصك ${DOCTOR_SCORE - best}.` : `Your best is ${best}, the Doctor scored ${DOCTOR_SCORE}. ${DOCTOR_SCORE - best} to go.`)

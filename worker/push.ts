@@ -56,6 +56,10 @@ export async function handlePush(request: Request, db: D1Database, url: URL): Pr
   if (url.pathname === '/api/push/vapid-key' && request.method === 'GET') {
     return json({ key: (await getKeys(db)).publicKey });
   }
+  if (url.pathname === '/api/push/kind' && request.method === 'GET') {
+    const row = await db.prepare("SELECT v FROM kv WHERE k = 'kind'").first<{ v: string }>();
+    return json({ kind: row?.v === 'monthly' ? 'monthly' : 'daily' });
+  }
   if (url.pathname === '/api/push/subscribe' && request.method === 'POST') {
     const body = await request.json().catch(() => null) as { endpoint?: unknown } | null;
     if (!body || !validEndpoint(body.endpoint)) return json({ error: 'bad_subscription' }, 400);
@@ -74,9 +78,11 @@ export async function handlePush(request: Request, db: D1Database, url: URL): Pr
 }
 
 // Called by the daily cron. Subscriptions the push service reports as gone (404/410) are removed.
-export async function sendDaily(db: D1Database, fetchImpl: typeof fetch = fetch): Promise<{ sent: number; removed: number; failed: number }> {
+export async function sendDaily(db: D1Database, fetchImpl: typeof fetch = fetch, kind: 'daily' | 'monthly' = 'daily'): Promise<{ sent: number; removed: number; failed: number }> {
   await ensureSchema(db);
   const keys = await getKeys(db);
+  // The push is empty, so the service worker asks /api/push/kind which message to show.
+  await db.prepare("INSERT INTO kv (k, v) VALUES ('kind', ?) ON CONFLICT(k) DO UPDATE SET v = excluded.v").bind(kind).run();
   const subs = await db.prepare('SELECT endpoint FROM push_subs LIMIT 5000').all<{ endpoint: string }>();
   let sent = 0, removed = 0, failed = 0;
   for (const { endpoint } of subs.results) {
@@ -89,3 +95,6 @@ export async function sendDaily(db: D1Database, fetchImpl: typeof fetch = fetch)
   }
   return { sent, removed, failed };
 }
+
+// True when `now` (UTC) is on the last day of its month.
+export const isLastDayOfMonth = (now = new Date()) => new Date(now.getTime() + 86400_000).getUTCDate() === 1;

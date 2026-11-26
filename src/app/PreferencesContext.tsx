@@ -1,3 +1,4 @@
+import { syncPushLanguage } from '../lib/pushReminders';
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { messages, type Locale, type MessageKey } from '../i18n/messages';
 
@@ -26,6 +27,7 @@ export function PreferencesProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => readStored('fs-lab-theme', 'light', ['dark', 'light']));
 
   useEffect(() => {
+    void syncPushLanguage(locale);
     document.documentElement.lang = locale;
     document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.dataset.theme = theme;

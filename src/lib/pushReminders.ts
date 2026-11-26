@@ -28,6 +28,17 @@ const keyBytes = (b64: string) => {
 export async function rememberLanguage(lang: 'ar' | 'en') {
   try { if ('caches' in window) await (await caches.open('scilab-prefs')).put('/lang', new Response(lang)); } catch { /* optional */ }
 }
+// Keeps notifications in the app language: the worker's local copy, and the server copy for this device.
+// Runs at every app start and every language change, so older subscriptions get the language too.
+export async function syncPushLanguage(lang: 'ar' | 'en') {
+  await rememberLanguage(lang);
+  try {
+    if (!pushSupported()) return;
+    const reg = await navigator.serviceWorker.getRegistration('/sw.js');
+    const sub = await reg?.pushManager.getSubscription();
+    if (sub) await fetch('/api/push/lang', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ endpoint: sub.endpoint, lang }) });
+  } catch { /* optional */ }
+}
 
 // Must be called from a tap (iOS requires a user gesture for the permission prompt).
 export async function enableReminders(lang: 'ar' | 'en'): Promise<PushState> {
@@ -37,7 +48,7 @@ export async function enableReminders(lang: 'ar' | 'en'): Promise<PushState> {
   const reg = await navigator.serviceWorker.register('/sw.js').then(() => navigator.serviceWorker.ready);
   const { key } = await (await fetch('/api/push/vapid-key')).json() as { key: string };
   const sub = (await reg.pushManager.getSubscription()) ?? await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyBytes(key) });
-  const res = await fetch('/api/push/subscribe', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ endpoint: sub.endpoint, player: playerId() }) });
+  const res = await fetch('/api/push/subscribe', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ endpoint: sub.endpoint, player: playerId(), lang }) });
   if (!res.ok) throw new Error('subscribe_failed');
   await rememberLanguage(lang);
   return 'on';

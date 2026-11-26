@@ -1,7 +1,7 @@
 // SciLab service worker: lets the site open offline after a first visit.
 // App shell is cached on install; pages, scripts, fonts and photos are cached as they are used.
 // The 500 specimen photos (about 58 MB) are NOT preloaded, only the ones a student opens.
-const CACHE = 'scilab-v7';
+const CACHE = 'scilab-v8';
 const SHELL = ['/', '/index.html', '/manifest.webmanifest', '/favicon.svg', '/scilab-logo.svg'];
 
 self.addEventListener('install', (event) => {
@@ -75,8 +75,9 @@ async function askKind(sub) {
   try {
     const q = sub ? '?endpoint=' + encodeURIComponent(sub.endpoint) : '';
     const res = await fetch('/api/push/kind' + q, { cache: 'no-store', signal: ctl.signal });
-    return (await res.json()).kind;
-  } catch (e) { return 'unknown'; } finally { clearTimeout(timer); }
+    const d = await res.json();
+    return { kind: d.kind, lang: d.lang === 'ar' || d.lang === 'en' ? d.lang : null };
+  } catch (e) { return { kind: 'unknown', lang: null }; } finally { clearTimeout(timer); }
 }
 function show(title, body, tag, lang, url) {
   return self.registration.showNotification(title, {
@@ -86,13 +87,14 @@ function show(title, body, tag, lang, url) {
 }
 self.addEventListener('push', (event) => {
   event.waitUntil((async () => {
-    let lang = (self.navigator && self.navigator.language || 'en').slice(0, 2) === 'ar' ? 'ar' : 'en';
+    // Language: the one saved on the server for this device, else the app's own saved choice, else Arabic (the app default).
+    let lang = 'ar';
     try {
       const hit = await (await caches.open('scilab-prefs')).match('/lang');
       if (hit) lang = (await hit.text()) === 'ar' ? 'ar' : 'en';
     } catch (e) { /* default language */ }
     let kind = 'unknown';
-    try { kind = await askKind(await self.registration.pushManager.getSubscription()); } catch (e) { /* unknown */ }
+    try { const r = await askKind(await self.registration.pushManager.getSubscription()); kind = r.kind; if (r.lang) lang = r.lang; } catch (e) { /* unknown */ }
     try {
       if (kind === 'winner') {
         // Private message: the notification never shows its text, only that one is waiting.

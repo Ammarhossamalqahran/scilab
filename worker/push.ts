@@ -14,7 +14,8 @@ function ensureSchema(db: D1Database): Promise<void> {
   ready ??= db.batch([
     db.prepare('CREATE TABLE IF NOT EXISTS push_subs (endpoint TEXT PRIMARY KEY, created INTEGER NOT NULL, player_id TEXT)'),
     db.prepare('CREATE TABLE IF NOT EXISTS kv (k TEXT PRIMARY KEY, v TEXT NOT NULL)'),
-  ]).then(() => db.prepare('ALTER TABLE push_subs ADD COLUMN player_id TEXT').run().then(() => undefined, () => undefined)) // older table without the column
+  ]).then(() => db.prepare('ALTER TABLE push_subs ADD COLUMN player_id TEXT').run().then(() => undefined, () => undefined))
+    .then(() => db.prepare('ALTER TABLE push_subs ADD COLUMN lang TEXT').run().then(() => undefined, () => undefined)) // older table without the column
     .catch((e) => { ready = null; throw e; });
   return ready;
 }
@@ -60,12 +61,15 @@ export async function handlePush(request: Request, db: D1Database, url: URL): Pr
   if (url.pathname === '/api/push/kind' && request.method === 'GET') {
     // A pending private winner message for this device wins over the daily/monthly line.
     const ep = url.searchParams.get('endpoint');
+    // The device's chosen app language, so the notification text matches it.
+    const lrow = ep && validEndpoint(ep) ? await db.prepare('SELECT lang FROM push_subs WHERE endpoint = ?').bind(ep).first<{ lang: string | null }>().catch(() => null) : null;
+    const lang = lrow?.lang === 'en' || lrow?.lang === 'ar' ? lrow.lang : undefined;
     if (ep && validEndpoint(ep)) {
       const w = await db.prepare("SELECT 1 AS x FROM winner_msgs w JOIN push_subs s ON s.player_id = w.player_id WHERE s.endpoint = ? AND w.msg != '' AND w.seen_at IS NULL").bind(ep).first<{ x: number }>().catch(() => null);
-      if (w) return json({ kind: 'winner' });
+      if (w) return json({ kind: 'winner', lang });
     }
     const row = await db.prepare("SELECT v FROM kv WHERE k = 'kind'").first<{ v: string }>();
-    return json({ kind: row?.v === 'monthly' ? 'monthly' : 'daily' });
+    return json({ kind: row?.v === 'monthly' ? 'monthly' : 'daily', lang });
   }
   if (url.pathname === '/api/push/test' && request.method === 'POST') {
     // Sends one month-end push to the caller's own subscription only. No secret is needed because it
@@ -82,12 +86,20 @@ export async function handlePush(request: Request, db: D1Database, url: URL): Pr
     return json({ ok: res.ok, status: res.status }, res.ok ? 200 : 502);
   }
   if (url.pathname === '/api/push/subscribe' && request.method === 'POST') {
-    const body = await request.json().catch(() => null) as { endpoint?: unknown; player?: unknown } | null;
+    const body = await request.json().catch(() => null) as { endpoint?: unknown; player?: unknown; lang?: unknown } | null;
     if (!body || !validEndpoint(body.endpoint)) return json({ error: 'bad_subscription' }, 400);
+    const lang = body.lang === 'en' || body.lang === 'ar' ? body.lang : null;
     const player = typeof body.player === 'string' && /^[0-9a-f-]{36}$/.test(body.player) ? body.player : null;
     const n = await db.prepare('SELECT COUNT(*) AS n FROM push_subs').first<{ n: number }>();
     if ((n?.n ?? 0) >= MAX_SUBS) return json({ error: 'full' }, 503);
-    await db.prepare('INSERT INTO push_subs (endpoint, created, player_id) VALUES (?, ?, ?) ON CONFLICT(endpoint) DO UPDATE SET player_id = COALESCE(excluded.player_id, push_subs.player_id)').bind(body.endpoint, Date.now(), player).run();
+    await db.prepare('INSERT INTO push_subs (endpoint, created, player_id, lang) VALUES (?, ?, ?, ?) ON CONFLICT(endpoint) DO UPDATE SET player_id = COALESCE(excluded.player_id, push_subs.player_id), lang = COALESCE(excluded.lang, push_subs.lang)').bind(body.endpoint, Date.now(), player, lang).run();
+    return json({ ok: true });
+  }
+  if (url.pathname === '/api/push/lang' && request.method === 'POST') {
+    // The device changed its app language: remember it for the notification text.
+    const body = await request.json().catch(() => null) as { endpoint?: unknown; lang?: unknown } | null;
+    if (!body || !validEndpoint(body.endpoint) || (body.lang !== 'en' && body.lang !== 'ar')) return json({ error: 'bad_request' }, 400);
+    await db.prepare('UPDATE push_subs SET lang = ? WHERE endpoint = ?').bind(body.lang, body.endpoint).run();
     return json({ ok: true });
   }
   if (url.pathname === '/api/push/unsubscribe' && request.method === 'POST') {

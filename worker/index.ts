@@ -4,6 +4,7 @@ import { handleAdmin, handleAdminWinner, handleAdminCode, handleAdminPhotos, han
 import { handleInbox } from './inbox';
 import { handleProfile } from './profile';
 import { handlePhoto } from './photo';
+import { handleGoogle } from './google';
 import { handleCode, nickForCode } from './code';
 import { handlePush, sendDaily, isLastDayOfMonth } from './push';
 
@@ -23,6 +24,7 @@ export default {
       if (url.pathname === '/api/photo' || url.pathname.startsWith('/api/photo/')) return await handlePhoto(request, env.DB, url);
       if (url.pathname === '/api/admin/photos' && request.method === 'GET') return await handleAdminPhotos(request, env.DB, env.ADMIN_KEY);
       if (url.pathname === '/api/admin/photo' && request.method === 'POST') return await handleAdminPhotoDecision(request, env.DB, env.ADMIN_KEY);
+      if (url.pathname.startsWith('/api/google/')) return await handleGoogle(request, env.DB, url, env.GOOGLE_CLIENT_ID);
       if (url.pathname === '/api/profile') return await handleProfile(request, env.DB);
       if (url.pathname.startsWith('/api/code/')) return await handleCode(request, env.DB, url);
       if (url.pathname.startsWith('/api/inbox')) return await handleInbox(request, env.DB, url);

@@ -116,12 +116,18 @@ export async function handleLeaderboard(request: Request, db: D1Database, url: U
   return json({ error: 'not_found' }, 404);
 }
 
-// Monthly cleanup (cron on the 1st). Deletes ALL leaderboard scores and finished/old game tickets so the
-// board starts fresh each month. Nicknames (players) are kept so a name stays reserved. Push
-// subscriptions are in another table and are untouched.
-export async function purgeLeaderboard(db: D1Database): Promise<void> {
+// Monthly cleanup (cron on the 1st). Before wiping, the previous month's top 50 players (name, best
+// score, date) are copied to leaderboard_archive so giveaway winners can still be looked up. Then all
+// scores and game tickets are deleted. Nicknames (players) and push subscriptions are kept.
+export async function purgeLeaderboard(db: D1Database, now = Date.now()): Promise<void> {
   await ensureSchema(db);
+  const label = new Date(now - 86400_000).toISOString().slice(0, 7); // the month that just ended
   await db.batch([
+    db.prepare('CREATE TABLE IF NOT EXISTS leaderboard_archive (month TEXT NOT NULL, nick TEXT NOT NULL, score INTEGER NOT NULL, at INTEGER NOT NULL)'),
+  ]);
+  await db.batch([
+    db.prepare('DELETE FROM leaderboard_archive WHERE month = ?').bind(label),
+    db.prepare('INSERT INTO leaderboard_archive (month, nick, score, at) SELECT ?, p.nick, MAX(s.score), MIN(s.at) FROM scores s JOIN players p ON p.id = s.player_id GROUP BY s.player_id ORDER BY MAX(s.score) DESC, MIN(s.at) ASC LIMIT 50').bind(label),
     db.prepare('DELETE FROM scores'),
     db.prepare('DELETE FROM games'),
   ]);

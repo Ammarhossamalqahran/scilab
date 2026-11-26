@@ -7,4 +7,4 @@ export interface D1PreparedStatement {
   run(): Promise<D1Result>;
 }
 export interface D1Database { prepare(sql: string): D1PreparedStatement; batch(statements: D1PreparedStatement[]): Promise<D1Result[]> }
-export interface Env { DB?: D1Database; ASSETS: { fetch(request: Request): Promise<Response> } }
+export interface Env { DB?: D1Database; ADMIN_KEY?: string; ASSETS: { fetch(request: Request): Promise<Response> } }

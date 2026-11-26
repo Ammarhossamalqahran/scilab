@@ -48,7 +48,7 @@ export function ChallengePage() {
 
   const start = useCallback(() => {
     ref.current = { score: 0, streak: 0, best: 0, correct: 0 };
-    setScore(0); setStreak(0); setBestStreak(0); setCorrect(0); setFeedback(null); setLeft(SECONDS); setQ(makeQuestion(lang)); setSubmitState('idle'); ticketRef.current = null; void startTicket().then((t) => { ticketRef.current = t; }); setPhase('play');
+    setScore(0); setStreak(0); setBestStreak(0); setCorrect(0); setFeedback(null); setLeft(SECONDS); setQ(makeQuestion(lang)); setSubmitState('idle'); ticketRef.current = null; const getTicket = (tries: number) => { void startTicket().then((t) => { if (t) ticketRef.current = t; else if (tries > 0) window.setTimeout(() => { if (!ticketRef.current) getTicket(tries - 1); }, 3000); }); }; getTicket(3); setPhase('play');
   }, [lang]);
 
   useEffect(() => {

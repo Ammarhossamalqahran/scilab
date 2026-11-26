@@ -5,6 +5,7 @@ import { FeedbackButton } from './FeedbackButton';
 import { InstallButton } from './InstallButton';
 import { WelcomeName } from './WelcomeName';
 import { ProfileButton } from './ProfileButton';
+import { UpdateNotice } from './UpdateNotice';
 import { WinnerInbox } from './WinnerInbox';
 import { ReminderBanner } from './ReminderBanner';
 
@@ -101,6 +102,7 @@ export function AppShell() {
         <main className="main-content"><ReminderBanner /><Outlet /></main>
         <FeedbackButton />
         <WelcomeName />
+        <UpdateNotice />
         <WinnerInbox />
       </div>
     </div>

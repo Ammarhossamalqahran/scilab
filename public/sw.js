@@ -1,7 +1,7 @@
 // SciLab service worker: lets the site open offline after a first visit.
 // App shell is cached on install; pages, scripts, fonts and photos are cached as they are used.
 // The 500 specimen photos (about 58 MB) are NOT preloaded, only the ones a student opens.
-const CACHE = 'scilab-v5';
+const CACHE = 'scilab-v6';
 const SHELL = ['/', '/index.html', '/manifest.webmanifest', '/favicon.svg', '/scilab-logo.svg'];
 
 self.addEventListener('install', (event) => {
@@ -19,6 +19,7 @@ self.addEventListener('fetch', (event) => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
+  if (req.cache === 'no-store' || url.searchParams.has('__v')) return; // update checks must hit the network
   if (req.mode === 'navigate') {
     // Pages: network first so updates show, cached app shell when offline.
     event.respondWith(fetch(req).then((res) => {

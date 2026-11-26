@@ -4,11 +4,11 @@ import type { D1Database } from './types';
 // harder, not impossible: a server-issued game ticket, minimum/maximum play time, a cap on answers per
 // second, a score that must match the answer count, one-time tickets and per-IP rate limits.
 const GAME_SECONDS = 60;
-const MIN_ELAPSED = 56;           // seconds between ticket and submit
+const MIN_ELAPSED = 48;           // seconds between ticket and submit
 const MAX_ELAPSED = 180;
 const MIN_SECONDS_PER_ANSWER = 1.3; // a human cannot read a photo and tap faster than this
 const BONUS_STEP = 2; const BONUS_MAX_STREAK_STEPS = 5; // mirrors the client: 10 + min(streak-1, 5) * 2 per answer
-const STARTS_PER_10_MIN = 12;
+const STARTS_PER_10_MIN = 60; // mobile networks put many students behind one IP
 const SUBMITS_PER_HOUR = 8;
 const NICK_RE = /^[\p{L}\p{N}][\p{L}\p{N} _\-.]{1,15}$/u;
 

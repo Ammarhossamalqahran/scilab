@@ -27,7 +27,7 @@ export function ensureSchema(db: D1Database): Promise<void> {
   return ready;
 }
 
-async function ipHash(request: Request): Promise<string> {
+export async function ipHash(request: Request): Promise<string> {
   const ip = request.headers.get('cf-connecting-ip') ?? 'unknown';
   const data = new TextEncoder().encode(`scilab-rate:${ip}`);
   const digest = await crypto.subtle.digest('SHA-256', data);

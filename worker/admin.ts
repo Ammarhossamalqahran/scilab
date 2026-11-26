@@ -1,6 +1,7 @@
 import type { D1Database } from './types';
 import { ensureSchema } from './leaderboard';
 import { pushOne } from './push';
+import { nickForCode } from './code';
 
 // Owner-only view of the leaderboard, for picking giveaway winners. Protected by ADMIN_KEY, a secret
 // set in the Cloudflare dashboard (never in the repo). Without it the endpoint stays closed.
@@ -65,4 +66,13 @@ export async function handleAdmin(request: Request, db: D1Database, adminKey: st
     db.prepare('SELECT month, nick, score, at FROM leaderboard_archive ORDER BY month DESC, score DESC LIMIT 600').all().catch(() => ({ results: [] })),
   ]);
   return json({ month: month.toISOString().slice(0, 7), thisMonth: thisMonth.results, archive: archive.results, messages: msgs.results });
+}
+
+// POST /api/admin/code {code}: which name does this recovery code belong to? Lets the owner confirm a winner.
+export async function handleAdminCode(request: Request, db: D1Database, adminKey: string | undefined, now = Date.now()): Promise<Response> {
+  const denied = await authorize(request, db, adminKey, now);
+  if (denied) return denied;
+  const body = await request.json().catch(() => null) as { code?: unknown } | null;
+  const nick = typeof body?.code === 'string' ? await nickForCode(db, body.code) : null;
+  return nick ? json({ nick }) : json({ error: 'no_match' }, 404);
 }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { specimens } from '../data/scientificData';
 import { specimenMedia } from '../data/specimenMedia';
+import { AccountCode } from '../components/AccountCode';
 import { fetchBoard, startTicket, submitScore, savedNick, saveNick, type Entry } from '../lib/leaderboardApi';
 import { readStats, recordGame, badges, DOCTOR_SCORE, type Stats } from '../data/gameStats';
 
@@ -159,6 +160,8 @@ export function ChallengePage() {
           <p className="chal-hint">{ar ? 'النقط بتتراجع على السيرفر قبل ما تظهر.' : 'Scores are checked on the server before they appear.'}</p>
         </section>
       )}
+
+      <AccountCode />
 
       <h2 className="chal-sub">{ar ? 'الشارات' : 'Badges'}</h2>
       <div className="chal-badges">

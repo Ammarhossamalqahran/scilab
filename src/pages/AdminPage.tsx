@@ -42,6 +42,14 @@ export function AdminPage() {
     setBusy(false);
   }
   const msgBtn = (nick: string) => <button className="quiet-button" onClick={() => { setTo(nick); setResult(''); }}>{ar ? 'رسالة فائز' : 'Winner message'}</button>;
+  const [chk, setChk] = useState('');
+  const [chkRes, setChkRes] = useState('');
+  async function checkCode() {
+    setChkRes('');
+    const res = await fetch('/api/admin/code', { method: 'POST', headers: { 'x-admin-key': key, 'content-type': 'application/json' }, body: JSON.stringify({ code: chk }) });
+    const b = await res.json().catch(() => ({})) as { nick?: string };
+    setChkRes(res.ok && b.nick ? (ar ? `الكود ده بتاع: ${b.nick}` : `This code belongs to: ${b.nick}`) : (ar ? 'مفيش حد بالكود ده.' : 'No player has this code.'));
+  }
   const copy = (rows: Row[]) => navigator.clipboard?.writeText(rows.map((r, i) => `${i + 1}\t${r.nick}\t${r.score}`).join('\n')).catch(() => undefined);
 
   return (
@@ -64,6 +72,11 @@ export function AdminPage() {
             </div>
           )}
           {result && <p>{result}</p>}
+          <div className="admin-msg">
+            <b>{ar ? 'تأكد من كود فايز' : 'Check a winner\'s code'}</b>
+            <input value={chk} onChange={(e) => setChk(e.target.value)} placeholder="ABCDE-FGHIJ" dir="ltr" autoComplete="off" />
+            <div><button className="button" onClick={checkCode} disabled={chk.replace(/[^A-Za-z0-9]/g, '').length < 10}>{ar ? 'اعرف الاسم' : 'Find name'}</button> {chkRes}</div>
+          </div>
           <h2>{ar ? `الشهر الحالي (${data.month})` : `This month (${data.month})`} <button className="quiet-button" onClick={() => copy(data.thisMonth)}>{ar ? 'نسخ' : 'Copy'}</button> <button className="quiet-button" onClick={() => void load()}>{ar ? 'تحديث' : 'Refresh'}</button></h2>
           <table className="admin-table"><thead><tr><th>#</th><th>{ar ? 'الاسم' : 'Name'}</th><th>{ar ? 'أحسن نتيجة' : 'Best'}</th><th>{ar ? 'ألعاب' : 'Games'}</th><th>{ar ? 'آخر لعب' : 'Last played'}</th><th /></tr></thead>
             <tbody>{data.thisMonth.map((r, i) => <tr key={`${r.nick}-${i}`}><td>{i + 1}</td><td>{r.nick}</td><td>{r.score}</td><td>{r.games}</td><td>{fmt(r.last_at)}</td><td>{msgBtn(r.nick)}</td></tr>)}</tbody></table>

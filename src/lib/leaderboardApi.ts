@@ -45,3 +45,27 @@ export async function checkNick(nick: string): Promise<'free' | 'taken' | 'unkno
     return r.data.available ? 'free' : 'taken';
   } catch { return 'unknown'; }
 }
+
+export type CodeResult = { ok: true; code: string } | { ok: false; reason: 'nick_taken' | 'bad_nick' | 'rate_limited' | 'other' };
+// Registers the name on the server (if new) and returns a personal recovery code, shown once.
+export async function createCode(nick: string): Promise<CodeResult> {
+  try {
+    const r = await call('/api/code/create', { method: 'POST', body: JSON.stringify({ player: playerId(), nick }) });
+    if (r.ok && typeof r.data.code === 'string') return { ok: true, code: r.data.code };
+    const e = r.data.error;
+    return { ok: false, reason: e === 'nick_taken' || e === 'bad_nick' || e === 'rate_limited' ? e : 'other' };
+  } catch { return { ok: false, reason: 'other' }; }
+}
+export type RestoreResult = { ok: true; nick: string } | { ok: false; reason: 'bad_code' | 'rate_limited' | 'other' };
+// Puts this device on the player the code belongs to (name, scores, pending winner message).
+export async function restoreCode(code: string): Promise<RestoreResult> {
+  try {
+    const r = await call('/api/code/restore', { method: 'POST', body: JSON.stringify({ code }) });
+    if (r.ok && typeof r.data.player === 'string' && typeof r.data.nick === 'string') {
+      try { window.localStorage.setItem(playerKey, r.data.player); } catch { /* ignored */ }
+      saveNick(r.data.nick);
+      return { ok: true, nick: r.data.nick };
+    }
+    return { ok: false, reason: r.data.error === 'bad_code' ? 'bad_code' : r.data.error === 'rate_limited' ? 'rate_limited' : 'other' };
+  } catch { return { ok: false, reason: 'other' }; }
+}

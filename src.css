@@ -1499,3 +1499,10 @@ img[loading="lazy"], .specimen-thumbnail, .module-card-photo { background: color
 }
 @media (max-height: 420px) { .welcome-hero { display: none; } .welcome-lang { background: rgba(0,0,0,.35); } }
 .chal-submit small.chal-ok { color: var(--accent); }
+
+.welcome-code { display: block; padding: 14px 10px; font-family: var(--mono); font-size: 24px; letter-spacing: .08em; background: var(--surface); border: 1.5px dashed var(--line-strong); border-radius: 12px; user-select: all; }
+.code-panel { margin: 20px 0; padding: 12px 14px; border: 1px solid var(--line); }
+.code-panel summary { cursor: pointer; font-weight: 600; }
+.code-panel .code-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; align-items: center; }
+.code-panel input { min-height: 40px; padding: 0 10px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); font: inherit; direction: ltr; }
+.code-panel small { display: block; margin-top: 8px; line-height: 1.6; color: var(--ink-soft); }

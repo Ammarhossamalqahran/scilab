@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { usePreferences } from '../app/PreferencesContext';
 import { Avatar, AVATARS, DEFAULT_AVATAR } from '../data/avatars';
 import { readStats } from '../data/gameStats';
-import { createCode, savedAvatar, savedCode, savedNick, saveAvatar, saveNick, updateProfile } from '../lib/leaderboardApi';
+import { createCode, savedAvatar, savedCode, savedNick, saveAvatar, saveNick, updateProfile, savedPhoto, refreshPhoto, removePhoto } from '../lib/leaderboardApi';
+import { PhotoPicker } from './PhotoPicker';
 
 // Profile icon in the top bar. Tapping it opens the profile: name, character, scores, personal code,
 // language and theme.
@@ -33,7 +34,10 @@ export function ProfileButton() {
   const avatar = savedAvatar() || DEFAULT_AVATAR;
   const stats = readStats();
   const code = savedCode();
+  const photo = savedPhoto();
+  const shown = photo?.image || null;
 
+  useEffect(() => { if (nick) void refreshPhoto(); }, [nick, open]);
   function show() { setName(nick); setMsg(''); setPicking(false); setCopied(false); setOpen(true); }
   async function saveName() {
     const clean = name.trim().replace(/\s+/g, ' ');
@@ -59,20 +63,29 @@ export function ProfileButton() {
   return (
     <>
       <button type="button" className="profile-btn" onClick={show} aria-label={ar ? 'البروفايل' : 'Profile'} title={ar ? 'البروفايل' : 'Profile'}>
-        <Avatar id={avatar} size={34} />
+        <Avatar id={avatar} photo={shown} size={34} />
       </button>
       {open && (
         <div className="welcome-backdrop" role="dialog" aria-modal="true" aria-labelledby="profile-title" onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }}>
           <div className="welcome-card profile-card">
             <button type="button" className="welcome-lang" onClick={() => setOpen(false)} aria-label={ar ? 'إغلاق' : 'Close'}>×</button>
             <div className="welcome-body">
-              <button type="button" className="profile-btn" style={{ justifySelf: 'center' }} onClick={() => setPicking((v) => !v)} aria-label={ar ? 'غيّر الشخصية' : 'Change character'}><Avatar id={avatar} size={76} /></button>
+              <button type="button" className="profile-btn" style={{ justifySelf: 'center' }} onClick={() => setPicking((v) => !v)} aria-label={ar ? 'غيّر الشخصية' : 'Change character'}><Avatar id={avatar} photo={shown} size={76} /></button>
               <h2 id="profile-title">{nick || (ar ? 'ضيف' : 'Guest')}</h2>
               {picking && (
                 <div className="avatar-grid">
                   {AVATARS.map((a) => (
                     <button type="button" key={a.id} className={`avatar-pick${avatar === a.id ? ' is-picked' : ''}`} onClick={() => void pickAvatar(a.id)}><Avatar id={a.id} size={44} /><span>{a.label[ar ? 'ar' : 'en']}</span></button>
                   ))}
+                </div>
+              )}
+              {nick && photo?.status === 'pending' && <small className="winner-note">{ar ? 'صورتك ظاهرة ليك بس. هتظهر للناس بعد موافقة صاحب الموقع.' : 'Only you can see your photo for now. It shows to others after the owner approves it.'}</small>}
+              {nick && photo?.status === 'approved' && <small className="winner-note">{ar ? 'صورتك اتوافق عليها وظاهرة في الترتيب.' : 'Your photo is approved and shows on the leaderboard.'}</small>}
+              {nick && photo?.status === 'rejected' && <small className="winner-note">{ar ? 'الصورة ماتوافقش عليها. تقدر ترفع صورة تانية أو تختار شخصية.' : 'Your photo was not approved. Upload another or pick a character.'}</small>}
+              {nick && (
+                <div className="profile-row">
+                  <PhotoPicker label={shown ? (ar ? 'غيّر الصورة' : 'Change photo') : (ar ? 'ارفع صورة' : 'Upload a photo')} onDone={() => setMsg('')} />
+                  {photo && photo.status !== 'rejected' && <button type="button" className="quiet-button" onClick={() => void removePhoto()}>{ar ? 'امسح الصورة' : 'Remove photo'}</button>}
                 </div>
               )}
               {nick ? (

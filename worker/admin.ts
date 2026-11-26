@@ -2,6 +2,7 @@ import type { D1Database } from './types';
 import { ensureSchema } from './leaderboard';
 import { pushOne } from './push';
 import { nickForCode } from './code';
+import { listPhotos, decidePhoto } from './photo';
 
 // Owner-only view of the leaderboard, for picking giveaway winners. Protected by ADMIN_KEY, a secret
 // set in the Cloudflare dashboard (never in the repo). Without it the endpoint stays closed.
@@ -75,4 +76,20 @@ export async function handleAdminCode(request: Request, db: D1Database, adminKey
   const body = await request.json().catch(() => null) as { code?: unknown } | null;
   const nick = typeof body?.code === 'string' ? await nickForCode(db, body.code) : null;
   return nick ? json({ nick }) : json({ error: 'no_match' }, 404);
+}
+
+// GET /api/admin/photos: pending and approved photos for review.
+export async function handleAdminPhotos(request: Request, db: D1Database, adminKey: string | undefined, now = Date.now()): Promise<Response> {
+  const denied = await authorize(request, db, adminKey, now);
+  if (denied) return denied;
+  return json({ photos: await listPhotos(db) });
+}
+
+// POST /api/admin/photo {pub, action: approve | reject | remove}
+export async function handleAdminPhotoDecision(request: Request, db: D1Database, adminKey: string | undefined, now = Date.now()): Promise<Response> {
+  const denied = await authorize(request, db, adminKey, now);
+  if (denied) return denied;
+  const body = await request.json().catch(() => null) as { pub?: unknown; action?: unknown } | null;
+  const ok = typeof body?.pub === 'string' && typeof body?.action === 'string' && await decidePhoto(db, body.pub, body.action);
+  return ok ? json({ ok: true }) : json({ error: 'not_found' }, 404);
 }

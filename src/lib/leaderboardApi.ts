@@ -1,6 +1,6 @@
 // Talks to the /api leaderboard Worker. Every call fails soft: if the API or database is not there
 // (local preview, offline, not set up yet) the game still works and the leaderboard is just hidden.
-export type Entry = { nick: string; score: number; avatar?: string | null };
+export type Entry = { nick: string; score: number; avatar?: string | null; photo?: string | null };
 const playerKey = 'scilab-player-id';
 const nickKey = 'scilab-nickname';
 
@@ -90,4 +90,55 @@ export async function updateProfile(patch: { nick?: string; avatar?: string }): 
     const e = r.data.error;
     return { ok: false, reason: e === 'nick_taken' || e === 'bad_nick' || e === 'no_profile' || e === 'rate_limited' ? e : 'other' };
   } catch { return { ok: false, reason: 'other' }; }
+}
+
+// ---- Profile photo ----
+const photoKey = 'scilab-photo';
+export type PhotoStatus = 'none' | 'pending' | 'approved' | 'rejected';
+export function savedPhoto(): { image: string; status: PhotoStatus } | null {
+  try { const v = JSON.parse(window.localStorage.getItem(photoKey) ?? 'null') as { image?: string; status?: PhotoStatus } | null; return v?.status ? { image: v.image ?? '', status: v.status } : null; } catch { return null; }
+}
+function savePhoto(v: { image: string; status: PhotoStatus } | null) {
+  try { if (v) window.localStorage.setItem(photoKey, JSON.stringify(v)); else window.localStorage.removeItem(photoKey); } catch { /* session only */ }
+  changed();
+}
+export const photoUrl = (pub?: string | null) => (pub ? `/api/photo/pub/${pub}` : null);
+
+// Shrinks any picture to a 128x128 square JPEG in the browser (the server accepts nothing bigger).
+export async function resizeToJpeg(file: File): Promise<string | null> {
+  if (!/^image\/(jpeg|png|webp|gif|heic|heif)$/i.test(file.type) || file.size > 15_000_000) return null;
+  try {
+    const bmp = await createImageBitmap(file);
+    const side = Math.min(bmp.width, bmp.height);
+    const c = document.createElement('canvas'); c.width = 128; c.height = 128;
+    const g = c.getContext('2d'); if (!g) return null;
+    g.fillStyle = '#fff'; g.fillRect(0, 0, 128, 128);
+    g.drawImage(bmp, (bmp.width - side) / 2, (bmp.height - side) / 2, side, side, 0, 0, 128, 128);
+    for (const q of [0.82, 0.7, 0.55]) { const u = c.toDataURL('image/jpeg', q); if (u.length < 52_000) return u; }
+    return null;
+  } catch { return null; }
+}
+export type PhotoResult = { ok: true } | { ok: false; reason: 'bad_image' | 'no_profile' | 'rate_limited' | 'other' };
+export async function uploadPhoto(image: string): Promise<PhotoResult> {
+  try {
+    const r = await call('/api/photo', { method: 'POST', body: JSON.stringify({ player: playerId(), image }) });
+    if (r.ok) { savePhoto({ image, status: 'pending' }); return { ok: true }; }
+    const e = r.data.error;
+    return { ok: false, reason: e === 'bad_image' || e === 'no_profile' || e === 'rate_limited' ? e : 'other' };
+  } catch { return { ok: false, reason: 'other' }; }
+}
+export async function removePhoto(): Promise<boolean> {
+  try { const r = await call('/api/photo', { method: 'POST', body: JSON.stringify({ player: playerId(), remove: true }) }); if (r.ok) savePhoto(null); return r.ok; } catch { return false; }
+}
+// Re-read this player's photo and status from the server (it may have been approved, or restored on a new device).
+export async function refreshPhoto(): Promise<void> {
+  try {
+    const r = await call(`/api/photo/mine?player=${playerId()}`);
+    if (!r.ok) return;
+    const status = r.data.status as PhotoStatus;
+    // 'none' never wipes the local copy: it can race with an upload that just finished.
+    if (status === 'none') return;
+    if (status === 'rejected' || typeof r.data.image !== 'string') savePhoto({ image: '', status: 'rejected' });
+    else savePhoto({ image: r.data.image, status });
+  } catch { /* offline */ }
 }

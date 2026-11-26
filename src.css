@@ -1523,3 +1523,8 @@ img[loading="lazy"], .specimen-thumbnail, .module-card-photo { background: color
 .profile-stat b { min-width: 0; overflow-wrap: anywhere; }
 .update-notice { position: fixed; z-index: 300; inset-inline: 12px; bottom: 12px; display: flex; gap: 10px; align-items: center; justify-content: space-between; padding: 10px 14px; background: var(--ink); color: var(--bg); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.3); font-size: 14px; }
 .update-notice .button { min-height: 36px; }
+
+.avatar-photo { border-radius: 50%; object-fit: cover; display: block; }
+.admin-photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+.admin-photo { display: grid; gap: 6px; justify-items: center; text-align: center; padding: 10px; border: 1px solid var(--line); border-radius: 12px; }
+.admin-photo img { border-radius: 12px; object-fit: cover; }

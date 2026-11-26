@@ -50,7 +50,8 @@ export const DEFAULT_AVATAR = 'cell';
 const byId = new Map(AVATARS.map((a) => [a.id, a]));
 export const isAvatar = (id: string | null | undefined): id is string => !!id && byId.has(id);
 
-export function Avatar({ id, size = 36, className = '' }: { id?: string | null; size?: number; className?: string }) {
+export function Avatar({ id, size = 36, className = '', photo }: { id?: string | null; size?: number; className?: string; photo?: string | null }) {
+  if (photo) return <img className={`avatar avatar-photo ${className}`} src={photo} width={size} height={size} alt="" />;
   const a = byId.get(id ?? '') ?? byId.get(DEFAULT_AVATAR)!;
   return (
     <svg className={`avatar ${className}`} viewBox="0 0 64 64" width={size} height={size} role="img" aria-label={a.label.en} style={{ background: a.bg }}>

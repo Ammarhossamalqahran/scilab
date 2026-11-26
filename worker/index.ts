@@ -1,8 +1,9 @@
 import type { Env } from './types';
 import { handleLeaderboard, purgeLeaderboard } from './leaderboard';
-import { handleAdmin, handleAdminWinner, handleAdminCode } from './admin';
+import { handleAdmin, handleAdminWinner, handleAdminCode, handleAdminPhotos, handleAdminPhotoDecision } from './admin';
 import { handleInbox } from './inbox';
 import { handleProfile } from './profile';
+import { handlePhoto } from './photo';
 import { handleCode, nickForCode } from './code';
 import { handlePush, sendDaily, isLastDayOfMonth } from './push';
 
@@ -19,6 +20,9 @@ export default {
       if (url.pathname === '/api/admin/data' && request.method === 'GET') return await handleAdmin(request, env.DB, env.ADMIN_KEY);
       if (url.pathname === '/api/admin/winner' && request.method === 'POST') return await handleAdminWinner(request, env.DB, env.ADMIN_KEY);
       if (url.pathname === '/api/admin/code' && request.method === 'POST') return await handleAdminCode(request, env.DB, env.ADMIN_KEY);
+      if (url.pathname === '/api/photo' || url.pathname.startsWith('/api/photo/')) return await handlePhoto(request, env.DB, url);
+      if (url.pathname === '/api/admin/photos' && request.method === 'GET') return await handleAdminPhotos(request, env.DB, env.ADMIN_KEY);
+      if (url.pathname === '/api/admin/photo' && request.method === 'POST') return await handleAdminPhotoDecision(request, env.DB, env.ADMIN_KEY);
       if (url.pathname === '/api/profile') return await handleProfile(request, env.DB);
       if (url.pathname.startsWith('/api/code/')) return await handleCode(request, env.DB, url);
       if (url.pathname.startsWith('/api/inbox')) return await handleInbox(request, env.DB, url);

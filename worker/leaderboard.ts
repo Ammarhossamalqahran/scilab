@@ -1,3 +1,4 @@
+import { ensurePhotoSchema } from './photo';
 import type { D1Database } from './types';
 
 // Rules the server enforces. The game itself runs in the browser, so these checks make cheating
@@ -45,13 +46,14 @@ export function maxScoreFor(correct: number): number {
 
 export async function handleLeaderboard(request: Request, db: D1Database, url: URL, now = Date.now()): Promise<Response> {
   await ensureSchema(db);
+  await ensurePhotoSchema(db);
 
   if (url.pathname === '/api/leaderboard' && request.method === 'GET') {
     const period = url.searchParams.get('period') === 'all' ? 'all' : 'week';
     const since = period === 'week' ? now - 7 * 86400_000 : 0;
     const rows = await db.prepare(
-      'SELECT p.nick AS nick, p.avatar AS avatar, MAX(s.score) AS score FROM scores s JOIN players p ON p.id = s.player_id WHERE s.at >= ? GROUP BY s.player_id ORDER BY score DESC, MIN(s.at) ASC LIMIT 20',
-    ).bind(since).all<{ nick: string; avatar: string | null; score: number }>();
+      "SELECT p.nick AS nick, p.avatar AS avatar, MAX(s.score) AS score, (SELECT ph.pub FROM photos ph WHERE ph.player_id = p.id AND ph.status = 'approved') AS photo FROM scores s JOIN players p ON p.id = s.player_id WHERE s.at >= ? GROUP BY s.player_id ORDER BY score DESC, MIN(s.at) ASC LIMIT 20",
+    ).bind(since).all<{ nick: string; avatar: string | null; score: number; photo: string | null }>();
     return json({ period, entries: rows.results }, 200, { 'cache-control': 'public, max-age=30' });
   }
 

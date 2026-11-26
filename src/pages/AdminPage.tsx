@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { usePreferences } from '../app/PreferencesContext';
 
 type Row = { nick: string; score: number; correct?: number; games?: number; last_at?: number; month?: string; at?: number };
 type Msg = { nick: string; created: number; seen_at: number | null };
+type Photo = { nick: string; pub: string; status: string; updated: number; image: string };
 type Data = { month: string; thisMonth: Row[]; archive: Row[]; messages?: Msg[] };
 const KEY = 'scilab-admin-key';
 const fmt = (t?: number) => (t ? new Date(t).toLocaleString() : '');
@@ -50,6 +51,17 @@ export function AdminPage() {
     const b = await res.json().catch(() => ({})) as { nick?: string };
     setChkRes(res.ok && b.nick ? (ar ? `الكود ده بتاع: ${b.nick}` : `This code belongs to: ${b.nick}`) : (ar ? 'مفيش حد بالكود ده.' : 'No player has this code.'));
   }
+  const [photos, setPhotos] = useState<Photo[]>([]);
+  async function loadPhotos() {
+    const res = await fetch('/api/admin/photos', { headers: { 'x-admin-key': key } });
+    const b = await res.json().catch(() => ({})) as { photos?: Photo[] };
+    if (res.ok) setPhotos(b.photos ?? []);
+  }
+  async function decide(pub: string, action: 'approve' | 'reject' | 'remove') {
+    await fetch('/api/admin/photo', { method: 'POST', headers: { 'x-admin-key': key, 'content-type': 'application/json' }, body: JSON.stringify({ pub, action }) });
+    void loadPhotos();
+  }
+  useEffect(() => { if (data) void loadPhotos(); }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
   const copy = (rows: Row[]) => navigator.clipboard?.writeText(rows.map((r, i) => `${i + 1}\t${r.nick}\t${r.score}`).join('\n')).catch(() => undefined);
 
   return (
@@ -76,6 +88,21 @@ export function AdminPage() {
             <b>{ar ? 'تأكد من كود فايز' : 'Check a winner\'s code'}</b>
             <input value={chk} onChange={(e) => setChk(e.target.value)} placeholder="ABCDE-FGHIJ" dir="ltr" autoComplete="off" />
             <div><button className="button" onClick={checkCode} disabled={chk.replace(/[^A-Za-z0-9]/g, '').length < 10}>{ar ? 'اعرف الاسم' : 'Find name'}</button> {chkRes}</div>
+          </div>
+          <h2>{ar ? 'صور اللاعبين' : 'Player photos'} <button className="quiet-button" onClick={() => void loadPhotos()}>{ar ? 'تحديث' : 'Refresh'}</button></h2>
+          {photos.length === 0 && <p>{ar ? 'مفيش صور.' : 'No photos.'}</p>}
+          <div className="admin-photos">
+            {photos.map((p) => (
+              <div key={p.pub} className="admin-photo">
+                <img src={p.image} width={96} height={96} alt="" />
+                <b>{p.nick}</b>
+                <small>{p.status === 'pending' ? (ar ? 'منتظرة موافقتك' : 'waiting for you') : (ar ? 'موافق عليها' : 'approved')}</small>
+                <div>
+                  {p.status === 'pending' && <button className="button" onClick={() => void decide(p.pub, 'approve')}>{ar ? 'وافق' : 'Approve'}</button>}
+                  <button className="quiet-button" onClick={() => void decide(p.pub, p.status === 'pending' ? 'reject' : 'remove')}>{p.status === 'pending' ? (ar ? 'ارفض' : 'Reject') : (ar ? 'شيل' : 'Remove')}</button>
+                </div>
+              </div>
+            ))}
           </div>
           <h2>{ar ? `الشهر الحالي (${data.month})` : `This month (${data.month})`} <button className="quiet-button" onClick={() => copy(data.thisMonth)}>{ar ? 'نسخ' : 'Copy'}</button> <button className="quiet-button" onClick={() => void load()}>{ar ? 'تحديث' : 'Refresh'}</button></h2>
           <table className="admin-table"><thead><tr><th>#</th><th>{ar ? 'الاسم' : 'Name'}</th><th>{ar ? 'أحسن نتيجة' : 'Best'}</th><th>{ar ? 'ألعاب' : 'Games'}</th><th>{ar ? 'آخر لعب' : 'Last played'}</th><th /></tr></thead>

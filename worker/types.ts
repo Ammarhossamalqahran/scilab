@@ -1,5 +1,5 @@
 // Minimal Cloudflare types so the Worker needs no extra dependency.
-export interface D1Result<T = unknown> { results: T[]; success: boolean }
+export interface D1Result<T = unknown> { results: T[]; success: boolean; meta?: { changes?: number } }
 export interface D1PreparedStatement {
   bind(...values: unknown[]): D1PreparedStatement;
   first<T = unknown>(): Promise<T | null>;

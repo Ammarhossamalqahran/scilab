@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { usePreferences } from '../app/PreferencesContext';
 import { checkNick, createCode, restoreCode, updateProfile, saveAvatar, NICK_OK, saveNick, savedNick } from '../lib/leaderboardApi';
 import { AVATARS, Avatar } from '../data/avatars';
+import { PhotoPicker } from './PhotoPicker';
 import { LogoMark } from './LogoMark';
 
 const KEY = 'scilab-welcome';
@@ -16,7 +17,7 @@ export function WelcomeName() {
   const [name, setName] = useState('');
   const [msg, setMsg] = useState<'' | 'bad' | 'taken'>('');
   const [busy, setBusy] = useState(false);
-  const [step, setStep] = useState<'name' | 'code' | 'avatar' | 'restore'>('name');
+  const [step, setStep] = useState<'name' | 'code' | 'photo' | 'avatar' | 'restore'>('name');
   const [pick, setPick] = useState('');
   const [code, setCode] = useState('');
   const [copied, setCopied] = useState(false);
@@ -78,7 +79,14 @@ export function WelcomeName() {
             <p>{ar ? 'احفظ الكود ده. بيرجعلك اسمك ونتايجك لو غيرت الموبايل أو مسحت البيانات. بيظهر مرة واحدة بس.' : 'Save this code. It brings back your name and scores on a new phone or after clearing data. It is shown only once.'}</p>
             <output className="welcome-code" dir="ltr">{code}</output>
             <button type="button" className="button welcome-go" onClick={copy}>{copied ? (ar ? 'اتنسخ' : 'Copied') : (ar ? 'انسخ الكود' : 'Copy code')}</button>
-            <button type="button" className="button button-primary welcome-go" onClick={() => setStep('avatar')}>{ar ? 'تمام، حفظته' : 'Done, I saved it'}</button>
+            <button type="button" className="button button-primary welcome-go" onClick={() => setStep('photo')}>{ar ? 'تمام، حفظته' : 'Done, I saved it'}</button>
+          </div>
+        ) : step === 'photo' ? (
+          <div className="welcome-body">
+            <h2 id="welcome-title">{ar ? 'تحب تحط صورتك؟' : 'Want to add your photo?'}</h2>
+            <p>{ar ? 'الصورة بتظهرلك على طول. وبتظهر للناس في الترتيب بعد ما صاحب الموقع يوافق عليها.' : 'You see your photo right away. Others see it on the leaderboard only after the site owner approves it.'}</p>
+            <PhotoPicker onDone={() => setOpen(false)} />
+            <button type="button" className="button welcome-go" onClick={() => setStep('avatar')}>{ar ? 'لا، هختار شخصية' : 'No, pick a character'}</button>
           </div>
         ) : step === 'avatar' ? (
           <div className="welcome-body">

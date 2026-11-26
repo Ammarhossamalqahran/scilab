@@ -24,9 +24,16 @@ A free bilingual (Arabic / English) virtual biology lab for Faculty of Science s
 - **Design:** new cell logo, SciLab character and loading screen; El Messiri headings and IBM Plex Sans Arabic body text (SIL OFL, self-hosted); light and dark theme; Arabic and English with right-to-left layout.
 - **Speed:** specimen photos are WebP, and the share image is a small 1200x630 JPG for link previews.
 - **Sharing and SEO:** title, description and Open Graph / Twitter tags; clear titles in the browser tab.
-- Client-side only: no accounts, backend or database. Preferences, favorites and notes stay in the browser.
+- **Profiles and leaderboard:** pick a nickname and avatar (or upload a photo), play the daily and challenge games and appear on a monthly leaderboard. The leaderboard is reset on the 1st of each month (the top 50 are archived); nicknames, avatars and photos are kept.
+- **Photo upload with owner approval:** a player sees their own photo at once, but it becomes public only after the site owner approves it in a private admin page. Moderation is manual.
+- **Name + code login:** a player can restore their profile on another device with a short code. No email or phone number is collected.
+- **Optional Google link:** a player can link a Google account to recover the profile. Only a salted hash of Google's account ID is stored (no email, no name). One Google account links to one profile.
+- **Push notifications (Arabic / English):** an optional daily reminder and winner announcements, sent in the language the student uses in the app. On iPhone, push works only after the site is added to the Home Screen.
+- **Update bar and smooth transitions:** the app tells the student when a new version is ready, and pages use smooth transitions and skeleton loaders while loading.
+- **Offline use:** after a first visit the app shell opens offline. Photos you opened before are cached. The photos are not all preloaded.
+- **Backend:** a small Cloudflare Worker with a D1 database handles only the leaderboard, profiles, photos, codes and push subscriptions. The learning content itself (specimens, exams, schemas) is static and works without the backend.
 
-**Built with:** React 19, TypeScript, Vite 7, Tailwind CSS 4, React Router 7, Framer Motion. The microscope field is drawn with the 2D Canvas API (not WebGL). Static site: no server code. Deployed on Vercel and on Cloudflare Workers (static assets, `wrangler.jsonc`).
+**Built with:** React 19, TypeScript, Vite 7, Tailwind CSS 4, React Router 7, Framer Motion. The microscope field is drawn with the 2D Canvas API (not WebGL). Cloudflare Workers (static assets plus the API in `worker/`) with D1, and Web Push. A static copy is also deployed on Vercel.
 
 ## Run locally
 
@@ -39,13 +46,14 @@ corepack pnpm dev
 
 Vite serves the app on `http://localhost:3000`. Create an optimized static build with `corepack pnpm run build`; the output is in `dist/`. The build also writes one HTML page per route (`scripts/route-pages.mjs`) so shared links get their own title.
 
-To preview the Cloudflare deployment locally after a build: `npx wrangler dev`. To deploy: `npx wrangler deploy` (Cloudflare also builds from `main`). `npm` works too (`npm install`, `npm run dev`).
+To preview the Cloudflare deployment locally after a build: `npx wrangler dev` (the D1 database, admin key and push keys are configured in Cloudflare and are not in this repository; without them the leaderboard, photo and push features are disabled locally). To deploy: `npx wrangler deploy` (Cloudflare also builds from `main`). `npm` works too (`npm install`, `npm run dev`).
 
 ## Learning modules
 
 - **Microscope** (`/microscope`): browse 996 photomicrographs across histology, botany, microbiology, zoology, blood cells, aquatic life and genetics. Search the collection, save favorites in this browser, or use a blind identification challenge. The blood collection includes sickle-cell, target-cell, eosinophil, reticulocyte, and malaria films. A blood-stain bench previews Wright-Giemsa, Giemsa, new methylene blue, and brilliant cresyl blue color treatments; these are digital filters, not simulated chemical binding or new scientific evidence. The photos load from the local site bundle and appear directly in the microscope field. Objective, focus, illumination, and drag-to-move controls adjust the view. Zoom is illustrative and is not calibrated; selecting 100× displays a note about immersion oil in real microscopy. Photo credits and licenses are listed in `docs/specimen-photo-credits.md` and the microscope's source dialog.
 - **Practical exams** (`/exams`): identify randomized specimens from a microscope field, compare two slides and record observations, answer stain-selection questions, order the general thin-film preparation workflow, and keep/export a browser-local notebook. The schema section links directly to the interactive diagram exams.
 - **Scientific schemas** (`/schemas`): 198 labelled diagrams, including a heart/circulation plate, generalized leaf section, introductory lab-apparatus plate and typical animal-cell plate, with more being added. Pins are marked "needs review". Study mode connects interactive SVG pins and the structure index to bilingual names, functions, and exam notes. Exam mode hides labels and accepts either a structure click or a typed Arabic/English name, with immediate feedback.
+- **Study tools** (`/study`, `/daily`, `/compare`, `/challenge`): specimen flashcards, a daily specimen, side-by-side comparison and a timed challenge.
 - **Preferences**: Arabic/English locale and dark/light theme are switchable and stored locally in browser storage.
 
 ## Scientific use and limitations
@@ -76,9 +84,10 @@ src/components/   App shell, controls, reference dialog, logo mark
 src/data/         Bilingual specimen/diagram records and source metadata
 src/i18n/         Typed English/Arabic interface strings
 src/microscope/   Canvas2D microscope field for bundled slide photographs
-src/pages/        Landing, microscope, atlas, and diagram study/exam views
+src/pages/        Landing, microscope, exams, study, daily, challenge, admin, and diagram views
 src/schemas/      SVG schema plates and interactive structure pins
-public/           Logo, character, social preview image, WebP specimen photographs and schema images
+public/           Service worker, manifest, logo, character, social preview image, WebP specimen photographs and schema images
+worker/           Cloudflare Worker API (leaderboard, profile, photos, codes, Google link, push)
 scripts/          Post-build script that writes per-route HTML pages
 docs/             Photo credits, sources, research notes and README screenshots
 wrangler.jsonc    Cloudflare Workers static-assets config (vercel.json for Vercel)
@@ -91,3 +100,5 @@ wrangler.jsonc    Cloudflare Workers static-assets config (vercel.json for Verce
 - `/exams` practical exam room and lab notebook
 - `/schemas` schema atlas
 - `/schemas/:diagramId` schema study or exam view
+- `/study`, `/daily`, `/compare`, `/challenge` flashcards, daily specimen, comparison, challenge
+- `/admin` owner-only photo approval (needs the admin key)

@@ -12,7 +12,7 @@
   // Daily push reminder at 16:00 UTC; leaderboard wiped on the 1st of each month at 03:00 UTC; extra month-end teaser push at 18:00 UTC on the last day.
   // Daily reminder time in Cairo: 6 pm winter, 7 pm summer.
   // Public Google OAuth Client ID for the optional "Link Google account" button (not a secret). Empty hides the button.
-  "vars": { "GOOGLE_CLIENT_ID": "" },
+  "vars": { "GOOGLE_CLIENT_ID": "841674078048-aavni4u7ql4drrf8u4o8jlr5nmjjnb52.apps.googleusercontent.com" },
   "triggers": { "crons": ["0 16 * * *", "0 3 1 * *", "0 18 28-31 * *"] },
   // D1 database for the leaderboard and push reminders (created in the Cloudflare dashboard).
   "d1_databases": [

@@ -9,8 +9,9 @@
     "not_found_handling": "single-page-application",
     "run_worker_first": ["/api/*"]
   },
-  // Daily push reminder at 16:00 UTC (6 pm Cairo in winter, 7 pm in summer).
-  "triggers": { "crons": ["0 16 * * *"] },
+  // Daily push reminder at 16:00 UTC; leaderboard wiped on the 1st of each month at 03:00 UTC.
+  // Daily reminder time in Cairo: 6 pm winter, 7 pm summer.
+  "triggers": { "crons": ["0 16 * * *", "0 3 1 * *"] },
   // D1 database for the leaderboard and push reminders (created in the Cloudflare dashboard).
   "d1_databases": [
     { "binding": "DB", "database_name": "scilab", "database_id": "f1cdc269-9664-4b38-a84a-64421b00045a" }

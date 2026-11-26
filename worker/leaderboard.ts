@@ -106,3 +106,14 @@ export async function handleLeaderboard(request: Request, db: D1Database, url: U
 
   return json({ error: 'not_found' }, 404);
 }
+
+// Monthly cleanup (cron on the 1st). Deletes ALL leaderboard scores and finished/old game tickets so the
+// board starts fresh each month. Nicknames (players) are kept so a name stays reserved. Push
+// subscriptions are in another table and are untouched.
+export async function purgeLeaderboard(db: D1Database): Promise<void> {
+  await ensureSchema(db);
+  await db.batch([
+    db.prepare('DELETE FROM scores'),
+    db.prepare('DELETE FROM games'),
+  ]);
+}

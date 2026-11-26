@@ -1,6 +1,8 @@
 import type { Env } from './types';
-import { handleLeaderboard } from './leaderboard';
+import { handleLeaderboard, purgeLeaderboard } from './leaderboard';
 import { handlePush, sendDaily } from './push';
+
+const MONTHLY_CRON = '0 3 1 * *'; // keep in sync with wrangler.jsonc
 
 // Serves /api/* only (wrangler.jsonc run_worker_first). Everything else is static assets.
 export default {
@@ -16,7 +18,9 @@ export default {
     }
   },
   // Daily reminder (cron in wrangler.jsonc).
-  async scheduled(_event: unknown, env: Env): Promise<void> {
-    if (env.DB) await sendDaily(env.DB);
+  async scheduled(event: { cron?: string }, env: Env): Promise<void> {
+    if (!env.DB) return;
+    if (event.cron === MONTHLY_CRON) await purgeLeaderboard(env.DB);
+    else await sendDaily(env.DB);
   },
 };

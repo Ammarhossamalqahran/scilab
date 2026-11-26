@@ -1702,11 +1702,6 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Human_blood.jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
-  'human-tonsil': {
-    src: '/specimens/human-tonsil.webp', title: "Human tonsils (26 2 05) Cross-section; embedded in Epon.jpg", author: "Doc. RNDr. Josef Reischig, CSc.", license: "CC BY-SA 3.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Human_tonsils_(26_2_05)_Cross-section;_embedded_in_Epon.jpg",
-    adaptation: 'Downscaled to 1000 px wide; not cropped.',
-  },
   'human-skin-with-sweat-glands-100x': {
     src: '/specimens/human-skin-with-sweat-glands-100x.webp', title: "Humanskinsweatglands100x1.jpg", author: "John Alan Elson", license: "CC BY-SA 4.0",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Humanskinsweatglands100x1.jpg",
@@ -1787,16 +1782,6 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Mixed_salivary_gland.jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
-  'nasal-mucosa-cross-section': {
-    src: '/specimens/nasal-mucosa-cross-section.webp', title: "Nasal mucosa (26 2 17) Cross-section.jpg", author: "Doc. RNDr. Josef Reischig, CSc.", license: "CC BY-SA 3.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Nasal_mucosa_(26_2_17)_Cross-section.jpg",
-    adaptation: 'Downscaled to 1000 px wide; not cropped.',
-  },
-  'nissl-bodies-in-neurons': {
-    src: '/specimens/nissl-bodies-in-neurons.webp', title: "Nissl bodies in neurons of the spinal cord.jpg", author: "Tulemo", license: "CC BY-SA 4.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Nissl_bodies_in_neurons_of_the_spinal_cord.jpg",
-    adaptation: 'Downscaled to 1000 px wide; not cropped.',
-  },
   'normal-breast-acinus': {
     src: '/specimens/normal-breast-acinus.webp', title: "Normal breast acinus.jpg", author: "Mikael H\u00e4ggstr\u00f6m, M.D.", license: "CC0",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Normal_breast_acinus.jpg",
@@ -1850,11 +1835,6 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
   'ruscus-hypophyllum-root-cross-section-second-field': {
     src: '/specimens/ruscus-hypophyllum-root-cross-section-second-field.webp', title: "Ruscus hypophyllum root - cross section surface detail.jpg", author: "TCdeOLiveira", license: "CC BY-SA 4.0",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Ruscus_hypophyllum_root_-_cross_section_surface_detail.jpg",
-    adaptation: 'Downscaled to 1000 px wide; not cropped.',
-  },
-  'blood-smear-40x': {
-    src: '/specimens/blood-smear-40x.webp', title: "SangPouleMicroscopeX40.jpg", author: "Patbio", license: "CC BY-SA 4.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:SangPouleMicroscopeX40.jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
   'seminal-vesicle': {
@@ -2635,21 +2615,6 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
   "hepg2-liver-cell-line-phase-contrast": {
     src: '/specimens/hepg2-liver-cell-line-phase-contrast.webp', title: "HepG2.jpg", author: "User:SubtleGuest", license: "CC BY 2.5",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:HepG2.jpg",
-    adaptation: 'Downscaled to 1000 px wide; not cropped.',
-  },
-  "mouse-liver-section": {
-    src: '/specimens/mouse-liver-section.webp', title: "Histologi Hepar.jpg", author: "Nadvin", license: "CC BY-SA 4.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Histologi_Hepar.jpg",
-    adaptation: 'Downscaled to 1000 px wide; not cropped.',
-  },
-  "human-muscle-section": {
-    src: '/specimens/human-muscle-section.webp', title: "Histologi Otot.jpg", author: "Nadvin", license: "CC BY-SA 4.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Histologi_Otot.jpg",
-    adaptation: 'Downscaled to 1000 px wide; not cropped.',
-  },
-  "human-lung-section": {
-    src: '/specimens/human-lung-section.webp', title: "Histologi paru-paru.jpg", author: "Nadvin", license: "CC BY-SA 4.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Histologi_paru-paru.jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
   "rosette-forming-glioneuronal-tumour-h-e": {
@@ -4997,4 +4962,12 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:\u0417\u0440\u0456\u0437_\u0433\u043e\u043b\u043e\u0432\u0438_\u0442\u0440\u0438\u0442\u043e\u043d\u0430_\u0437\u0432\u0438\u0447\u0430\u0439\u043d\u043e\u0433\u043e.jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
+};
+
+// Photos of removed duplicate specimens: schemas that were drawn on them now use the identical kept photo.
+export const mediaAlias: Record<string, string> = {
+  'human-tonsil': 'human-tonsil-26-2-05',
+  'nasal-mucosa-cross-section': 'nasal-mucosa-26-2-17',
+  'nissl-bodies-in-neurons': 'nissl-bodies-in-spinal-cord-neurons',
+  'mouse-liver-section': 'liver-histology-slide',
 };

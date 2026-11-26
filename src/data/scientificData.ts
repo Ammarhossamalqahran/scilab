@@ -4154,17 +4154,6 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-human-blood', title: "Human blood.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Human_blood.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'human-tonsil', department: 'histology', kind: 'tissue-section',
-    title: { en: "Human tonsil", ar: "لوزة بشرية" },
-    subtitle: { en: "Wikimedia Commons \u00b7 Doc. RNDr. Josef Reischig, CSc.", ar: "ويكيميديا كومنز · Doc. RNDr. Josef Reischig, CSc." },
-    description: { en: "Human tonsil. One microscope field from a Wikimedia Commons photograph.", ar: "لوزة بشرية. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
-    facts: [
-      { en: "Histology studies tissues in thin stained sections; the stain and magnification decide which structures stand out.", ar: "علم الأنسجة يدرس الأنسجة في مقاطع رقيقة مصبوغة، والصبغة والتكبير يحددان أي التراكيب تظهر." },
-      { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
-    ],
-    references: [{ id: 'commons-human-tonsil', title: "Human tonsils (26 2 05) Cross-section; embedded in Epon.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Human_tonsils_(26_2_05)_Cross-section;_embedded_in_Epon.jpg", supports: 'Source photograph, author and licence for this slide.' }],
-  },
-  {
     id: 'human-skin-with-sweat-glands-100x', department: 'histology', kind: 'tissue-section',
     title: { en: "Human skin with sweat glands (100x)", ar: "جلد بشري مع غدد عرقية (100x)" },
     subtitle: { en: "Wikimedia Commons \u00b7 John Alan Elson", ar: "ويكيميديا كومنز · John Alan Elson" },
@@ -4341,28 +4330,6 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-mixed-salivary-gland', title: "Mixed salivary gland.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Mixed_salivary_gland.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'nasal-mucosa-cross-section', department: 'histology', kind: 'tissue-section',
-    title: { en: "Nasal mucosa, cross-section", ar: "مخاطية الأنف، مقطع عرضي" },
-    subtitle: { en: "Wikimedia Commons \u00b7 Doc. RNDr. Josef Reischig, CSc.", ar: "ويكيميديا كومنز · Doc. RNDr. Josef Reischig, CSc." },
-    description: { en: "Nasal mucosa, cross-section. One microscope field from a Wikimedia Commons photograph.", ar: "مخاطية الأنف، مقطع عرضي. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
-    facts: [
-      { en: "Histology studies tissues in thin stained sections; the stain and magnification decide which structures stand out.", ar: "علم الأنسجة يدرس الأنسجة في مقاطع رقيقة مصبوغة، والصبغة والتكبير يحددان أي التراكيب تظهر." },
-      { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
-    ],
-    references: [{ id: 'commons-nasal-mucosa-cross-section', title: "Nasal mucosa (26 2 17) Cross-section.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Nasal_mucosa_(26_2_17)_Cross-section.jpg", supports: 'Source photograph, author and licence for this slide.' }],
-  },
-  {
-    id: 'nissl-bodies-in-neurons', department: 'histology', kind: 'tissue-section',
-    title: { en: "Nissl bodies in neurons", ar: "أجسام نسل في العصبونات" },
-    subtitle: { en: "Wikimedia Commons \u00b7 Tulemo", ar: "ويكيميديا كومنز · Tulemo" },
-    description: { en: "Nissl bodies in neurons. One microscope field from a Wikimedia Commons photograph.", ar: "أجسام نسل في العصبونات. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
-    facts: [
-      { en: "Histology studies tissues in thin stained sections; the stain and magnification decide which structures stand out.", ar: "علم الأنسجة يدرس الأنسجة في مقاطع رقيقة مصبوغة، والصبغة والتكبير يحددان أي التراكيب تظهر." },
-      { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
-    ],
-    references: [{ id: 'commons-nissl-bodies-in-neurons', title: "Nissl bodies in neurons of the spinal cord.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Nissl_bodies_in_neurons_of_the_spinal_cord.jpg", supports: 'Source photograph, author and licence for this slide.' }],
-  },
-  {
     id: 'normal-breast-acinus', department: 'histology', kind: 'tissue-section',
     title: { en: "Normal breast acinus", ar: "عنب ثديي طبيعي" },
     subtitle: { en: "Wikimedia Commons \u00b7 Mikael H\u00e4ggstr\u00f6m, M.D.", ar: "ويكيميديا كومنز · Mikael Häggström, M.D." },
@@ -4482,17 +4449,6 @@ export const specimens: ScientificSpecimen[] = [
       { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
     ],
     references: [{ id: 'commons-ruscus-hypophyllum-root-cross-section-second-field', title: "Ruscus hypophyllum root - cross section surface detail.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Ruscus_hypophyllum_root_-_cross_section_surface_detail.jpg", supports: 'Source photograph, author and licence for this slide.' }],
-  },
-  {
-    id: 'blood-smear-40x', department: 'hematology', kind: 'tissue-section',
-    title: { en: "Blood smear (40x)", ar: "لطاخة دم (40x)" },
-    subtitle: { en: "Wikimedia Commons \u00b7 Patbio", ar: "ويكيميديا كومنز · Patbio" },
-    description: { en: "Blood smear (40x). One microscope field from a Wikimedia Commons photograph.", ar: "لطاخة دم (40x). مجال مجهري واحد من صورة في ويكيميديا كومنز." },
-    facts: [
-      { en: "Blood and marrow cells are identified by size, nuclear shape and cytoplasm colour on a stained smear.", ar: "تُعرف خلايا الدم والنخاع بالحجم وشكل النواة ولون السيتوبلازم على لطاخة مصبوغة." },
-      { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
-    ],
-    references: [{ id: 'commons-blood-smear-40x', title: "SangPouleMicroscopeX40.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:SangPouleMicroscopeX40.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
     id: 'seminal-vesicle', department: 'histology', kind: 'tissue-section',
@@ -6209,39 +6165,6 @@ export const specimens: ScientificSpecimen[] = [
       { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
     ],
     references: [{ id: "commons-hepg2-liver-cell-line-phase-contrast", title: "HepG2.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:HepG2.jpg", supports: 'Source photograph, author and licence for this slide.' }],
-  },
-  {
-    id: "mouse-liver-section", department: 'histology', kind: 'tissue-section',
-    title: { en: "Mouse liver section", ar: "مقطع في كبد فأر" },
-    subtitle: { en: "Wikimedia Commons \u00b7 Nadvin", ar: "ويكيميديا كومنز · Nadvin" },
-    description: { en: "Mouse liver section. One microscope field from a Wikimedia Commons photograph.", ar: "مقطع في كبد فأر. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
-    facts: [
-      { en: "Histology studies tissues in thin stained sections; the stain and magnification decide which structures stand out.", ar: "علم الأنسجة يدرس الأنسجة في مقاطع رقيقة مصبوغة، والصبغة والتكبير يحددان أي التراكيب تظهر." },
-      { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
-    ],
-    references: [{ id: "commons-mouse-liver-section", title: "Histologi Hepar.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Histologi_Hepar.jpg", supports: 'Source photograph, author and licence for this slide.' }],
-  },
-  {
-    id: "human-muscle-section", department: 'histology', kind: 'tissue-section',
-    title: { en: "Human muscle section", ar: "مقطع في عضل بشري" },
-    subtitle: { en: "Wikimedia Commons \u00b7 Nadvin", ar: "ويكيميديا كومنز · Nadvin" },
-    description: { en: "Human muscle section. One microscope field from a Wikimedia Commons photograph.", ar: "مقطع في عضل بشري. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
-    facts: [
-      { en: "Histology studies tissues in thin stained sections; the stain and magnification decide which structures stand out.", ar: "علم الأنسجة يدرس الأنسجة في مقاطع رقيقة مصبوغة، والصبغة والتكبير يحددان أي التراكيب تظهر." },
-      { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
-    ],
-    references: [{ id: "commons-human-muscle-section", title: "Histologi Otot.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Histologi_Otot.jpg", supports: 'Source photograph, author and licence for this slide.' }],
-  },
-  {
-    id: "human-lung-section", department: 'histology', kind: 'tissue-section',
-    title: { en: "Human lung section", ar: "مقطع في رئة بشرية" },
-    subtitle: { en: "Wikimedia Commons \u00b7 Nadvin", ar: "ويكيميديا كومنز · Nadvin" },
-    description: { en: "Human lung section. One microscope field from a Wikimedia Commons photograph.", ar: "مقطع في رئة بشرية. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
-    facts: [
-      { en: "Histology studies tissues in thin stained sections; the stain and magnification decide which structures stand out.", ar: "علم الأنسجة يدرس الأنسجة في مقاطع رقيقة مصبوغة، والصبغة والتكبير يحددان أي التراكيب تظهر." },
-      { en: "This is a single microscope field, so it shows only part of the preparation. Magnification and stain are as given by the photographer.", ar: "هذا مجال مجهري واحد فيظهر جزءاً فقط من التحضير. التكبير والصبغة كما ذكرهما المصوّر." },
-    ],
-    references: [{ id: "commons-human-lung-section", title: "Histologi paru-paru.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Histologi_paru-paru.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
     id: "rosette-forming-glioneuronal-tumour-h-e", department: 'histology', kind: 'tissue-section',

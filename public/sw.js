@@ -1,7 +1,7 @@
 // SciLab service worker: lets the site open offline after a first visit.
 // App shell is cached on install; pages, scripts, fonts and photos are cached as they are used.
 // The 500 specimen photos (about 58 MB) are NOT preloaded, only the ones a student opens.
-const CACHE = 'scilab-v6';
+const CACHE = 'scilab-v7';
 const SHELL = ['/', '/index.html', '/manifest.webmanifest', '/favicon.svg', '/scilab-logo.svg'];
 
 self.addEventListener('install', (event) => {
@@ -67,6 +67,23 @@ const TEASE = {
     "60 ثانية بس. اغلب نتيجة الدكتور.",
   ],
 };
+// Ask which message to show, but never wait long: a push that is not turned into a visible notification
+// quickly makes Android show its own generic "the site sent you a message" text instead of ours.
+async function askKind(sub) {
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), 2500);
+  try {
+    const q = sub ? '?endpoint=' + encodeURIComponent(sub.endpoint) : '';
+    const res = await fetch('/api/push/kind' + q, { cache: 'no-store', signal: ctl.signal });
+    return (await res.json()).kind;
+  } catch (e) { return 'unknown'; } finally { clearTimeout(timer); }
+}
+function show(title, body, tag, lang, url) {
+  return self.registration.showNotification(title, {
+    body, icon: '/icon-192.png', badge: '/badge-96.png', tag, renotify: true,
+    vibrate: [200, 100, 200], timestamp: Date.now(), lang, dir: lang === 'ar' ? 'rtl' : 'ltr', data: { url },
+  });
+}
 self.addEventListener('push', (event) => {
   event.waitUntil((async () => {
     let lang = (self.navigator && self.navigator.language || 'en').slice(0, 2) === 'ar' ? 'ar' : 'en';
@@ -74,32 +91,22 @@ self.addEventListener('push', (event) => {
       const hit = await (await caches.open('scilab-prefs')).match('/lang');
       if (hit) lang = (await hit.text()) === 'ar' ? 'ar' : 'en';
     } catch (e) { /* default language */ }
-    let monthly = false;
-    let winner = false;
+    let kind = 'unknown';
+    try { kind = await askKind(await self.registration.pushManager.getSubscription()); } catch (e) { /* unknown */ }
     try {
-      const sub = await self.registration.pushManager.getSubscription();
-      const q = sub ? '?endpoint=' + encodeURIComponent(sub.endpoint) : '';
-      const kind = (await (await fetch('/api/push/kind' + q, { cache: 'no-store' })).json()).kind;
-      monthly = kind === 'monthly'; winner = kind === 'winner';
-    } catch (e) { /* daily line */ }
-    if (winner) {
-      // Private message: the notification never shows its text, only that one is waiting.
-      await self.registration.showNotification('SciLab', {
-        body: lang === 'ar' ? 'عندك رسالة خاصة من SciLab. افتح الموقع عشان تشوفها.' : 'You have a private message from SciLab. Open the site to read it.',
-        icon: '/icon-192.png', badge: '/icon-192.png', tag: 'scilab-winner', lang, dir: lang === 'ar' ? 'rtl' : 'ltr', data: { url: '/' },
-      });
-      return;
+      if (kind === 'winner') {
+        // Private message: the notification never shows its text, only that one is waiting.
+        await show('SciLab', lang === 'ar' ? 'عندك رسالة خاصة من SciLab. افتح الموقع عشان تشوفها.' : 'You have a private message from SciLab. Open the site to read it.', 'scilab-winner', lang, '/');
+      } else if (kind === 'unknown') {
+        await show('SciLab', lang === 'ar' ? 'فيه جديد في SciLab. افتح الموقع.' : 'There is something new in SciLab. Open the site.', 'scilab-news', lang, '/challenge');
+      } else {
+        const lines = (kind === 'monthly' ? MONTH_END : TEASE)[lang];
+        await show(kind === 'monthly' ? (lang === 'ar' ? 'SciLab · آخر يوم في الشهر' : 'SciLab · last day of the month') : (lang === 'ar' ? 'SciLab · تحدي اليوم' : 'SciLab · daily challenge'), lines[Math.floor(Math.random() * lines.length)], kind === 'monthly' ? 'scilab-month-end' : 'scilab-daily', lang, '/challenge');
+      }
+    } catch (e) {
+      // Last resort: plain text without options, so a notification is always shown.
+      await self.registration.showNotification('SciLab', { body: 'SciLab' });
     }
-    const lines = (monthly ? MONTH_END : TEASE)[lang];
-    await self.registration.showNotification('SciLab', {
-      body: lines[Math.floor(Math.random() * lines.length)],
-      icon: '/icon-192.png',
-      badge: '/icon-192.png',
-      tag: monthly ? 'scilab-month-end' : 'scilab-daily',
-      lang,
-      dir: lang === 'ar' ? 'rtl' : 'ltr',
-      data: { url: '/challenge' },
-    });
   })());
 });
 self.addEventListener('notificationclick', (event) => {

@@ -1451,3 +1451,9 @@ img[loading="lazy"], .specimen-thumbnail, .module-card-photo { background: color
 .chal-rows li span { color: var(--muted); font-family: var(--mono); }
 .chal-rows li em { font-style: normal; font-family: var(--mono); color: var(--accent); }
 .chal-rows li.is-doctor b::after { content: ' ♛'; color: var(--amber); }
+
+.remind-banner { margin: 0 0 16px; padding: 12px 14px; background: var(--surface); border: 1px solid var(--line-strong); border-inline-start: 3px solid var(--accent, #3f8f6b); }
+.remind-banner p { margin: 0 0 8px; font-size: 14px; line-height: 1.6; }
+.remind-banner small { display: block; margin-top: 8px; font-size: 12px; line-height: 1.5; opacity: .8; }
+.remind-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.remind-actions a.quiet-button { text-decoration: none; display: inline-flex; align-items: center; }

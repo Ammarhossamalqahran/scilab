@@ -1,7 +1,7 @@
 // SciLab service worker: lets the site open offline after a first visit.
 // App shell is cached on install; pages, scripts, fonts and photos are cached as they are used.
 // The 500 specimen photos (about 58 MB) are NOT preloaded, only the ones a student opens.
-const CACHE = 'scilab-v2';
+const CACHE = 'scilab-v3';
 const SHELL = ['/', '/index.html', '/manifest.webmanifest', '/favicon.svg', '/scilab-logo.svg'];
 
 self.addEventListener('install', (event) => {
@@ -32,4 +32,49 @@ self.addEventListener('fetch', (event) => {
     const network = fetch(req).then((res) => { if (res.ok && res.type === 'basic') cache.put(req, res.clone()); return res; }).catch(() => hit);
     return hit || network;
   })));
+});
+
+// Daily reminder. The server sends an empty push; the teasing line is chosen here.
+const TEASE = {
+  en: [
+    "The Doctor scored 120 in 60 seconds. Think you can beat that?",
+    "One minute. Fifty specimens. The Doctor is waiting.",
+    "Your microscope skills are getting rusty. Prove otherwise.",
+    "The Doctor says you won't make it past 100 today.",
+    "60 seconds on the clock. Beat the Doctor's score.",
+  ],
+  ar: [
+    "الدكتور جاب 120 في دقيقة. تقدر تغلبه؟",
+    "دقيقة واحدة. عينات كتير. والدكتور مستنيك.",
+    "إيدك على الميكروسكوب اتقلت؟ ورّينا.",
+    "الدكتور بيقول إنك مش هتعدي 100 النهاردة.",
+    "60 ثانية بس. اغلب نتيجة الدكتور.",
+  ],
+};
+self.addEventListener('push', (event) => {
+  event.waitUntil((async () => {
+    let lang = (self.navigator && self.navigator.language || 'en').slice(0, 2) === 'ar' ? 'ar' : 'en';
+    try {
+      const hit = await (await caches.open('scilab-prefs')).match('/lang');
+      if (hit) lang = (await hit.text()) === 'ar' ? 'ar' : 'en';
+    } catch (e) { /* default language */ }
+    const lines = TEASE[lang];
+    await self.registration.showNotification('SciLab', {
+      body: lines[Math.floor(Math.random() * lines.length)],
+      icon: '/icon-192.png',
+      badge: '/icon-192.png',
+      tag: 'scilab-daily',
+      lang,
+      dir: lang === 'ar' ? 'rtl' : 'ltr',
+      data: { url: '/challenge' },
+    });
+  })());
+});
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  const target = (event.notification.data && event.notification.data.url) || '/challenge';
+  event.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((list) => {
+    for (const c of list) { if ('focus' in c) { c.navigate(target).catch(() => undefined); return c.focus(); } }
+    return self.clients.openWindow(target);
+  }));
 });

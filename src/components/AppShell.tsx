@@ -3,6 +3,7 @@ import { usePreferences } from '../app/PreferencesContext';
 import { LogoMark } from './LogoMark';
 import { FeedbackButton } from './FeedbackButton';
 import { InstallButton } from './InstallButton';
+import { ReminderBanner } from './ReminderBanner';
 
 function ThemeGlyph({ theme }: { theme: 'dark' | 'light' }) {
   return theme === 'dark'
@@ -93,7 +94,7 @@ export function AppShell() {
             </NavLink>
           </nav>
         </aside>
-        <main className="main-content"><Outlet /></main>
+        <main className="main-content"><ReminderBanner /><Outlet /></main>
         <FeedbackButton />
       </div>
     </div>

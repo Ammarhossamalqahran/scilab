@@ -12,9 +12,10 @@ const json = (data: unknown, status = 200) =>
 let ready: Promise<void> | null = null;
 function ensureSchema(db: D1Database): Promise<void> {
   ready ??= db.batch([
-    db.prepare('CREATE TABLE IF NOT EXISTS push_subs (endpoint TEXT PRIMARY KEY, created INTEGER NOT NULL)'),
+    db.prepare('CREATE TABLE IF NOT EXISTS push_subs (endpoint TEXT PRIMARY KEY, created INTEGER NOT NULL, player_id TEXT)'),
     db.prepare('CREATE TABLE IF NOT EXISTS kv (k TEXT PRIMARY KEY, v TEXT NOT NULL)'),
-  ]).then(() => undefined).catch((e) => { ready = null; throw e; });
+  ]).then(() => db.prepare('ALTER TABLE push_subs ADD COLUMN player_id TEXT').run().then(() => undefined, () => undefined)) // older table without the column
+    .catch((e) => { ready = null; throw e; });
   return ready;
 }
 
@@ -57,6 +58,12 @@ export async function handlePush(request: Request, db: D1Database, url: URL): Pr
     return json({ key: (await getKeys(db)).publicKey });
   }
   if (url.pathname === '/api/push/kind' && request.method === 'GET') {
+    // A pending private winner message for this device wins over the daily/monthly line.
+    const ep = url.searchParams.get('endpoint');
+    if (ep && validEndpoint(ep)) {
+      const w = await db.prepare("SELECT 1 AS x FROM winner_msgs w JOIN push_subs s ON s.player_id = w.player_id WHERE s.endpoint = ? AND w.msg != '' AND w.seen_at IS NULL").bind(ep).first<{ x: number }>().catch(() => null);
+      if (w) return json({ kind: 'winner' });
+    }
     const row = await db.prepare("SELECT v FROM kv WHERE k = 'kind'").first<{ v: string }>();
     return json({ kind: row?.v === 'monthly' ? 'monthly' : 'daily' });
   }
@@ -75,11 +82,12 @@ export async function handlePush(request: Request, db: D1Database, url: URL): Pr
     return json({ ok: res.ok, status: res.status }, res.ok ? 200 : 502);
   }
   if (url.pathname === '/api/push/subscribe' && request.method === 'POST') {
-    const body = await request.json().catch(() => null) as { endpoint?: unknown } | null;
+    const body = await request.json().catch(() => null) as { endpoint?: unknown; player?: unknown } | null;
     if (!body || !validEndpoint(body.endpoint)) return json({ error: 'bad_subscription' }, 400);
+    const player = typeof body.player === 'string' && /^[0-9a-f-]{36}$/.test(body.player) ? body.player : null;
     const n = await db.prepare('SELECT COUNT(*) AS n FROM push_subs').first<{ n: number }>();
     if ((n?.n ?? 0) >= MAX_SUBS) return json({ error: 'full' }, 503);
-    await db.prepare('INSERT OR IGNORE INTO push_subs (endpoint, created) VALUES (?, ?)').bind(body.endpoint, Date.now()).run();
+    await db.prepare('INSERT INTO push_subs (endpoint, created, player_id) VALUES (?, ?, ?) ON CONFLICT(endpoint) DO UPDATE SET player_id = COALESCE(excluded.player_id, push_subs.player_id)').bind(body.endpoint, Date.now(), player).run();
     return json({ ok: true });
   }
   if (url.pathname === '/api/push/unsubscribe' && request.method === 'POST') {
@@ -112,3 +120,13 @@ export async function sendDaily(db: D1Database, fetchImpl: typeof fetch = fetch,
 
 // True when `now` (UTC) is on the last day of its month.
 export const isLastDayOfMonth = (now = new Date()) => new Date(now.getTime() + 86400_000).getUTCDate() === 1;
+
+// Sends one empty push to one device; the service worker asks /api/push/kind to see what to show.
+export async function pushOne(db: D1Database, endpoint: string, fetchImpl: typeof fetch = fetch): Promise<boolean> {
+  try {
+    await ensureSchema(db);
+    const res = await fetchImpl(endpoint, { method: 'POST', headers: { Authorization: await vapidHeader(endpoint, await getKeys(db)), TTL: '86400', Urgency: 'high', 'Content-Length': '0' } });
+    if (res.status === 404 || res.status === 410) await db.prepare('DELETE FROM push_subs WHERE endpoint = ?').bind(endpoint).run();
+    return res.ok;
+  } catch { return false; }
+}

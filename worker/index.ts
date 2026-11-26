@@ -1,6 +1,7 @@
 import type { Env } from './types';
 import { handleLeaderboard, purgeLeaderboard } from './leaderboard';
-import { handleAdmin } from './admin';
+import { handleAdmin, handleAdminWinner } from './admin';
+import { handleInbox } from './inbox';
 import { handlePush, sendDaily, isLastDayOfMonth } from './push';
 
 const MONTHLY_CRON = '0 3 1 * *'; // keep in sync with wrangler.jsonc
@@ -14,6 +15,8 @@ export default {
     if (!env.DB) return new Response(JSON.stringify({ error: 'no_database' }), { status: 503, headers: { 'content-type': 'application/json' } });
     try {
       if (url.pathname === '/api/admin/data' && request.method === 'GET') return await handleAdmin(request, env.DB, env.ADMIN_KEY);
+      if (url.pathname === '/api/admin/winner' && request.method === 'POST') return await handleAdminWinner(request, env.DB, env.ADMIN_KEY);
+      if (url.pathname.startsWith('/api/inbox')) return await handleInbox(request, env.DB, url);
       if (url.pathname.startsWith('/api/push/')) return await handlePush(request, env.DB, url);
       return await handleLeaderboard(request, env.DB, url);
     } catch {

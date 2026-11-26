@@ -1,7 +1,7 @@
 // SciLab service worker: lets the site open offline after a first visit.
 // App shell is cached on install; pages, scripts, fonts and photos are cached as they are used.
 // The 500 specimen photos (about 58 MB) are NOT preloaded, only the ones a student opens.
-const CACHE = 'scilab-v4';
+const CACHE = 'scilab-v5';
 const SHELL = ['/', '/index.html', '/manifest.webmanifest', '/favicon.svg', '/scilab-logo.svg'];
 
 self.addEventListener('install', (event) => {
@@ -74,7 +74,21 @@ self.addEventListener('push', (event) => {
       if (hit) lang = (await hit.text()) === 'ar' ? 'ar' : 'en';
     } catch (e) { /* default language */ }
     let monthly = false;
-    try { const r = await fetch('/api/push/kind', { cache: 'no-store' }); monthly = (await r.json()).kind === 'monthly'; } catch (e) { /* daily line */ }
+    let winner = false;
+    try {
+      const sub = await self.registration.pushManager.getSubscription();
+      const q = sub ? '?endpoint=' + encodeURIComponent(sub.endpoint) : '';
+      const kind = (await (await fetch('/api/push/kind' + q, { cache: 'no-store' })).json()).kind;
+      monthly = kind === 'monthly'; winner = kind === 'winner';
+    } catch (e) { /* daily line */ }
+    if (winner) {
+      // Private message: the notification never shows its text, only that one is waiting.
+      await self.registration.showNotification('SciLab', {
+        body: lang === 'ar' ? 'عندك رسالة خاصة من SciLab. افتح الموقع عشان تشوفها.' : 'You have a private message from SciLab. Open the site to read it.',
+        icon: '/icon-192.png', badge: '/icon-192.png', tag: 'scilab-winner', lang, dir: lang === 'ar' ? 'rtl' : 'ltr', data: { url: '/' },
+      });
+      return;
+    }
     const lines = (monthly ? MONTH_END : TEASE)[lang];
     await self.registration.showNotification('SciLab', {
       body: lines[Math.floor(Math.random() * lines.length)],

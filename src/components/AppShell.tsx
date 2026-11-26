@@ -4,6 +4,7 @@ import { LogoMark } from './LogoMark';
 import { FeedbackButton } from './FeedbackButton';
 import { InstallButton } from './InstallButton';
 import { WelcomeName } from './WelcomeName';
+import { WinnerInbox } from './WinnerInbox';
 import { ReminderBanner } from './ReminderBanner';
 
 function ThemeGlyph({ theme }: { theme: 'dark' | 'light' }) {
@@ -98,6 +99,7 @@ export function AppShell() {
         <main className="main-content"><ReminderBanner /><Outlet /></main>
         <FeedbackButton />
         <WelcomeName />
+        <WinnerInbox />
       </div>
     </div>
   );

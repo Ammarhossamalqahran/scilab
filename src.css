@@ -1479,3 +1479,9 @@ img[loading="lazy"], .specimen-thumbnail, .module-card-photo { background: color
 .admin-login small { color: var(--coral); }
 .admin-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 20px; }
 .admin-table th, .admin-table td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: start; }
+
+.winner-crown { position: relative; z-index: 1; font-size: 56px; color: #f2d27a; line-height: 1; }
+.winner-text { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 17px !important; color: var(--ink) !important; padding: 10px; background: var(--surface); border-radius: 10px; user-select: text; }
+.winner-note { color: var(--muted) !important; }
+.admin-msg { display: grid; gap: 6px; margin: 6px 0 12px; max-width: 420px; }
+.admin-msg textarea { min-height: 70px; padding: 8px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); font: inherit; }

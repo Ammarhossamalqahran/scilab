@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { readStats, DOCTOR_SCORE } from '../data/gameStats';
-import { currentState, enableReminders, disableReminders, sendTestPush, rememberLanguage, type PushState } from '../lib/pushReminders';
+import { currentState, enableReminders, disableReminders, sendTestPush, rememberLanguage, linkSubscription, type PushState } from '../lib/pushReminders';
 
 const VISIT = 'scilab-visit';
 const HIDE = 'scilab-banner-hidden';
@@ -32,7 +32,7 @@ export function ReminderBanner() {
   const [note, setNote] = useState('');
   const best = readStats().best;
 
-  useEffect(() => { void currentState().then(setState); }, []);
+  useEffect(() => { void currentState().then((st) => { setState(st); if (st === 'on') void linkSubscription(); }); }, []);
   useEffect(() => { void rememberLanguage(ar ? 'ar' : 'en'); }, [ar]);
 
   const [taps, setTaps] = useState(0);

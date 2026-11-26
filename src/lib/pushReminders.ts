@@ -1,3 +1,5 @@
+import { playerId } from './leaderboardApi';
+
 // Web push reminder helpers. Works where the browser supports push; on iPhone only inside the
 // installed home-screen app (iOS 16.4+).
 export const isIos = () => /iphone|ipad|ipod/i.test(navigator.userAgent);
@@ -35,7 +37,7 @@ export async function enableReminders(lang: 'ar' | 'en'): Promise<PushState> {
   const reg = await navigator.serviceWorker.register('/sw.js').then(() => navigator.serviceWorker.ready);
   const { key } = await (await fetch('/api/push/vapid-key')).json() as { key: string };
   const sub = (await reg.pushManager.getSubscription()) ?? await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyBytes(key) });
-  const res = await fetch('/api/push/subscribe', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ endpoint: sub.endpoint }) });
+  const res = await fetch('/api/push/subscribe', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ endpoint: sub.endpoint, player: playerId() }) });
   if (!res.ok) throw new Error('subscribe_failed');
   await rememberLanguage(lang);
   return 'on';
@@ -58,4 +60,13 @@ export async function sendTestPush(): Promise<boolean> {
   if (!sub) return false;
   const res = await fetch('/api/push/test', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ endpoint: sub.endpoint }) });
   return res.ok;
+}
+
+// Links an existing subscription to this player so a private winner message can reach this device.
+export async function linkSubscription(): Promise<void> {
+  try {
+    const reg = await navigator.serviceWorker.getRegistration('/sw.js');
+    const sub = await reg?.pushManager.getSubscription();
+    if (sub) await fetch('/api/push/subscribe', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ endpoint: sub.endpoint, player: playerId() }) });
+  } catch { /* optional */ }
 }

@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
+import { useTestGuard } from '../lib/useTestGuard';
+import { TestGuardNotice } from '../components/TestGuardNotice';
 import { Link } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { bloodStains, type BloodStainId } from '../data/bloodStains';
@@ -82,6 +84,7 @@ export function ExamPage() {
   const lang = locale;
   const [station, setStation] = useState<Station>('identify');
   const [question, setQuestion] = useState<ExamQuestion | null>(null);
+  const guard = useTestGuard(station === 'identify' && question !== null);
   const [chosenAnswerId, setChosenAnswerId] = useState<string | null>(null);
   const [grade, setGrade] = useState<AnswerGrade>(null);
   const [score, setScore] = useState(0);
@@ -290,8 +293,9 @@ export function ExamPage() {
 
       {station === 'identify' && <section className="exam-station-content">
         <div className="exam-section-heading"><div><div className="eyebrow">{copy.stations.identify}</div><h2>{copy.identifyTitle}</h2><p>{copy.identifyDescription}</p></div><div className="exam-scoreboard"><span>{copy.score}<b>{score}</b></span><span>{copy.attempts}<b>{answered}</b></span></div></div>
+        {question && <TestGuardNotice away={guard.away} leaves={guard.leaves} keys={guard.keys} />}
         <ProgressPanel progress={progress} lang={lang} onReset={resetProgress} />
-        {!question ? <div className="exam-start-card"><div className="exam-question-mark">?</div><p>{copy.identifyDescription}</p><button type="button" className="button button-primary" onClick={() => setQuestion(makeQuestion())}>{copy.startQuestion}</button></div> : (
+        {!question ? <div className="exam-start-card"><div className="exam-question-mark">?</div><p>{copy.identifyDescription}</p><button type="button" className="button button-primary" onClick={() => { guard.reset(); setQuestion(makeQuestion()); }}>{copy.startQuestion}</button></div> : (
           <div className="exam-identify-grid">
             <div className="exam-microscope-panel"><div className="exam-panel-label"><span>{lang === 'ar' ? 'مجال مجهري' : 'MICROSCOPE FIELD'}</span><span>{lang === 'ar' ? 'الاسم مخفي' : 'IDENTITY HIDDEN'}</span></div><div className="exam-canvas"><ExamMicroscope imageSrc={specimenMedia[question.specimenId]?.src} locale={lang} pan={pan} onPan={setPan} /></div><p>{lang === 'ar' ? 'اسحب الصورة للتنقّل داخل المجال.' : 'Drag the image to inspect the field.'}</p></div>
           <div className="exam-answer-panel"><div className="exam-panel-label"><span>{lang === 'ar' ? 'سؤال' : 'QUESTION'}</span><b>{copy.stations.identify}</b></div><h3>{copy.waiting}</h3><div className="exam-answer-list">{question.choices.map((id, index) => {

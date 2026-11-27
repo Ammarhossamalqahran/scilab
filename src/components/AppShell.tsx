@@ -1,5 +1,7 @@
 import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { usePreferences } from '../app/PreferencesContext';
+import { getAdminSession } from '../lib/adminSession';
 import { LogoMark } from './LogoMark';
 import { FeedbackButton } from './FeedbackButton';
 import { InstallButton } from './InstallButton';
@@ -48,6 +50,12 @@ function ChallengeGlyph() {
 export function AppShell() {
   const { locale, setLocale, theme, toggleTheme, t } = usePreferences();
   const { pathname } = useLocation();
+  const [adminLink, setAdminLink] = useState(() => getAdminSession() !== '');
+  useEffect(() => {
+    const on = () => setAdminLink(getAdminSession() !== '');
+    window.addEventListener('scilab-admin-session', on);
+    return () => window.removeEventListener('scilab-admin-session', on);
+  }, []);
 
   return (
     <div className="app-shell">
@@ -102,6 +110,11 @@ export function AppShell() {
             <NavLink to="/challenge" className={({ isActive }) => `nav-item${isActive ? ' is-active' : ''}`}>
               <ChallengeGlyph /><span>{locale === 'ar' ? 'تحدي الـ 60 ثانية' : '60-second challenge'}</span>
             </NavLink>
+            {adminLink && (
+              <NavLink to="/admin" className={({ isActive }) => `nav-item${isActive ? ' is-active' : ''}`}>
+                <ExamGlyph /><span>{locale === 'ar' ? 'لوحة المالك' : 'Admin'}</span>
+              </NavLink>
+            )}
           </nav>
         </aside>
         <main className="main-content"><ReminderBanner /><div key={pathname} className="page-enter"><Outlet /></div></main>

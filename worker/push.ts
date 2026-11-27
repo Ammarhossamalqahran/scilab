@@ -1,4 +1,5 @@
 import type { D1Database } from './types';
+import { takeAdminEvents } from './adminPush';
 
 // Web push reminders. No secrets are handled by hand: the Worker creates its own VAPID signing key
 // the first time it is needed and keeps it in D1. Pushes carry no payload, so the service worker
@@ -65,6 +66,8 @@ export async function handlePush(request: Request, db: D1Database, url: URL): Pr
     const lrow = ep && validEndpoint(ep) ? await db.prepare('SELECT lang FROM push_subs WHERE endpoint = ?').bind(ep).first<{ lang: string | null }>().catch(() => null) : null;
     const lang = lrow?.lang === 'en' || lrow?.lang === 'ar' ? lrow.lang : undefined;
     if (ep && validEndpoint(ep)) {
+      const adm = await takeAdminEvents(db, ep);
+      if (adm) return json({ kind: 'admin', counts: adm, lang });
       const w = await db.prepare("SELECT 1 AS x FROM winner_msgs w JOIN push_subs s ON s.player_id = w.player_id WHERE s.endpoint = ? AND w.msg != '' AND w.seen_at IS NULL").bind(ep).first<{ x: number }>().catch(() => null);
       if (w) return json({ kind: 'winner', lang });
     }

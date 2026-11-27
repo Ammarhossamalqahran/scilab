@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { usePreferences } from '../app/PreferencesContext';
+import { startGoogle } from '../lib/google';
+import { getAdminSession, clearAdminSession, alertState, enableAdminAlerts, disableAdminAlerts, type AlertState } from '../lib/adminSession';
 
 type Row = { nick: string; score: number; correct?: number; games?: number; last_at?: number; month?: string; at?: number };
 type Msg = { nick: string; created: number; seen_at: number | null };
@@ -13,7 +15,7 @@ const fmt = (t?: number) => (t ? new Date(t).toLocaleString() : '');
 export function AdminPage() {
   const { locale } = usePreferences();
   const ar = locale === 'ar';
-  const [key, setKey] = useState(() => { try { return sessionStorage.getItem(KEY) ?? ''; } catch { return ''; } });
+  const [key, setKey] = useState(() => { try { return getAdminSession() || (sessionStorage.getItem(KEY) ?? ''); } catch { return ''; } });
   const [data, setData] = useState<Data | null>(null);
   const [err, setErr] = useState('');
   const [busy, setBusy] = useState(false);
@@ -23,10 +25,20 @@ export function AdminPage() {
     try {
       const res = await fetch('/api/admin/data', { headers: { 'x-admin-key': key } });
       const body = await res.json().catch(() => ({})) as Data & { error?: string };
-      if (res.ok) { setData(body); try { sessionStorage.setItem(KEY, key); } catch { /* ignored */ } }
+      if (res.ok && Array.isArray(body.thisMonth) && Array.isArray(body.archive)) { setData(body); try { if (!key.startsWith('gs.')) sessionStorage.setItem(KEY, key); } catch { /* ignored */ } }
+      else if (key.startsWith('gs.') && res.status === 403) { clearAdminSession(); setKey(''); setErr(ar ? 'انتهت الجلسة. ادخل بجوجل تاني.' : 'Session expired. Sign in with Google again.'); }
       else setErr(body.error === 'admin_not_configured' ? (ar ? 'المفتاح لسه ما اتضافش في Cloudflare.' : 'The key is not set in Cloudflare yet.') : body.error === 'locked' ? (ar ? 'محاولات كتير. استنى 10 دقايق.' : 'Too many tries. Wait 10 minutes.') : (ar ? 'المفتاح غلط.' : 'Wrong key.'));
     } catch { setErr(ar ? 'مفيش اتصال.' : 'No connection.'); }
     setBusy(false);
+  }
+  useEffect(() => { if (key.startsWith('gs.')) void load(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  const [alerts, setAlerts] = useState<AlertState>('off');
+  const [alertErr, setAlertErr] = useState('');
+  useEffect(() => { if (data) void alertState().then(setAlerts); }, [data]);
+  async function toggleAlerts() {
+    setAlertErr('');
+    try { setAlerts(alerts === 'on' ? await disableAdminAlerts(key) : await enableAdminAlerts(key)); }
+    catch { setAlertErr(ar ? 'ماتفعّلش. جرب تاني.' : 'Could not turn on. Try again.'); }
   }
   const [to, setTo] = useState<string | null>(null);
   const [text, setText] = useState('');
@@ -83,10 +95,20 @@ export function AdminPage() {
           <input type="password" value={key} onChange={(e) => setKey(e.target.value)} placeholder={ar ? 'المفتاح السري' : 'Secret key'} autoComplete="off" />
           <button className="button button-primary" disabled={busy || key.length < 8}>{ar ? 'دخول' : 'Open'}</button>
           {err && <small>{err}</small>}
+          <button type="button" className="button" disabled={busy} onClick={() => void startGoogle('admin')}>{ar ? 'دخول بحساب جوجل (المالك)' : 'Sign in with Google (owner)'}</button>
         </form>
       )}
       {data && (
         <>
+          <div className="admin-msg">
+            <b>{ar ? 'إشعارات المالك على الجهاز ده' : 'Owner alerts on this device'}</b>
+            <p>{ar ? 'بتوصلك إشعارات لما حد يكسر رقم قياسي، أو يسجل مستخدم جديد، أو يوصل رأي أو صورة محتاجة موافقتك. للجهاز ده بس.' : 'You get a notification when a record is broken, a new user registers, or an opinion or photo needs your approval. This device only.'}</p>
+            {alerts === 'needs-install' && <p>{ar ? 'على الآيفون لازم تثبّت الموقع على الشاشة الرئيسية الأول.' : 'On iPhone, add the site to the home screen first.'}</p>}
+            {alerts === 'unsupported' && <p>{ar ? 'المتصفح ده مش بيدعم الإشعارات.' : 'This browser does not support notifications.'}</p>}
+            {alerts === 'denied' && <p>{ar ? 'الإشعارات متقفلة من إعدادات المتصفح.' : 'Notifications are blocked in the browser settings.'}</p>}
+            {(alerts === 'on' || alerts === 'off') && <button className="button" onClick={() => void toggleAlerts()}>{alerts === 'on' ? (ar ? 'وقّف الإشعارات' : 'Turn off') : (ar ? 'فعّل الإشعارات' : 'Turn on')}</button>}
+            {alertErr && <small> {alertErr}</small>}
+          </div>
           {to && (
             <div className="admin-msg">
               <b>{ar ? `رسالة خاصة لـ ${to}` : `Private message to ${to}`}</b>

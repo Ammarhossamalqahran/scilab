@@ -1,6 +1,7 @@
 import type { Env } from './types';
 import { handleLeaderboard, purgeLeaderboard } from './leaderboard';
-import { handleAdmin, handleAdminWinner, handleAdminCode, handleAdminPhotos, handleAdminPhotoDecision, handleAdminOpinions, handleAdminOpinionDecision } from './admin';
+import { handleAdminGoogle } from './adminAuth';
+import { handleAdmin, handleAdminPush, handleAdminWinner, handleAdminCode, handleAdminPhotos, handleAdminPhotoDecision, handleAdminOpinions, handleAdminOpinionDecision } from './admin';
 import { handleOpinion } from './opinions';
 import { handleInbox } from './inbox';
 import { handleProfile } from './profile';
@@ -19,6 +20,8 @@ export default {
     if (!url.pathname.startsWith('/api/')) return env.ASSETS.fetch(request);
     if (!env.DB) return new Response(JSON.stringify({ error: 'no_database' }), { status: 503, headers: { 'content-type': 'application/json' } });
     try {
+      if (url.pathname === '/api/admin/google' || url.pathname === '/api/admin/logout') return await handleAdminGoogle(request, env.DB, url, env.GOOGLE_CLIENT_ID);
+      if (url.pathname === '/api/admin/push' && request.method === 'POST') return await handleAdminPush(request, env.DB, env.ADMIN_KEY);
       if (url.pathname === '/api/admin/data' && request.method === 'GET') return await handleAdmin(request, env.DB, env.ADMIN_KEY);
       if (url.pathname === '/api/admin/winner' && request.method === 'POST') return await handleAdminWinner(request, env.DB, env.ADMIN_KEY);
       if (url.pathname === '/api/admin/code' && request.method === 'POST') return await handleAdminCode(request, env.DB, env.ADMIN_KEY);

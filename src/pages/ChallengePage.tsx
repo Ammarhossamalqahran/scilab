@@ -5,6 +5,7 @@ import { specimens } from '../data/scientificData';
 import { specimenMedia } from '../data/specimenMedia';
 import { Avatar } from '../data/avatars';
 import { fetchBoard, startTicket, submitScore, savedNick, saveNick, photoUrl, type Entry } from '../lib/leaderboardApi';
+import { recordResult } from '../data/flashcards';
 import { readStats, recordGame, badges, DOCTOR_SCORE, type Stats } from '../data/gameStats';
 
 const pool = specimens.filter((s) => specimenMedia[s.id]);
@@ -71,6 +72,7 @@ export function ChallengePage() {
     if (!q || feedback) return;
     const right = specimens.find((s) => s.id === q.id)!.title[lang];
     const ok = option === right;
+    recordResult(q.id, ok);
     const r = ref.current;
     if (ok) { r.streak += 1; r.correct += 1; r.score += 10 + Math.min(r.streak - 1, 5) * 2; r.best = Math.max(r.best, r.streak); } else { r.streak = 0; }
     setScore(r.score); setStreak(r.streak); setBestStreak(r.best); setCorrect(r.correct);

@@ -3,7 +3,8 @@ import { SpeakButton } from '../components/SpeakButton';
 import { usePreferences } from '../app/PreferencesContext';
 import { specimens, type DepartmentId } from '../data/scientificData';
 import { specimenMedia } from '../data/specimenMedia';
-import { readCards, saveCards, markCard, dueIds, type CardBook } from '../data/flashcards';
+import { useSearchParams } from 'react-router-dom';
+import { readCards, saveCards, markCard, dueIds, nextDue, type CardBook } from '../data/flashcards';
 
 const departments: { id: DepartmentId | 'all' | 'weak'; en: string; ar: string }[] = [
   { id: 'all', en: 'All slides', ar: 'كل العينات' },
@@ -28,8 +29,9 @@ function shuffle<T>(items: T[]): T[] {
 export function StudyPage() {
   const { locale: lang } = usePreferences();
   const ar = lang === 'ar';
+  const [searchParams] = useSearchParams();
   const [book, setBook] = useState<CardBook>(() => readCards());
-  const [scope, setScope] = useState<DepartmentId | 'all' | 'weak'>('all');
+  const [scope, setScope] = useState<DepartmentId | 'all' | 'weak'>(searchParams.get('scope') === 'weak' ? 'weak' : 'all');
   const [deck, setDeck] = useState<string[]>([]);
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
@@ -70,6 +72,8 @@ export function StudyPage() {
     return () => window.removeEventListener('keydown', onKey);
   });
 
+  const dueNow = dueIds(book).length;
+  const upcoming = nextDue(book);
   const mastered = Object.values(book).filter((c) => c.streak >= 2).length;
 
   return (
@@ -80,7 +84,7 @@ export function StudyPage() {
 
       <div className="study-scopes" role="tablist">
         {departments.map((d) => (
-          <button key={d.id} role="tab" aria-selected={scope === d.id} className={`study-chip${scope === d.id ? ' is-active' : ''}`} onClick={() => setScope(d.id)}>{ar ? d.ar : d.en}</button>
+          <button key={d.id} role="tab" aria-selected={scope === d.id} className={`study-chip${scope === d.id ? ' is-active' : ''}`} onClick={() => setScope(d.id)}>{ar ? d.ar : d.en}{d.id === 'weak' && dueNow > 0 ? ` (${dueNow})` : ''}</button>
         ))}
       </div>
       <div className="study-stats">
@@ -89,7 +93,7 @@ export function StudyPage() {
       </div>
 
       {deck.length === 0 && (
-        <div className="study-empty">{scope === 'weak' ? (ar ? 'مفيش أخطاء لسه. ذاكر شوية الأول.' : 'No mistakes yet. Study a few cards first.') : (ar ? 'مفيش كروت هنا.' : 'No cards here.')}</div>
+        <div className="study-empty">{scope === 'weak' ? (upcoming ? (ar ? `مفيش كروت مستحقة دلوقتي. أقرب مراجعة ${new Date(upcoming).toLocaleDateString('ar-EG', { weekday: 'long', day: 'numeric', month: 'long' })}.` : `Nothing due now. Next review: ${new Date(upcoming).toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long' })}.`) : (ar ? 'مفيش أخطاء لسه. ذاكر شوية الأول.' : 'No mistakes yet. Study a few cards first.')) : (ar ? 'مفيش كروت هنا.' : 'No cards here.')}</div>
       )}
 
       {current && media && !finished && (

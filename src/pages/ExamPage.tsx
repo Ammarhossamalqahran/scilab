@@ -6,6 +6,7 @@ import { diagramCategories, diagrams } from '../data/diagramData';
 import { specimens } from '../data/scientificData';
 import { PrintNotes } from '../components/PrintNotes';
 import { specimenMedia } from '../data/specimenMedia';
+import { recordResult } from '../data/flashcards';
 import { readProgress, recordAnswer, saveProgress, totals, weakPoints, type Progress } from '../data/examProgress';
 import { MicroscopeCanvas } from '../microscope/MicroscopeCanvas';
 import { DiagramArtwork } from '../schemas/DiagramArtwork';
@@ -186,6 +187,7 @@ export function ExamPage() {
     setGrade(specimenId === question.specimenId ? 'correct' : 'wrong');
     setAnswered((current) => current + 1);
     if (specimenId === question.specimenId) setScore((current) => current + 1);
+    recordResult(question.specimenId, specimenId === question.specimenId);
     setProgress((current) => { const next = recordAnswer(current, question.specimenId, specimenId === question.specimenId); saveProgress(next); return next; });
   }
   function resetProgress() { setProgress({}); saveProgress({}); }

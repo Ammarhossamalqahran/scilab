@@ -27,11 +27,13 @@ Inside each subject the list is sorted alphabetically by specimen name in the cu
 4. Plant tissue (onion epidermis) was filed under Histology and moved to Botany.
 5. Not parasites, so they stay in Zoology: mosquitoes and mosquito larvae (vectors, not parasites), spider, clover, gorse, grain, dust, soil, Christmas cactus and bee-nest mites (Commons describes the bee-nest one as an unidentified mite on a dead bee, not a parasite), and the booklouse (Psocoptera, free-living).
 
-## Leftover that could not be verified (3, kept in Zoology)
+## Last 3 checked again
 
-- `nematode-under-the-microscope`: Commons says only "nematode under microscope", no species, so parasitic or free-living is unknown.
-- `nematode-differential-interference-contrast`: same, no species given.
-- `mite-acari-265-02`: Commons says only "Acari, total preparation", no species.
+Searched the Commons file pages again (File:Nematoda.jpg, the Cyrillic-named nematode file, File:Acari_(265_02)). They name only the group, not a species or a host, so parasitic or free-living cannot be shown. The group itself is not in doubt: Nematoda is an animal phylum and Acari is an arachnid subclass, so all three belong in **Zoology**, which is where they are. No "Other" subject was needed.
+
+- `nematode-under-the-microscope`: Commons says "nematode under microscope".
+- `nematode-differential-interference-contrast`: Commons says "Nematode under the microscope. Differential interference contrast."
+- `mite-acari-265-02`: Commons says "Acari: total preparation".
 
 ## Moved to Parasitology (all)
 

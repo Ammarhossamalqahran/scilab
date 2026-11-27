@@ -15,9 +15,11 @@ export function GoogleResultDialog() {
   if (!r) return null;
   const ok = r.kind !== 'error';
   const title = r.kind === 'linked' ? (ar ? 'تم ربط حساب جوجل' : 'Google account linked')
+    : r.kind === 'signedin' && r.created ? (ar ? `أهلاً ${r.nick ?? ''}، اتسجلت` : `Welcome ${r.nick ?? ''}, you are in`)
     : r.kind === 'signedin' ? (ar ? `أهلاً ${r.nick ?? ''}، تم الدخول` : `Welcome back ${r.nick ?? ''}, you are signed in`)
     : (ar ? 'ماتمش الربط' : 'It did not work');
   const text = r.kind === 'linked' ? (ar ? 'تقدر دلوقتي تدخل بحساب جوجل من أي جهاز: اضغط "عندي كود" ثم "ادخل بحساب جوجل".' : 'You can now sign in with Google on any device: tap "I have a code", then "Sign in with Google".')
+    : r.kind === 'signedin' && r.created ? (ar ? 'اتعمللك اسم من حساب جوجل. تقدر تغيره من بروفايلك في أي وقت. ماخدناش إيميلك ولا صورتك.' : 'Your name came from your Google account. You can change it any time in your profile. We did not take your email or photo.')
     : r.kind === 'signedin' ? (ar ? 'رجعنالك اسمك ونتايجك.' : 'Your name and scores are back.')
     : r.reason === 'already_linked' ? (ar ? 'حساب جوجل ده مربوط باسم تاني. ادخل بيه من "عندي كود".' : 'That Google account is already linked to another name. Sign in with it from "I have a code".')
     : r.reason === 'no_account' ? (ar ? 'مفيش اسم مربوط بحساب جوجل ده. اعمل اسم الأول وبعدين اربطه من البروفايل.' : 'No name is linked to this Google account. Create a name first, then link it from the profile.')

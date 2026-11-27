@@ -2,7 +2,7 @@ import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { usePreferences } from '../app/PreferencesContext';
 import { getAdminSession, clearAdminSession } from '../lib/adminSession';
-import { recordVisit } from '../data/frames';
+import { recordVisit, setOwnerFrames } from '../data/frames';
 import { playerId } from '../lib/leaderboardApi';
 import { LogoMark } from './LogoMark';
 import { FeedbackButton } from './FeedbackButton';
@@ -58,10 +58,10 @@ export function AppShell() {
   useEffect(() => {
     const on = () => {
       const session = getAdminSession();
-      if (!session) { setAdminLink(false); return; }
+      if (!session) { setAdminLink(false); setOwnerFrames(false); return; }
       fetch('/api/admin/check', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ session, player: playerId() }) })
-        .then((r) => r.json()).then((d: { ok?: boolean }) => { if (d.ok === true) setAdminLink(true); else { setAdminLink(false); clearAdminSession(); } })
-        .catch(() => setAdminLink(false));
+        .then((r) => r.json()).then((d: { ok?: boolean }) => { if (d.ok === true) { setAdminLink(true); setOwnerFrames(true); } else { setAdminLink(false); setOwnerFrames(false); clearAdminSession(); } })
+        .catch(() => { setAdminLink(false); setOwnerFrames(false); });
     };
     on();
     window.addEventListener('scilab-admin-session', on);

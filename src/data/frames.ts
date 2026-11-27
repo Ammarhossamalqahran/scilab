@@ -50,9 +50,14 @@ export function recordVisit(now = new Date()): Visits {
   return next;
 }
 
+// Set only after the server confirmed a live owner session (AppShell). Never read from storage.
+let ownerVerified = false;
+export function setOwnerFrames(on: boolean) { if (ownerVerified !== on) { ownerVerified = on; try { window.dispatchEvent(new Event('scilab-frame')); } catch { /* ignored */ } } }
+
 export function earnedFrames(): Set<string> {
   const v = readVisits(); const s = readStats();
   const e = new Set<string>(['gold']);
+  if (ownerVerified) { FRAMES.forEach((f) => e.add(f.id)); return e; }
   if (v.best >= 7) e.add('streak7');
   if (v.best >= 30) e.add('streak30');
   if (s.best >= 50) e.add('score50');

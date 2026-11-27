@@ -98,7 +98,7 @@ export function TrueFalsePage() {
         <div className="chal-panel">
           <p>{ar ? `أحسن نتيجة ليك: ${stats.best} · ألعاب: ${stats.games}` : `Your best: ${stats.best} · games played: ${stats.games}`}</p>
           <button className="button button-primary" onClick={start}>{ar ? 'ابدأ' : 'Start'}</button>
-          <p><Link to="/challenge">{ar ? 'تحدي الـ 60 ثانية (لوحة الشرف)' : '60-second challenge (leaderboard)'}</Link></p>
+          <p><Link to="/challenge">{ar ? 'تحدي الـ 60 ثانية (لوحة الشرف)' : '60-second challenge (leaderboard)'}</Link> · <Link to="/challenge/department">{ar ? 'تبع أنهي قسم؟' : 'Which department?'}</Link></p>
         </div>
       )}
       {phase === 'play' && q && (

@@ -20,6 +20,7 @@ const departments: { id: DepartmentId; label: { en: string; ar: string } }[] = [
   { id: 'zoology', label: { en: 'Zoology', ar: 'علم الحيوان' } },
   { id: 'genetics', label: { en: 'Cell division & genetics', ar: 'الانقسام الخلوي والوراثة' } },
 ];
+const departmentCounts = departments.reduce<Record<string, number>>((acc, item) => { acc[item.id] = specimens.filter((sample) => sample.department === item.id).length; return acc; }, {});
 const objectives: { value: 4 | 10 | 40 | 100; en: string; ar: string }[] = [
   { value: 4, en: 'Scanning', ar: 'مسح' },
   { value: 10, en: 'Low power', ar: 'قوة منخفضة' },
@@ -206,6 +207,16 @@ export function MicroscopePage() {
         </div>
       </div>
 
+      {!challengeHidden && (
+        <nav className="subject-bar" aria-label={lang === 'ar' ? 'الأقسام' : 'Subjects'}>
+          {departments.map((item) => (
+            <button type="button" key={item.id} onClick={() => changeDepartment(item.id)} className={`subject-chip${department === item.id ? ' is-selected' : ''}`} aria-pressed={department === item.id}>
+              <span>{item.label[lang]}</span><b>{departmentCounts[item.id]}</b>
+            </button>
+          ))}
+        </nav>
+      )}
+
       {showKeys && (
         <div className="keys-panel" role="region" aria-label={lang === 'ar' ? 'اختصارات الكيبورد' : 'Keyboard shortcuts'}>
           <b>{lang === 'ar' ? 'اختصارات الكيبورد' : 'Keyboard shortcuts'}</b>
@@ -258,7 +269,7 @@ export function MicroscopePage() {
               <div className="department-list">
                 {departments.map((item) => (
                   <button type="button" key={item.id} onClick={() => changeDepartment(item.id)} className={`department-button${department === item.id ? ' is-selected' : ''}`} aria-pressed={department === item.id}>
-                    <span>{item.label[lang]}</span>
+                    <span>{item.label[lang]} ({departmentCounts[item.id]})</span>
                   </button>
                 ))}
               </div>

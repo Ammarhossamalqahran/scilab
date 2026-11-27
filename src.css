@@ -1559,3 +1559,9 @@ img[loading="lazy"], .specimen-thumbnail, .module-card-photo { background: color
 .clinical-note p { margin: 0 0 8px; }
 .clinical-note small { display: block; color: var(--muted); font-size: 11px; }
 .clinical-note a { color: inherit; }
+
+.subject-bar{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin:0 0 8px;scrollbar-width:thin}
+.subject-chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line,#cfd6cc);background:transparent;color:inherit;border-radius:999px;padding:8px 14px;font:inherit;font-size:14px;cursor:pointer;white-space:nowrap}
+.subject-chip b{font-size:12px;opacity:.7}
+.subject-chip.is-selected{background:#1f5c46;border-color:#1f5c46;color:#fff}
+.subject-chip.is-selected b{opacity:.9}

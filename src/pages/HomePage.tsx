@@ -5,10 +5,10 @@ import { RequestBox } from '../components/RequestBox';
 import { specimenMedia } from '../data/specimenMedia';
 
 const featuredSlides = [
-  { id: 'blood-smear', label: { en: 'Blood smear', ar: 'لطاخة دم' } },
-  { id: 'daphnia', label: { en: 'Water flea', ar: 'برغوث الماء' } },
+  { id: 'kidney-cortex', label: { en: 'Kidney cortex', ar: 'قشرة الكلية' } },
   { id: 'compact-bone', label: { en: 'Compact bone', ar: 'عظم كثيف' } },
-  { id: 'diatoms', label: { en: 'Diatoms', ar: 'دياتومات' } },
+  { id: 'blood-smear', label: { en: 'Blood smear', ar: 'لطاخة دم' } },
+  { id: 'plasmodium-257-33', label: { en: 'Plasmodium', ar: 'بلازموديوم' } },
 ];
 
 function ArrowMark() {

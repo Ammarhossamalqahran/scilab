@@ -1,5 +1,5 @@
 import { playerId, saveNick, saveAvatar } from './leaderboardApi';
-import { setAdminSession } from './adminSession';
+import { setAdminSession, getAdminSession, clearAdminSession } from './adminSession';
 
 // Optional Google link. A plain full-page redirect to Google and back (no popup), so it also works inside
 // the installed app and in mobile browsers that block or lose popups. We come back to "/" with the signed
@@ -17,12 +17,12 @@ export type GoogleResult = { kind: 'linked' | 'signedin' | 'error'; reason?: 'al
 const randomNonce = () => [...crypto.getRandomValues(new Uint8Array(16))].map((b) => b.toString(16).padStart(2, '0')).join('');
 
 // Sends the browser to Google. `mode` says what to do when it comes back.
-export async function startGoogle(mode: 'link' | 'signin' | 'admin'): Promise<boolean> {
+export async function startGoogle(mode: 'link' | 'signin' | 'admin' | 'silent'): Promise<boolean> {
   const id = await googleClientId();
   if (!id) return false;
   const nonce = randomNonce();
   try { window.localStorage.setItem(PENDING, JSON.stringify({ mode, nonce, at: Date.now(), player: playerId() })); } catch { return false; }
-  const q = new URLSearchParams({ client_id: id, redirect_uri: `${window.location.origin}/`, response_type: 'id_token', scope: mode === 'admin' ? 'openid email' : 'openid', nonce, prompt: 'select_account', state: mode });
+  const q = new URLSearchParams({ client_id: id, redirect_uri: `${window.location.origin}/`, response_type: 'id_token', scope: mode === 'admin' ? 'openid email' : 'openid', nonce, prompt: mode === 'silent' ? 'none' : 'select_account', state: mode });
   window.location.assign(`https://accounts.google.com/o/oauth2/v2/auth?${q}`);
   return true;
 }
@@ -55,6 +55,13 @@ export async function completeGoogleFromHash(): Promise<void> {
   let pending: { mode?: string; nonce?: string; at?: number } | null = null;
   try { pending = JSON.parse(window.localStorage.getItem(PENDING) ?? 'null'); window.localStorage.removeItem(PENDING); } catch { /* ignored */ }
   const credential = params.get('id_token');
+  if (pending?.mode === 'silent') { // background owner re-check: never shows anything, never changes the profile
+    if (credential && pending.nonce && pending.at && Date.now() - pending.at < 120_000) {
+      const r = await post('/api/google/signin', { credential, nonce: pending.nonce });
+      if (typeof r.data.admin === 'string') setAdminSession(r.data.admin);
+    }
+    return;
+  }
   if (!credential || !pending?.nonce || !pending.at || Date.now() - pending.at > 900_000) { publish({ kind: 'error', reason: params.get('error') === 'access_denied' ? 'cancelled' : 'other' }); return; }
   if (pending.mode === 'admin') {
     const r = await post('/api/admin/google', { credential, nonce: pending.nonce });
@@ -83,4 +90,44 @@ export async function googleLinked(): Promise<boolean> {
   const r = await post('/api/google/status', { player: playerId() });
   return r.ok && r.data.linked === true;
 }
-export async function unlinkGoogle(): Promise<boolean> { return (await post('/api/google/unlink', { player: playerId() })).ok; }
+// Ends the owner session on this device and on the server (safe direction: only removes access).
+export async function endOwnerSession(): Promise<void> {
+  const session = getAdminSession();
+  if (session) await post('/api/admin/logout', { session });
+  clearAdminSession();
+}
+export async function unlinkGoogle(): Promise<boolean> {
+  const ok = (await post('/api/google/unlink', { player: playerId() })).ok;
+  if (ok) await endOwnerSession(); // no Google link, no owner session on this device
+  return ok;
+}
+// Sign out of this device: owner session, name, character, photo preview, personal code and player id are removed from
+// the device. Scores stay on the server under the old player; the personal code or the Google link brings them back.
+// Kept on the device: practice progress, flashcards, theme and language.
+export async function signOutDevice(): Promise<void> {
+  await endOwnerSession();
+  try {
+    for (const k of ['scilab-nickname', 'scilab-avatar', 'scilab-code', 'scilab-player-id', 'scilab-photo', 'scilab-frame-synced', 'scilab-frame', 'scilab-owner-silent-at', 'scilab-owner-check-at', PENDING, RESULT]) window.localStorage.removeItem(k);
+    window.sessionStorage.clear();
+  } catch { /* ignored */ }
+  window.location.assign('/');
+}
+
+// The owner session only exists on a device after a Google sign-in there. For the owner-marked player on a device with
+// no live session, ask Google quietly (prompt=none: no screen, no tap). The server still decides: it issues the session
+// only if Google's verified user id matches the owner's. At most one try every 2 hours, and never on other players.
+const SILENT_AT = 'scilab-owner-silent-at';
+const CHECK_AT = 'scilab-owner-check-at';
+export async function trySilentOwner(): Promise<void> {
+  try {
+    if (/(^|&)(id_token|error)=/.test(window.location.hash.replace(/^#/, ''))) return;
+    if (Date.now() - Number(window.localStorage.getItem(SILENT_AT) ?? 0) < 2 * 3600_000) return;
+    if (!window.localStorage.getItem('scilab-nickname')) return; // not a registered player on this device
+    if (Date.now() - Number(window.localStorage.getItem(CHECK_AT) ?? 0) < 6 * 3600_000) return; // one status call per device per 6 hours
+    window.localStorage.setItem(CHECK_AT, String(Date.now()));
+    const r = await post('/api/google/status', { player: playerId() });
+    if (!r.ok || r.data.owner !== true || r.data.linked !== true) return;
+    window.localStorage.setItem(SILENT_AT, String(Date.now()));
+    await startGoogle('silent');
+  } catch { /* ignored */ }
+}

@@ -96,8 +96,9 @@ export async function handleGoogle(request: Request, db: D1Database, url: URL, c
   }
   if (url.pathname === '/api/google/status') {
     if (!player) return json({ error: 'bad_request' }, 400);
-    const row = await db.prepare('SELECT google_hash FROM players WHERE id = ?').bind(player).first<{ google_hash: string | null }>();
-    return json({ linked: !!row?.google_hash });
+    const row = await db.prepare('SELECT google_hash, owner FROM players WHERE id = ?').bind(player).first<{ google_hash: string | null; owner: number | null }>();
+    // `owner` is already public (leaderboard mark). It only tells the app whether to try a silent owner re-check; it grants nothing.
+    return json({ linked: !!row?.google_hash, owner: row?.owner === 1 });
   }
   if (url.pathname === '/api/google/unlink') {
     if (!player) return json({ error: 'bad_request' }, 400);

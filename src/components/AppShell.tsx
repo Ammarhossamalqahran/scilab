@@ -4,6 +4,7 @@ import { usePreferences } from '../app/PreferencesContext';
 import { getAdminSession, clearAdminSession } from '../lib/adminSession';
 import { recordVisit, setOwnerFrames } from '../data/frames';
 import { playerId } from '../lib/leaderboardApi';
+import { trySilentOwner } from '../lib/google';
 import { LogoMark } from './LogoMark';
 import { FeedbackButton } from './FeedbackButton';
 import { InstallButton } from './InstallButton';
@@ -58,9 +59,9 @@ export function AppShell() {
   useEffect(() => {
     const on = () => {
       const session = getAdminSession();
-      if (!session) { setAdminLink(false); setOwnerFrames(false); return; }
+      if (!session) { setAdminLink(false); setOwnerFrames(false); void trySilentOwner(); return; }
       fetch('/api/admin/check', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ session, player: playerId() }) })
-        .then((r) => r.json()).then((d: { ok?: boolean }) => { if (d.ok === true) { setAdminLink(true); setOwnerFrames(true); } else { setAdminLink(false); setOwnerFrames(false); clearAdminSession(); } })
+        .then((r) => r.json()).then((d: { ok?: boolean }) => { if (d.ok === true) { setAdminLink(true); setOwnerFrames(true); } else { setAdminLink(false); setOwnerFrames(false); clearAdminSession(); void trySilentOwner(); } })
         .catch(() => { setAdminLink(false); setOwnerFrames(false); });
     };
     on();

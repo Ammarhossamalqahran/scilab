@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { usePreferences } from '../app/PreferencesContext';
 import { Avatar, AVATARS, DEFAULT_AVATAR } from '../data/avatars';
 import { readStats } from '../data/gameStats';
-import { createCode, savedAvatar, savedCode, savedNick, saveAvatar, saveNick, updateProfile, savedPhoto, refreshPhoto, removePhoto } from '../lib/leaderboardApi';
+import { createCode, savedAvatar, savedCode, savedNick, saveAvatar, saveNick, updateProfile, getBoardHidden, setBoardHidden, savedPhoto, refreshPhoto, removePhoto } from '../lib/leaderboardApi';
 import { PhotoPicker } from './PhotoPicker';
 import { GoogleButton } from './GoogleButton';
 import { googleClientId, googleLinked, unlinkGoogle } from '../lib/google';
@@ -21,6 +21,7 @@ export function ProfileButton() {
   const [busy, setBusy] = useState(false);
   const [gOn, setGOn] = useState(false);      // site has a Google Client ID
   const [gLinked, setGLinked] = useState(false);
+  const [hidden, setHidden] = useState<boolean | null>(null);
 
   useEffect(() => {
     const on = () => bump((n) => n + 1);
@@ -42,6 +43,8 @@ export function ProfileButton() {
   const shown = photo?.image || null;
 
   useEffect(() => { if (nick) void refreshPhoto(); }, [nick, open]);
+  useEffect(() => { if (open && nick) void getBoardHidden().then(setHidden); }, [open, nick]);
+  async function toggleHidden() { const r = await setBoardHidden(!hidden); if (r !== null) setHidden(r); }
   useEffect(() => {
     if (!open || !nick) return;
     void googleClientId().then((id) => { setGOn(!!id); if (id) void googleLinked().then(setGLinked); });
@@ -102,6 +105,9 @@ export function ProfileButton() {
                     <input value={name} maxLength={16} onChange={(e) => { setName(e.target.value); setMsg(''); }} aria-label={ar ? 'اسمك' : 'Your name'} />
                     <button type="button" className="button" onClick={saveName} disabled={busy || name.trim().length < 2 || name.trim() === nick}>{ar ? 'احفظ الاسم' : 'Save name'}</button>
                   </div>
+                  {hidden !== null && (
+                    <label className="profile-row board-hide"><input type="checkbox" checked={hidden} onChange={() => void toggleHidden()} /><span>{ar ? 'اخفي اسمي من لوحة الشرف' : 'Hide my name from the leaderboard'}</span></label>
+                  )}
                   <div className="profile-stat"><span>{ar ? 'أحسن نتيجة' : 'Best score'}</span><b>{stats.best}</b></div>
                   <div className="profile-stat"><span>{ar ? 'عدد التحديات' : 'Challenges played'}</span><b>{stats.games}</b></div>
                   <div className="profile-stat"><span>{ar ? 'كودك الشخصي' : 'Personal code'}</span><b dir="ltr">{code || (ar ? 'غير محفوظ على الجهاز' : 'not on this device')}</b></div>

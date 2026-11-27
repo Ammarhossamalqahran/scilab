@@ -11,6 +11,7 @@ import { StudyPage } from '../pages/StudyPage';
 import { DailyPage } from '../pages/DailyPage';
 import { ComparePage } from '../pages/ComparePage';
 import { ChallengePage } from '../pages/ChallengePage';
+import { LeaderboardPage } from '../pages/LeaderboardPage';
 import { SpotPage } from '../pages/SpotPage';
 import { AdminPage } from '../pages/AdminPage';
 import { SchemaStudyPage } from '../pages/SchemaStudyPage';
@@ -31,6 +32,7 @@ export function App() {
         <Route path="compare" element={<ComparePage />} />
         <Route path="spot" element={<SpotPage />} />
         <Route path="challenge" element={<ChallengePage />} />
+        <Route path="leaderboard" element={<LeaderboardPage />} />
         <Route path="admin" element={<AdminPage />} />
         <Route path="schemas" element={<SchemasPage />} />
         <Route path="schemas/:diagramId" element={<SchemaStudyPage />} />

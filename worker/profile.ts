@@ -16,7 +16,7 @@ export async function handleProfile(request: Request, db: D1Database, now = Date
   const n = await db.prepare("SELECT COUNT(*) AS n FROM code_rl WHERE kind = 'profile' AND ip = ? AND at > ?").bind(ip, now - 3600_000).first<{ n: number }>();
   if ((n?.n ?? 0) >= 60) return json({ error: 'rate_limited' }, 429);
   await db.prepare("INSERT INTO code_rl (kind, ip, at) VALUES ('profile', ?, ?)").bind(ip, now).run();
-  const body = await request.json().catch(() => null) as { player?: unknown; nick?: unknown; avatar?: unknown } | null;
+  const body = await request.json().catch(() => null) as { player?: unknown; nick?: unknown; avatar?: unknown; hidden?: unknown } | null;
   const player = typeof body?.player === 'string' && /^[0-9a-f-]{36}$/.test(body.player) ? body.player : '';
   if (!player) return json({ error: 'bad_request' }, 400);
   const row = await db.prepare('SELECT nick FROM players WHERE id = ?').bind(player).first<{ nick: string }>();
@@ -25,6 +25,8 @@ export async function handleProfile(request: Request, db: D1Database, now = Date
     if (!AVATAR_RE.test(body.avatar)) return json({ error: 'bad_avatar' }, 400);
     await db.prepare('UPDATE players SET avatar = ? WHERE id = ?').bind(body.avatar, player).run();
   }
+  if (typeof body?.hidden === 'boolean') await db.prepare('UPDATE players SET hidden = ? WHERE id = ?').bind(body.hidden ? 1 : 0, player).run();
+  const h = await db.prepare('SELECT hidden FROM players WHERE id = ?').bind(player).first<{ hidden: number }>();
   let nick = row.nick;
   if (typeof body?.nick === 'string') {
     const clean = body.nick.trim().replace(/\s+/g, ' ');
@@ -36,5 +38,5 @@ export async function handleProfile(request: Request, db: D1Database, now = Date
       nick = clean;
     }
   }
-  return json({ ok: true, nick });
+  return json({ ok: true, nick, hidden: (h?.hidden ?? 0) === 1 });
 }

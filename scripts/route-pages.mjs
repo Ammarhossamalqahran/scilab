@@ -10,6 +10,7 @@ const pages = {
   daily: ['Specimen of the day | SciLab / عينة اليوم', 'A new microscope specimen every day. / عينة مجهرية جديدة كل يوم.'],
   compare: ['Compare slides | SciLab / مقارنة العينات', 'Put two microscope specimens side by side. / حط عينتين مجهريتين جنب بعض.'],
   challenge: ['60-second challenge | SciLab / تحدي الـ 60 ثانية', 'Name as many specimens as you can in one minute. / اعرف أكبر عدد من العينات في دقيقة.'],
+  leaderboard: ['Leaderboard | SciLab / لوحة الشرف', 'Top players in the 60-second challenge. / أحسن اللاعبين في تحدي الـ 60 ثانية.'],
   spot: ['Spot test | SciLab / سبوت تيست', 'Practical-style spot test: one slide at a time with a timer, then your score and mistakes. / سبوت تيست زي العملي: شريحة كل مرة بوقت محدد، وبعدها نتيجتك وغلطاتك.'],
   schemas: ['Labelled diagrams (schemas) | SciLab / الرسومات المسمّاة', 'Study labelled biology diagrams and slide drawings for practical exams. / ادرس الرسومات المسمّاة وشرائح الرسم لامتحان العملي.'],
 };

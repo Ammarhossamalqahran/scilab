@@ -102,6 +102,9 @@ export function AppShell() {
             <NavLink to="/challenge" className={({ isActive }) => `nav-item${isActive ? ' is-active' : ''}`}>
               <ChallengeGlyph /><span>{locale === 'ar' ? 'تحدي الـ 60 ثانية' : '60-second challenge'}</span>
             </NavLink>
+            <NavLink to="/leaderboard" className={({ isActive }) => `nav-item${isActive ? ' is-active' : ''}`}>
+              <ChallengeGlyph /><span>{locale === 'ar' ? 'لوحة الشرف' : 'Leaderboard'}</span>
+            </NavLink>
           </nav>
         </aside>
         <main className="main-content"><ReminderBanner /><div key={pathname} className="page-enter"><Outlet /></div></main>

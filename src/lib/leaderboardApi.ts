@@ -32,8 +32,8 @@ async function call(path: string, init?: RequestInit) {
 export async function startTicket(): Promise<string | null> {
   try { const r = await call('/api/game/start', { method: 'POST' }); return r.ok && typeof r.data.ticket === 'string' ? r.data.ticket : null; } catch { return null; }
 }
-export async function fetchBoard(period: 'week' | 'all'): Promise<Entry[] | null> {
-  try { const r = await call(`/api/leaderboard?period=${period}`); return r.ok && Array.isArray(r.data.entries) ? (r.data.entries as Entry[]) : null; } catch { return null; }
+export async function fetchBoard(period: 'week' | 'all', limit?: number): Promise<Entry[] | null> {
+  try { const r = await call(`/api/leaderboard?period=${period}${limit ? `&limit=${limit}` : ''}`); return r.ok && Array.isArray(r.data.entries) ? (r.data.entries as Entry[]) : null; } catch { return null; }
 }
 export type SubmitResult = { ok: true; weekRank: number | null } | { ok: false; reason: 'nick_taken' | 'bad_nick' | 'rate_limited' | 'other' };
 export async function submitScore(ticket: string, nick: string, score: number, correct: number, streak: number): Promise<SubmitResult> {
@@ -141,4 +141,12 @@ export async function refreshPhoto(): Promise<void> {
     if (status === 'rejected' || typeof r.data.image !== 'string') savePhoto({ image: '', status: 'rejected' });
     else savePhoto({ image: r.data.image, status });
   } catch { /* offline */ }
+}
+
+// Leaderboard privacy: hide this player's name from the public board (scores are kept).
+export async function setBoardHidden(hidden: boolean): Promise<boolean | null> {
+  try { const r = await call('/api/profile', { method: 'POST', body: JSON.stringify({ player: playerId(), hidden }) }); return r.ok ? r.data.hidden === true : null; } catch { return null; }
+}
+export async function getBoardHidden(): Promise<boolean | null> {
+  try { const r = await call('/api/profile', { method: 'POST', body: JSON.stringify({ player: playerId() }) }); return r.ok ? r.data.hidden === true : null; } catch { return null; }
 }

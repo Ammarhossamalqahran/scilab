@@ -80,8 +80,80 @@ const feather: AnimalNote = {
   source: birdSrc,
 };
 
+// ---- Aquatic-life groups (protists, algae, cyanobacteria, rotifers). Same rule: sentences from the cited page.
+const protSrc = os('23.3 Groups of Protists', '23-3-groups-of-protists');
+const ciliate: AnimalNote = {
+  recognize: { en: 'The ciliates, which include Paramecium and Tetrahymena, are a group of protists 10 to 3,000 micrometers in length that are covered in rows, tufts, or spirals of tiny cilia. Ciliates also are surrounded by a pellicle.', ar: 'الـ ciliates، ومنها Paramecium و Tetrahymena، مجموعة من الطلائعيات طولها من 10 لـ 3000 ميكرومتر ومغطاة بصفوف أو خصل أو لوالب من أهداب (cilia) دقيقة. وكمان محاطة بغشاء واقي اسمه pellicle.' },
+  function: { en: 'By beating their cilia synchronously or in waves, ciliates can coordinate directed movements and ingest food particles. Paramecium uses contractile vacuoles, which are osmoregulatory vesicles that fill with water as it enters the cell by osmosis and then contract to squeeze water from the cell.', ar: 'بضرب الأهداب بالتزامن أو في موجات، الـ ciliates بتنسق حركتها وبتبلع جزيئات الأكل. الـ Paramecium بتستخدم فجوات منقبضة (contractile vacuoles) وهي حويصلات لتنظيم الضغط الأسموزي بتتملي ماية بتدخل الخلية بالأسموزية وبعدين بتنقبض وتعصر الماية بره الخلية.' },
+  compare: { en: 'Paramecium has two nuclei, a macronucleus and a micronucleus, in each cell.', ar: 'الـ Paramecium في كل خلية فيها نواتين: macronucleus و micronucleus.' },
+  source: protSrc,
+};
+const diatom: AnimalNote = {
+  recognize: { en: 'The diatoms are unicellular photosynthetic protists that encase themselves in intricately patterned, glassy cell walls composed of silicon dioxide in a matrix of organic particles. Diatoms range in size from 2 to 200 micrometers.', ar: 'الدياتومات (diatoms) طلائعيات وحيدة الخلية بتعمل البناء الضوئي وبتغلف نفسها بجدران خلوية زجاجية بزخارف معقدة من ثاني أكسيد السيليكون في مصفوفة من جزيئات عضوية. حجمها من 2 لـ 200 ميكرومتر.' },
+  function: { en: 'Some diatoms exhibit a slit in their silica shell, called a raphe. By expelling a stream of mucopolysaccharides from the raphe, the diatom can attach to surfaces or propel itself in one direction.', ar: 'بعض الدياتومات فيها شق في قشرتها السيليكية اسمه raphe. بإخراج تيار من mucopolysaccharides من الـ raphe بتقدر الدياتوم تلصق في الأسطح أو تدفع نفسها في اتجاه واحد.' },
+  source: protSrc,
+};
+const radiolarian: AnimalNote = {
+  recognize: { en: 'Radiolarians exhibit intricate exteriors of glassy silica with radial or bilateral symmetry.', ar: 'الـ radiolarians ليها أغلفة خارجية معقدة من السيليكا الزجاجية بتماثل شعاعي أو جانبي.' },
+  function: { en: 'The shells of dead radiolarians sink to the ocean floor, where they may accumulate in 100 meter-thick depths.', ar: 'أصداف الـ radiolarians الميتة بتغرق لقاع المحيط وممكن تتراكم بسمك 100 متر.' },
+  compare: { en: 'Preserved, sedimented radiolarians are very common in the fossil record.', ar: 'الـ radiolarians المترسبة المحفوظة شائعة جدا في السجل الأحفوري.' },
+  source: protSrc,
+};
+const foram: AnimalNote = {
+  recognize: { en: 'Foraminiferans, or forams, are unicellular heterotrophic protists, ranging from approximately 20 micrometers to several centimeters in length, and occasionally resembling tiny snails.', ar: 'الـ foraminiferans أو forams طلائعيات وحيدة الخلية غيرية التغذية طولها من حوالي 20 ميكرومتر لعدة سنتيمترات، وأحيانا شكلها شبه قواقع صغيرة.' },
+  function: { en: 'Foram pseudopodia extend through the pores and allow the forams to move, feed, and gather additional building materials.', ar: 'الأرجل الكاذبة (pseudopodia) في الـ forams بتمتد من خلال الثقوب وبتخليها تتحرك وتتغذى وتجمع مواد بناء إضافية.' },
+  compare: { en: 'Forams are the only eukaryotes known to participate in the nitrogen cycle by denitrification, an activity usually served only by prokaryotes.', ar: 'الـ forams هي حقيقيات النواة الوحيدة المعروفة إنها بتشارك في دورة النيتروجين بنزع النيتروجين، وده نشاط بتعمله عادة بدائيات النواة بس.' },
+  source: protSrc,
+};
+const dino: AnimalNote = {
+  recognize: { en: 'Many dinoflagellates are encased in interlocking plates of cellulose. Two perpendicular flagella fit into the grooves between the cellulose plates, with one flagellum extending longitudinally and a second encircling the dinoflagellate.', ar: 'كتير من الـ dinoflagellates محاطة بألواح من السليلوز متداخلة. فلاجيلّتين متعامدتين بيتحطوا في الأخاديد بين الألواح، واحدة ممتدة طوليا والتانية بتلف حوالين الكائن.' },
+  function: { en: 'Together, the flagella contribute to the characteristic spinning motion of dinoflagellates.', ar: 'الفلاجيلّتين مع بعض بيعملوا حركة الدوران المميزة للـ dinoflagellates.' },
+  compare: { en: 'Dinoflagellates can be photosynthetic, heterotrophic, or mixotrophic.', ar: 'الـ dinoflagellates ممكن تكون بتعمل بناء ضوئي أو غيرية التغذية أو مختلطة التغذية.' },
+  source: protSrc,
+};
+const amoeba: AnimalNote = {
+  recognize: { en: 'Amoebozoan cells characteristically exhibit pseudopodia that extend like tubes or flat lobes. The Gymnamoeba include naked amoebae like the familiar Amoeba proteus.', ar: 'خلايا الـ amoebozoa بتظهر فيها أرجل كاذبة (pseudopodia) ممتدة زي أنابيب أو فصوص مسطحة. الـ Gymnamoeba بتشمل أميبات عارية زي Amoeba proteus المعروفة.' },
+  function: { en: 'These pseudopods project outward from anywhere on the cell surface and can anchor to a substrate. The protist then transports its cytoplasm into the pseudopod, thereby moving the entire cell.', ar: 'الأرجل الكاذبة دي بتطلع من أي مكان على سطح الخلية وممكن تتثبت في سطح. وبعدين الطلائعي بينقل السيتوبلازم جوه الرجل الكاذبة فيتحرك الخلية كلها.' },
+  compare: { en: 'The Rhizaria include many amoebas with thin threadlike, needle-like or root-like pseudopodia, rather than the broader lobed pseudopodia of the Amoebozoa.', ar: 'الـ Rhizaria فيها أميبات كتير أرجلها الكاذبة رفيعة خيطية أو إبرية أو جذرية، مش فصوص عريضة زي الـ Amoebozoa.' },
+  source: protSrc,
+};
+const volvox: AnimalNote = {
+  recognize: { en: 'Volvox colonies contain 500 to 60,000 cells, each with two flagella, contained within a hollow, spherical matrix composed of a gelatinous glycoprotein secretion.', ar: 'مستعمرات الـ Volvox فيها من 500 لـ 60,000 خلية، كل خلية ليها فلاجيلّتين، جوه مصفوفة كروية مجوفة من إفراز glycoprotein جيلاتيني.' },
+  function: { en: 'Individual cells in a Volvox colony move in a coordinated fashion and are interconnected by cytoplasmic bridges.', ar: 'الخلايا في مستعمرة الـ Volvox بتتحرك بشكل منسق ومتصلة ببعض بجسور سيتوبلازمية.' },
+  compare: { en: 'Volvox is one of only a few examples of a colonial organism, which behaves in some ways like a collection of individual cells, but in other ways like the specialized cells of a multicellular organism.', ar: 'الـ Volvox من أمثلة قليلة على الكائنات الاستعمارية، وبتتصرف من ناحية زي مجموعة خلايا منفردة ومن ناحية تانية زي خلايا متخصصة في كائن متعدد الخلايا.' },
+  source: protSrc,
+};
+const greenAlga: AnimalNote = {
+  recognize: { en: 'The green algae exhibit features similar to those of the land plants, particularly in terms of chloroplast structure. The familiar Spirogyra is a charophyte.', ar: 'الطحالب الخضراء ليها صفات شبه النباتات الأرضية، خصوصا في تركيب البلاستيدة الخضراء. الـ Spirogyra المعروفة من الـ charophytes.' },
+  function: { en: 'In both green algae and plants, carbohydrates are stored in the plastid.', ar: 'في الطحالب الخضراء والنباتات الكربوهيدرات بتتخزن في البلاستيدة.' },
+  compare: { en: 'The green algae are subdivided into the chlorophytes and the charophytes.', ar: 'الطحالب الخضراء بتتقسم لـ chlorophytes و charophytes.' },
+  source: protSrc,
+};
+const cyano: AnimalNote = {
+  recognize: { en: 'Cyanobacteria, also known as "blue-green algae," evolved from simple phototrophs. Cyanobacteria are prokaryotes, photosynthetic bacteria that bear a resemblance to algae.', ar: 'الـ cyanobacteria، وبتتسمى كمان "الطحالب الخضراء المزرقة"، تطورت من كائنات بسيطة بتستخدم الضوء. الـ cyanobacteria بدائيات نواة، بكتيريا بتعمل بناء ضوئي وشكلها شبه الطحالب.' },
+  function: { en: 'It was the ancestral cyanobacteria that began the "oxygenation" of the atmosphere.', ar: 'أسلاف الـ cyanobacteria هي اللي بدأت "أكسجة" الغلاف الجوي.' },
+  source: os('22.1 Prokaryotic Diversity', '22-1-prokaryotic-diversity'),
+};
+const rotifer: AnimalNote = {
+  recognize: { en: 'The rotifers ("wheel-bearer") are microscopic (about 100 micrometers to 2 mm) mostly aquatic animals that get their name from the corona, a pair of ciliated feeding structures that appear to rotate when viewed under the light microscope.', ar: 'الـ rotifers ("حاملة العجلة") حيوانات مجهرية (حوالي 100 ميكرومتر لـ 2 مم) معظمها مائي، واسمها جاي من الـ corona وهي زوج من تراكيب التغذية المهدبة بتبان كأنها بتدور تحت المجهر الضوئي.' },
+  function: { en: 'Rotifers are typically free-swimming or planktonic (drifting) organisms, but the toes or extensions of the foot can secrete a sticky material to help them adhere to surfaces.', ar: 'الـ rotifers غالبا بتسبح حرة أو بتكون عالقة (plankton)، لكن أصابع القدم أو امتداداتها بتفرز مادة لزجة تساعدها تلزق في الأسطح.' },
+  compare: { en: 'The pseudocoelomate body of a rotifer is divided into three sections: a head (which contains the corona), a trunk (which contains most of the internal organs), and the foot.', ar: 'جسم الـ rotifer (فيه pseudocoelom) متقسم لثلاث أقسام: رأس (فيه الـ corona) وجذع (فيه معظم الأعضاء الداخلية) وقدم.' },
+  source: os('28.3 Superphylum Lophotrochozoa: Flatworms, Rotifers, and Nemerteans', '28-3-superphylum-lophotrochozoa-flatworms-rotifers-and-nemerteans'),
+};
+
 // Slide ids are matched by words in the id; the first rule that matches wins. Only groups the cited page describes are listed.
-const rules: Array<[RegExp, AnimalNote]> = [
+const rules: Array<[RegExp, AnimalNote | null]> = [
+  [/^diatomaceous/, null],
+  [/^(paramecium|ciliates-|euplotes|oxytricha|frontonia|hypotrich)/, ciliate],
+  [/(diatom|navicula|pleurosigma|licmophora)/, diatom],
+  [/radiolarian/, radiolarian],
+  [/foraminifera/, foram],
+  [/dinoflagellate/, dino],
+  [/^amoeba/, amoeba],
+  [/^volvox/, volvox],
+  [/(spirogyra|green-alga|filamentous-green)/, greenAlga],
+  [/cyanobacteri/, cyano],
+  [/(rotifer|philodina|brachionus)/, rotifer],
   [/^(earthworm|leech)/, annelid],
   [/^(medusa|hydra|antipathozoanthus)/, cnidarian],
   [/^(insect-trachea|arachnid-spiracle)/, tracheae],
@@ -95,5 +167,5 @@ const rules: Array<[RegExp, AnimalNote]> = [
   [/(mosquito|^aedes|^ant-|bed-bug|^honeybee|housefly|insect-|psocopteran|thrips|firebrat|trichogramma|wasp|violet-carpenter|bee-|drosophila|butterfly|colour-transition|fly-|aphid|nomada|tachinid|honey-bee|phantom-crane|german-wasp|chironomid|damselfly|trigonalid)/, arthropod],
 ];
 const map: Record<string, AnimalNote> = {};
-for (const sp of specimens) for (const [re, note] of rules) if (re.test(sp.id)) { map[sp.id] = note; break; }
+for (const sp of specimens) for (const [re, note] of rules) if (re.test(sp.id)) { if (note) map[sp.id] = note; break; }
 export const animalNotes: Record<string, AnimalNote> = map;

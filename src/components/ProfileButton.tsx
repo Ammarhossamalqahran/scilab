@@ -7,7 +7,7 @@ import { readStats } from '../data/gameStats';
 import { createCode, savedAvatar, savedCode, savedNick, saveAvatar, saveNick, updateProfile, savedPhoto, refreshPhoto, removePhoto } from '../lib/leaderboardApi';
 import { PhotoPicker } from './PhotoPicker';
 import { GoogleButton } from './GoogleButton';
-import { googleClientId, googleLinked, unlinkGoogle } from '../lib/google';
+import { googleClientId, googleLinked, unlinkGoogle, signOutDevice } from '../lib/google';
 
 // Profile icon in the top bar. Tapping it opens the profile: name, character, scores, personal code,
 // language and theme.
@@ -23,6 +23,7 @@ export function ProfileButton() {
   const [busy, setBusy] = useState(false);
   const [gOn, setGOn] = useState(false);      // site has a Google Client ID
   const [gLinked, setGLinked] = useState(false);
+  const [outAsk, setOutAsk] = useState(false);
 
   useEffect(() => {
     const on = () => bump((n) => n + 1);
@@ -152,6 +153,18 @@ export function ProfileButton() {
                     </div>
                   )}
                   <small className="winner-note">{ar ? 'الكود بينقل اسمك ونتايجك لجهاز تاني. كود جديد بيلغي القديم.' : 'The code moves your name and scores to another device. A new code replaces the old one.'}</small>
+                  {!outAsk && <button type="button" className="quiet-button" onClick={() => { setOutAsk(true); window.setTimeout(() => document.getElementById('signout-confirm')?.scrollIntoView({ block: 'center', behavior: 'smooth' }), 50); }}>{ar ? 'تسجيل الخروج' : 'Sign out'}</button>}
+                  {outAsk && (
+                    <div className="profile-google" role="alertdialog" id="signout-confirm">
+                      <b>{ar ? 'تسجيل الخروج من الجهاز ده؟' : 'Sign out of this device?'}</b>
+                      <small className="winner-note">{ar ? 'هيتمسح من الجهاز ده: اسمك، شخصيتك، الكود الشخصي، وجلسة المالك لو كنت داخل بيها. اللي هيفضل: نتايجك على السيرفر، وتقدمك في التدريب والفلاش كاردز، واللغة والوضع. ترجع بالكود الشخصي أو بحساب جوجل لو كان مربوط.' : 'This removes from this device: your name, character, personal code and any owner session. Kept: your scores on the server, your practice and flashcard progress, language and theme. Come back with your personal code or your linked Google account.'}</small>
+                      {!gLinked && <small className="winner-note"><b>{ar ? `انسخ الكود الأول، من غيره ومن غير جوجل مش هترجع لاسمك: ${code || '—'}` : `Copy your code first. Without it or Google you cannot get this name back: ${code || '—'}`}</b></small>}
+                      <div className="profile-row">
+                        <button type="button" className="button button-primary" onClick={() => void signOutDevice()}>{ar ? 'اخرج' : 'Sign out'}</button>
+                        <button type="button" className="quiet-button" onClick={() => setOutAsk(false)}>{ar ? 'إلغاء' : 'Cancel'}</button>
+                      </div>
+                    </div>
+                  )}
                 </>
               ) : (
                 <>

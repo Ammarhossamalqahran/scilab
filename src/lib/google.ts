@@ -1,5 +1,5 @@
 import { playerId, saveNick, saveAvatar } from './leaderboardApi';
-import { setAdminSession } from './adminSession';
+import { setAdminSession, getAdminSession, clearAdminSession } from './adminSession';
 
 // Optional Google link. A plain full-page redirect to Google and back (no popup), so it also works inside
 // the installed app and in mobile browsers that block or lose popups. We come back to "/" with the signed
@@ -90,7 +90,28 @@ export async function googleLinked(): Promise<boolean> {
   const r = await post('/api/google/status', { player: playerId() });
   return r.ok && r.data.linked === true;
 }
-export async function unlinkGoogle(): Promise<boolean> { return (await post('/api/google/unlink', { player: playerId() })).ok; }
+// Ends the owner session on this device and on the server (safe direction: only removes access).
+export async function endOwnerSession(): Promise<void> {
+  const session = getAdminSession();
+  if (session) await post('/api/admin/logout', { session });
+  clearAdminSession();
+}
+export async function unlinkGoogle(): Promise<boolean> {
+  const ok = (await post('/api/google/unlink', { player: playerId() })).ok;
+  if (ok) await endOwnerSession(); // no Google link, no owner session on this device
+  return ok;
+}
+// Sign out of this device: owner session, name, character, photo preview, personal code and player id are removed from
+// the device. Scores stay on the server under the old player; the personal code or the Google link brings them back.
+// Kept on the device: practice progress, flashcards, theme and language.
+export async function signOutDevice(): Promise<void> {
+  await endOwnerSession();
+  try {
+    for (const k of ['scilab-nickname', 'scilab-avatar', 'scilab-code', 'scilab-player-id', 'scilab-photo', 'scilab-frame-synced', 'scilab-frame', 'scilab-owner-silent-at', 'scilab-owner-check-at', PENDING, RESULT]) window.localStorage.removeItem(k);
+    window.sessionStorage.clear();
+  } catch { /* ignored */ }
+  window.location.assign('/');
+}
 
 // The owner session only exists on a device after a Google sign-in there. For the owner-marked player on a device with
 // no live session, ask Google quietly (prompt=none: no screen, no tap). The server still decides: it issues the session

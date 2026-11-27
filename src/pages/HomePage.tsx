@@ -95,6 +95,21 @@ export function HomePage() {
 
       <RequestBox />
 
+      <section className="doctors-section" aria-labelledby="doctors-title">
+        <div className="eyebrow eyebrow-muted">{isArabic ? 'آراء' : 'FEEDBACK'}</div>
+        <h2 id="doctors-title">{isArabic ? 'آراء الدكاترة' : "Doctors' opinions"}</h2>
+        <div className="doctors-grid">
+          <figure className="doctor-quote">
+            <blockquote dir="ltr" lang="en">"Good job; I encourage you to do more and more."</blockquote>
+            <figcaption dir="ltr" lang="en"><b>Dr. Asmaa Khamis</b><span>Fayoum University (Faculty of Science)</span></figcaption>
+          </figure>
+          <figure className="doctor-quote">
+            <blockquote dir="ltr" lang="en">"Your website looks great."</blockquote>
+            <figcaption dir="ltr" lang="en"><b>Dr. Mai Ali Mwaheb</b><span>Associate Professor of Microbiology (Mycology), Botany Department, Faculty of Science, Fayoum University</span></figcaption>
+          </figure>
+        </div>
+      </section>
+
       <footer className="page-footer"><span>{isArabic ? 'كلية العلوم · عملي الأحياء' : 'Faculty of Science · Biology practical'}</span><span>{isArabic ? 'صور مجهرية تعليمية' : 'Photomicrographs for teaching'}</span></footer>
     </div>
   );

@@ -33,10 +33,12 @@ const falciparumRing: ClinicalNote = {
 
 import { hematologyNotes } from './clinicalNotesHematology';
 import { parasitologyNotes } from './clinicalNotesParasitology';
+import { microbiologyNotes } from './clinicalNotesMicrobiology';
 
 export const clinicalNotes: Record<string, ClinicalNote> = {
   ...hematologyNotes,
   ...parasitologyNotes,
+  ...microbiologyNotes,
   'ascaris-egg-early-cell-division': ascarisFertile,
   'ascaris-infertile-egg': ascarisInfertile,
   'whipworm-trichuris-trichiura-egg': whipworm,
@@ -103,3 +105,4 @@ alias(['leishmania-tropica-259-19', 'leishmania-tropica-259-20'], 'leishmania-in
 alias(['plasmodium-257-33', 'plasmodium-257-34', 'plasmodium-259-16', 'plasmodium-falciparum-trophozoites'], 'plasmodium-falciparum-ring-forms-in-red-blood-cells', true);
 alias(['malaria-smear'], 'plasmodium-falciparum-gametocyte-in-a-blood-smear');
 alias(['giant-roundworm-ascaris-259-23', 'giant-roundworm-ascaris-263-20', 'ascaris-larva-hatching', 'ascaris-section', 'ascaris-female-section-200x'], 'ascaris-egg-early-cell-division', true);
+alias(['mycobacterium-tuberculosis-in-bal-fluid-ziehl-neelsen', 'mycobacterium-tuberculosis-in-sputum-ziehl-neelsen'], 'mycobacterium-tuberculosis-acid-fast-stain');

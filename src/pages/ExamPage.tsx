@@ -71,6 +71,11 @@ function ProgressPanel({ progress, lang, onReset }: { progress: Progress; lang: 
   );
 }
 
+// Blood films that show a parasite are filed under Parasitology but stay available here as blood slides.
+const bloodFilmIds: string[] = [
+  "malaria-smear", "ehrlichia-and-babesia-in-a-dog-blood-film-giemsa", "babesia-canis-in-dog-red-blood-cells", "bird-blood-smear-with-plasmodium-relictum", "plasmodium-falciparum-ring-forms-in-red-blood-cells", "plasmodium-falciparum-gametocyte-in-a-blood-smear", "plasmodium-falciparum-trophozoites", "thin-blood-smear-with-parasites"
+];
+
 export function ExamPage() {
   const { locale, t } = usePreferences();
   const lang = locale;
@@ -105,7 +110,7 @@ export function ExamPage() {
   const prepSpecimen = specimens.find((sample) => sample.id === prepSpecimenId) ?? specimens[0];
   const activePrepStain = bloodStains.find((stain) => stain.id === prepAppliedStainId);
   const notebookSpecimen = specimens.find((sample) => sample.id === notebookSpecimenId) ?? specimens[0];
-  const bloodSpecimens = useMemo(() => specimens.filter((sample) => sample.department === 'hematology'), []);
+  const bloodSpecimens = useMemo(() => specimens.filter((sample) => sample.department === 'hematology' || bloodFilmIds.includes(sample.id)), []);
 
   useEffect(() => {
     try {

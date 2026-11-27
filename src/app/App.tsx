@@ -12,6 +12,7 @@ import { DailyPage } from '../pages/DailyPage';
 import { ComparePage } from '../pages/ComparePage';
 import { ChallengePage } from '../pages/ChallengePage';
 import { TrueFalsePage } from '../pages/TrueFalsePage';
+import { DepartmentPage } from '../pages/DepartmentPage';
 import { SpotPage } from '../pages/SpotPage';
 import { AdminPage } from '../pages/AdminPage';
 import { SchemaStudyPage } from '../pages/SchemaStudyPage';
@@ -33,6 +34,7 @@ export function App() {
         <Route path="spot" element={<SpotPage />} />
         <Route path="challenge" element={<ChallengePage />} />
         <Route path="challenge/true-false" element={<TrueFalsePage />} />
+        <Route path="challenge/department" element={<DepartmentPage />} />
         <Route path="admin" element={<AdminPage />} />
         <Route path="schemas" element={<SchemasPage />} />
         <Route path="schemas/:diagramId" element={<SchemaStudyPage />} />

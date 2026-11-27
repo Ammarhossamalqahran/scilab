@@ -164,7 +164,7 @@ export function ChallengePage() {
             </div>
           </div>
           {board.length === 0 ? <p className="chal-hint">{ar ? 'لسه محدش سجل. كن الأول!' : 'No scores yet. Be the first!'}</p> : (
-            <ol className="chal-rows">{board.map((e, i) => <li key={`${e.nick}-${i}`} className={e.score >= DOCTOR_SCORE ? 'is-doctor' : ''}><span>{i + 1}</span><b><Avatar id={e.avatar} photo={photoUrl(e.photo)} size={22} className="lb-avatar" />{e.nick}</b><em>{e.score}</em></li>)}</ol>
+            <ol className="chal-rows">{board.map((e, i) => <li key={`${e.nick}-${i}`} className={i === 0 ? 'is-doctor' : ''}><span>{i + 1}</span><b><Avatar id={e.avatar} photo={photoUrl(e.photo)} size={22} className="lb-avatar" />{e.nick}</b><em>{e.score}</em></li>)}</ol>
           )}
           <p className="chal-hint">{ar ? 'النقط بتتراجع على السيرفر قبل ما تظهر.' : 'Scores are checked on the server before they appear.'}</p>
         </section>

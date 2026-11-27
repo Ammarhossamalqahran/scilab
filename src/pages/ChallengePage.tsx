@@ -105,7 +105,7 @@ export function ChallengePage() {
         <div className="chal-panel">
           <p>{ar ? `أحسن نتيجة ليك: ${stats.best} · ألعاب: ${stats.games}` : `Your best: ${stats.best} · games played: ${stats.games}`}</p>
           <button className="button button-primary" onClick={start}>{ar ? 'ابدأ' : 'Start'}</button>
-          <p><Link to="/challenge/true-false">{ar ? 'جرب تحدي صح ولا غلط' : 'Try the true or false sprint'}</Link> · <Link to="/challenge/department">{ar ? 'تبع أنهي قسم؟' : 'Which department?'}</Link></p>
+          <p><Link to="/challenge/true-false">{ar ? 'جرب تحدي صح ولا غلط' : 'Try the true or false sprint'}</Link> · <Link to="/challenge/department">{ar ? 'تبع أنهي قسم؟' : 'Which department?'}</Link> · <Link to="/challenge/survival">{ar ? 'البقاء: 3 فرص' : 'Survival: 3 lives'}</Link></p>
         </div>
       )}
 

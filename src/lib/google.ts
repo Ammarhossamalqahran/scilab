@@ -77,6 +77,7 @@ export async function completeGoogleFromHash(): Promise<void> {
       saveNick(r.data.nick);
       if (typeof r.data.avatar === 'string') saveAvatar(r.data.avatar);
       if (pending.mode === 'welcome') { try { window.localStorage.setItem('scilab-welcome', 'named'); } catch { /* ignored */ } }
+      if (typeof r.data.frame === 'string') { try { window.localStorage.setItem('scilab-frame', r.data.frame); window.localStorage.setItem('scilab-frame-synced', r.data.frame); window.dispatchEvent(new Event('scilab-frame')); } catch { /* ignored */ } } // the server frame follows the account
       publish({ kind: 'signedin', nick: r.data.nick, created: r.data.created === true });
     } else publish({ kind: 'error', reason: r.data.error === 'no_account' ? 'no_account' : 'other' });
     return;

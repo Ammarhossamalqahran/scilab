@@ -380,6 +380,43 @@ Object.assign(map, {
   'lily-flower-bud-250-30': flowerBud, 'lily-flower-bud-255-29': flowerBud, 'tulip-ovary-255-30': ovary,
 });
 
+// ---- Batch 2, part 2: general organ notes for stem, leaf and root slides whose species the sources do not describe.
+const stemGen: PlantNote = {
+  recognize: { en: 'Like the rest of the plant, a stem has three tissue systems: dermal, vascular and ground tissue. The xylem and phloem of the vascular tissue are arranged in distinct strands called vascular bundles, which run up and down the length of the stem.', ar: 'زي باقي النبات، الساق فيها تلات أنظمة أنسجة: بشري ووعائي وأساسي. والخشب واللحاء في النسيج الوعائي مرتبين في خيوط واضحة اسمها الحزم الوعائية، بتمشي بطول الساق.' },
+  function: { en: 'The main function of a stem is to provide support to the plant, holding leaves, flowers and buds. In some cases stems also store food for the plant.', ar: 'وظيفة الساق الأساسية إنها تدعم النبات وتشيل الأوراق والأزهار والبراعم. وفي بعض الحالات الساق بتخزن كمان غذاء للنبات.' },
+  compare: { en: 'When a stem is viewed in cross section, the vascular bundles of dicot stems are arranged in a ring. In monocot stems the bundles are randomly scattered throughout the ground tissue.', ar: 'في المقطع العرضي لساق ثنائية الفلقة الحزم الوعائية مرتبة في حلقة. وفي ساق أحادية الفلقة الحزم مبعثرة عشوائيًا في النسيج الأساسي.' },
+  source: stems,
+};
+const leafGen: PlantNote = {
+  recognize: { en: 'The epidermis of a leaf is usually one cell layer thick and is covered by a waxy layer called the cuticle. Below the epidermis are layers of cells called the mesophyll, or "middle leaf". Most leaves have a midrib that branches to each side to produce veins of vascular tissue.', ar: 'بشرة الورقة غالبًا طبقة خلايا واحدة وبتتغطى بطبقة شمعية اسمها الكيوتكل. وتحت البشرة طبقات خلايا اسمها الميزوفيل (mesophyll) يعني "وسط الورقة". ومعظم الأوراق فيها عرق وسطي بيتفرع للجنبين ويكوّن عروقًا من نسيج وعائي.' },
+  function: { en: 'The cuticle reduces the rate of water loss from the leaf surface.', ar: 'الكيوتكل بتقلل معدل فقد الماء من سطح الورقة.' },
+  compare: { en: 'Leaves are adapted to their environment. Conifer needles have sunken stomata and a small surface area, which reduce water loss. In hot climates, cacti have leaves reduced to spines, which with their succulent stems help conserve water.', ar: 'الأوراق متكيفة مع بيئتها. إبر الصنوبريات ثغورها غائرة ومساحة سطحها صغيرة، وده بيقلل فقد الماء. وفي المناخ الحار الصبار أوراقه متحورة لأشواك، وده مع سيقانه العصارية بيساعد في توفير الماء.' },
+  source: leaves,
+};
+const stemLeaf: PlantNote = stemGen;
+const bud: PlantNote = {
+  recognize: { en: 'An axillary bud is usually found in the axil, the area between the base of a leaf and the stem. The tip (apex) of the shoot contains the apical bud.', ar: 'البرعم الإبطي بيكون غالبًا في الإبط، وهو المنطقة بين قاعدة الورقة والساق. وقمة الفرع فيها البرعم القمي.' },
+  function: { en: 'An axillary bud can give rise to a branch or a flower. The apical bud diminishes the growth of axillary buds along the sides of branches and stems, which is called apical dominance.', ar: 'البرعم الإبطي ممكن يطلّع فرع أو زهرة. والبرعم القمي بيقلل نمو البراعم الإبطية على جوانب الفروع والسيقان، وده اسمه السيادة القمية.' },
+  source: stems,
+};
+const confPollen: PlantNote = {
+  recognize: { en: 'A conifer pollen grain consists of just a few haploid cells enclosed in a tough wall reinforced with sporopollenin.', ar: 'حبة لقاح الصنوبريات مكوّنة من كام خلية أحادية المجموعة بس، محاطة بجدار قوي مقوّى بالسبوروبولينين.' },
+  function: { en: 'Conifers release large amounts of pollen that the wind carries. Pollination is the transfer of pollen from the male cone to the female cone.', ar: 'الصنوبريات بتطلق كميات كبيرة من حبوب اللقاح وبتتحمل بالهوا. والتلقيح هو نقل حبوب اللقاح من المخروط المذكر للمخروط المؤنث.' },
+  source: gym,
+};
+Object.assign(map, {
+  'roselle-hibiscus-sabdariffa-stem-cross-section': stemGen, 'young-stem-of-hibiscus-rosa-sinensis-cross-section-400x': stemGen,
+  'acacia-stem-cross-section': stemGen, 'bamboo-phyllostachys-stem': stemGen, 'umbrella-plant-cyperus-alternifolius-stalk-etzold-green': stemGen,
+  'garlic-mustard-alliaria-petiolata-stalk-longitudinal-section': stemGen, 'male-fern-dryopteris-filix-mas-dictyostele': stemGen,
+  'bracken-fern-pteridium-aquilinum-section-calcofluor-white-confocal': stemGen,
+  'stem-and-leaf-of-dame-s-rocket-hesperis-sylvestris': stemLeaf,
+  'cycas-leaflet-cross-section-safranin-stain': leafGen, 'xerophyte-leaf-cross-section-stained': leafGen, 'oleander-nerium-leaf-cross-section': leafGen,
+  'leaf-section-255-21': leafGen, 'leaf-epidermis-of-tall-fescue-grass-festuca-arundinacea': cuticle,
+  'ruscus-hypophyllum-root-cross-section': rootGen, 'ruscus-hypophyllum-root-cross-section-second-field': rootGen,
+  'horsetail-equisetum-apical-cell-longitudinal-section': apicalMeristem, 'bud-lilac-255-28': bud,
+  'cypress-pollen-grain-in-a-nasal-cytology-smear': confPollen,
+});
+
 // Epidermis prints whose id names stomata share the stomata note.
 for (const sp of specimens) if (sp.department === 'botany' && /stomata/.test(sp.id) && !map[sp.id]) map[sp.id] = stomata;
 export const plantNotes: Record<string, PlantNote> = map;

@@ -39,7 +39,8 @@ export function ProfileButton() {
   const nick = savedNick();
   const avatar = savedAvatar() || DEFAULT_AVATAR;
   const [frameId, setFrameId] = useState(selectedFrame());
-  useEffect(() => { const on = () => setFrameId(selectedFrame()); window.addEventListener('scilab-frame', on); return () => window.removeEventListener('scilab-frame', on); }, []);
+  const [, setTick] = useState(0);
+  useEffect(() => { const on = () => { setFrameId(selectedFrame()); setTick((n) => n + 1); }; window.addEventListener('scilab-frame', on); return () => window.removeEventListener('scilab-frame', on); }, []);
   const earned = earnedFrames();
   const visits = readVisits();
   const stats = readStats();

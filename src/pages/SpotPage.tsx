@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useTestGuard } from '../lib/useTestGuard';
+import { TestGuardNotice } from '../components/TestGuardNotice';
 import { Link } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { specimens, type DepartmentId } from '../data/scientificData';
@@ -50,6 +52,7 @@ export function SpotPage() {
   const { locale: lang } = usePreferences();
   const ar = lang === 'ar';
   const [phase, setPhase] = useState<'setup' | 'play' | 'done'>('setup');
+  const guard = useTestGuard(phase === 'play');
   const [subject, setSubject] = useState<DepartmentId | 'all'>('histology');
   const [seconds, setSeconds] = useState(45);
   const [count, setCount] = useState(10);
@@ -72,6 +75,7 @@ export function SpotPage() {
   function start() {
     const list = build(subject, effectiveCount, lang);
     scoreRef.current = 0; missRef.current = []; lockRef.current = false;
+    guard.reset();
     setQs(list); setIndex(0); setScore(0); setMisses([]); setFeedback(null); setLeft(seconds); setPhase('play');
   }
 
@@ -130,6 +134,7 @@ export function SpotPage() {
 
       {phase === 'play' && q && (
         <>
+          <TestGuardNotice away={guard.away} leaves={guard.leaves} keys={guard.keys} />
           <div className="chal-bar"><span>{left}{ar ? ' ث' : 's'}</span><span>{index + 1} / {qs.length}</span><span>{ar ? 'صح' : 'Right'} {score}</span></div>
           <div className="chal-time"><i style={{ width: `${(left / seconds) * 100}%` }} /></div>
           <div className="chal-photo"><img src={specimenMedia[q.id].src} alt="" /></div>
@@ -147,6 +152,7 @@ export function SpotPage() {
         <>
           <div className="chal-panel">
             <h2>{ar ? `نتيجتك: ${score} من ${qs.length}` : `Your score: ${score} of ${qs.length}`}</h2>
+            <p className="chal-hint">{guard.leaves === 0 && guard.keys === 0 ? (ar ? 'ماخرجتش من الصفحة أثناء الاختبار.' : 'You did not leave the page during the test.') : (ar ? `خرجت من الصفحة ${guard.leaves} مرة أثناء الاختبار${guard.keys ? ` وضغطت زرار طباعة الشاشة ${guard.keys} مرة` : ''}.` : `You left the page ${guard.leaves} time${guard.leaves === 1 ? '' : 's'} during the test${guard.keys ? ` and pressed PrintScreen ${guard.keys} time${guard.keys === 1 ? '' : 's'}` : ''}.`)}</p>
             <p className="chal-taunt">{score === qs.length ? (ar ? 'ممتاز، من غير غلطة.' : 'Perfect, no mistakes.') : (ar ? `${qs.length - score} غلطة. راجعها تحت.` : `${qs.length - score} mistakes. Review them below.`)}</p>
             <button className="button button-primary" onClick={start}>{ar ? 'اختبار جديد' : 'New test'}</button>{' '}
             <button className="button" onClick={() => setPhase('setup')}>{ar ? 'غيّر الإعدادات' : 'Change settings'}</button>{' '}

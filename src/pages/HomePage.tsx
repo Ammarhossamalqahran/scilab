@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { specimens } from '../data/scientificData';
+import { StudentOpinions } from '../components/StudentOpinions';
 import { RequestBox } from '../components/RequestBox';
 import { specimenMedia } from '../data/specimenMedia';
 
@@ -109,6 +110,8 @@ export function HomePage() {
           </figure>
         </div>
       </section>
+
+      <StudentOpinions />
 
       <footer className="page-footer"><span>{isArabic ? 'كلية العلوم · عملي الأحياء' : 'Faculty of Science · Biology practical'}</span><span>{isArabic ? 'صور مجهرية تعليمية' : 'Photomicrographs for teaching'}</span></footer>
     </div>

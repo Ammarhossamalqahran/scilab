@@ -1573,3 +1573,12 @@ img[loading="lazy"], .specimen-thumbnail, .module-card-photo { background: color
 .doctor-quote blockquote{margin:0 0 12px;font-size:18px;line-height:1.5;text-align:left}
 .doctor-quote figcaption{display:flex;flex-direction:column;gap:2px;font-size:14px;text-align:left}
 .doctor-quote figcaption span{opacity:.75}
+
+.student-section{margin:32px 0 24px}
+.student-list{display:grid;gap:12px;margin:14px 0}
+.student-quote{margin:0;padding:14px 16px;border:1px solid var(--line,#cfd6cc);border-radius:8px}
+.student-quote blockquote{margin:0 0 10px;font-size:16px;line-height:1.6;overflow-wrap:anywhere}
+.student-quote figcaption{display:flex;align-items:center;gap:8px;font-size:14px}
+.student-form{display:grid;gap:8px;padding:14px;border:1px dashed var(--line,#cfd6cc);border-radius:8px}
+.student-form h3{margin:0}
+.student-form textarea{width:100%;box-sizing:border-box;font:inherit;padding:10px;border:1px solid var(--line,#cfd6cc);border-radius:6px;background:transparent;color:inherit}

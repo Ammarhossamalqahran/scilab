@@ -1,6 +1,7 @@
 import type { Env } from './types';
 import { handleLeaderboard, purgeLeaderboard } from './leaderboard';
-import { handleAdmin, handleAdminWinner, handleAdminCode, handleAdminPhotos, handleAdminPhotoDecision } from './admin';
+import { handleAdmin, handleAdminWinner, handleAdminCode, handleAdminPhotos, handleAdminPhotoDecision, handleAdminOpinions, handleAdminOpinionDecision } from './admin';
+import { handleOpinion } from './opinions';
 import { handleInbox } from './inbox';
 import { handleProfile } from './profile';
 import { handlePhoto } from './photo';
@@ -24,6 +25,9 @@ export default {
       if (url.pathname === '/api/photo' || url.pathname.startsWith('/api/photo/')) return await handlePhoto(request, env.DB, url);
       if (url.pathname === '/api/admin/photos' && request.method === 'GET') return await handleAdminPhotos(request, env.DB, env.ADMIN_KEY);
       if (url.pathname === '/api/admin/photo' && request.method === 'POST') return await handleAdminPhotoDecision(request, env.DB, env.ADMIN_KEY);
+      if (url.pathname === '/api/admin/opinions' && request.method === 'GET') return await handleAdminOpinions(request, env.DB, env.ADMIN_KEY);
+      if (url.pathname === '/api/admin/opinion' && request.method === 'POST') return await handleAdminOpinionDecision(request, env.DB, env.ADMIN_KEY);
+      if (url.pathname === '/api/opinions' || url.pathname.startsWith('/api/opinion/') || url.pathname === '/api/opinion') return await handleOpinion(request, env.DB, url);
       if (url.pathname.startsWith('/api/google/')) return await handleGoogle(request, env.DB, url, env.GOOGLE_CLIENT_ID);
       if (url.pathname === '/api/profile') return await handleProfile(request, env.DB);
       if (url.pathname.startsWith('/api/code/')) return await handleCode(request, env.DB, url);

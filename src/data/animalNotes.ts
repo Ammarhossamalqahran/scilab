@@ -306,6 +306,26 @@ const histRules: Array<[RegExp, AnimalNote]> = [
   [/(ovary|ovarian|granulosa)/, ovary],
 ];
 const histologyNotes = new Set<AnimalNote>(histRules.map(([, n]) => n));
+const neutSrc = osa('18.4 Leukocytes and Platelets', '18-4-leukocytes-and-platelets');
+const rbcSrc = osa('18.3 Erythrocytes', '18-3-erythrocytes');
+const neutrophil: AnimalNote = {
+  recognize: { en: 'A neutrophil has small granules that stain light lilac and a nucleus with two to five lobes.', ar: 'الـ neutrophil فيه حبيبات صغيرة بتتصبغ بلون ليلكي فاتح ونواة من فصين لخمس فصوص.' },
+  function: { en: 'Neutrophils are rapid responders to the site of infection and are efficient phagocytes with a preference for bacteria.', ar: 'الـ neutrophils بتستجاب بسرعة لمكان العدوى وهي بلعمية كفؤة وبتفضل البكتيريا.' },
+  functionLabel: keyPoint,
+  compare: { en: 'Older neutrophils have increasing numbers of lobes and are often referred to as polymorphonuclear (a nucleus with many forms). Younger and immature neutrophils begin to develop lobes and are known as "bands."', ar: 'الـ neutrophils الأكبر سنا عندها فصوص أكتر وبتتسمى polymorphonuclear (نواة متعددة الأشكال). أما الأصغر والغير ناضجة فبتبدأ تكوّن فصوص وبتتسمى "bands".' },
+  source: neutSrc,
+};
+const nucRbc: AnimalNote = {
+  recognize: { en: 'As an erythrocyte matures in the red bone marrow, it extrudes its nucleus and most of its other organelles.', ar: 'لما كرية الدم الحمرا بتنضج في نخاع العظم الأحمر، بتطرد نواتها ومعظم عضياتها التانية.' },
+  function: { en: 'Erythrocytes are biconcave disks; that is, they are plump at their periphery and very thin in the center.', ar: 'كريات الدم الحمرا أقراص مقعرة الوجهين، يعني منتفخة عند الحافة ورفيعة جدا في النص.' },
+  functionLabel: keyPoint,
+  source: rbcSrc,
+};
+const hemRules: Array<[RegExp, AnimalNote]> = [
+  [/(neutrophil)/, neutrophil],
+  [/(rubricyte|normoblasts-nucleated|^nucleated-red-cells-smear)/, nucRbc],
+];
+const hemNotes = new Set<AnimalNote>(hemRules.map(([, n]) => n));
 
 // Slide ids are matched by words in the id; the first rule that matches wins. Only groups the cited page describes are listed.
 const rules: Array<[RegExp, AnimalNote | null]> = [
@@ -349,9 +369,13 @@ for (const sp of specimens) {
     for (const [re, note] of histRules) if (re.test(sp.id)) { map[sp.id] = note; break; }
     continue;
   }
+  if (sp.department === 'hematology') {
+    for (const [re, note] of hemRules) if (re.test(sp.id)) { map[sp.id] = note; break; }
+    continue;
+  }
   if (!['zoology', 'aquatic-life', 'microbiology', 'parasitology'].includes(sp.department)) continue;
   for (const [re, note] of rules) if (re.test(sp.id)) {
-    if (note && (sp.department !== 'parasitology' || parasitologyOk.has(note)) && !histologyNotes.has(note)) map[sp.id] = note;
+    if (note && (sp.department !== 'parasitology' || parasitologyOk.has(note)) && !histologyNotes.has(note) && !hemNotes.has(note)) map[sp.id] = note;
     break;
   }
 }

@@ -306,6 +306,15 @@ const histRules: Array<[RegExp, AnimalNote]> = [
   [/(ovary|ovarian|granulosa)/, ovary],
 ];
 const histologyNotes = new Set<AnimalNote>(histRules.map(([, n]) => n));
+const mitSrc = os('10.2 The Cell Cycle', '10-2-the-cell-cycle');
+const mitosis: AnimalNote = {
+  recognize: { en: 'During prophase, the chromosomes condense and become visible, spindle fibers emerge from the centrosomes, the nuclear envelope breaks down, and the nucleolus disappears. Chromosomes line up at the metaphase plate during metaphase.', ar: 'في الـ prophase بتتكثف الكروموسومات وتبقى مرئية، وبتظهر ألياف المغزل من الجسيمات المركزية، والغلاف النووي بينهار، والنويّة بتختفي. وفي الـ metaphase بتصطف الكروموسومات عند الـ metaphase plate.' },
+  function: { en: 'During anaphase, the cohesin proteins that were binding the sister chromatids together break down. The sister chromatids, which are now called chromosomes, move toward opposite poles of the cell.', ar: 'في الـ anaphase بروتينات الـ cohesin اللي كانت رابطة الكروماتيدات الشقيقة بتتكسر، والكروماتيدات الشقيقة (واللي بقت اسمها كروموسومات) بتتحرك ناحية قطبين متعاكسين في الخلية.' },
+  functionLabel: keyPoint,
+  compare: { en: 'Although there are 5 phases in mitosis, with the exception of the metaphase to anaphase transition, these phases are not discrete and happen as a continuous process.', ar: 'رغم إن الانقسام الميتوزي فيه 5 مراحل، فيما عدا الانتقال من metaphase لـ anaphase المراحل دي مش منفصلة وبتحصل كعملية متصلة.' },
+  source: mitSrc,
+};
+const genIds = /^(cultured-cells|chromatin-fibres|mitosis-in-horse|feulgen-stained)/;
 const neutSrc = osa('18.4 Leukocytes and Platelets', '18-4-leukocytes-and-platelets');
 const rbcSrc = osa('18.3 Erythrocytes', '18-3-erythrocytes');
 const neutrophil: AnimalNote = {
@@ -407,6 +416,10 @@ for (const sp of specimens) {
   }
   if (['tapeworm','trematode','trichomonas','tritrichomonas','trypanosoma'].some(k => sp.id.startsWith(k))) {
     for (const [re, note] of parRules) if (re.test(sp.id)) { map[sp.id] = note; break; }
+    continue;
+  }
+  if (sp.department === 'genetics') {
+    if (genIds.test(sp.id)) map[sp.id] = mitosis;
     continue;
   }
   if (!['zoology', 'aquatic-life', 'microbiology', 'parasitology'].includes(sp.department)) continue;

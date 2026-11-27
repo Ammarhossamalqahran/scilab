@@ -9,6 +9,7 @@ import { MicroscopeCanvas } from '../microscope/MicroscopeCanvas';
 import { specimens, type DepartmentId } from '../data/scientificData';
 import { specimenMedia } from '../data/specimenMedia';
 import { clinicalNotes } from '../data/clinicalNotes';
+import { plantNotes } from '../data/plantNotes';
 
 const departments: { id: DepartmentId; label: { en: string; ar: string } }[] = [
   { id: 'hematology', label: { en: 'Blood cells', ar: 'خلايا الدم' } },
@@ -251,6 +252,14 @@ export function MicroscopePage() {
               {clinicalNotes[specimen.id].recognize && <p><b>{lang === 'ar' ? 'ازاي تتعرف عليها: ' : 'How to recognize it: '}</b>{clinicalNotes[specimen.id].recognize![lang]}</p>}
               {clinicalNotes[specimen.id].clinical && <p><b>{lang === 'ar' ? 'النقطة الإكلينيكية: ' : 'Clinical point: '}</b>{clinicalNotes[specimen.id].clinical![lang]}</p>}
               <small>{lang === 'ar' ? 'المصدر: ' : 'Source: '}<a href={clinicalNotes[specimen.id].source.url} target="_blank" rel="noreferrer">{clinicalNotes[specimen.id].source.title}</a>{lang === 'ar' ? ' · للمذاكرة فقط، مش للتشخيص.' : ' · For study only, not for diagnosis.'}</small>
+            </aside>
+          )}
+          {!challengeHidden && plantNotes[specimen.id] && (
+            <aside className="clinical-note plant-note" aria-label={lang === 'ar' ? 'ملاحظات نباتية: التعرف والوظيفة والمقارنة' : 'Plant notes: recognition, function and comparison'}>
+              {plantNotes[specimen.id].recognize && <p><b>{lang === 'ar' ? 'ازاي تتعرف عليها: ' : 'How to recognize it: '}</b>{plantNotes[specimen.id].recognize![lang]}</p>}
+              {plantNotes[specimen.id].function && <p><b>{lang === 'ar' ? 'وظيفتها للنبات: ' : 'What it does for the plant: '}</b>{plantNotes[specimen.id].function![lang]}</p>}
+              {plantNotes[specimen.id].compare && <p><b>{lang === 'ar' ? 'مقارنة: ' : 'Comparison: '}</b>{plantNotes[specimen.id].compare![lang]}</p>}
+              <small>{lang === 'ar' ? 'المصدر: ' : 'Source: '}<a href={plantNotes[specimen.id].source.url} target="_blank" rel="noreferrer">{plantNotes[specimen.id].source.title}</a>{lang === 'ar' ? ' · للمذاكرة.' : ' · For study.'}</small>
             </aside>
           )}
           <div className="canvas-stage">

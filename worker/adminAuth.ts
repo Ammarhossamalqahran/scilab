@@ -33,8 +33,17 @@ export async function handleAdminGoogle(request: Request, db: D1Database, url: U
   if (!clientId) return json({ error: 'not_configured' }, 503);
   // Read-only check used by the app to decide whether to show the Admin tab. Not rate limited: the token is 256 random bits.
   if (url.pathname === '/api/admin/check') {
-    const b = await request.json().catch(() => null) as { session?: unknown } | null;
-    return json({ ok: typeof b?.session === 'string' && await validSession(db, b.session, now) });
+    const b = await request.json().catch(() => null) as { session?: unknown; player?: unknown } | null;
+    const ok = typeof b?.session === 'string' && await validSession(db, b.session, now);
+    // The owner's own player (the one on this device) gets the owner mark. Only a live server-verified owner session can set it, and only one player holds it.
+    if (ok && typeof b?.player === 'string' && /^[0-9a-f-]{36}$/.test(b.player)) {
+      try {
+        await ensureSchema(db);
+        const me = await db.prepare('SELECT id FROM players WHERE id = ?').bind(b.player).first();
+        if (me) await db.batch([db.prepare('UPDATE players SET owner = NULL WHERE owner = 1 AND id != ?').bind(b.player), db.prepare('UPDATE players SET owner = 1 WHERE id = ?').bind(b.player)]);
+      } catch { /* the mark is cosmetic */ }
+    }
+    return json({ ok });
   }
   await ensureSchema(db);
   await db.prepare('CREATE TABLE IF NOT EXISTS code_rl (kind TEXT NOT NULL, ip TEXT NOT NULL, at INTEGER NOT NULL)').run();

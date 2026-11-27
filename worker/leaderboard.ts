@@ -9,12 +9,13 @@ const BONUS_STEP = 2; const BONUS_MAX_STREAK_STEPS = 5; // mirrors the client: 1
 const STARTS_PER_10_MIN = 60; // mobile networks put many students behind one IP
 const SUBMITS_PER_HOUR = 8;
 // Game modes. The ticket (issued by the server) fixes the mode, so a client cannot post a score into another mode.
-type Mode = 'sprint60' | 'tf';
+type Mode = 'sprint60' | 'tf' | 'survival';
 const MODES: Record<Mode, { seconds: number; minElapsed: number; maxElapsed: number; minPerAnswer: number; maxCorrect: number }> = {
   sprint60: { seconds: 60, minElapsed: 48, maxElapsed: 180, minPerAnswer: 1.3, maxCorrect: 60 },
+  survival: { seconds: 600, minElapsed: 5, maxElapsed: 900, minPerAnswer: 1.3, maxCorrect: 60 }, // 3 lives, 10 s per question, scoring like the 60-second game
   tf: { seconds: 45, minElapsed: 38, maxElapsed: 150, minPerAnswer: 0.9, maxCorrect: 50 }, // true/false: +5 +streak bonus (max +5) per right answer, -3 per wrong, never below 0
 };
-const asMode = (v: unknown): Mode => (v === 'tf' ? 'tf' : 'sprint60');
+const asMode = (v: unknown): Mode => (v === 'tf' ? 'tf' : v === 'survival' ? 'survival' : 'sprint60');
 export function maxScoreTf(correct: number): number { let t = 0; for (let i = 0; i < correct; i++) t += 5 + Math.min(i, 5); return t; }
 const NICK_RE = /^[\p{L}\p{N}][\p{L}\p{N} _\-.]{1,15}$/u;
 

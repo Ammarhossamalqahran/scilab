@@ -5,7 +5,7 @@ import { getAdminSession, clearAdminSession } from '../lib/adminSession';
 import { recordVisit, setOwnerFrames } from '../data/frames';
 import { playerId } from '../lib/leaderboardApi';
 import { trySilentOwner } from '../lib/google';
-import { adoptServerFrame } from '../lib/frameSync';
+import { adoptServerFrame, adoptOwnerProfile } from '../lib/frameSync';
 import { LogoMark } from './LogoMark';
 import { FeedbackButton } from './FeedbackButton';
 import { InstallButton } from './InstallButton';
@@ -55,14 +55,14 @@ export function AppShell() {
   const { locale, setLocale, theme, toggleTheme, t } = usePreferences();
   const { pathname } = useLocation();
   // The tab shows only after the server confirms the stored session is a live owner session (never just because a value is stored).
-  useEffect(() => { recordVisit(); void adoptServerFrame(); window.addEventListener('scilab-admin-session', () => void adoptServerFrame(true)); }, []); // visit streak for avatar frames
+  useEffect(() => { recordVisit(); void adoptServerFrame(); const again = () => void adoptServerFrame(true); window.addEventListener('scilab-admin-session', again); window.addEventListener('scilab-profile-changed', again); return () => { window.removeEventListener('scilab-admin-session', again); window.removeEventListener('scilab-profile-changed', again); }; }, []); // visit streak for avatar frames
   const [adminLink, setAdminLink] = useState(false);
   useEffect(() => {
     const on = () => {
       const session = getAdminSession();
       if (!session) { setAdminLink(false); setOwnerFrames(false); void trySilentOwner(); return; }
       fetch('/api/admin/check', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ session, player: playerId() }) })
-        .then((r) => r.json()).then((d: { ok?: boolean }) => { if (d.ok === true) { setAdminLink(true); setOwnerFrames(true); } else { setAdminLink(false); setOwnerFrames(false); clearAdminSession(); void trySilentOwner(); } })
+        .then((r) => r.json()).then((d: { ok?: boolean; ownerPlayer?: { id?: string; nick?: string; avatar?: string | null; frame?: string | null } | null }) => { if (d.ok === true) { setAdminLink(true); setOwnerFrames(true); adoptOwnerProfile(d.ownerPlayer); } else { setAdminLink(false); setOwnerFrames(false); clearAdminSession(); void trySilentOwner(); } })
         .catch(() => { setAdminLink(false); setOwnerFrames(false); });
     };
     on();

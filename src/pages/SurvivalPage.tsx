@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { syncServerBest } from '../lib/serverBest';
 import { usePreferences } from '../app/PreferencesContext';
 import { specimens } from '../data/scientificData';
 import { pickFresh } from '../lib/recentSeen';
@@ -33,6 +34,7 @@ export function SurvivalPage() {
   const { locale: lang } = usePreferences();
   const ar = lang === 'ar';
   const [stats, setStats] = useState<Stats>(readStats);
+  useEffect(() => { void syncServerBest().then((c) => { if (c) setStats(readStats()); }); }, []); // same personal best on every device
   const [phase, setPhase] = useState<'idle' | 'play' | 'over'>('idle');
   const [q, setQ] = useState<Q | null>(null);
   const [left, setLeft] = useState(PER_Q);

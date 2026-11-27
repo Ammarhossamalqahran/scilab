@@ -67,6 +67,17 @@ export async function handleLeaderboard(request: Request, db: D1Database, url: U
     return json({ period, mode, entries: rows.results }, 200, { 'cache-control': 'public, max-age=30' });
   }
 
+  // GET /api/me/best?player=<id>: this player's own best and number of submitted games per mode (current scoreboard period).
+  // Read only. Scores still come only from server-issued tickets, so a client cannot set these.
+  if (url.pathname === '/api/me/best' && request.method === 'GET') {
+    const player = url.searchParams.get('player') ?? '';
+    if (!/^[0-9a-f-]{36}$/.test(player)) return json({ error: 'bad_request' }, 400);
+    const rows = await db.prepare('SELECT mode, MAX(score) AS best, MAX(streak) AS streak, COUNT(*) AS games FROM scores WHERE player_id = ? GROUP BY mode').bind(player).all<{ mode: string; best: number; streak: number; games: number }>();
+    const out: Record<string, { best: number; bestStreak: number; games: number }> = {};
+    for (const r of rows.results ?? []) out[asMode(r.mode)] = { best: r.best, bestStreak: r.streak, games: r.games };
+    return json({ modes: out });
+  }
+
   if (url.pathname === '/api/nick' && request.method === 'GET') {
     // Is this name free for this player? Final check still happens when a score is posted.
     const n = (url.searchParams.get('n') ?? '').trim().replace(/\s+/g, ' ');

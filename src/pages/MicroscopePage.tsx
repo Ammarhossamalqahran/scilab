@@ -10,6 +10,7 @@ import { specimens, type DepartmentId } from '../data/scientificData';
 import { specimenMedia } from '../data/specimenMedia';
 import { clinicalNotes } from '../data/clinicalNotes';
 import { plantNotes } from '../data/plantNotes';
+import { inSubcategory, subcategoryOptions } from '../data/subcategories';
 
 const departments: { id: DepartmentId; label: { en: string; ar: string } }[] = [
   { id: 'hematology', label: { en: 'Blood cells', ar: 'خلايا الدم' } },
@@ -93,6 +94,9 @@ export function MicroscopePage() {
   const [showKeys, setShowKeys] = useState(false);
   const [sampleQuery, setSampleQuery] = useState('');
   const [favoritesOnly, setFavoritesOnly] = useState(false);
+  const [subcategory, setSubcategory] = useState('all');
+  useEffect(() => setSubcategory('all'), [department]);
+  const subcategoryChoices = useMemo(() => subcategoryOptions(department, availableSpecimens), [department, availableSpecimens]);
   const [favoriteIds, setFavoriteIds] = useState<string[]>(readFavorites);
   const [challengeSpecimenId, setChallengeSpecimenId] = useState<string | null>(null);
   const [challengeRevealed, setChallengeRevealed] = useState(false);
@@ -137,11 +141,12 @@ export function MicroscopePage() {
     const query = normalizeSearch(sampleQuery);
     return availableSpecimens.filter((sample) => {
       if (favoritesOnly && !favoriteIds.includes(sample.id)) return false;
+      if (!inSubcategory(department, sample, subcategory)) return false;
       if (!query) return true;
       return [sample.title.ar, sample.title.en, sample.subtitle.ar, sample.subtitle.en, sample.description.ar, sample.description.en, specimenMedia[sample.id]?.title ?? '']
         .some((value) => normalizeSearch(value).includes(query));
     });
-  }, [availableSpecimens, favoriteIds, favoritesOnly, sampleQuery]);
+  }, [availableSpecimens, department, favoriteIds, favoritesOnly, sampleQuery, subcategory]);
 
   useEffect(() => {
     try {
@@ -294,6 +299,15 @@ export function MicroscopePage() {
                 </label>
                 <button type="button" className={`favorites-filter${favoritesOnly ? ' is-active' : ''}`} onClick={() => setFavoritesOnly((current) => !current)} aria-pressed={favoritesOnly}><span aria-hidden="true">★</span>{favoritesOnly ? t('allSamples') : t('favoritesOnly')}</button>
               </div>
+              {subcategoryChoices.length > 0 && (
+                <label className="subcategory-filter">
+                  <span>{lang === 'ar' ? 'التصنيف' : 'Category'}</span>
+                  <select value={subcategory} onChange={(event) => setSubcategory(event.target.value)}>
+                    <option value="all">{lang === 'ar' ? `كل الشرائح (${availableSpecimens.length})` : `All slides (${availableSpecimens.length})`}</option>
+                    {subcategoryChoices.map((choice) => <option key={choice.id} value={choice.id}>{choice.label[lang]} ({choice.count})</option>)}
+                  </select>
+                </label>
+              )}
               {filteredSpecimens.length === 0 ? <p className="specimen-empty">{t('noSamplesFound')}</p> : (
                 <div className="specimen-pick">
                   {filteredSpecimens.map((sample) => {

@@ -4,7 +4,7 @@ import { ensureSchema, ipHash } from './leaderboard';
 // POST /api/profile {player, nick?, avatar?}: change the name and/or avatar of an existing player.
 // Same trust level as posting a score: whoever holds the player id (kept in the browser) can edit it.
 const NICK_RE = /^[\p{L}\p{N}][\p{L}\p{N} _\-.]{1,15}$/u;
-const FRAME_IDS = ['gold', 'streak7', 'streak30', 'score50', 'score100', 'doctor', 'rank1-month', 'rank1-x3'];
+const FRAME_IDS = ['gold', 'streak7', 'streak30', 'score50', 'score100', 'doctor', 'streak14', 'streak60', 'tface', 'deptmaster', 'survivor', 'allround', 'rank1-month', 'rank1-x3'];
 const OWNER_ONLY = ['rank1-month', 'rank1-x3']; // not obtainable yet; only the verified owner mark may wear them
 export const AVATAR_RE = /^[a-z0-9-]{1,20}$/;
 const json = (data: unknown, status = 200) =>

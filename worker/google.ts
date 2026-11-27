@@ -1,6 +1,7 @@
 import type { D1Database } from './types';
 import { ensureSchema, ipHash } from './leaderboard';
 import { hashCode } from './code';
+import { ownerSessionFor } from './adminAuth';
 
 // Optional "Link your Google account". Sign-in uses Google Identity Services in the browser; here the
 // returned ID token is verified (Google's public signing keys, our Client ID as audience). Only a salted
@@ -82,15 +83,16 @@ export async function handleGoogle(request: Request, db: D1Database, url: URL, c
     const other = await db.prepare('SELECT id FROM players WHERE google_hash = ? AND id != ?').bind(h, player).first();
     if (other) return json({ error: 'already_linked' }, 409);
     await db.prepare('UPDATE players SET google_hash = ? WHERE id = ?').bind(h, player).run();
-    return json({ ok: true });
+    return json({ ok: true, admin: await ownerSessionFor(db, sub, now) });
   }
   // Sign in on a new device: find the player linked to this Google account.
   if (url.pathname === '/api/google/signin') {
     const sub = nonce ? await verifyIdToken(body?.credential, clientId, now, fetchImpl, nonce) : null;
     if (!sub) return json({ error: 'bad_token' }, 401);
     const row = await db.prepare('SELECT id, nick, avatar FROM players WHERE google_hash = ?').bind(await hashSub(sub)).first<{ id: string; nick: string; avatar: string | null }>();
-    if (!row) return json({ error: 'no_account' }, 404);
-    return json({ player: row.id, nick: row.nick, avatar: row.avatar });
+    const admin = await ownerSessionFor(db, sub, now);
+    if (!row) return json({ error: 'no_account', admin }, 404);
+    return json({ player: row.id, nick: row.nick, avatar: row.avatar, admin });
   }
   if (url.pathname === '/api/google/status') {
     if (!player) return json({ error: 'bad_request' }, 400);

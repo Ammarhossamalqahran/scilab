@@ -22,3 +22,6 @@
 - A real Google sign-in with the owner account has not been run (no one could in testing). The token checks are tested with locally made tokens and a fake key set.
 - Real push delivery to a phone is not tested. The tests use a fake push service.
 - If Google shows an "unverified app" screen for the email scope, the owner can continue; if the OAuth consent screen blocks the email scope, owner sign-in will fail and the old key still works.
+
+## Owner session from the normal Google link / sign-in
+The normal flow asks Google only for `openid`, so the token has no email and regular users are never asked for it. After the owner signs in once with the owner button on /admin, the Worker stores a salted hash of the owner's Google user id (not the email) in `kv`. From then on, when the normal link or sign-in verifies a token with that same user id, the response also carries an owner session, and the Admin tab appears. Any other Google account never gets one. The very first time still needs the owner button on /admin once, because the Worker cannot know the owner's Google user id before it has seen a token with the verified owner email.

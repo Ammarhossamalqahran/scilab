@@ -64,6 +64,7 @@ export async function completeGoogleFromHash(): Promise<void> {
   }
   if (pending.mode === 'signin') {
     const r = await post('/api/google/signin', { credential, nonce: pending.nonce });
+    if (typeof r.data.admin === 'string') setAdminSession(r.data.admin); // server-verified owner account
     if (r.ok && typeof r.data.player === 'string' && typeof r.data.nick === 'string') {
       try { window.localStorage.setItem('scilab-player-id', r.data.player); } catch { /* ignored */ }
       saveNick(r.data.nick);
@@ -73,6 +74,7 @@ export async function completeGoogleFromHash(): Promise<void> {
     return;
   }
   const r = await post('/api/google/link', { player: playerId(), credential, nonce: pending.nonce });
+  if (typeof r.data.admin === 'string') setAdminSession(r.data.admin); // server-verified owner account
   if (r.ok) publish({ kind: 'linked' });
   else publish({ kind: 'error', reason: r.data.error === 'already_linked' ? 'already_linked' : r.data.error === 'no_profile' ? 'no_profile' : 'other' });
 }

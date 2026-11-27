@@ -1582,3 +1582,6 @@ img[loading="lazy"], .specimen-thumbnail, .module-card-photo { background: color
 .student-form{display:grid;gap:8px;padding:14px;border:1px dashed var(--line,#cfd6cc);border-radius:8px}
 .student-form h3{margin:0}
 .student-form textarea{width:100%;box-sizing:border-box;font:inherit;padding:10px;border:1px solid var(--line,#cfd6cc);border-radius:6px;background:transparent;color:inherit}
+
+.doctor-quote--ar blockquote{text-align:right}
+.doctor-quote--ar figcaption{text-align:left}

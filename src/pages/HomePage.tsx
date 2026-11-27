@@ -108,6 +108,10 @@ export function HomePage() {
             <blockquote dir="ltr" lang="en">"Your website looks great."</blockquote>
             <figcaption dir="ltr" lang="en"><b>Dr. Mai Ali Mwaheb</b><span>Associate Professor of Microbiology (Mycology), Botany Department, Faculty of Science, Fayoum University</span></figcaption>
           </figure>
+          <figure className="doctor-quote doctor-quote--ar">
+            <blockquote dir="rtl" lang="ar">"الموقع مفيد جدا لطلبة الطب والعلوم، ورجّعني 13 سنة لأيام الكلية."</blockquote>
+            <figcaption dir="ltr" lang="en"><b>Dr. Menna</b><span dir="rtl" lang="ar">دكتورة تحاليل</span></figcaption>
+          </figure>
         </div>
       </section>
 

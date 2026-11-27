@@ -12,17 +12,17 @@ export function googleClientId(): Promise<string> {
 
 const PENDING = 'scilab-google-pending';
 const RESULT = 'scilab-google-result';
-export type GoogleResult = { kind: 'linked' | 'signedin' | 'error'; reason?: 'already_linked' | 'no_account' | 'no_profile' | 'cancelled' | 'not_admin' | 'other'; nick?: string };
+export type GoogleResult = { kind: 'linked' | 'signedin' | 'error'; reason?: 'already_linked' | 'no_account' | 'no_profile' | 'cancelled' | 'not_admin' | 'other'; nick?: string; created?: boolean };
 
 const randomNonce = () => [...crypto.getRandomValues(new Uint8Array(16))].map((b) => b.toString(16).padStart(2, '0')).join('');
 
 // Sends the browser to Google. `mode` says what to do when it comes back.
-export async function startGoogle(mode: 'link' | 'signin' | 'admin' | 'silent'): Promise<boolean> {
+export async function startGoogle(mode: 'link' | 'signin' | 'welcome' | 'admin' | 'silent'): Promise<boolean> {
   const id = await googleClientId();
   if (!id) return false;
   const nonce = randomNonce();
   try { window.localStorage.setItem(PENDING, JSON.stringify({ mode, nonce, at: Date.now(), player: playerId() })); } catch { return false; }
-  const q = new URLSearchParams({ client_id: id, redirect_uri: `${window.location.origin}/`, response_type: 'id_token', scope: mode === 'admin' ? 'openid email' : 'openid', nonce, prompt: mode === 'silent' ? 'none' : 'select_account', state: mode });
+  const q = new URLSearchParams({ client_id: id, redirect_uri: `${window.location.origin}/`, response_type: 'id_token', scope: mode === 'admin' ? 'openid email' : mode === 'welcome' ? 'openid profile' : 'openid', nonce, prompt: mode === 'silent' ? 'none' : 'select_account', state: mode });
   window.location.assign(`https://accounts.google.com/o/oauth2/v2/auth?${q}`);
   return true;
 }
@@ -69,14 +69,16 @@ export async function completeGoogleFromHash(): Promise<void> {
     else publish({ kind: 'error', reason: r.data.error === 'not_admin' ? 'not_admin' : 'other' });
     return;
   }
-  if (pending.mode === 'signin') {
-    const r = await post('/api/google/signin', { credential, nonce: pending.nonce });
+  if (pending.mode === 'signin' || pending.mode === 'welcome') {
+    const r = await post('/api/google/signin', { credential, nonce: pending.nonce, ...(pending.mode === 'welcome' ? { create: true } : {}) });
     if (typeof r.data.admin === 'string') setAdminSession(r.data.admin); // server-verified owner account
     if (r.ok && typeof r.data.player === 'string' && typeof r.data.nick === 'string') {
       try { window.localStorage.setItem('scilab-player-id', r.data.player); } catch { /* ignored */ }
       saveNick(r.data.nick);
       if (typeof r.data.avatar === 'string') saveAvatar(r.data.avatar);
-      publish({ kind: 'signedin', nick: r.data.nick });
+      if (pending.mode === 'welcome') { try { window.localStorage.setItem('scilab-welcome', 'named'); } catch { /* ignored */ } }
+      if (typeof r.data.frame === 'string') { try { window.localStorage.setItem('scilab-frame', r.data.frame); window.localStorage.setItem('scilab-frame-synced', r.data.frame); window.dispatchEvent(new Event('scilab-frame')); } catch { /* ignored */ } } // the server frame follows the account
+      publish({ kind: 'signedin', nick: r.data.nick, created: r.data.created === true });
     } else publish({ kind: 'error', reason: r.data.error === 'no_account' ? 'no_account' : 'other' });
     return;
   }

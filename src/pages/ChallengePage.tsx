@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { syncServerBest } from '../lib/serverBest';
 import { usePreferences } from '../app/PreferencesContext';
 import { specimens } from '../data/scientificData';
 import { pickFresh } from '../lib/recentSeen';
@@ -30,6 +31,7 @@ export function ChallengePage() {
   const { locale: lang } = usePreferences();
   const ar = lang === 'ar';
   const [stats, setStats] = useState<Stats>(() => readStats());
+  useEffect(() => { void syncServerBest().then((c) => { if (c) setStats(readStats()); }); }, []); // same personal best on every device
   const [phase, setPhase] = useState<'idle' | 'play' | 'over'>('idle');
   const [left, setLeft] = useState(SECONDS);
   const [q, setQ] = useState<Q | null>(null);
@@ -105,7 +107,7 @@ export function ChallengePage() {
         <div className="chal-panel">
           <p>{ar ? `أحسن نتيجة ليك: ${stats.best} · ألعاب: ${stats.games}` : `Your best: ${stats.best} · games played: ${stats.games}`}</p>
           <button className="button button-primary" onClick={start}>{ar ? 'ابدأ' : 'Start'}</button>
-          <p><Link to="/challenge/true-false">{ar ? 'جرب تحدي صح ولا غلط' : 'Try the true or false sprint'}</Link> · <Link to="/challenge/department">{ar ? 'تبع أنهي قسم؟' : 'Which department?'}</Link></p>
+          <p><Link to="/challenge/true-false">{ar ? 'جرب تحدي صح ولا غلط' : 'Try the true or false sprint'}</Link> · <Link to="/challenge/department">{ar ? 'تبع أنهي قسم؟' : 'Which department?'}</Link> · <Link to="/challenge/survival">{ar ? 'البقاء: 3 فرص' : 'Survival: 3 lives'}</Link></p>
         </div>
       )}
 

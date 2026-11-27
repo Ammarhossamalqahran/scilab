@@ -64,7 +64,10 @@ export async function handleAdminGoogle(request: Request, db: D1Database, url: U
         if (me) await db.batch([db.prepare('UPDATE players SET owner = NULL WHERE owner = 1 AND id != ?').bind(b.player), db.prepare('UPDATE players SET owner = 1 WHERE id = ?').bind(b.player)]);
       } catch { /* the mark is cosmetic */ }
     }
-    return json({ ok });
+    // A verified owner session on a device that has no player yet (after sign out) gets the owner's own profile back, so name, character and frame follow the owner session.
+    let ownerPlayer: { id: string; nick: string; avatar: string | null; frame: string | null } | null = null;
+    if (ok) { try { await ensureSchema(db); ownerPlayer = await db.prepare('SELECT id, nick, avatar, frame FROM players WHERE owner = 1').first(); } catch { ownerPlayer = null; } }
+    return json({ ok, ownerPlayer });
   }
   await ensureSchema(db);
   await db.prepare('CREATE TABLE IF NOT EXISTS code_rl (kind TEXT NOT NULL, ip TEXT NOT NULL, at INTEGER NOT NULL)').run();

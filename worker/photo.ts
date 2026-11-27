@@ -1,6 +1,15 @@
 import type { D1Database } from './types';
 import { notifyAdmin } from './adminPush';
 import { ensureSchema, ipHash } from './leaderboard';
+import { validSession } from './adminAuth';
+
+// The owner's own photo needs no review: true only for a live server-verified owner session on the owner-marked profile.
+async function isOwnerPlayer(db: D1Database, request: Request, player: string, now: number): Promise<boolean> {
+  const token = request.headers.get('x-owner-session') ?? '';
+  if (!token || !(await validSession(db, token, now))) return false;
+  const row = await db.prepare('SELECT owner FROM players WHERE id = ?').bind(player).first<{ owner: number | null }>();
+  return row?.owner === 1;
+}
 
 // Profile photos. The player sees their own photo at once; everyone else only sees it after the owner
 // approves it in /admin. Photos are small JPEGs (the app shrinks them to 128x128) kept in D1.
@@ -49,8 +58,9 @@ export async function handlePhoto(request: Request, db: D1Database, url: URL, no
   if (url.pathname === '/api/photo/mine' && request.method === 'GET') {
     const player = url.searchParams.get('player') ?? '';
     if (!PLAYER_RE.test(player)) return json({ error: 'bad_request' }, 400);
-    const row = await db.prepare('SELECT data, status FROM photos WHERE player_id = ?').bind(player).first<{ data: string; status: string }>();
+    let row = await db.prepare('SELECT data, status FROM photos WHERE player_id = ?').bind(player).first<{ data: string; status: string }>();
     if (!row) return json({ status: 'none' });
+    if (row.status === 'pending' && await isOwnerPlayer(db, request, player, now)) { await db.prepare("UPDATE photos SET status = 'approved' WHERE player_id = ? AND status = 'pending'").bind(player).run(); row = { ...row, status: 'approved' }; }
     return json({ status: row.status, image: row.status === 'rejected' ? null : `data:image/jpeg;base64,${row.data}` });
   }
 
@@ -72,9 +82,10 @@ export async function handlePhoto(request: Request, db: D1Database, url: URL, no
     const b64 = parseJpeg(body?.image);
     if (!b64) return json({ error: 'bad_image' }, 400);
     // A new upload is always pending again, with a new public id, so an old approval never carries over.
-    await db.prepare("INSERT INTO photos (player_id, pub, data, status, updated) VALUES (?, ?, ?, 'pending', ?) ON CONFLICT(player_id) DO UPDATE SET pub = excluded.pub, data = excluded.data, status = 'pending', updated = excluded.updated").bind(player, randomPub(), b64, now).run();
-    await notifyAdmin(db, 'review', now);
-    return json({ ok: true, status: 'pending' });
+    const auto = await isOwnerPlayer(db, request, player, now);
+    await db.prepare(`INSERT INTO photos (player_id, pub, data, status, updated) VALUES (?, ?, ?, '${auto ? 'approved' : 'pending'}', ?) ON CONFLICT(player_id) DO UPDATE SET pub = excluded.pub, data = excluded.data, status = '${auto ? 'approved' : 'pending'}', updated = excluded.updated`).bind(player, randomPub(), b64, now).run();
+    if (!auto) await notifyAdmin(db, 'review', now);
+    return json({ ok: true, status: auto ? 'approved' : 'pending' });
   }
   return json({ error: 'not_found' }, 404);
 }

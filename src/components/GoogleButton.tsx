@@ -3,7 +3,7 @@ import { usePreferences } from '../app/PreferencesContext';
 import { googleClientId, startGoogle } from '../lib/google';
 
 // "Link / sign in with Google". Hidden when the site has no Client ID.
-export function GoogleButton({ mode }: { mode: 'link' | 'signin' }) {
+export function GoogleButton({ mode }: { mode: 'link' | 'signin' | 'welcome' }) {
   const { locale } = usePreferences();
   const ar = locale === 'ar';
   const [on, setOn] = useState(false);

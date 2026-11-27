@@ -9,13 +9,14 @@ const BONUS_STEP = 2; const BONUS_MAX_STREAK_STEPS = 5; // mirrors the client: 1
 const STARTS_PER_10_MIN = 60; // mobile networks put many students behind one IP
 const SUBMITS_PER_HOUR = 8;
 // Game modes. The ticket (issued by the server) fixes the mode, so a client cannot post a score into another mode.
-type Mode = 'sprint60' | 'tf' | 'dept';
+type Mode = 'sprint60' | 'tf' | 'dept' | 'survival';
 const MODES: Record<Mode, { seconds: number; minElapsed: number; maxElapsed: number; minPerAnswer: number; maxCorrect: number }> = {
   sprint60: { seconds: 60, minElapsed: 48, maxElapsed: 180, minPerAnswer: 1.3, maxCorrect: 60 },
   dept: { seconds: 45, minElapsed: 38, maxElapsed: 150, minPerAnswer: 1.1, maxCorrect: 40 }, // which department: +8 +streak bonus (max +5) per right answer, wrong answers cost nothing
+  survival: { seconds: 600, minElapsed: 5, maxElapsed: 900, minPerAnswer: 1.3, maxCorrect: 60 }, // 3 lives, 10 s per question, scoring like the 60-second game
   tf: { seconds: 45, minElapsed: 38, maxElapsed: 150, minPerAnswer: 0.9, maxCorrect: 50 }, // true/false: +5 +streak bonus (max +5) per right answer, -3 per wrong, never below 0
 };
-const asMode = (v: unknown): Mode => (v === 'tf' ? 'tf' : v === 'dept' ? 'dept' : 'sprint60');
+const asMode = (v: unknown): Mode => (v === 'tf' ? 'tf' : v === 'dept' ? 'dept' : v === 'survival' ? 'survival' : 'sprint60');
 export function maxScoreDept(correct: number): number { let t = 0; for (let i = 0; i < correct; i++) t += 8 + Math.min(i, 5); return t; }
 export function maxScoreTf(correct: number): number { let t = 0; for (let i = 0; i < correct; i++) t += 5 + Math.min(i, 5); return t; }
 const NICK_RE = /^[\p{L}\p{N}][\p{L}\p{N} _\-.]{1,15}$/u;
@@ -64,6 +65,17 @@ export async function handleLeaderboard(request: Request, db: D1Database, url: U
       "SELECT p.nick AS nick, p.avatar AS avatar, p.owner AS owner, p.frame AS frame, MAX(s.score) AS score, (SELECT ph.pub FROM photos ph WHERE ph.player_id = p.id AND ph.status = 'approved') AS photo FROM scores s JOIN players p ON p.id = s.player_id WHERE s.at >= ? AND s.mode = ? GROUP BY s.player_id ORDER BY score DESC, MIN(s.at) ASC LIMIT 20",
     ).bind(since, mode).all<{ nick: string; avatar: string | null; owner: number | null; frame: string | null; score: number; photo: string | null }>();
     return json({ period, mode, entries: rows.results }, 200, { 'cache-control': 'public, max-age=30' });
+  }
+
+  // GET /api/me/best?player=<id>: this player's own best and number of submitted games per mode (current scoreboard period).
+  // Read only. Scores still come only from server-issued tickets, so a client cannot set these.
+  if (url.pathname === '/api/me/best' && request.method === 'GET') {
+    const player = url.searchParams.get('player') ?? '';
+    if (!/^[0-9a-f-]{36}$/.test(player)) return json({ error: 'bad_request' }, 400);
+    const rows = await db.prepare('SELECT mode, MAX(score) AS best, MAX(streak) AS streak, COUNT(*) AS games FROM scores WHERE player_id = ? GROUP BY mode').bind(player).all<{ mode: string; best: number; streak: number; games: number }>();
+    const out: Record<string, { best: number; bestStreak: number; games: number }> = {};
+    for (const r of rows.results ?? []) out[asMode(r.mode)] = { best: r.best, bestStreak: r.streak, games: r.games };
+    return json({ modes: out });
   }
 
   if (url.pathname === '/api/nick' && request.method === 'GET') {

@@ -120,6 +120,9 @@ export function WelcomeName() {
           {msg === 'bad' && <small>{ar ? 'الاسم لازم 2 لـ 16 حرف أو رقم.' : 'Use 2 to 16 letters or numbers.'}</small>}
           {msg === 'taken' && <small>{ar ? 'الاسم ده مأخوذ. جرب اسم تاني (مثلاً زوّد رقم).' : 'That name is taken. Try another (for example add a number).'}</small>}
           <button type="submit" className="button button-primary welcome-go" disabled={busy || name.trim().length < 2}>{ar ? 'يلا نبدأ' : "Let's go"}</button>
+          <div className="welcome-or" aria-hidden="true"><span>{ar ? 'أو' : 'or'}</span></div>
+          <GoogleButton mode="welcome" />
+          <small className="welcome-gnote">{ar ? 'بناخد اسمك الأول من جوجل بس. مابناخدش إيميلك ولا صورتك، وتقدر تغيّر الاسم بعدين.' : 'We take only your first name from Google, not your email or photo. You can change the name later.'}</small>
           <button type="button" className="welcome-skip" onClick={() => { setStep('restore'); setName(''); }}>{ar ? 'عندي كود' : 'I have a code'}</button>
           <button type="button" className="welcome-skip" onClick={skip}>{ar ? 'تخطّى' : 'Skip'}</button>
         </div>

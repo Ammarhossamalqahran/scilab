@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { specimens, type DepartmentId } from '../data/scientificData';
 import { specimenMedia } from '../data/specimenMedia';
+import { recordResult } from '../data/flashcards';
 import { readProgress, recordAnswer, saveProgress } from '../data/examProgress';
 
 // Spot test, like the real practical: one slide at a time, a timer per slide, then a score and the mistakes.
@@ -82,6 +83,7 @@ export function SpotPage() {
     const ok = chosen === right;
     if (ok) scoreRef.current += 1; else missRef.current = [...missRef.current, { id: q.id, chosen }];
     saveProgress(recordAnswer(readProgress(), q.id, ok));
+    recordResult(q.id, ok);
     setScore(scoreRef.current);
     setFeedback({ chosen, right });
     window.setTimeout(() => {
@@ -147,7 +149,8 @@ export function SpotPage() {
             <h2>{ar ? `نتيجتك: ${score} من ${qs.length}` : `Your score: ${score} of ${qs.length}`}</h2>
             <p className="chal-taunt">{score === qs.length ? (ar ? 'ممتاز، من غير غلطة.' : 'Perfect, no mistakes.') : (ar ? `${qs.length - score} غلطة. راجعها تحت.` : `${qs.length - score} mistakes. Review them below.`)}</p>
             <button className="button button-primary" onClick={start}>{ar ? 'اختبار جديد' : 'New test'}</button>{' '}
-            <button className="button" onClick={() => setPhase('setup')}>{ar ? 'غيّر الإعدادات' : 'Change settings'}</button>
+            <button className="button" onClick={() => setPhase('setup')}>{ar ? 'غيّر الإعدادات' : 'Change settings'}</button>{' '}
+            {misses.length > 0 && <Link className="button" to="/study?scope=weak">{ar ? 'راجعها دلوقتي' : 'Review them now'}</Link>}
           </div>
           {misses.length > 0 && (
             <section className="spot-misses">

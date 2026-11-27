@@ -51,6 +51,17 @@ export function AdminPage() {
     const b = await res.json().catch(() => ({})) as { nick?: string };
     setChkRes(res.ok && b.nick ? (ar ? `الكود ده بتاع: ${b.nick}` : `This code belongs to: ${b.nick}`) : (ar ? 'مفيش حد بالكود ده.' : 'No player has this code.'));
   }
+  type Opin = { id: number; nick: string; text: string; status: string; created: number };
+  const [opins, setOpins] = useState<Opin[]>([]);
+  async function loadOpins() {
+    const res = await fetch('/api/admin/opinions', { headers: { 'x-admin-key': key } });
+    const b = await res.json().catch(() => ({})) as { opinions?: Opin[] };
+    if (res.ok) setOpins(b.opinions ?? []);
+  }
+  async function decideOpin(id: number, action: string) {
+    await fetch('/api/admin/opinion', { method: 'POST', headers: { 'x-admin-key': key, 'content-type': 'application/json' }, body: JSON.stringify({ id, action }) });
+    void loadOpins();
+  }
   const [photos, setPhotos] = useState<Photo[]>([]);
   async function loadPhotos() {
     const res = await fetch('/api/admin/photos', { headers: { 'x-admin-key': key } });
@@ -61,7 +72,7 @@ export function AdminPage() {
     await fetch('/api/admin/photo', { method: 'POST', headers: { 'x-admin-key': key, 'content-type': 'application/json' }, body: JSON.stringify({ pub, action }) });
     void loadPhotos();
   }
-  useEffect(() => { if (data) void loadPhotos(); }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (data) { void loadPhotos(); void loadOpins(); } }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
   const copy = (rows: Row[]) => navigator.clipboard?.writeText(rows.map((r, i) => `${i + 1}\t${r.nick}\t${r.score}`).join('\n')).catch(() => undefined);
 
   return (
@@ -89,6 +100,18 @@ export function AdminPage() {
             <input value={chk} onChange={(e) => setChk(e.target.value)} placeholder="ABCDE-FGHIJ" dir="ltr" autoComplete="off" />
             <div><button className="button" onClick={checkCode} disabled={chk.replace(/[^A-Za-z0-9]/g, '').length < 10}>{ar ? 'اعرف الاسم' : 'Find name'}</button> {chkRes}</div>
           </div>
+          <h2>{ar ? 'آراء الطلبة' : 'Student opinions'} <button className="quiet-button" onClick={() => void loadOpins()}>{ar ? 'تحديث' : 'Refresh'}</button></h2>
+          {opins.length === 0 && <p>{ar ? 'مفيش آراء.' : 'No opinions.'}</p>}
+          {opins.map((o) => (
+            <div key={o.id} className="admin-msg">
+              <b>{o.nick}</b> <small>{o.status === 'pending' ? (ar ? 'منتظر موافقتك' : 'waiting for you') : (ar ? 'معروض' : 'shown')}</small>
+              <p>{o.text}</p>
+              <div>
+                {o.status === 'pending' && <button className="button" onClick={() => void decideOpin(o.id, 'approve')}>{ar ? 'وافق' : 'Approve'}</button>}
+                <button className="quiet-button" onClick={() => void decideOpin(o.id, o.status === 'pending' ? 'reject' : 'remove')}>{o.status === 'pending' ? (ar ? 'ارفض' : 'Reject') : (ar ? 'شيل' : 'Remove')}</button>
+              </div>
+            </div>
+          ))}
           <h2>{ar ? 'صور اللاعبين' : 'Player photos'} <button className="quiet-button" onClick={() => void loadPhotos()}>{ar ? 'تحديث' : 'Refresh'}</button></h2>
           {photos.length === 0 && <p>{ar ? 'مفيش صور.' : 'No photos.'}</p>}
           <div className="admin-photos">

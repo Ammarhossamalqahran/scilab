@@ -32,9 +32,11 @@ const falciparumRing: ClinicalNote = {
 };
 
 import { hematologyNotes } from './clinicalNotesHematology';
+import { parasitologyNotes } from './clinicalNotesParasitology';
 
 export const clinicalNotes: Record<string, ClinicalNote> = {
   ...hematologyNotes,
+  ...parasitologyNotes,
   'ascaris-egg-early-cell-division': ascarisFertile,
   'ascaris-infertile-egg': ascarisInfertile,
   'whipworm-trichuris-trichiura-egg': whipworm,
@@ -89,3 +91,15 @@ export const clinicalNotes: Record<string, ClinicalNote> = {
 };
 
 clinicalNotes['sickle-cell-anaemia-blood-smear-giemsa'] = clinicalNotes['sickle-cell-smear'];
+
+// Same organism, same source: reuse a note for the other slides of it. Where the stage differs (e.g. cultured forms) only the clinical point is reused.
+const alias = (ids: string[], from: string, clinicalOnly = false) => {
+  const base = clinicalNotes[from];
+  for (const id of ids) clinicalNotes[id] = clinicalOnly ? { clinical: base.clinical, source: base.source } : base;
+};
+alias(['taenia-egg-in-a-faecal-smear-ziehl-neelsen'], 'taenia-egg');
+alias(['pinworm-egg-urine-microscopy'], 'pinworm-enterobius-vermicularis-eggs');
+alias(['leishmania-tropica-259-19', 'leishmania-tropica-259-20'], 'leishmania-in-a-skin-lesion-scraping', true);
+alias(['plasmodium-257-33', 'plasmodium-257-34', 'plasmodium-259-16', 'plasmodium-falciparum-trophozoites'], 'plasmodium-falciparum-ring-forms-in-red-blood-cells', true);
+alias(['malaria-smear'], 'plasmodium-falciparum-gametocyte-in-a-blood-smear');
+alias(['giant-roundworm-ascaris-259-23', 'giant-roundworm-ascaris-263-20', 'ascaris-larva-hatching', 'ascaris-section', 'ascaris-female-section-200x'], 'ascaris-egg-early-cell-division', true);

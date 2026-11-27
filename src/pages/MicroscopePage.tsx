@@ -58,6 +58,24 @@ function ResetIcon() {
 }
 
 const searchStopWords = new Set(['and','the','of','in','a','an','with','section','sections','slide','slides','و','في','من']);
+const noteTextCache = new Map<string, string>();
+// Text of the study note on a slide (recognize / function / clinical / compare), without the source link, so searches can match note words.
+function noteText(id: string) {
+  const cached = noteTextCache.get(id);
+  if (cached !== undefined) return cached;
+  const note = (clinicalNotes as Record<string, unknown>)[id] ?? (plantNotes as Record<string, unknown>)[id] ?? (animalNotes as Record<string, unknown>)[id];
+  const parts: string[] = [];
+  if (note && typeof note === 'object') {
+    for (const [key, value] of Object.entries(note as Record<string, unknown>)) {
+      if (key === 'source' || key === 'functionLabel') continue;
+      if (typeof value === 'string') parts.push(value);
+      else if (value && typeof value === 'object') for (const inner of Object.values(value as Record<string, unknown>)) if (typeof inner === 'string') parts.push(inner);
+    }
+  }
+  const text = parts.join(' ');
+  noteTextCache.set(id, text);
+  return text;
+}
 function normalizeSearch(value: string) {
   return value.normalize('NFD').replace(/[\u0300-\u036f\u064b-\u065f\u0670\u0640]/g, '').replace(/[أإآٱ]/g, 'ا').toLowerCase().trim();
 }
@@ -148,7 +166,7 @@ export function MicroscopePage() {
     // Score each slide by how many of the typed words it contains. Slides with every word come first; if none has every word, show the slides with the most matching words.
     const scored = pool.filter((sample) => !favoritesOnly || favoriteIds.includes(sample.id)).map((sample) => {
       const dept = departments.find((item) => item.id === sample.department);
-      const haystack = normalizeSearch([sample.id.replace(/-/g, ' '), sample.title.ar, sample.title.en, sample.subtitle.ar, sample.subtitle.en, sample.description.ar, sample.description.en, specimenMedia[sample.id]?.title ?? '', dept?.label.en ?? '', dept?.label.ar ?? ''].join(' '));
+      const haystack = normalizeSearch([sample.id.replace(/-/g, ' '), sample.title.ar, sample.title.en, sample.subtitle.ar, sample.subtitle.en, sample.description.ar, sample.description.en, specimenMedia[sample.id]?.title ?? '', noteText(sample.id), dept?.label.en ?? '', dept?.label.ar ?? ''].join(' '));
       return { sample, score: searchWords.filter((word) => haystack.includes(word)).length };
     });
     const best = Math.max(0, ...scored.map((row) => row.score));
@@ -318,7 +336,7 @@ export function MicroscopePage() {
                 </label>
                 <button type="button" className={`favorites-filter${favoritesOnly ? ' is-active' : ''}`} onClick={() => setFavoritesOnly((current) => !current)} aria-pressed={favoritesOnly}><span aria-hidden="true">★</span>{favoritesOnly ? t('allSamples') : t('favoritesOnly')}</button>
               </div>
-              {subcategoryChoices.length > 0 && (
+              {subcategoryChoices.length > 0 && !searching && (
                 <label className="subcategory-filter">
                   <span>{lang === 'ar' ? 'التصنيف' : 'Category'}</span>
                   <select value={subcategory} onChange={(event) => setSubcategory(event.target.value)}>

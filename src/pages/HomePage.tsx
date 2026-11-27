@@ -112,6 +112,14 @@ export function HomePage() {
             <blockquote dir="ltr" lang="en">"The site is very useful for medical and science students, and it took me back 13 years to my college days."</blockquote>
             <figcaption dir="ltr" lang="en"><b>Dr. Menna</b><span>Clinical laboratory doctor</span></figcaption>
           </figure>
+          <figure className="doctor-quote">
+            <blockquote dir="ltr" lang="en">"Good luck, Ammar. I showed it to more than one person, and they are really happy with the effort you put into the application."</blockquote>
+            <figcaption dir="ltr" lang="en"><b>Dr. Menna</b><span>Clinical laboratory doctor</span></figcaption>
+          </figure>
+          <figure className="doctor-quote">
+            <blockquote dir="ltr" lang="en">"Thank you very much, it is very helpful."</blockquote>
+            <figcaption dir="ltr" lang="en"><b>Dr. Amel Abdelkarim</b><span>Benha University</span></figcaption>
+          </figure>
         </div>
       </section>
 

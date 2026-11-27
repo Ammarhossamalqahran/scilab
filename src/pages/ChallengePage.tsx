@@ -4,8 +4,8 @@ import { usePreferences } from '../app/PreferencesContext';
 import { specimens } from '../data/scientificData';
 import { pickFresh } from '../lib/recentSeen';
 import { specimenMedia } from '../data/specimenMedia';
-import { FramedAvatar } from '../components/FramedAvatar';
-import { fetchBoard, startTicket, submitScore, savedNick, saveNick, photoUrl, type Entry } from '../lib/leaderboardApi';
+import { LeaderboardBoard } from '../components/LeaderboardBoard';
+import { startTicket, submitScore, savedNick, saveNick } from '../lib/leaderboardApi';
 import { recordResult } from '../data/flashcards';
 import { readStats, recordGame, badges, DOCTOR_SCORE, type Stats } from '../data/gameStats';
 
@@ -40,13 +40,9 @@ export function ChallengePage() {
   const [feedback, setFeedback] = useState<{ chosen: string; right: string } | null>(null);
   const ref = useRef({ score: 0, streak: 0, best: 0, correct: 0 });
   const ticketRef = useRef<string | null>(null);
-  const [period, setPeriod] = useState<'week' | 'all'>('week');
-  const [board, setBoard] = useState<Entry[] | null>(null);
-  const [boardDone, setBoardDone] = useState(false);
   const [nick, setNick] = useState(savedNick);
   const [submitState, setSubmitState] = useState<'idle' | 'sending' | 'done' | 'taken' | 'badnick' | 'limited' | 'failed' | 'noticket'>('idle');
   const [weekRank, setWeekRank] = useState<number | null>(null);
-  useEffect(() => { let live = true; fetchBoard(period).then((b) => { if (live) { setBoard(b); setBoardDone(true); } }); return () => { live = false; }; }, [period, submitState]);
 
   const start = useCallback(() => {
     ref.current = { score: 0, streak: 0, best: 0, correct: 0 };
@@ -149,27 +145,7 @@ export function ChallengePage() {
         </div>
       )}
 
-      {!boardDone && (
-        <section className="chal-board" aria-busy="true" aria-label={ar ? 'بنحمّل لوحة الشرف' : 'Loading the leaderboard'}>
-          <div className="skeleton-line skeleton-title" />
-          <div className="skeleton-rows">{[0, 1, 2, 3, 4].map((i) => <div key={i} className="skeleton-line" />)}</div>
-        </section>
-      )}
-      {board !== null && (
-        <section className="chal-board">
-          <div className="chal-board-head">
-            <h2 className="chal-sub">{ar ? 'لوحة الشرف' : 'Leaderboard'}</h2>
-            <div className="chal-tabs">
-              <button className={period === 'week' ? 'is-active' : ''} onClick={() => setPeriod('week')}>{ar ? 'الأسبوع' : 'This week'}</button>
-              <button className={period === 'all' ? 'is-active' : ''} onClick={() => setPeriod('all')}>{ar ? 'كل الأوقات' : 'All time'}</button>
-            </div>
-          </div>
-          {board.length === 0 ? <p className="chal-hint">{ar ? 'لسه محدش سجل. كن الأول!' : 'No scores yet. Be the first!'}</p> : (
-            <ol className="chal-rows">{board.map((e, i) => <li key={`${e.nick}-${i}`} className={`${i === 0 ? 'is-doctor' : ''}${e.owner ? ' is-owner' : ''}`.trim()}><span>{i + 1}</span><b><span className="lb-framed"><FramedAvatar frame={e.frame || 'gold'} id={e.avatar} photo={photoUrl(e.photo)} size={34} full /></span>{e.nick}{e.owner ? <svg className="owner-badge" viewBox="0 0 24 24" width="18" height="18" role="img" aria-label={ar ? 'مالك الموقع' : 'Site owner'}><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z" fill="#d4a017" stroke="#8a6508" strokeWidth="1" /><path d="M12 7l1.6 3.4 3.6.4-2.7 2.5.8 3.6L12 15l-3.3 1.9.8-3.6L6.8 10.8l3.6-.4z" fill="#fff6d6" /></svg> : null}</b><em>{e.score}</em></li>)}</ol>
-          )}
-          <p className="chal-hint">{ar ? 'النقط بتتراجع على السيرفر قبل ما تظهر.' : 'Scores are checked on the server before they appear.'}</p>
-        </section>
-      )}
+      <LeaderboardBoard mode="sprint60" refreshKey={submitState} />
 
       <h2 className="chal-sub">{ar ? 'الشارات' : 'Badges'}</h2>
       <div className="chal-badges">

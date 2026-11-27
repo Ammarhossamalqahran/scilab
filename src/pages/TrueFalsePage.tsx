@@ -5,9 +5,11 @@ import { specimens } from '../data/scientificData';
 import { pickFresh } from '../lib/recentSeen';
 import { specimenMedia } from '../data/specimenMedia';
 import { recordResult } from '../data/flashcards';
+import { LeaderboardBoard } from '../components/LeaderboardBoard';
+import { startTicket, submitScore, savedNick, saveNick } from '../lib/leaderboardApi';
 
-// True/false sprint: a slide and a name, is the name right? 45 seconds. Best score stays on this device
-// (no leaderboard for this mode yet, the server only accepts scores from the 60-second challenge).
+// True/false sprint: a slide and a name, is the name right? 45 seconds. Its own leaderboard: the server issues a
+// ticket for this mode and checks the score against this mode's rules (see worker/leaderboard.ts).
 const pool = specimens.filter((s) => specimenMedia[s.id]);
 const SECONDS = 45;
 const KEY = 'scilab-tf-stats';
@@ -37,9 +39,26 @@ export function TrueFalsePage() {
   const [streak, setStreak] = useState(0);
   const [correct, setCorrect] = useState(0);
   const [fb, setFb] = useState<{ ok: boolean; right: string } | null>(null);
-  const ref = useRef({ score: 0, streak: 0, correct: 0 });
+  const ref = useRef({ score: 0, streak: 0, correct: 0, streakBest: 0 });
+  const ticketRef = useRef<string | null>(null);
+  const [nick, setNick] = useState(savedNick);
+  const [sub, setSub] = useState<'idle' | 'sending' | 'done' | 'taken' | 'badnick' | 'limited' | 'failed' | 'noticket'>('idle');
+  const [rank, setRank] = useState<number | null>(null);
 
-  function start() { ref.current = { score: 0, streak: 0, correct: 0 }; setScore(0); setStreak(0); setCorrect(0); setFb(null); setLeft(SECONDS); setQ(makeQ(lang)); setPhase('play'); }
+  function start() { ref.current = { score: 0, streak: 0, correct: 0, streakBest: 0 }; setScore(0); setStreak(0); setCorrect(0); setFb(null); setLeft(SECONDS); setQ(makeQ(lang)); setSub('idle'); ticketRef.current = null; void startTicket('tf').then((t) => { ticketRef.current = t; }); setPhase('play'); }
+
+  async function submit() {
+    const clean = nick.trim().replace(/\s+/g, ' ');
+    if (!ticketRef.current) { setSub('noticket'); return; }
+    setSub('sending');
+    const r = await submitScore(ticketRef.current, clean, score, correct, ref.current.streakBest);
+    if (r.ok) { saveNick(clean); setRank(r.weekRank); setSub('done'); ticketRef.current = null; }
+    else setSub(r.reason === 'nick_taken' ? 'taken' : r.reason === 'bad_nick' ? 'badnick' : r.reason === 'rate_limited' ? 'limited' : 'failed');
+  }
+  useEffect(() => {
+    if (phase === 'over' && score > 0 && savedNick().length >= 2 && ticketRef.current) void submit();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase]);
 
   useEffect(() => {
     if (phase !== 'play') return;
@@ -64,7 +83,7 @@ export function TrueFalsePage() {
     const right = specimens.find((s) => s.id === q.id)!.title[lang];
     recordResult(q.id, ok);
     const r = ref.current;
-    if (ok) { r.streak += 1; r.correct += 1; r.score += 5 + Math.min(r.streak - 1, 5); } else { r.streak = 0; r.score = Math.max(0, r.score - 3); }
+    if (ok) { r.streak += 1; r.streakBest = Math.max(r.streakBest, r.streak); r.correct += 1; r.score += 5 + Math.min(r.streak - 1, 5); } else { r.streak = 0; r.score = Math.max(0, r.score - 3); }
     setScore(r.score); setStreak(r.streak); setCorrect(r.correct);
     setFb({ ok, right });
     window.setTimeout(() => { setFb(null); setQ((cur) => makeQ(lang, cur?.id)); }, ok ? 300 : 1000);
@@ -74,7 +93,7 @@ export function TrueFalsePage() {
     <div className="page page-challenge">
       <div className="eyebrow">{ar ? 'تحدي' : 'CHALLENGE'}</div>
       <h1 className="chal-title">{ar ? 'صح ولا غلط' : 'True or false sprint'}</h1>
-      <p className="chal-lead">{ar ? `شريحة واسم: الاسم صح ولا غلط؟ ${SECONDS} ثانية. الغلط بينقص 3 نقط. أحسن نتيجة بتتحفظ على جهازك بس.` : `A slide and a name: is the name right? ${SECONDS} seconds. A wrong answer costs 3 points. Your best is kept on this device only.`}</p>
+      <p className="chal-lead">{ar ? `شريحة واسم: الاسم صح ولا غلط؟ ${SECONDS} ثانية. الغلط بينقص 3 نقط. ولوحة شرف خاصة بالتحدي ده.` : `A slide and a name: is the name right? ${SECONDS} seconds. A wrong answer costs 3 points. It has its own leaderboard.`}</p>
       {phase === 'idle' && (
         <div className="chal-panel">
           <p>{ar ? `أحسن نتيجة ليك: ${stats.best} · ألعاب: ${stats.games}` : `Your best: ${stats.best} · games played: ${stats.games}`}</p>
@@ -101,10 +120,24 @@ export function TrueFalsePage() {
         <div className="chal-panel">
           <h2>{ar ? `نتيجتك: ${score}` : `Your score: ${score}`}</h2>
           <p>{ar ? `${correct} صح · أحسن نتيجة ${stats.best}` : `${correct} correct · personal best ${stats.best}`}</p>
+          {score > 0 && sub !== 'done' && (
+            <div className="chal-submit">
+              <input value={nick} maxLength={16} onChange={(e) => { setNick(e.target.value); if (sub !== 'sending') setSub('idle'); }} placeholder={ar ? 'اسمك (بيظهر في لوحة الشرف)' : 'Your name (shown on the leaderboard)'} />
+              <button className="button" onClick={submit} disabled={nick.trim().length < 2 || sub === 'sending'}>{ar ? 'سجّل في لوحة الشرف' : 'Post to leaderboard'}</button>
+              {sub === 'taken' && <small>{ar ? 'الاسم ده مأخوذ. جرب اسم تاني.' : 'That nickname is taken. Try another.'}</small>}
+              {sub === 'badnick' && <small>{ar ? 'الاسم لازم 2 لـ 16 حرف أو رقم.' : 'Use 2 to 16 letters or numbers.'}</small>}
+              {sub === 'limited' && <small>{ar ? 'حاولت كتير. جرب بعد شوية.' : 'Too many tries. Try again later.'}</small>}
+              {sub === 'sending' && <small className="chal-ok">{ar ? 'بنسجل نتيجتك...' : 'Posting your score...'}</small>}
+              {sub === 'noticket' && <small>{ar ? 'ماقدرناش نوصل للسيرفر. النتيجة محفوظة على جهازك. ابدأ جولة جديدة.' : 'Could not reach the server. Your score is kept on this device. Start a new round.'}</small>}
+              {sub === 'failed' && <small>{ar ? 'ماقدرناش نسجل النتيجة. جرب تاني.' : 'Could not post the score. Try again.'}</small>}
+            </div>
+          )}
+          {sub === 'done' && <p className="chal-taunt">{ar ? `اتسجلت! ترتيبك الأسبوع ده: ${rank ?? '-'}` : `Posted! Your rank this week: ${rank ?? '-'}`}</p>}
           <button className="button button-primary" onClick={start}>{ar ? 'العب تاني' : 'Play again'}</button>
           <p><Link to="/challenge">{ar ? 'تحدي الـ 60 ثانية' : '60-second challenge'}</Link></p>
         </div>
       )}
+      <LeaderboardBoard mode="tf" refreshKey={sub} />
     </div>
   );
 }

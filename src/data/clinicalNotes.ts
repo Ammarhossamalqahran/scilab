@@ -34,11 +34,13 @@ const falciparumRing: ClinicalNote = {
 import { hematologyNotes } from './clinicalNotesHematology';
 import { parasitologyNotes } from './clinicalNotesParasitology';
 import { microbiologyNotes } from './clinicalNotesMicrobiology';
+import { histologyNotes } from './clinicalNotesHistology';
 
 export const clinicalNotes: Record<string, ClinicalNote> = {
   ...hematologyNotes,
   ...parasitologyNotes,
   ...microbiologyNotes,
+  ...histologyNotes,
   'ascaris-egg-early-cell-division': ascarisFertile,
   'ascaris-infertile-egg': ascarisInfertile,
   'whipworm-trichuris-trichiura-egg': whipworm,

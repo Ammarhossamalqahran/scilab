@@ -5,6 +5,7 @@ import { getAdminSession, clearAdminSession } from '../lib/adminSession';
 import { recordVisit, setOwnerFrames } from '../data/frames';
 import { playerId } from '../lib/leaderboardApi';
 import { trySilentOwner } from '../lib/google';
+import { adoptServerFrame } from '../lib/frameSync';
 import { LogoMark } from './LogoMark';
 import { FeedbackButton } from './FeedbackButton';
 import { InstallButton } from './InstallButton';
@@ -54,7 +55,7 @@ export function AppShell() {
   const { locale, setLocale, theme, toggleTheme, t } = usePreferences();
   const { pathname } = useLocation();
   // The tab shows only after the server confirms the stored session is a live owner session (never just because a value is stored).
-  useEffect(() => { recordVisit(); }, []); // visit streak for avatar frames
+  useEffect(() => { recordVisit(); void adoptServerFrame(); window.addEventListener('scilab-admin-session', () => void adoptServerFrame(true)); }, []); // visit streak for avatar frames
   const [adminLink, setAdminLink] = useState(false);
   useEffect(() => {
     const on = () => {

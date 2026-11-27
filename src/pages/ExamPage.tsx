@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { pickFresh } from '../lib/recentSeen';
 import { useTestGuard } from '../lib/useTestGuard';
 import { TestGuardNotice } from '../components/TestGuardNotice';
 import { Link } from 'react-router-dom';
@@ -39,8 +40,7 @@ function shuffle<T,>(items: T[]): T[] {
 }
 
 function makeQuestion(previousId?: string): ExamQuestion {
-  const pool = specimens.filter((sample) => sample.id !== previousId);
-  const answer = pool[Math.floor(Math.random() * pool.length)] ?? specimens[0];
+  const answer = pickFresh(specimens, 'exam', previousId);
   const distractors = shuffle(specimens.filter((sample) => sample.id !== answer.id)).slice(0, 3);
   return { specimenId: answer.id, choices: shuffle([answer.id, ...distractors.map((sample) => sample.id)]) };
 }

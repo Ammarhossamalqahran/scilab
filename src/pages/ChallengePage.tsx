@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { usePreferences } from '../app/PreferencesContext';
 import { specimens } from '../data/scientificData';
+import { pickFresh } from '../lib/recentSeen';
 import { specimenMedia } from '../data/specimenMedia';
 import { Avatar } from '../data/avatars';
 import { fetchBoard, startTicket, submitScore, savedNick, saveNick, photoUrl, type Entry } from '../lib/leaderboardApi';
@@ -14,8 +15,7 @@ type Q = { id: string; options: string[] };
 
 function pick<T>(items: T[]): T { return items[Math.floor(Math.random() * items.length)]; }
 function makeQuestion(lang: 'en' | 'ar', last?: string): Q {
-  let target = pick(pool);
-  for (let i = 0; i < 5 && target.id === last; i++) target = pick(pool);
+  const target = pickFresh(pool, 'challenge', last); // slides not seen lately come first, across rounds
   const name = (s: { title: { en: string; ar: string } }) => s.title[lang];
   const same = pool.filter((s) => s.department === target.department && name(s) !== name(target));
   const any = pool.filter((s) => name(s) !== name(target));

@@ -7,7 +7,7 @@ import { specimenMedia } from '../data/specimenMedia';
 const pool = specimens.filter((s) => specimenMedia[s.id]);
 const byId = new Map(pool.map((s) => [s.id, s]));
 const departmentLabel: Record<string, { en: string; ar: string }> = {
-  hematology: { en: 'Blood cells', ar: 'خلايا الدم' }, histology: { en: 'Tissues', ar: 'الأنسجة' }, microbiology: { en: 'Microorganisms', ar: 'كائنات دقيقة' },
+  parasitology: { en: 'Parasitology', ar: 'طفيليات' }, hematology: { en: 'Blood cells', ar: 'خلايا الدم' }, histology: { en: 'Tissues', ar: 'الأنسجة' }, microbiology: { en: 'Microorganisms', ar: 'كائنات دقيقة' },
   botany: { en: 'Plant slides', ar: 'شرائح نباتية' }, 'aquatic-life': { en: 'Freshwater life', ar: 'كائنات المياه العذبة' }, zoology: { en: 'Zoology', ar: 'علم الحيوان' }, genetics: { en: 'Cell division & genetics', ar: 'الانقسام الخلوي والوراثة' },
 };
 

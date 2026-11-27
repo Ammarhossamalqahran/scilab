@@ -11,6 +11,7 @@ const departments: { id: DepartmentId | 'all' | 'weak'; en: string; ar: string }
   { id: 'hematology', en: 'Blood cells', ar: 'خلايا الدم' },
   { id: 'histology', en: 'Tissues', ar: 'الأنسجة' },
   { id: 'microbiology', en: 'Microorganisms', ar: 'كائنات دقيقة' },
+  { id: 'parasitology', en: 'Parasitology', ar: 'طفيليات' },
   { id: 'botany', en: 'Plant slides', ar: 'شرائح نباتية' },
   { id: 'aquatic-life', en: 'Freshwater life', ar: 'كائنات المياه العذبة' },
   { id: 'zoology', en: 'Zoology', ar: 'علم الحيوان' },

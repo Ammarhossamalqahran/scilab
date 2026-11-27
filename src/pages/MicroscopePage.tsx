@@ -13,6 +13,7 @@ const departments: { id: DepartmentId; label: { en: string; ar: string } }[] = [
   { id: 'hematology', label: { en: 'Blood cells', ar: 'خلايا الدم' } },
   { id: 'histology', label: { en: 'Tissues', ar: 'الأنسجة' } },
   { id: 'microbiology', label: { en: 'Microorganisms', ar: 'كائنات دقيقة' } },
+  { id: 'parasitology', label: { en: 'Parasitology', ar: 'طفيليات' } },
   { id: 'botany', label: { en: 'Plant slides', ar: 'شرائح نباتية' } },
   { id: 'aquatic-life', label: { en: 'Freshwater life', ar: 'كائنات المياه العذبة' } },
   { id: 'zoology', label: { en: 'Zoology', ar: 'علم الحيوان' } },
@@ -66,14 +67,15 @@ export function MicroscopePage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const requestedSpecimen = specimens.find((sample) => sample.id === searchParams.get('slide'));
   const [department, setDepartment] = useState<DepartmentId>(requestedSpecimen?.department ?? 'hematology');
-  const availableSpecimens = useMemo(() => specimens.filter((sample) => sample.department === department), [department]);
+  const availableSpecimens = useMemo(() => specimens.filter((sample) => sample.department === department).sort((a, b) => a.title[lang].localeCompare(b.title[lang], lang)), [department, lang]);
   const [selectedByDepartment, setSelectedByDepartment] = useState<Record<DepartmentId, string>>({
     hematology: requestedSpecimen?.department === 'hematology' ? requestedSpecimen.id : 'blood-smear',
-    histology: requestedSpecimen?.department === 'histology' ? requestedSpecimen.id : 'onion-epidermis',
+    histology: requestedSpecimen?.department === 'histology' ? requestedSpecimen.id : 'compact-bone',
     microbiology: requestedSpecimen?.department === 'microbiology' ? requestedSpecimen.id : 'budding-yeast',
     botany: requestedSpecimen?.department === 'botany' ? requestedSpecimen.id : 'dicot-leaf',
     'aquatic-life': requestedSpecimen?.department === 'aquatic-life' ? requestedSpecimen.id : 'daphnia',
-    zoology: requestedSpecimen?.department === 'zoology' ? requestedSpecimen.id : 'ascaris-section',
+    parasitology: requestedSpecimen?.department === 'parasitology' ? requestedSpecimen.id : 'plasmodium-257-33',
+    zoology: requestedSpecimen?.department === 'zoology' ? requestedSpecimen.id : 'earthworm-section',
     genetics: requestedSpecimen?.department === 'genetics' ? requestedSpecimen.id : '',
   });
   const selectedSpecimenId = selectedByDepartment[department];

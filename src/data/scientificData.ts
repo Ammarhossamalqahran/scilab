@@ -1,5 +1,5 @@
 export type Bilingual = { en: string; ar: string };
-export type DepartmentId = 'hematology' | 'histology' | 'microbiology' | 'botany' | 'aquatic-life' | 'zoology' | 'genetics';
+export type DepartmentId = 'hematology' | 'histology' | 'microbiology' | 'botany' | 'aquatic-life' | 'zoology' | 'genetics' | 'parasitology';
 export type SpecimenKind = 'blood' | 'onion' | 'yeast' | 'leaf' | 'cheek' | 'muscle' | 'bacteria' | 'pond' | 'stoma' | 'root-tip' | 'pollen' | 'paramecium' | 'euglena' | 'diatom' | 'spirogyra' | 'fern' | 'daphnia' | 'hydra' | 'bone' | 'cartilage' | 'cardiac-muscle' | 'amoeba' | 'rotifer' | 'hyaline-cartilage' | 'adipose' | 'smooth-muscle' | 'lung' | 'kidney' | 'pine-needle' | 'anther' | 'blood-sickle' | 'blood-target' | 'blood-eosinophil' | 'reticulocyte' | 'malaria' | 'plant-section' | 'zoology-section' | 'tissue-section';
 
 export type ScientificReference = {
@@ -433,7 +433,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [...references.malariaSmear],
   },
   {
-    id: 'onion-epidermis', department: 'histology', kind: 'onion',
+    id: 'onion-epidermis', department: 'botany', kind: 'onion',
     title: { en: 'Onion bulb epidermis', ar: 'بشرة بصلة البصل' },
     subtitle: { en: 'Single-layer plant tissue', ar: 'نسيج نباتي أحادي الطبقة' },
     description: { en: 'A thin epidermal peel used to study plant-cell boundaries and selected internal structures.', ar: 'قشرة بشرة رقيقة تُستخدم لدراسة حدود الخلايا النباتية وبعض تراكيبها الداخلية.' },
@@ -810,7 +810,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-medicago-stem', title: "Plant stem (255 05) Cross-section of stem of Medicago.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Plant_stem_(255_05)_Cross-section_of_stem_of_Medicago.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'ascaris-section', department: 'zoology', kind: 'zoology-section',
+    id: 'ascaris-section', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Ascaris cross-section", ar: "مقطع عرضي في الأسكارس" },
     subtitle: { en: "Giant roundworm \u00b7 light micrograph", ar: "الدودة الأسطوانية العملاقة · صورة بالمجهر الضوئي" },
     description: { en: "A transverse section of a giant roundworm showing the body wall, intestine and coiled reproductive tubes.", ar: "مقطع مستعرض في دودة أسطوانية عملاقة يظهر جدار الجسم والأمعاء والأنابيب التناسلية الملتفة." },
@@ -843,7 +843,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-leech-section', title: "Leech (265 10) Cross-section of leech (Hirudinea).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Leech_(265_10)_Cross-section_of_leech_(Hirudinea).jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'tapeworm-section', department: 'zoology', kind: 'zoology-section',
+    id: 'tapeworm-section', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Tapeworm body section", ar: "مقطع في جسم الدودة الشريطية" },
     subtitle: { en: "Cestoda \u00b7 light micrograph", ar: "الديدان الشريطية · صورة بالمجهر الضوئي" },
     description: { en: "A stained section through the body of a tapeworm.", ar: "مقطع مصبوغ في جسم دودة شريطية." },
@@ -1184,7 +1184,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-cultured-cells-261-20', title: "Cell culture (fibroblasts) (261 20) Fibroblasts (metaphase, anaphase).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Cell_culture_(fibroblasts)_(261_20)_Fibroblasts_(metaphase,_anaphase).jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'trematode-cercaria-259-21', department: 'zoology', kind: 'zoology-section',
+    id: 'trematode-cercaria-259-21', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Trematode cercaria \u00b7 Cercaria of trematode", ar: "سركاريا ديدان ورقية" },
     subtitle: { en: "Reischig archive \u00b7 slide 259 21", ar: "أرشيف Reischig · شريحة 259 21" },
     description: { en: "Trematode cercaria: Cercaria of trematode. One field from a catalogued slide in the Reischig archive.", ar: "سركاريا ديدان ورقية. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -1338,7 +1338,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-duodenum-254-14', title: "Duodenum (254 14).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Duodenum_(254_14).jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'entamoeba-histolytica-251-32', department: 'microbiology', kind: 'zoology-section',
+    id: 'entamoeba-histolytica-251-32', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Entamoeba histolytica", ar: "أميبا Entamoeba histolytica" },
     subtitle: { en: "Reischig archive \u00b7 slide 251 32", ar: "أرشيف Reischig · شريحة 251 32" },
     description: { en: "Entamoeba histolytica. One field from a catalogued slide in the Reischig archive.", ar: "أميبا Entamoeba histolytica. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -1448,7 +1448,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-germinating-pollen-255-27', title: "Germination of pollen (255 27) Total preparation (pollen tube visible).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Germination_of_pollen_(255_27)_Total_preparation_(pollen_tube_visible).jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'giant-roundworm-ascaris-259-23', department: 'zoology', kind: 'zoology-section',
+    id: 'giant-roundworm-ascaris-259-23', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Giant roundworm (Ascaris) \u00b7 Eggs", ar: "الدودة الأسطوانية العملاقة · بيض" },
     subtitle: { en: "Reischig archive \u00b7 slide 259 23", ar: "أرشيف Reischig · شريحة 259 23" },
     description: { en: "Giant roundworm (Ascaris): Eggs. One field from a catalogued slide in the Reischig archive.", ar: "الدودة الأسطوانية العملاقة: بيض. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -1459,7 +1459,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-giant-roundworm-ascaris-259-23', title: "Giant roundworm (259 23) Eggs.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Giant_roundworm_(259_23)_Eggs.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'giardia-intestinalis-259-17', department: 'microbiology', kind: 'zoology-section',
+    id: 'giardia-intestinalis-259-17', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Giardia intestinalis", ar: "جيارديا Giardia intestinalis" },
     subtitle: { en: "Reischig archive \u00b7 slide 259 17", ar: "أرشيف Reischig · شريحة 259 17" },
     description: { en: "Giardia intestinalis. One field from a catalogued slide in the Reischig archive.", ar: "جيارديا Giardia intestinalis. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -1679,7 +1679,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-leech-section-26-2-29', title: "Leech (26 2 29) Cross-section of leech (Hirudinea).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Leech_(26_2_29)_Cross-section_of_leech_(Hirudinea).jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'leishmania-tropica-259-19', department: 'microbiology', kind: 'zoology-section',
+    id: 'leishmania-tropica-259-19', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Leishmania tropica \u00b7 Cultured", ar: "طفيل Leishmania tropica · مزروع" },
     subtitle: { en: "Reischig archive \u00b7 slide 259 19", ar: "أرشيف Reischig · شريحة 259 19" },
     description: { en: "Leishmania tropica: Cultured. One field from a catalogued slide in the Reischig archive.", ar: "طفيل Leishmania tropica: مزروع. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -1954,7 +1954,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-plant-stem-section-248-01', title: "Plant stem (248 01) Cross-section of stem of Berberis; autofluorescence.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Plant_stem_(248_01)_Cross-section_of_stem_of_Berberis;_autofluorescence.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'plasmodium-257-33', department: 'microbiology', kind: 'zoology-section',
+    id: 'plasmodium-257-33', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Plasmodium", ar: "طفيل البلازموديوم" },
     subtitle: { en: "Reischig archive \u00b7 slide 257 33", ar: "أرشيف Reischig · شريحة 257 33" },
     description: { en: "Plasmodium. One field from a catalogued slide in the Reischig archive.", ar: "طفيل البلازموديوم. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -2251,7 +2251,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-swan-mussel-glochidium-263-21', title: "Swan mussel (263 21) Glochidium (larva).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Swan_mussel_(263_21)_Glochidium_(larva).jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'tapeworm-26-2-14', department: 'zoology', kind: 'zoology-section',
+    id: 'tapeworm-26-2-14', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Tapeworm \u00b7 Cross-section", ar: "دودة شريطية · مقطع عرضي" },
     subtitle: { en: "Reischig archive \u00b7 slide 26 2 14", ar: "أرشيف Reischig · شريحة 26 2 14" },
     description: { en: "Tapeworm: Cross-section. One field from a catalogued slide in the Reischig archive.", ar: "دودة شريطية: مقطع عرضي. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -2328,7 +2328,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-tooth-248-15', title: "Tooth (248 15) Histologic section of tooth.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Tooth_(248_15)_Histologic_section_of_tooth.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'trematode-fluke-265-18', department: 'zoology', kind: 'zoology-section',
+    id: 'trematode-fluke-265-18', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Trematode (fluke) \u00b7 Dicrocoelium lanceolatum", ar: "دودة ورقية (ترياتود)" },
     subtitle: { en: "Reischig archive \u00b7 slide 265 18", ar: "أرشيف Reischig · شريحة 265 18" },
     description: { en: "Trematode (fluke): Dicrocoelium lanceolatum. One field from a catalogued slide in the Reischig archive.", ar: "دودة ورقية (ترياتود). مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -2339,7 +2339,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-trematode-fluke-265-18', title: "Trematode (265 18) Dicrocoelium lanceolatum.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Trematode_(265_18)_Dicrocoelium_lanceolatum.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'trichinella-in-muscle-265-16', department: 'zoology', kind: 'zoology-section',
+    id: 'trichinella-in-muscle-265-16', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Trichinella in muscle \u00b7 In skeletal (striated) muscle tissue", ar: "تريكينيلا في العضلة" },
     subtitle: { en: "Reischig archive \u00b7 slide 265 16", ar: "أرشيف Reischig · شريحة 265 16" },
     description: { en: "Trichinella in muscle: In skeletal (striated) muscle tissue. One field from a catalogued slide in the Reischig archive.", ar: "تريكينيلا في العضلة. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -2350,7 +2350,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-trichinella-in-muscle-265-16', title: "Trichinella spiralis in muscle tissue (265 16) In skeletal (striated) muscle tissue.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Trichinella_spiralis_in_muscle_tissue_(265_16)_In_skeletal_(striated)_muscle_tissue.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'trichomonas-251-29', department: 'microbiology', kind: 'zoology-section',
+    id: 'trichomonas-251-29', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Trichomonas \u00b7 Cultured", ar: "طفيل Trichomonas · مزروع" },
     subtitle: { en: "Reischig archive \u00b7 slide 251 29", ar: "أرشيف Reischig · شريحة 251 29" },
     description: { en: "Trichomonas: Cultured. One field from a catalogued slide in the Reischig archive.", ar: "طفيل Trichomonas: مزروع. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -2372,7 +2372,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-trichophyton-mentagrophytes-257-18', title: "Trichophyton mentagrophytes (257 18) Cultured.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Trichophyton_mentagrophytes_(257_18)_Cultured.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'tritrichomonas-foetus-259-26', department: 'microbiology', kind: 'zoology-section',
+    id: 'tritrichomonas-foetus-259-26', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Tritrichomonas foetus \u00b7 Cultured", ar: "Tritrichomonas foetus · مزروع" },
     subtitle: { en: "Reischig archive \u00b7 slide 259 26", ar: "أرشيف Reischig · شريحة 259 26" },
     description: { en: "Tritrichomonas foetus: Cultured. One field from a catalogued slide in the Reischig archive.", ar: "Tritrichomonas foetus: مزروع. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -2383,7 +2383,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-tritrichomonas-foetus-259-26', title: "Tritrichomonas foetus (259 26) Cultured.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Tritrichomonas_foetus_(259_26)_Cultured.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'trypanosoma-248-09', department: 'microbiology', kind: 'zoology-section',
+    id: 'trypanosoma-248-09', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Trypanosoma \u00b7 Trypanosoma equiperdum", ar: "طفيل التريبانوسوما" },
     subtitle: { en: "Reischig archive \u00b7 slide 248 09", ar: "أرشيف Reischig · شريحة 248 09" },
     description: { en: "Trypanosoma: Trypanosoma equiperdum. One field from a catalogued slide in the Reischig archive.", ar: "طفيل التريبانوسوما. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -2614,7 +2614,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-cultured-cells-261-16', title: "Cell culture (HeLa cells) (261 16) Cell culture (HeLa cells) - metaphase, prophase.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Cell_culture_(HeLa_cells)_(261_16)_Cell_culture_(HeLa_cells)_-_metaphase,_prophase.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'trematode-cercaria-259-22', department: 'zoology', kind: 'zoology-section',
+    id: 'trematode-cercaria-259-22', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Trematode cercaria", ar: "سركاريا ديدان ورقية" },
     subtitle: { en: "Reischig archive \u00b7 slide 259 22", ar: "أرشيف Reischig · شريحة 259 22" },
     description: { en: "Trematode cercaria. One field from a catalogued slide in the Reischig archive.", ar: "سركاريا ديدان ورقية. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -2746,7 +2746,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-foraminifera-265-36', title: "Foraminifera (265 36) Various.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Foraminifera_(265_36)_Various.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'giant-roundworm-ascaris-263-20', department: 'zoology', kind: 'zoology-section',
+    id: 'giant-roundworm-ascaris-263-20', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Giant roundworm (Ascaris) \u00b7 Cross-section of uterus with eggs", ar: "الدودة الأسطوانية العملاقة" },
     subtitle: { en: "Reischig archive \u00b7 slide 263 20", ar: "أرشيف Reischig · شريحة 263 20" },
     description: { en: "Giant roundworm (Ascaris): Cross-section of uterus with eggs. One field from a catalogued slide in the Reischig archive.", ar: "الدودة الأسطوانية العملاقة. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -2757,7 +2757,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-giant-roundworm-ascaris-263-20', title: "Giant roundworm (263 20) Cross-section of uterus with eggs.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Giant_roundworm_(263_20)_Cross-section_of_uterus_with_eggs.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'giardia-intestinalis-259-18', department: 'microbiology', kind: 'zoology-section',
+    id: 'giardia-intestinalis-259-18', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Giardia intestinalis", ar: "جيارديا Giardia intestinalis" },
     subtitle: { en: "Reischig archive \u00b7 slide 259 18", ar: "أرشيف Reischig · شريحة 259 18" },
     description: { en: "Giardia intestinalis. One field from a catalogued slide in the Reischig archive.", ar: "جيارديا Giardia intestinalis. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -2867,7 +2867,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-leaf-stalk-petiole-255-25', title: "Leaf stalk (255 25) Cross-section Syringa vulgaris.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Leaf_stalk_(255_25)_Cross-section_Syringa_vulgaris.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'leishmania-tropica-259-20', department: 'microbiology', kind: 'zoology-section',
+    id: 'leishmania-tropica-259-20', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Leishmania tropica \u00b7 Cultured", ar: "طفيل Leishmania tropica · مزروع" },
     subtitle: { en: "Reischig archive \u00b7 slide 259 20", ar: "أرشيف Reischig · شريحة 259 20" },
     description: { en: "Leishmania tropica: Cultured. One field from a catalogued slide in the Reischig archive.", ar: "طفيل Leishmania tropica: مزروع. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -2999,7 +2999,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-plant-stem-section-248-02', title: "Plant stem (248 02) Aristolochia stem cross-section; visualised by fluorescence.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Plant_stem_(248_02)_Aristolochia_stem_cross-section;_visualised_by_fluorescence.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'plasmodium-257-34', department: 'microbiology', kind: 'zoology-section',
+    id: 'plasmodium-257-34', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Plasmodium", ar: "طفيل البلازموديوم" },
     subtitle: { en: "Reischig archive \u00b7 slide 257 34", ar: "أرشيف Reischig · شريحة 257 34" },
     description: { en: "Plasmodium. One field from a catalogued slide in the Reischig archive.", ar: "طفيل البلازموديوم. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -3142,7 +3142,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-swan-mussel-glochidium-263-22', title: "Swan mussel (263 22) Glochidium (larva).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Swan_mussel_(263_22)_Glochidium_(larva).jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'tapeworm-265-06', department: 'zoology', kind: 'zoology-section',
+    id: 'tapeworm-265-06', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Tapeworm \u00b7 Body segment", ar: "دودة شريطية" },
     subtitle: { en: "Reischig archive \u00b7 slide 265 06", ar: "أرشيف Reischig · شريحة 265 06" },
     description: { en: "Tapeworm: Body segment. One field from a catalogued slide in the Reischig archive.", ar: "دودة شريطية. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -3164,7 +3164,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-testis-26-2-15', title: "Testicles (26 2 15) Testicles cross-section (mouse).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Testicles_(26_2_15)_Testicles_cross-section_(mouse).jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'trematode-fluke-265-32', department: 'zoology', kind: 'zoology-section',
+    id: 'trematode-fluke-265-32', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Trematode (fluke) \u00b7 Eggs in liver", ar: "دودة ورقية (ترياتود)" },
     subtitle: { en: "Reischig archive \u00b7 slide 265 32", ar: "أرشيف Reischig · شريحة 265 32" },
     description: { en: "Trematode (fluke): Eggs in liver. One field from a catalogued slide in the Reischig archive.", ar: "دودة ورقية (ترياتود). مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -3186,7 +3186,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-trichophyton-mentagrophytes-257-19', title: "Trichophyton mentagrophytes (257 19) From a microculture and an infected hair.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Trichophyton_mentagrophytes_(257_19)_From_a_microculture_and_an_infected_hair.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'tritrichomonas-foetus-259-27', department: 'microbiology', kind: 'zoology-section',
+    id: 'tritrichomonas-foetus-259-27', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Tritrichomonas foetus \u00b7 Cultured", ar: "Tritrichomonas foetus · مزروع" },
     subtitle: { en: "Reischig archive \u00b7 slide 259 27", ar: "أرشيف Reischig · شريحة 259 27" },
     description: { en: "Tritrichomonas foetus: Cultured. One field from a catalogued slide in the Reischig archive.", ar: "Tritrichomonas foetus: مزروع. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -3197,7 +3197,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-tritrichomonas-foetus-259-27', title: "Tritrichomonas foetus (259 27) Cultured.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Tritrichomonas_foetus_(259_27)_Cultured.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'trypanosoma-251-30', department: 'microbiology', kind: 'zoology-section',
+    id: 'trypanosoma-251-30', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Trypanosoma", ar: "طفيل التريبانوسوما" },
     subtitle: { en: "Reischig archive \u00b7 slide 251 30", ar: "أرشيف Reischig · شريحة 251 30" },
     description: { en: "Trypanosoma. One field from a catalogued slide in the Reischig archive.", ar: "طفيل التريبانوسوما. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -3516,7 +3516,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-plant-stem-section-248-19', title: "Plant stem (248 19) Longitudal tangential section - woody stem.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Plant_stem_(248_19)_Longitudal_tangential_section_-_woody_stem.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'plasmodium-259-16', department: 'microbiology', kind: 'zoology-section',
+    id: 'plasmodium-259-16', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Plasmodium", ar: "طفيل البلازموديوم" },
     subtitle: { en: "Reischig archive \u00b7 slide 259 16", ar: "أرشيف Reischig · شريحة 259 16" },
     description: { en: "Plasmodium. One field from a catalogued slide in the Reischig archive.", ar: "طفيل البلازموديوم. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -3582,7 +3582,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-streptococcus-259-14', title: "Streptococcus (259 14) grampositive bacterium.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Streptococcus_(259_14)_grampositive_bacterium.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'tapeworm-265-07', department: 'zoology', kind: 'zoology-section',
+    id: 'tapeworm-265-07', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Tapeworm \u00b7 Body segment", ar: "دودة شريطية" },
     subtitle: { en: "Reischig archive \u00b7 slide 265 07", ar: "أرشيف Reischig · شريحة 265 07" },
     description: { en: "Tapeworm: Body segment. One field from a catalogued slide in the Reischig archive.", ar: "دودة شريطية. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -3604,7 +3604,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-testis-265-20', title: "Testicles (265 20) Cross-section; mouse.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Testicles_(265_20)_Cross-section;_mouse.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'trypanosoma-259-24', department: 'microbiology', kind: 'zoology-section',
+    id: 'trypanosoma-259-24', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Trypanosoma", ar: "طفيل التريبانوسوما" },
     subtitle: { en: "Reischig archive \u00b7 slide 259 24", ar: "أرشيف Reischig · شريحة 259 24" },
     description: { en: "Trypanosoma. One field from a catalogued slide in the Reischig archive.", ar: "طفيل التريبانوسوما. مجال واحد من شريحة مفهرسة في أرشيف Reischig." },
@@ -5012,7 +5012,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-gram-stain-candida-dubliniensis-yeast-1000x', title: "Candida dubliniensis.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Candida_dubliniensis.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'hookworm-ancylostoma-caninum-egg-from-a-dog-fecal-sample', department: 'zoology', kind: 'zoology-section',
+    id: 'hookworm-ancylostoma-caninum-egg-from-a-dog-fecal-sample', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Hookworm (Ancylostoma caninum) egg from a dog fecal sample", ar: "بيضة دودة خطافية (Ancylostoma caninum) من عينة براز كلب" },
     subtitle: { en: "Wikimedia Commons \u00b7 Joel Mills", ar: "ويكيميديا كومنز · Joel Mills" },
     description: { en: "Hookworm (Ancylostoma caninum) egg from a dog fecal sample. One microscope field from a Wikimedia Commons photograph.", ar: "بيضة دودة خطافية (Ancylostoma caninum) من عينة براز كلب. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -5166,7 +5166,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-b-lymphoblastic-cell-line-in-culture-phase-contrast-100x', title: "C\u00e9lulas B-linfobl\u00e1sticas 100x.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:C\u00e9lulas_B-linfobl\u00e1sticas_100x.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'fish-tapeworm-diphyllobothrium-latum-egg-with-operculum', department: 'zoology', kind: 'zoology-section',
+    id: 'fish-tapeworm-diphyllobothrium-latum-egg-with-operculum', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Fish tapeworm (Diphyllobothrium latum) egg with operculum", ar: "بيضة الدودة الشريطية للأسماك (Diphyllobothrium latum) مع الغطاء" },
     subtitle: { en: "Wikimedia Commons \u00b7 Stefan Walkowski", ar: "ويكيميديا كومنز · Stefan Walkowski" },
     description: { en: "Fish tapeworm (Diphyllobothrium latum) egg with operculum. One microscope field from a Wikimedia Commons photograph.", ar: "بيضة الدودة الشريطية للأسماك (Diphyllobothrium latum) مع الغطاء. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -5177,7 +5177,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-fish-tapeworm-diphyllobothrium-latum-egg-with-operculum', title: "Diphyllobothrium latum egg.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Diphyllobothrium_latum_egg.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'echinococcus-granulosus-protoscolex-with-hooks', department: 'zoology', kind: 'zoology-section',
+    id: 'echinococcus-granulosus-protoscolex-with-hooks', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Echinococcus granulosus protoscolex with hooks", ar: "رأس أولي من Echinococcus granulosus بخطاطيف" },
     subtitle: { en: "Wikimedia Commons \u00b7 Stefan Walkowski", ar: "ويكيميديا كومنز · Stefan Walkowski" },
     description: { en: "Echinococcus granulosus protoscolex with hooks. One microscope field from a Wikimedia Commons photograph.", ar: "رأس أولي من Echinococcus granulosus بخطاطيف. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -5188,7 +5188,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-echinococcus-granulosus-protoscolex-with-hooks', title: "E.granulosus-protoscolex.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:E.granulosus-protoscolex.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'liver-fluke-fasciola-egg', department: 'zoology', kind: 'zoology-section',
+    id: 'liver-fluke-fasciola-egg', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Liver fluke (Fasciola) egg", ar: "بيضة مثقبة الكبد (Fasciola)" },
     subtitle: { en: "Wikimedia Commons \u00b7 Ajay Kumar Chaurasiya", ar: "ويكيميديا كومنز · Ajay Kumar Chaurasiya" },
     description: { en: "Liver fluke (Fasciola) egg. One microscope field from a Wikimedia Commons photograph.", ar: "بيضة مثقبة الكبد (Fasciola). مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -5199,7 +5199,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-liver-fluke-fasciola-egg', title: "Egg of Liver Fluke.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Egg_of_Liver_Fluke.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'pinworm-egg-urine-microscopy', department: 'zoology', kind: 'zoology-section',
+    id: 'pinworm-egg-urine-microscopy', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Pinworm egg (urine microscopy)", ar: "بيضة الدودة الدبوسية (فحص مجهري للبول)" },
     subtitle: { en: "Wikimedia Commons \u00b7 Ajay Kumar Chaurasiya", ar: "ويكيميديا كومنز · Ajay Kumar Chaurasiya" },
     description: { en: "Pinworm egg (urine microscopy). One microscope field from a Wikimedia Commons photograph.", ar: "بيضة الدودة الدبوسية (فحص مجهري للبول). مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -5210,7 +5210,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-pinworm-egg-urine-microscopy', title: "Egg of Pinworm found during Urine Microscopy.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Egg_of_Pinworm_found_during_Urine_Microscopy.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'whipworm-trichuris-trichiura-egg', department: 'zoology', kind: 'zoology-section',
+    id: 'whipworm-trichuris-trichiura-egg', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Whipworm (Trichuris trichiura) egg", ar: "بيضة الدودة السوطية (Trichuris trichiura)" },
     subtitle: { en: "Wikimedia Commons \u00b7 Microrao", ar: "ويكيميديا كومنز · Microrao" },
     description: { en: "Whipworm (Trichuris trichiura) egg. One microscope field from a Wikimedia Commons photograph.", ar: "بيضة الدودة السوطية (Trichuris trichiura). مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -5551,7 +5551,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: 'commons-ragwort-jacobaea-vulgaris-leaf-epidermis-and-stomata-400x', title: "Jacobaea vulgaris leaf epidermis and stomata print 400x.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Jacobaea_vulgaris_leaf_epidermis_and_stomata_print_400x.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: 'toxascaris-egg-from-a-dog-bright-field', department: 'zoology', kind: 'zoology-section',
+    id: 'toxascaris-egg-from-a-dog-bright-field', department: 'parasitology', kind: 'zoology-section',
     title: { en: "Toxascaris egg from a dog, bright field", ar: "بيضة Toxascaris من كلب، مجال ساطع" },
     subtitle: { en: "Wikimedia Commons \u00b7 Brandon Antonio Segura Torres & Priscilla Vieto Bonilla", ar: "ويكيميديا كومنز · Brandon Antonio Segura Torres & Priscilla Vieto Bonilla" },
     description: { en: "Toxascaris egg from a dog, bright field. One microscope field from a Wikimedia Commons photograph.", ar: "بيضة Toxascaris من كلب، مجال ساطع. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -5980,7 +5980,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-picoplankton-by-epifluorescence-pacific-ocean", title: "Picoplancton fluorescence Pacific.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Picoplancton_fluorescence_Pacific.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "hookworm-ancylostoma-duodenale-female", department: 'microbiology', kind: 'zoology-section',
+    id: "hookworm-ancylostoma-duodenale-female", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Hookworm Ancylostoma duodenale, female", ar: "الدودة الشصية Ancylostoma duodenale أنثى" },
     subtitle: { en: "Wikimedia Commons \u00b7 Nour Dawod", ar: "ويكيميديا كومنز · Nour Dawod" },
     description: { en: "Hookworm Ancylostoma duodenale, female. One microscope field from a Wikimedia Commons photograph.", ar: "الدودة الشصية Ancylostoma duodenale أنثى. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -5991,7 +5991,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-hookworm-ancylostoma-duodenale-female", title: "Ancylostoma duodenale female, Under microscope 2024.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Ancylostoma_duodenale_female,_Under_microscope_2024.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "nematode-heligmosomoides-polygyrus", department: 'zoology', kind: 'zoology-section',
+    id: "nematode-heligmosomoides-polygyrus", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Nematode Heligmosomoides polygyrus", ar: "الدودة الخيطية Heligmosomoides polygyrus" },
     subtitle: { en: "Wikimedia Commons \u00b7 User:Naldo-Crocoduck", ar: "ويكيميديا كومنز · User:Naldo-Crocoduck" },
     description: { en: "Nematode Heligmosomoides polygyrus. One microscope field from a Wikimedia Commons photograph.", ar: "الدودة الخيطية Heligmosomoides polygyrus. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -6024,7 +6024,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-caenorhabditis-elegans-under-the-microscope", title: "Nematode Caenorhabditis Elegans.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Nematode_Caenorhabditis_Elegans.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "strongyloides-stercoralis-larva-stool-wet-mount", department: 'microbiology', kind: 'zoology-section',
+    id: "strongyloides-stercoralis-larva-stool-wet-mount", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Strongyloides stercoralis larva, stool wet mount", ar: "يرقة Strongyloides stercoralis، تحضير رطب للبراز" },
     subtitle: { en: "Wikimedia Commons \u00b7 Ajay Kumar Chaurasiya", ar: "ويكيميديا كومنز · Ajay Kumar Chaurasiya" },
     description: { en: "Strongyloides stercoralis larva, stool wet mount. One microscope field from a Wikimedia Commons photograph.", ar: "يرقة Strongyloides stercoralis، تحضير رطب للبراز. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -6035,7 +6035,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-strongyloides-stercoralis-larva-stool-wet-mount", title: "Strongyloides stercoralis in Stool Wet Mount Microscopy.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Strongyloides_stercoralis_in_Stool_Wet_Mount_Microscopy.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "trichinella-spiralis-40x-objective", department: 'zoology', kind: 'zoology-section',
+    id: "trichinella-spiralis-40x-objective", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Trichinella spiralis, 40x objective", ar: "الدودة الشعرية Trichinella spiralis بعدسة 40x" },
     subtitle: { en: "Wikimedia Commons \u00b7 MostlyDross", ar: "ويكيميديا كومنز · MostlyDross" },
     description: { en: "Trichinella spiralis, 40x objective. One microscope field from a Wikimedia Commons photograph.", ar: "الدودة الشعرية Trichinella spiralis بعدسة 40x. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -6508,7 +6508,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-fungal-elements-in-a-koh-mount-of-sputum-1600x", title: "Fungal elements in KOH mount of sputum.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Fungal_elements_in_KOH_mount_of_sputum.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "giardia-lamblia-cyst-in-a-dog-faecal-smear-lugol-s-iodine", department: 'microbiology', kind: 'zoology-section',
+    id: "giardia-lamblia-cyst-in-a-dog-faecal-smear-lugol-s-iodine", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Giardia lamblia cyst in a dog faecal smear, Lugol's iodine", ar: "كيسة الجيارديا في لطاخة براز كلب، يود لوغول" },
     subtitle: { en: "Wikimedia Commons \u00b7 Joel Mills", ar: "ويكيميديا كومنز · Joel Mills" },
     description: { en: "Giardia lamblia cyst in a dog faecal smear, Lugol's iodine. One microscope field from a Wikimedia Commons photograph.", ar: "كيسة الجيارديا في لطاخة براز كلب، يود لوغول. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -7212,7 +7212,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-bee-legs-under-the-microscope", title: "\u041b\u0430\u043f\u043a\u0438 \u043f\u0447\u0435\u043b\u044b \u043f\u043e\u0434 \u043c\u0438\u043a\u0440\u043e\u0441\u043a\u043e\u043f\u043e\u043c.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:\u041b\u0430\u043f\u043a\u0438_\u043f\u0447\u0435\u043b\u044b_\u043f\u043e\u0434_\u043c\u0438\u043a\u0440\u043e\u0441\u043a\u043e\u043f\u043e\u043c.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "dipylidium-caninum-egg-packet-400x", department: 'microbiology', kind: 'zoology-section',
+    id: "dipylidium-caninum-egg-packet-400x", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Dipylidium caninum egg packet, 400x", ar: "حافظة بيض الدودة الشريطية Dipylidium caninum، 400x" },
     subtitle: { en: "Wikimedia Commons \u00b7 Joel Mills", ar: "ويكيميديا كومنز · Joel Mills" },
     description: { en: "Dipylidium caninum egg packet, 400x. One microscope field from a Wikimedia Commons photograph.", ar: "حافظة بيض الدودة الشريطية Dipylidium caninum، 400x. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -7223,7 +7223,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-dipylidium-caninum-egg-packet-400x", title: "Dipylidium caninum ovum 1.JPG", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Dipylidium_caninum_ovum_1.JPG", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "hymenolepis-diminuta-egg-rat-tapeworm", department: 'microbiology', kind: 'zoology-section',
+    id: "hymenolepis-diminuta-egg-rat-tapeworm", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Hymenolepis diminuta egg (rat tapeworm)", ar: "بيضة الدودة الشريطية للفأر Hymenolepis diminuta" },
     subtitle: { en: "Wikimedia Commons \u00b7 SuSanA Secretariat", ar: "ويكيميديا كومنز · SuSanA Secretariat" },
     description: { en: "Hymenolepis diminuta egg (rat tapeworm). One microscope field from a Wikimedia Commons photograph.", ar: "بيضة الدودة الشريطية للفأر Hymenolepis diminuta. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -7234,7 +7234,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-hymenolepis-diminuta-egg-rat-tapeworm", title: "Hymenolepis Diminuta egg (rat tapeworm) (15703617005).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Hymenolepis_Diminuta_egg_(rat_tapeworm)_(15703617005).jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "beef-tapeworm-taenia-saginata-scolex-and-neck", department: 'zoology', kind: 'zoology-section',
+    id: "beef-tapeworm-taenia-saginata-scolex-and-neck", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Beef tapeworm (Taenia saginata) scolex and neck", ar: "رأس وعنق الدودة الشريطية البقرية Taenia saginata" },
     subtitle: { en: "Wikimedia Commons \u00b7 Lizelle312", ar: "ويكيميديا كومنز · Lizelle312" },
     description: { en: "Beef tapeworm (Taenia saginata) scolex and neck. One microscope field from a Wikimedia Commons photograph.", ar: "رأس وعنق الدودة الشريطية البقرية Taenia saginata. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -8125,7 +8125,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-mycobacterium-tuberculosis-in-bal-fluid-ziehl-neelsen", title: "Acid fast bacilli of Mycobacterium tuberculosis.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Acid_fast_bacilli_of_Mycobacterium_tuberculosis.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "taenia-egg-in-a-faecal-smear-ziehl-neelsen", department: 'microbiology', kind: 'zoology-section',
+    id: "taenia-egg-in-a-faecal-smear-ziehl-neelsen", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Taenia egg in a faecal smear, Ziehl-Neelsen", ar: "بيضة Taenia في لطاخة براز، زيل نلسن" },
     subtitle: { en: "Wikimedia Commons \u00b7 Ajay Kumar Chaurasiya", ar: "ويكيميديا كومنز · Ajay Kumar Chaurasiya" },
     description: { en: "Taenia egg in a faecal smear, Ziehl-Neelsen. One microscope field from a Wikimedia Commons photograph.", ar: "بيضة Taenia في لطاخة براز، زيل نلسن. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -8235,7 +8235,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-plasmodium-falciparum-trophozoites", title: "Plasmodium falciparum smear 2010-02-08.JPG", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Plasmodium_falciparum_smear_2010-02-08.JPG", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "trichomonas-vaginalis-gram-stain", department: 'microbiology', kind: 'zoology-section',
+    id: "trichomonas-vaginalis-gram-stain", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Trichomonas vaginalis, Gram stain", ar: "Trichomonas vaginalis، صبغة جرام" },
     subtitle: { en: "Wikimedia Commons \u00b7 Dr Graham Beards", ar: "ويكيميديا كومنز · Dr Graham Beards" },
     description: { en: "Trichomonas vaginalis, Gram stain. One microscope field from a Wikimedia Commons photograph.", ar: "Trichomonas vaginalis، صبغة جرام. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -8246,7 +8246,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-trichomonas-vaginalis-gram-stain", title: "Trichomonas Gram stain.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Trichomonas_Gram_stain.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "ascaris-larva-hatching", department: 'microbiology', kind: 'zoology-section',
+    id: "ascaris-larva-hatching", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Ascaris larva hatching", ar: "يرقة Ascaris أثناء الفقس" },
     subtitle: { en: "Wikimedia Commons \u00b7 SuSanA Secretariat", ar: "ويكيميديا كومنز · SuSanA Secretariat" },
     description: { en: "Ascaris larva hatching. One microscope field from a Wikimedia Commons photograph.", ar: "يرقة Ascaris أثناء الفقس. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -8257,7 +8257,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-ascaris-larva-hatching", title: "Ascaris Larva (Hatched on Microscope Slide) (18306579795).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Ascaris_Larva_(Hatched_on_Microscope_Slide)_(18306579795).jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "ascaris-egg-early-cell-division", department: 'microbiology', kind: 'zoology-section',
+    id: "ascaris-egg-early-cell-division", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Ascaris egg, early cell division", ar: "بيضة Ascaris في طور الانقسام الخلوي المبكر" },
     subtitle: { en: "Wikimedia Commons \u00b7 SuSanA Secretariat", ar: "ويكيميديا كومنز · SuSanA Secretariat" },
     description: { en: "Ascaris egg, early cell division. One microscope field from a Wikimedia Commons photograph.", ar: "بيضة Ascaris في طور الانقسام الخلوي المبكر. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -8268,7 +8268,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-ascaris-egg-early-cell-division", title: "Ascaris in division (15517763569).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Ascaris_in_division_(15517763569).jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "ascaris-infertile-egg", department: 'microbiology', kind: 'zoology-section',
+    id: "ascaris-infertile-egg", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Ascaris infertile egg", ar: "بيضة Ascaris غير مخصبة" },
     subtitle: { en: "Wikimedia Commons \u00b7 SuSanA Secretariat", ar: "ويكيميديا كومنز · SuSanA Secretariat" },
     description: { en: "Ascaris infertile egg. One microscope field from a Wikimedia Commons photograph.", ar: "بيضة Ascaris غير مخصبة. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -8279,7 +8279,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-ascaris-infertile-egg", title: "Ascaris infertile egg (15705214792).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Ascaris_infertile_egg_(15705214792).jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "toxocara-egg-with-a-developed-larva", department: 'microbiology', kind: 'zoology-section',
+    id: "toxocara-egg-with-a-developed-larva", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Toxocara egg with a developed larva", ar: "بيضة Toxocara تحوي يرقة نامية" },
     subtitle: { en: "Wikimedia Commons \u00b7 SuSanA Secretariat", ar: "ويكيميديا كومنز · SuSanA Secretariat" },
     description: { en: "Toxocara egg with a developed larva. One microscope field from a Wikimedia Commons photograph.", ar: "بيضة Toxocara تحوي يرقة نامية. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -8290,7 +8290,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-toxocara-egg-with-a-developed-larva", title: "Toxocara Larva (15518236248).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Toxocara_Larva_(15518236248).jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "trichuris-whipworm-egg", department: 'microbiology', kind: 'zoology-section',
+    id: "trichuris-whipworm-egg", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Trichuris (whipworm) egg", ar: "بيضة الدودة السوطية Trichuris" },
     subtitle: { en: "Wikimedia Commons \u00b7 SuSanA Secretariat", ar: "ويكيميديا كومنز · SuSanA Secretariat" },
     description: { en: "Trichuris (whipworm) egg. One microscope field from a Wikimedia Commons photograph.", ar: "بيضة الدودة السوطية Trichuris. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -9280,7 +9280,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-neisseria-gonorrhoeae-diplococci-gram-stain", title: "Neisseria gonorrhoeae.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Neisseria_gonorrhoeae.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "leishmania-in-a-skin-lesion-scraping", department: 'microbiology', kind: 'zoology-section',
+    id: "leishmania-in-a-skin-lesion-scraping", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Leishmania in a skin lesion scraping", ar: "ليشمانيا في كشط آفة جلدية" },
     subtitle: { en: "Wikimedia Commons \u00b7 Atirabdou", ar: "ويكيميديا كومنز · Atirabdou" },
     description: { en: "Leishmania in a skin lesion scraping. One microscope field from a Wikimedia Commons photograph.", ar: "ليشمانيا في كشط آفة جلدية. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -9291,7 +9291,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-leishmania-in-a-skin-lesion-scraping", title: "Leishmaniose cutan\u00e9e au microscope - Maroc, H\u00f4pital Cheikh Zaid.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Leishmaniose_cutan\u00e9e_au_microscope_-_Maroc,_H\u00f4pital_Cheikh_Zaid.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "fasciola-miracidium", department: 'microbiology', kind: 'zoology-section',
+    id: "fasciola-miracidium", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Fasciola miracidium", ar: "ميراسيديوم الدودة الكبدية Fasciola" },
     subtitle: { en: "Wikimedia Commons \u00b7 Alan R Walker", ar: "ويكيميديا كومنز · Alan R Walker" },
     description: { en: "Fasciola miracidium. One microscope field from a Wikimedia Commons photograph.", ar: "ميراسيديوم الدودة الكبدية Fasciola. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -9302,7 +9302,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-fasciola-miracidium", title: "Fasciola-miracidium.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Fasciola-miracidium.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "fasciola-hepatica-and-dicrocoelium-eggs", department: 'microbiology', kind: 'zoology-section',
+    id: "fasciola-hepatica-and-dicrocoelium-eggs", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Fasciola hepatica and Dicrocoelium eggs", ar: "بيض Fasciola hepatica وDicrocoelium" },
     subtitle: { en: "Wikimedia Commons \u00b7 Shejile", ar: "ويكيميديا كومنز · Shejile" },
     description: { en: "Fasciola hepatica and Dicrocoelium eggs. One microscope field from a Wikimedia Commons photograph.", ar: "بيض Fasciola hepatica وDicrocoelium. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -9313,7 +9313,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-fasciola-hepatica-and-dicrocoelium-eggs", title: "Huevos de duelas hep\u00e1ticas comparaci\u00f3n.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Huevos_de_duelas_hep\u00e1ticas_comparaci\u00f3n.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "pinworm-enterobius-vermicularis-eggs", department: 'microbiology', kind: 'zoology-section',
+    id: "pinworm-enterobius-vermicularis-eggs", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Pinworm (Enterobius vermicularis) eggs", ar: "بيض الدودة الدبوسية Enterobius vermicularis" },
     subtitle: { en: "Wikimedia Commons \u00b7 DPDx, PHIL", ar: "ويكيميديا كومنز · DPDx, PHIL" },
     description: { en: "Pinworm (Enterobius vermicularis) eggs. One microscope field from a Wikimedia Commons photograph.", ar: "بيض الدودة الدبوسية Enterobius vermicularis. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -9324,7 +9324,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-pinworm-enterobius-vermicularis-eggs", title: "Enterobius vermicularis.png", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Enterobius_vermicularis.png", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "hookworm-egg-stool-wet-mount", department: 'microbiology', kind: 'zoology-section',
+    id: "hookworm-egg-stool-wet-mount", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Hookworm egg, stool wet mount", ar: "بيضة الدودة الخطافية، تحضير رطب للبراز" },
     subtitle: { en: "Wikimedia Commons \u00b7 Microrao", ar: "ويكيميديا كومنز · Microrao" },
     description: { en: "Hookworm egg, stool wet mount. One microscope field from a Wikimedia Commons photograph.", ar: "بيضة الدودة الخطافية، تحضير رطب للبراز. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -9335,7 +9335,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-hookworm-egg-stool-wet-mount", title: "Hookworm egg.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Hookworm_egg.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "hookworm-ancylostoma-caninum-egg-40x", department: 'microbiology', kind: 'zoology-section',
+    id: "hookworm-ancylostoma-caninum-egg-40x", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Hookworm (Ancylostoma caninum) egg, 40x", ar: "بيضة الدودة الخطافية Ancylostoma caninum، 40x" },
     subtitle: { en: "Wikimedia Commons \u00b7 Joel Mills", ar: "ويكيميديا كومنز · Joel Mills" },
     description: { en: "Hookworm (Ancylostoma caninum) egg, 40x. One microscope field from a Wikimedia Commons photograph.", ar: "بيضة الدودة الخطافية Ancylostoma caninum، 40x. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -9346,7 +9346,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-hookworm-ancylostoma-caninum-egg-40x", title: "Hookworm egg 1.JPG", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Hookworm_egg_1.JPG", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "embryonated-hookworm-egg", department: 'microbiology', kind: 'zoology-section',
+    id: "embryonated-hookworm-egg", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Embryonated hookworm egg", ar: "بيضة دودة خطافية جنينية" },
     subtitle: { en: "Wikimedia Commons \u00b7 CDC, Courtesy: Public Health Image Library", ar: "ويكيميديا كومنز · CDC, Courtesy: Public Health Image Library" },
     description: { en: "Embryonated hookworm egg. One microscope field from a Wikimedia Commons photograph.", ar: "بيضة دودة خطافية جنينية. مجال مجهري واحد من صورة في ويكيميديا كومنز." },
@@ -10127,7 +10127,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-paramecium-bursaria-2", title: "20090719 062218 ParameciumBursaria.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:20090719_062218_ParameciumBursaria.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "toxascaris-leonina-egg", department: 'microbiology', kind: 'zoology-section',
+    id: "toxascaris-leonina-egg", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Toxascaris leonina egg", ar: "\u0628\u064a\u0636\u0629 \u0627\u0644\u062f\u0648\u062f\u0629 \u0627\u0644\u0623\u0633\u0637\u0648\u0627\u0646\u064a\u0629 Toxascaris leonina" },
     subtitle: { en: "Wikimedia Commons \u00b7 Joel Mills", ar: "\u0648\u064a\u0643\u064a\u0645\u064a\u062f\u064a\u0627 \u0643\u0648\u0645\u0646\u0632 \u00b7 Joel Mills" },
     description: { en: "Toxascaris leonina egg. One microscope field from a Wikimedia Commons photograph.", ar: "\u0628\u064a\u0636\u0629 \u0627\u0644\u062f\u0648\u062f\u0629 \u0627\u0644\u0623\u0633\u0637\u0648\u0627\u0646\u064a\u0629 Toxascaris leonina. \u0645\u062c\u0627\u0644 \u0645\u062c\u0647\u0631\u064a \u0648\u0627\u062d\u062f \u0645\u0646 \u0635\u0648\u0631\u0629 \u0641\u064a \u0648\u064a\u0643\u064a\u0645\u064a\u062f\u064a\u0627 \u0643\u0648\u0645\u0646\u0632." },
@@ -10248,7 +10248,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-ciliated-epithelium-light-micrograph", title: "Cilia light micrograph.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Cilia_light_micrograph.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "coccidia-oocysts", department: 'microbiology', kind: 'zoology-section',
+    id: "coccidia-oocysts", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Coccidia oocysts", ar: "\u0623\u0643\u064a\u0627\u0633 \u0628\u064a\u0636\u064a\u0629 \u0644\u0644\u0623\u0643\u0631\u064a\u0627\u062a Coccidia" },
     subtitle: { en: "Wikimedia Commons \u00b7 Joel Mills", ar: "\u0648\u064a\u0643\u064a\u0645\u064a\u062f\u064a\u0627 \u0643\u0648\u0645\u0646\u0632 \u00b7 Joel Mills" },
     description: { en: "Coccidia oocysts. One microscope field from a Wikimedia Commons photograph.", ar: "\u0623\u0643\u064a\u0627\u0633 \u0628\u064a\u0636\u064a\u0629 \u0644\u0644\u0623\u0643\u0631\u064a\u0627\u062a Coccidia. \u0645\u062c\u0627\u0644 \u0645\u062c\u0647\u0631\u064a \u0648\u0627\u062d\u062f \u0645\u0646 \u0635\u0648\u0631\u0629 \u0641\u064a \u0648\u064a\u0643\u064a\u0645\u064a\u062f\u064a\u0627 \u0643\u0648\u0645\u0646\u0632." },
@@ -10644,7 +10644,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-spirogyra-filaments", title: "Spirogyra sp.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Spirogyra_sp.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "taenia-egg", department: 'microbiology', kind: 'zoology-section',
+    id: "taenia-egg", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Taenia egg", ar: "\u0628\u064a\u0636\u0629 \u0627\u0644\u062f\u0648\u062f\u0629 \u0627\u0644\u0634\u0631\u064a\u0637\u064a\u0629 Taenia" },
     subtitle: { en: "Wikimedia Commons \u00b7 Joel Mills", ar: "\u0648\u064a\u0643\u064a\u0645\u064a\u062f\u064a\u0627 \u0643\u0648\u0645\u0646\u0632 \u00b7 Joel Mills" },
     description: { en: "Taenia egg. One microscope field from a Wikimedia Commons photograph.", ar: "\u0628\u064a\u0636\u0629 \u0627\u0644\u062f\u0648\u062f\u0629 \u0627\u0644\u0634\u0631\u064a\u0637\u064a\u0629 Taenia. \u0645\u062c\u0627\u0644 \u0645\u062c\u0647\u0631\u064a \u0648\u0627\u062d\u062f \u0645\u0646 \u0635\u0648\u0631\u0629 \u0641\u064a \u0648\u064a\u0643\u064a\u0645\u064a\u062f\u064a\u0627 \u0643\u0648\u0645\u0646\u0632." },
@@ -10688,7 +10688,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-daphnia-water-fleas", title: "Thomas Bresson - Daphnies--5 (by).jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Thomas_Bresson_-_Daphnies--5_(by).jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "toxocara-canis-egg", department: 'microbiology', kind: 'zoology-section',
+    id: "toxocara-canis-egg", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Toxocara canis egg", ar: "\u0628\u064a\u0636\u0629 \u0627\u0644\u062f\u0648\u062f\u0629 \u0627\u0644\u0623\u0633\u0637\u0648\u0627\u0646\u064a\u0629 Toxocara canis" },
     subtitle: { en: "Wikimedia Commons \u00b7 Joel Mills", ar: "\u0648\u064a\u0643\u064a\u0645\u064a\u062f\u064a\u0627 \u0643\u0648\u0645\u0646\u0632 \u00b7 Joel Mills" },
     description: { en: "Toxocara canis egg. One microscope field from a Wikimedia Commons photograph.", ar: "\u0628\u064a\u0636\u0629 \u0627\u0644\u062f\u0648\u062f\u0629 \u0627\u0644\u0623\u0633\u0637\u0648\u0627\u0646\u064a\u0629 Toxocara canis. \u0645\u062c\u0627\u0644 \u0645\u062c\u0647\u0631\u064a \u0648\u0627\u062d\u062f \u0645\u0646 \u0635\u0648\u0631\u0629 \u0641\u064a \u0648\u064a\u0643\u064a\u0645\u064a\u062f\u064a\u0627 \u0643\u0648\u0645\u0646\u0632." },
@@ -10699,7 +10699,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-toxocara-canis-egg", title: "Toxocara canis.JPG", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Toxocara_canis.JPG", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "toxocara-cati-egg", department: 'microbiology', kind: 'zoology-section',
+    id: "toxocara-cati-egg", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Toxocara cati egg", ar: "\u0628\u064a\u0636\u0629 \u0627\u0644\u062f\u0648\u062f\u0629 \u0627\u0644\u0623\u0633\u0637\u0648\u0627\u0646\u064a\u0629 Toxocara cati" },
     subtitle: { en: "Wikimedia Commons \u00b7 Joel Mills", ar: "\u0648\u064a\u0643\u064a\u0645\u064a\u062f\u064a\u0627 \u0643\u0648\u0645\u0646\u0632 \u00b7 Joel Mills" },
     description: { en: "Toxocara cati egg. One microscope field from a Wikimedia Commons photograph.", ar: "\u0628\u064a\u0636\u0629 \u0627\u0644\u062f\u0648\u062f\u0629 \u0627\u0644\u0623\u0633\u0637\u0648\u0627\u0646\u064a\u0629 Toxocara cati. \u0645\u062c\u0627\u0644 \u0645\u062c\u0647\u0631\u064a \u0648\u0627\u062d\u062f \u0645\u0646 \u0635\u0648\u0631\u0629 \u0641\u064a \u0648\u064a\u0643\u064a\u0645\u064a\u062f\u064a\u0627 \u0643\u0648\u0645\u0646\u0632." },
@@ -10721,7 +10721,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-cylindrotheca-closterium-diatom", title: "Vera veloso cylindrotheca closterium01 xxw 20070621115126 hc.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Vera_veloso_cylindrotheca_closterium01_xxw_20070621115126_hc.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "whipworm-egg", department: 'microbiology', kind: 'zoology-section',
+    id: "whipworm-egg", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Whipworm egg", ar: "\u0628\u064a\u0636\u0629 \u0627\u0644\u062f\u0648\u062f\u0629 \u0627\u0644\u0633\u0648\u0637\u064a\u0629" },
     subtitle: { en: "Wikimedia Commons \u00b7 Joel Mills", ar: "\u0648\u064a\u0643\u064a\u0645\u064a\u062f\u064a\u0627 \u0643\u0648\u0645\u0646\u0632 \u00b7 Joel Mills" },
     description: { en: "Whipworm egg. One microscope field from a Wikimedia Commons photograph.", ar: "\u0628\u064a\u0636\u0629 \u0627\u0644\u062f\u0648\u062f\u0629 \u0627\u0644\u0633\u0648\u0637\u064a\u0629. \u0645\u062c\u0627\u0644 \u0645\u062c\u0647\u0631\u064a \u0648\u0627\u062d\u062f \u0645\u0646 \u0635\u0648\u0631\u0629 \u0641\u064a \u0648\u064a\u0643\u064a\u0645\u064a\u062f\u064a\u0627 \u0643\u0648\u0645\u0646\u0632." },
@@ -10886,7 +10886,7 @@ export const specimens: ScientificSpecimen[] = [
     references: [{ id: "commons-artemia-salina-dark-field", title: "Artemia salina campo oscuro.jpg", provider: 'Wikimedia Commons', url: "https://commons.wikimedia.org/wiki/File:Artemia_salina_campo_oscuro.jpg", supports: 'Source photograph, author and licence for this slide.' }],
   },
   {
-    id: "ascaris-female-section-200x", department: 'zoology', kind: 'zoology-section',
+    id: "ascaris-female-section-200x", department: 'parasitology', kind: 'zoology-section',
     title: { en: "Ascaris female section 200x", ar: "\u0645\u0642\u0637\u0639 \u0641\u064a \u0623\u0646\u062b\u0649 \u0623\u0633\u0643\u0627\u0631\u064a\u0633 \u0628\u062a\u0643\u0628\u064a\u0631 200" },
     subtitle: { en: "Wikimedia Commons \u00b7 Massimo brizzi", ar: "\u0648\u064a\u0643\u064a\u0645\u064a\u062f\u064a\u0627 \u0643\u0648\u0645\u0646\u0632 \u00b7 Massimo brizzi" },
     description: { en: "Ascaris female section 200x. One microscope field from a Wikimedia Commons photograph.", ar: "\u0645\u0642\u0637\u0639 \u0641\u064a \u0623\u0646\u062b\u0649 \u0623\u0633\u0643\u0627\u0631\u064a\u0633 \u0628\u062a\u0643\u0628\u064a\u0631 200. \u0645\u062c\u0627\u0644 \u0645\u062c\u0647\u0631\u064a \u0648\u0627\u062d\u062f \u0645\u0646 \u0635\u0648\u0631\u0629 \u0641\u064a \u0648\u064a\u0643\u064a\u0645\u064a\u062f\u064a\u0627 \u0643\u0648\u0645\u0646\u0632." },

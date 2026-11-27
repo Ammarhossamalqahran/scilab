@@ -31,7 +31,10 @@ const falciparumRing: ClinicalNote = {
   source: dpdx('Malaria', 'malaria'),
 };
 
+import { hematologyNotes } from './clinicalNotesHematology';
+
 export const clinicalNotes: Record<string, ClinicalNote> = {
+  ...hematologyNotes,
   'ascaris-egg-early-cell-division': ascarisFertile,
   'ascaris-infertile-egg': ascarisInfertile,
   'whipworm-trichuris-trichiura-egg': whipworm,
@@ -84,3 +87,5 @@ export const clinicalNotes: Record<string, ClinicalNote> = {
     source: { title: 'CDC: Clinical and Laboratory Diagnosis of TB', url: 'https://cdc.gov/tb/hcp/testing-diagnosis/clinical-and-laboratory-diagnosis.html' },
   },
 };
+
+clinicalNotes['sickle-cell-anaemia-blood-smear-giemsa'] = clinicalNotes['sickle-cell-smear'];

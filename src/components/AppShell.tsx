@@ -2,6 +2,7 @@ import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { usePreferences } from '../app/PreferencesContext';
 import { getAdminSession, clearAdminSession } from '../lib/adminSession';
+import { recordVisit } from '../data/frames';
 import { playerId } from '../lib/leaderboardApi';
 import { LogoMark } from './LogoMark';
 import { FeedbackButton } from './FeedbackButton';
@@ -52,6 +53,7 @@ export function AppShell() {
   const { locale, setLocale, theme, toggleTheme, t } = usePreferences();
   const { pathname } = useLocation();
   // The tab shows only after the server confirms the stored session is a live owner session (never just because a value is stored).
+  useEffect(() => { recordVisit(); }, []); // visit streak for avatar frames
   const [adminLink, setAdminLink] = useState(false);
   useEffect(() => {
     const on = () => {

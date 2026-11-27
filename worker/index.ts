@@ -20,7 +20,7 @@ export default {
     if (!url.pathname.startsWith('/api/')) return env.ASSETS.fetch(request);
     if (!env.DB) return new Response(JSON.stringify({ error: 'no_database' }), { status: 503, headers: { 'content-type': 'application/json' } });
     try {
-      if (url.pathname === '/api/admin/google' || url.pathname === '/api/admin/logout') return await handleAdminGoogle(request, env.DB, url, env.GOOGLE_CLIENT_ID);
+      if (url.pathname === '/api/admin/google' || url.pathname === '/api/admin/logout' || url.pathname === '/api/admin/check') return await handleAdminGoogle(request, env.DB, url, env.GOOGLE_CLIENT_ID);
       if (url.pathname === '/api/admin/push' && request.method === 'POST') return await handleAdminPush(request, env.DB, env.ADMIN_KEY);
       if (url.pathname === '/api/admin/data' && request.method === 'GET') return await handleAdmin(request, env.DB, env.ADMIN_KEY);
       if (url.pathname === '/api/admin/winner' && request.method === 'POST') return await handleAdminWinner(request, env.DB, env.ADMIN_KEY);

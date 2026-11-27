@@ -31,6 +31,11 @@ export async function validSession(db: D1Database, token: string, now: number): 
 export async function handleAdminGoogle(request: Request, db: D1Database, url: URL, clientId: string | undefined, now = Date.now(), fetchImpl: typeof fetch = fetch): Promise<Response> {
   if (request.method !== 'POST') return json({ error: 'not_found' }, 404);
   if (!clientId) return json({ error: 'not_configured' }, 503);
+  // Read-only check used by the app to decide whether to show the Admin tab. Not rate limited: the token is 256 random bits.
+  if (url.pathname === '/api/admin/check') {
+    const b = await request.json().catch(() => null) as { session?: unknown } | null;
+    return json({ ok: typeof b?.session === 'string' && await validSession(db, b.session, now) });
+  }
   await ensureSchema(db);
   await db.prepare('CREATE TABLE IF NOT EXISTS code_rl (kind TEXT NOT NULL, ip TEXT NOT NULL, at INTEGER NOT NULL)').run();
   const ip = await ipHash(request);

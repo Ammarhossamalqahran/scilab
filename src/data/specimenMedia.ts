@@ -3198,8 +3198,8 @@ export const specimenMedia: Record<string, SpecimenMedia> = {
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
   "hibiscus-pollen-under-the-microscope": {
-    src: '/specimens/hibiscus-pollen-under-the-microscope.webp', title: "Microscope view of Pollen from Hibiscus 01.jpg", author: "Korinna", license: "CC BY 4.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Microscope_view_of_Pollen_from_Hibiscus_01.jpg",
+    src: '/specimens/hibiscus-pollen-under-the-microscope.webp', title: "Microscope view of Pollen from Hibiscus 05.jpg", author: "Korinna", license: "CC BY 4.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Microscope_view_of_Pollen_from_Hibiscus_05.jpg",
     adaptation: 'Downscaled to 1000 px wide; not cropped.',
   },
   "neutrophil-on-a-blood-smear": {

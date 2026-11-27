@@ -200,6 +200,113 @@ const mould: AnimalNote = {
   source: fungiSrc,
 };
 
+// ---- Histology groups (tissues and organs). Sentences from OpenStax Anatomy and Physiology 2e (CC BY 4.0).
+const osa = (title: string, page: string) => ({ title: `OpenStax Anatomy and Physiology 2e: ${title}`, url: `https://openstax.org/books/anatomy-and-physiology-2e/pages/${page}` });
+const epiSrc = osa('4.2 Epithelial Tissue', '4-2-epithelial-tissue');
+const ctSrc = osa('4.3 Connective Tissue Supports and Protects', '4-3-connective-tissue-supports-and-protects');
+const muscSrc = osa('4.4 Muscle Tissue and Motion', '4-4-muscle-tissue-and-motion');
+const nervSrc = osa('4.5 Nervous Tissue Mediates Perception and Response', '4-5-nervous-tissue-mediates-perception-and-response');
+const hairSrc = osa('5.2 Accessory Structures of the Skin', '5-2-accessory-structures-of-the-skin');
+const gutSrc = osa('23.5 The Small and Large Intestines', '23-5-the-small-and-large-intestines');
+const testSrc = osa('27.1 Anatomy and Physiology of the Testicular Reproductive System', '27-1-anatomy-and-physiology-of-the-testicular-reproductive-system');
+const ovSrc = osa('27.2 Anatomy and Physiology of the Ovarian Reproductive System', '27-2-anatomy-and-physiology-of-the-ovarian-reproductive-system');
+const thySrc = osa('17.4 The Thyroid Gland', '17-4-the-thyroid-gland');
+const paraSrc = osa('17.5 The Parathyroid Glands', '17-5-the-parathyroid-glands');
+const pitSrc = osa('17.3 The Pituitary Gland and Hypothalamus', '17-3-the-pituitary-gland-and-hypothalamus');
+const pinSrc = osa('17.7 The Pineal Gland', '17-7-the-pineal-gland');
+const squamous: AnimalNote = {
+  recognize: { en: 'In a simple squamous epithelium, the cells are flattened and single layered.', ar: 'في الظهارة الحرشفية البسيطة (simple squamous) الخلايا مسطحة وفي طبقة واحدة.' },
+  function: { en: 'Cell shapes can be squamous (flattened and thin), cuboidal (boxy, as wide as it is tall), or columnar (rectangular, taller than it is wide).', ar: 'أشكال الخلايا ممكن تكون squamous (مسطحة ورفيعة) أو cuboidal (مكعبة، عرضها زي ارتفاعها) أو columnar (مستطيلة، أطول من عرضها).' },
+  functionLabel: keyPoint, source: epiSrc,
+};
+const cuboidal: AnimalNote = {
+  recognize: { en: 'In a simple cuboidal epithelium, the cells are cube shaped and single layered.', ar: 'في الظهارة المكعبة البسيطة (simple cuboidal) الخلايا على شكل مكعب وفي طبقة واحدة.' },
+  function: { en: 'A simple epithelium has one cell layer, where every cell rests on the basal lamina; a stratified epithelium has more than one layer.', ar: 'الظهارة البسيطة فيها طبقة خلايا واحدة وكل خلية قاعدتها على الصفيحة القاعدية، والظهارة الطبقية فيها أكتر من طبقة.' },
+  functionLabel: keyPoint, source: epiSrc,
+};
+const fibres: AnimalNote = {
+  recognize: { en: 'Three main types of fibers are secreted by fibroblasts: collagen fibers, elastic fibers, and reticular fibers. The thickest fibers are collagen fibers; the thinner fibers are elastic fibers.', ar: 'في ثلاث أنواع ألياف رئيسية بتفرزها الخلايا الليفية (fibroblasts): ألياف الكولاجين والألياف المرنة والألياف الشبكية. أسمك الألياف هي ألياف الكولاجين، والأرفع هي الألياف المرنة.' },
+  function: { en: 'Collagen fibers, while flexible, have great tensile strength, resist stretching, and give ligaments and tendons their characteristic resilience and strength. Elastic fiber contains the protein elastin.', ar: 'ألياف الكولاجين، مع إنها مرنة، ليها قوة شد عالية وبتقاوم التمدد وبتدي الأربطة والأوتار قوتها المميزة. الألياف المرنة فيها بروتين elastin.' },
+  compare: { en: 'Elastic fibers are prominent in elastic tissues found in skin and the elastic ligaments of the vertebral column.', ar: 'الألياف المرنة بتبقى ظاهرة في الأنسجة المرنة الموجودة في الجلد والأربطة المرنة للعمود الفقري.' },
+  source: ctSrc,
+};
+const muscle: AnimalNote = {
+  recognize: { en: 'Muscle tissue is classified into three types according to structure and function: skeletal, cardiac, and smooth. Skeletal muscle has long cylindrical, striated fibers with many peripherally located nuclei.', ar: 'النسيج العضلي بيتصنف لثلاث أنواع حسب التركيب والوظيفة: هيكلي وقلبي وأملس. العضل الهيكلي ليه ألياف طويلة أسطوانية مخططة وفيها أنوية كتير على الأطراف.' },
+  function: { en: 'Skeletal muscle tissue is arranged in bundles surrounded by connective tissue.', ar: 'النسيج العضلي الهيكلي منظم في حزم محاطة بنسيج ضام.' },
+  functionLabel: keyPoint, source: muscSrc,
+};
+const nerve: AnimalNote = {
+  recognize: { en: 'Two main classes of cells make up nervous tissue: the neuron and neuroglia.', ar: 'فئتين رئيسيتين من الخلايا بيكونوا النسيج العصبي: العصبون (neuron) والخلايا الدبقية (neuroglia).' },
+  function: { en: 'Neurons propagate information via electrochemical impulses, called action potentials. Neuroglia play an essential role in supporting neurons and modulating their information propagation.', ar: 'العصبونات بتنقل المعلومات بنبضات كهروكيميائية اسمها جهود الفعل (action potentials). الخلايا الدبقية ليها دور أساسي في دعم العصبونات وتعديل نقلها للمعلومات.' },
+  functionLabel: keyPoint, source: nervSrc,
+};
+const hair: AnimalNote = {
+  recognize: { en: 'Hair is a keratinous filament growing out of the epidermis, primarily made of dead, keratinized cells. Strands of hair originate in an epidermal penetration of the dermis called the hair follicle.', ar: 'الشعر خيط كيراتيني بيطلع من البشرة، ومعظمه من خلايا ميتة متقرنة. خيوط الشعر بتنشأ من انغماد من البشرة في الأدمة اسمه بصيلة الشعر (hair follicle).' },
+  function: { en: 'The hair root ends deep in the dermis at the hair bulb, and includes a layer of mitotically active basal cells called the hair matrix. The hair bulb surrounds the hair papilla, which is made of connective tissue and contains blood capillaries and nerve endings from the dermis.', ar: 'جذر الشعر بينتهي عميقا في الأدمة عند بصلة الشعر، وفيه طبقة خلايا قاعدية نشطة الانقسام اسمها hair matrix. البصلة بتحيط بحليمة الشعر (hair papilla) المكونة من نسيج ضام وفيها شعيرات دموية ونهايات عصبية من الأدمة.' },
+  functionLabel: keyPoint,
+  compare: { en: 'The hair shaft is the part of the hair not anchored to the follicle; the rest of the hair, anchored in the follicle, is called the hair root.', ar: 'ساق الشعر هو الجزء غير المثبت في البصيلة، وباقي الشعر المثبت في البصيلة اسمه جذر الشعر.' },
+  source: hairSrc,
+};
+const gut: AnimalNote = {
+  recognize: { en: 'The small intestine has circular folds, villi, and microvilli. Its three regions, from proximal to distal, are the duodenum, jejunum, and ileum.', ar: 'الأمعاء الدقيقة فيها ثنيات دائرية وزغابات (villi) وزغيبات (microvilli). مناطقها الثلاث من القريب للبعيد: الاثنا عشر (duodenum) والصائم (jejunum) واللفائفي (ileum).' },
+  function: { en: 'These features increase the absorptive surface area of the small intestine more than 600-fold. Practically all absorption occurs in the small intestine.', ar: 'التراكيب دي بتزود مساحة سطح الامتصاص في الأمعاء الدقيقة أكتر من 600 ضعف. تقريبا كل الامتصاص بيحصل في الأمعاء الدقيقة.' },
+  functionLabel: keyPoint, source: gutSrc,
+};
+const testis: AnimalNote = {
+  recognize: { en: 'Within the lobules of the testis, sperm develop in structures called seminiferous tubules. The tightly coiled seminiferous tubules form the bulk of each testis.', ar: 'جوه فصيصات الخصية، الحيوانات المنوية بتتكون في تراكيب اسمها الأنابيب المنوية (seminiferous tubules). الأنابيب المنوية الملتفة بإحكام بتكوّن معظم الخصية.' },
+  function: { en: 'Sertoli cells surround all stages of the developing sperm cells and secrete signaling molecules that promote sperm production. Formed sperm are transferred to the epididymis, where they mature.', ar: 'خلايا سرتولي بتحيط بكل مراحل الحيوانات المنوية النامية وبتفرز جزيئات إشارة بتشجع إنتاج الحيوانات المنوية. الحيوانات المنوية المتكونة بتنتقل للبربخ (epididymis) وبتنضج فيه.' },
+  functionLabel: keyPoint,
+  compare: { en: 'Sperm leave the epididymis during an ejaculation via the ductus deferens. The seminal vesicles and prostate gland add fluids to the sperm to create semen.', ar: 'الحيوانات المنوية بتسيب البربخ وقت القذف عن طريق القناة الناقلة (ductus deferens). الحويصلات المنوية والبروستاتا بيضيفوا سوائل للحيوانات المنوية لتكوين السائل المنوي.' },
+  source: testSrc,
+};
+const ovary: AnimalNote = {
+  recognize: { en: 'Beneath the tunica albuginea is the cortex, or outer portion, of the ovary, composed of a tissue framework called the ovarian stroma. Oocytes develop within the outer layer of this stroma, each surrounded by supporting cells.', ar: 'تحت الـ tunica albuginea في القشرة (cortex)، أي الجزء الخارجي من المبيض، وهي مكونة من إطار نسيجي اسمه سدى المبيض (ovarian stroma). البويضات (oocytes) بتنمو في الطبقة الخارجية من السدى، وكل واحدة محاطة بخلايا داعمة.' },
+  function: { en: 'The grouping of an oocyte and its supporting cells is called a follicle. The gamete the ovary produces is called an oocyte.', ar: 'تجمع البويضة والخلايا الداعمة ليها اسمه حويصلة (follicle). الأمشاج اللي بينتجها المبيض اسمها oocyte.' },
+  functionLabel: keyPoint,
+  compare: { en: 'Beneath the cortex lies the inner ovarian medulla, the site of blood vessels, lymph vessels, and the nerves of the ovary.', ar: 'تحت القشرة في النخاع الداخلي للمبيض (medulla)، مكان الأوعية الدموية والليمفاوية وأعصاب المبيض.' },
+  source: ovSrc,
+};
+const thyroid: AnimalNote = {
+  recognize: { en: 'The tissue of the thyroid gland is composed mostly of thyroid follicles. The follicles are made up of a central cavity filled with a sticky fluid called colloid, surrounded by a wall of epithelial follicle cells.', ar: 'نسيج الغدة الدرقية مكون في الغالب من حويصلات درقية (thyroid follicles). الحويصلات مكونة من تجويف مركزي مليان بسائل لزج اسمه colloid، محاط بجدار من خلايا ظهارية.' },
+  function: { en: 'The colloid is the center of thyroid hormone production, and that production is dependent on iodine.', ar: 'الـ colloid هو مركز إنتاج الهرمون الدرقي، والإنتاج ده معتمد على اليود.' },
+  functionLabel: keyPoint,
+  compare: { en: 'The thyroid follicle cells are cuboidal epithelial cells.', ar: 'خلايا الحويصلات الدرقية خلايا ظهارية مكعبة.' },
+  source: thySrc,
+};
+const parathyroid: AnimalNote = {
+  recognize: { en: 'The parathyroid tissue is largely composed of cube-shaped chief cells encircling a central blood vessel. A few larger and darker-staining oxyphil cells are embedded within the many chief cells.', ar: 'نسيج الغدة جار الدرقية مكون في الغالب من خلايا رئيسية (chief cells) مكعبة حوالين وعاء دموي مركزي. وفيه شوية خلايا oxyphil أكبر وأغمق في الصبغ وسط الخلايا الرئيسية.' },
+  function: { en: 'The chief cells produce and secrete parathyroid hormone (PTH), the major hormone involved in the regulation of blood calcium levels.', ar: 'الخلايا الرئيسية بتنتج وبتفرز الهرمون جار الدرقي (PTH)، الهرمون الأساسي في تنظيم مستوى الكالسيوم في الدم.' },
+  functionLabel: keyPoint,
+  compare: { en: 'The function of the oxyphil cells is not clear.', ar: 'وظيفة خلايا الـ oxyphil مش واضحة.' },
+  source: paraSrc,
+};
+const pituitary: AnimalNote = {
+  recognize: { en: 'The pituitary has two lobes that arise from distinct parts of embryonic tissue: the posterior pituitary (neurohypophysis) is neural tissue, whereas the anterior pituitary (adenohypophysis) is glandular tissue that develops from the primitive digestive tract.', ar: 'الغدة النخامية ليها فصين ناشئين من أجزاء مختلفة من النسيج الجنيني: النخامية الخلفية (neurohypophysis) نسيج عصبي، لكن النخامية الأمامية (adenohypophysis) نسيج غدي بيتكون من القناة الهضمية البدائية.' },
+  function: { en: 'The pituitary secretes several hormones that directly produce responses in target tissues, as well as hormones that regulate the synthesis and secretion of hormones of other glands.', ar: 'النخامية بتفرز هرمونات بتعمل استجابات مباشرة في الأنسجة المستهدفة، وكمان هرمونات بتنظم تصنيع وإفراز هرمونات غدد تانية.' },
+  functionLabel: keyPoint, source: pitSrc,
+};
+const pineal: AnimalNote = {
+  recognize: { en: 'The pineal gland is a tiny endocrine gland inferior but somewhat posterior to the thalamus; its functions are not entirely clear.', ar: 'الغدة الصنوبرية غدة صماء صغيرة تحت المهاد وشوية للخلف، ووظايفها مش واضحة بالكامل.' },
+  function: { en: 'The pinealocyte cells that make up the pineal gland produce and secrete the hormone melatonin. The secretion of melatonin varies according to the level of light received from the environment.', ar: 'خلايا الـ pinealocyte المكونة للغدة الصنوبرية بتنتج وبتفرز هرمون الميلاتونين. إفراز الميلاتونين بيتغير حسب مستوى الضوء من البيئة.' },
+  functionLabel: keyPoint, source: pinSrc,
+};
+const histRules: Array<[RegExp, AnimalNote]> = [
+  [/^simple-squamous/, squamous],
+  [/^cuboidal-epithelium/, cuboidal],
+  [/(loose-areolar|reticular-connective|teased-tendon|reticular-dermis|elastic-tissue|elastic-connective)/, fibres],
+  [/(muscle-transverse|cardiac-muscle)/, muscle],
+  [/(neuron(?!al)|spinal-cord|nissl|astrocyte|motor-nerve|purkinje|cerebell|rat-brain)/, nerve],
+  [/(hair|scalp)/, hair],
+  [/(ileum|duodenum)/, gut],
+  [/(parathyroid-chief)/, parathyroid],
+  [/(thyroid)/, thyroid],
+  [/(adenohypophysis|pituitary)/, pituitary],
+  [/(pineal)/, pineal],
+  [/(seminiferous|testis|epididymis|vas-deferens|seminal-vesicle|prostate)/, testis],
+  [/(ovary|ovarian|granulosa)/, ovary],
+];
+const histologyNotes = new Set<AnimalNote>(histRules.map(([, n]) => n));
+
 // Slide ids are matched by words in the id; the first rule that matches wins. Only groups the cited page describes are listed.
 const rules: Array<[RegExp, AnimalNote | null]> = [
   [/^diatomaceous/, null],
@@ -238,9 +345,13 @@ const map: Record<string, AnimalNote> = {};
 const parasitologyOk = new Set<AnimalNote>([arthropod, chelicerate, nematode, crustacean, tracheae]);
 for (const sp of specimens) {
   if (clinicalNotes[sp.id] || plantNotes[sp.id]) continue;
+  if (sp.department === 'histology') {
+    for (const [re, note] of histRules) if (re.test(sp.id)) { map[sp.id] = note; break; }
+    continue;
+  }
   if (!['zoology', 'aquatic-life', 'microbiology', 'parasitology'].includes(sp.department)) continue;
   for (const [re, note] of rules) if (re.test(sp.id)) {
-    if (note && (sp.department !== 'parasitology' || parasitologyOk.has(note))) map[sp.id] = note;
+    if (note && (sp.department !== 'parasitology' || parasitologyOk.has(note)) && !histologyNotes.has(note)) map[sp.id] = note;
     break;
   }
 }

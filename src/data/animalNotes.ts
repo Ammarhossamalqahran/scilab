@@ -326,6 +326,38 @@ const hemRules: Array<[RegExp, AnimalNote]> = [
   [/(rubricyte|normoblasts-nucleated|^nucleated-red-cells-smear)/, nucRbc],
 ];
 const hemNotes = new Set<AnimalNote>(hemRules.map(([, n]) => n));
+const helmSrc = osm('5.2 Parasitic Helminths', '5-2-parasitic-helminths');
+const paraProtSrc = osm('5.1 Unicellular Eukaryotic Parasites', '5-1-unicellular-eukaryotic-parasites');
+const fluke: AnimalNote = {
+  recognize: { en: 'The flukes (trematodes) are nonsegmented flatworms that have an oral sucker.', ar: 'الـ flukes (trematodes) ديدان مفلطحة غير مقسمة ليها ممص فموي (oral sucker).' },
+  function: { en: 'Trematodes have complex life cycles, often with multiple hosts.', ar: 'الـ trematodes دورات حياتها معقدة، وغالبا بتشمل أكتر من عائل.' },
+  functionLabel: keyPoint,
+  source: helmSrc,
+};
+const tapeworm: AnimalNote = {
+  recognize: { en: 'Tapeworms (cestodes) are segmented flatworms that may have suckers or hooks at the scolex (head region). The body of the worm is made up of segments called proglottids that contain reproductive structures.', ar: 'الديدان الشريطية (cestodes) ديدان مفلطحة مقسمة ممكن يكون ليها ممصات أو خطاطيف عند الـ scolex (منطقة الراس). جسم الدودة مكون من قطع اسمها proglottids فيها التراكيب التناسلية.' },
+  function: { en: 'Tapeworms use these suckers or hooks to attach to the wall of the small intestine.', ar: 'الديدان الشريطية بتستخدم الممصات أو الخطاطيف دي علشان تلتصق بجدار الأمعاء الدقيقة.' },
+  functionLabel: keyPoint,
+  compare: { en: 'The flukes (trematodes) are nonsegmented flatworms that have an oral sucker.', ar: 'أما الـ flukes (trematodes) فديدان مفلطحة غير مقسمة ليها ممص فموي.' },
+  source: helmSrc,
+};
+const trichomonad: AnimalNote = {
+  recognize: { en: 'The trichomonads (a subgroup of the Parabasalia) include pathogens such as Trichomonas vaginalis, which causes the human sexually transmitted disease trichomoniasis.', ar: 'الـ trichomonads (مجموعة فرعية من الـ Parabasalia) فيها مسببات أمراض زي Trichomonas vaginalis اللي بيسبب مرض التريكوموناس المنقول جنسيا في الإنسان.' },
+  source: paraProtSrc,
+};
+const trypanosome: AnimalNote = {
+  recognize: { en: 'The Euglenozoa also include the trypanosomes, which are parasitic pathogens.', ar: 'الـ Euglenozoa فيها كمان الـ trypanosomes، وهي مسببات أمراض طفيلية.' },
+  function: { en: 'Trypanosoma brucei, the causative agent of African trypanosomiasis, spends part of its life cycle in the tsetse fly and part in humans.', ar: 'الـ Trypanosoma brucei، المسبب لمرض النوم الأفريقي، بيقضي جزء من دورة حياته في ذبابة التسي تسي وجزء في الإنسان.' },
+  functionLabel: keyPoint,
+  source: paraProtSrc,
+};
+const parRules: Array<[RegExp, AnimalNote]> = [
+  [/^tapeworm/, tapeworm],
+  [/^trematode/, fluke],
+  [/^(trichomonas|tritrichomonas)/, trichomonad],
+  [/^trypanosoma/, trypanosome],
+];
+const parNotes = new Set<AnimalNote>(parRules.map(([, n]) => n));
 
 // Slide ids are matched by words in the id; the first rule that matches wins. Only groups the cited page describes are listed.
 const rules: Array<[RegExp, AnimalNote | null]> = [
@@ -373,9 +405,13 @@ for (const sp of specimens) {
     for (const [re, note] of hemRules) if (re.test(sp.id)) { map[sp.id] = note; break; }
     continue;
   }
+  if (['tapeworm','trematode','trichomonas','tritrichomonas','trypanosoma'].some(k => sp.id.startsWith(k))) {
+    for (const [re, note] of parRules) if (re.test(sp.id)) { map[sp.id] = note; break; }
+    continue;
+  }
   if (!['zoology', 'aquatic-life', 'microbiology', 'parasitology'].includes(sp.department)) continue;
   for (const [re, note] of rules) if (re.test(sp.id)) {
-    if (note && (sp.department !== 'parasitology' || parasitologyOk.has(note)) && !histologyNotes.has(note) && !hemNotes.has(note)) map[sp.id] = note;
+    if (note && (sp.department !== 'parasitology' || parasitologyOk.has(note)) && !histologyNotes.has(note) && !hemNotes.has(note) && !parNotes.has(note)) map[sp.id] = note;
     break;
   }
 }

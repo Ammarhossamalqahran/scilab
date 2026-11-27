@@ -1,4 +1,5 @@
 import type { D1Database } from './types';
+import { notifyAdmin } from './adminPush';
 import { ensureSchema, ipHash } from './leaderboard';
 
 // Profile photos. The player sees their own photo at once; everyone else only sees it after the owner
@@ -72,6 +73,7 @@ export async function handlePhoto(request: Request, db: D1Database, url: URL, no
     if (!b64) return json({ error: 'bad_image' }, 400);
     // A new upload is always pending again, with a new public id, so an old approval never carries over.
     await db.prepare("INSERT INTO photos (player_id, pub, data, status, updated) VALUES (?, ?, ?, 'pending', ?) ON CONFLICT(player_id) DO UPDATE SET pub = excluded.pub, data = excluded.data, status = 'pending', updated = excluded.updated").bind(player, randomPub(), b64, now).run();
+    await notifyAdmin(db, 'review', now);
     return json({ ok: true, status: 'pending' });
   }
   return json({ error: 'not_found' }, 404);

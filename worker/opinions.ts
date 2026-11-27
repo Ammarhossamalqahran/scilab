@@ -1,4 +1,5 @@
 import type { D1Database } from './types';
+import { notifyAdmin } from './adminPush';
 import { ensureSchema, ipHash } from './leaderboard';
 import { ensurePhotoSchema } from './photo';
 
@@ -63,6 +64,7 @@ export async function handleOpinion(request: Request, db: D1Database, url: URL, 
     const day = await db.prepare('SELECT COUNT(*) AS n FROM opinions WHERE player_id = ? AND created > ?').bind(player, now - 86400_000).first<{ n: number }>();
     if ((day?.n ?? 0) >= PER_PLAYER_PER_DAY) return json({ error: 'rate_limited' }, 429);
     await db.prepare("INSERT INTO opinions (player_id, body, status, created) VALUES (?, ?, 'pending', ?)").bind(player, text, now).run();
+    await notifyAdmin(db, 'review', now);
     return json({ ok: true, status: 'pending' });
   }
   return json({ error: 'not_found' }, 404);

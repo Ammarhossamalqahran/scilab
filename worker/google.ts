@@ -22,7 +22,12 @@ async function googleKeys(fetchImpl: typeof fetch, now: number): Promise<Jwk[]> 
 const b64uBytes = (s: string) => Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/').padEnd(Math.ceil(s.length / 4) * 4, '=')), (c) => c.charCodeAt(0));
 
 // Returns Google's user id ("sub") when the token is genuine, for this app, and not expired. Otherwise null.
+export type IdClaims = { sub: string; email?: string; email_verified?: boolean | string };
 export async function verifyIdToken(token: unknown, clientId: string, now = Date.now(), fetchImpl: typeof fetch = fetch, nonce?: string): Promise<string | null> {
+  return (await verifyIdClaims(token, clientId, now, fetchImpl, nonce))?.sub ?? null;
+}
+// Same checks, but returns the verified claims (the admin sign-in needs the email).
+export async function verifyIdClaims(token: unknown, clientId: string, now = Date.now(), fetchImpl: typeof fetch = fetch, nonce?: string): Promise<IdClaims | null> {
   if (typeof token !== 'string' || !clientId || token.length > 4000) return null;
   const parts = token.split('.');
   if (parts.length !== 3) return null;
@@ -34,12 +39,13 @@ export async function verifyIdToken(token: unknown, clientId: string, now = Date
     const key = await crypto.subtle.importKey('jwk', jwk, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['verify']);
     const ok = await crypto.subtle.verify('RSASSA-PKCS1-v1_5', key, b64uBytes(parts[2]), new TextEncoder().encode(`${parts[0]}.${parts[1]}`));
     if (!ok) return null;
-    const c = JSON.parse(new TextDecoder().decode(b64uBytes(parts[1]))) as { iss?: string; aud?: string; exp?: number; sub?: string; nonce?: string };
+    const c = JSON.parse(new TextDecoder().decode(b64uBytes(parts[1]))) as { iss?: string; aud?: string; exp?: number; sub?: string; nonce?: string; email?: string; email_verified?: boolean | string };
     if (c.iss !== 'accounts.google.com' && c.iss !== 'https://accounts.google.com') return null;
     if (c.aud !== clientId) return null;
     if (nonce !== undefined && c.nonce !== nonce) return null; // ties the token to the sign-in this browser started
     if (typeof c.exp !== 'number' || c.exp * 1000 < now) return null;
-    return typeof c.sub === 'string' && c.sub.length > 0 && c.sub.length < 64 ? c.sub : null;
+    if (typeof c.sub !== 'string' || c.sub.length === 0 || c.sub.length >= 64) return null;
+    return { sub: c.sub, email: typeof c.email === 'string' ? c.email : undefined, email_verified: c.email_verified };
   } catch { return null; }
 }
 

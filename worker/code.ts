@@ -1,4 +1,5 @@
 import type { D1Database } from './types';
+import { notifyAdmin } from './adminPush';
 import { ensureSchema, ipHash } from './leaderboard';
 
 // Personal recovery code. Only a salted hash of the code is stored, so nobody (including the owner)
@@ -84,6 +85,7 @@ export async function handleCode(request: Request, db: D1Database, url: URL, now
         .bind(...(existing ? [h, player] : [h, player, nick, nick.toLowerCase(), now])).run();
       if (typeof body?.avatar === 'string' && /^[a-z0-9-]{1,20}$/.test(body.avatar)) await db.prepare('UPDATE players SET avatar = ? WHERE id = ?').bind(body.avatar, player).run();
     } catch { return json({ error: 'nick_taken' }, 409); }
+    if (!existing) await notifyAdmin(db, 'user', now);
     return json({ code, nick });
   }
 

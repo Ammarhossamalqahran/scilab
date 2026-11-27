@@ -271,7 +271,7 @@ export function MicroscopePage() {
           {!challengeHidden && animalNotes[specimen.id] && (
             <aside className="clinical-note plant-note animal-note" aria-label={lang === 'ar' ? 'ملاحظات حيوانية: التعرف والوظيفة والمقارنة' : 'Animal notes: recognition, function and comparison'}>
               {animalNotes[specimen.id].recognize && <p><b>{lang === 'ar' ? 'ازاي تتعرف عليها: ' : 'How to recognize it: '}</b>{animalNotes[specimen.id].recognize![lang]}</p>}
-              {animalNotes[specimen.id].function && <p><b>{lang === 'ar' ? 'وظيفتها في المجموعة دي: ' : 'What it does in this group: '}</b>{animalNotes[specimen.id].function![lang]}</p>}
+              {animalNotes[specimen.id].function && <p><b>{animalNotes[specimen.id].functionLabel?.[lang] ?? (lang === 'ar' ? 'وظيفتها في المجموعة دي: ' : 'What it does in this group: ')}</b>{animalNotes[specimen.id].function![lang]}</p>}
               {animalNotes[specimen.id].compare && <p><b>{lang === 'ar' ? 'مقارنة: ' : 'Comparison: '}</b>{animalNotes[specimen.id].compare![lang]}</p>}
               <small>{lang === 'ar' ? 'المصدر: ' : 'Source: '}<a href={animalNotes[specimen.id].source.url} target="_blank" rel="noreferrer">{animalNotes[specimen.id].source.title}</a>{lang === 'ar' ? ' · وصف للمجموعة مش للعينة بالذات، للمذاكرة.' : ' · Describes the group, not this exact specimen. For study.'}</small>
             </aside>

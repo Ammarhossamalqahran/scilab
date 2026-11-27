@@ -1,10 +1,12 @@
 import { specimens, type Bilingual } from './scientificData';
+import { clinicalNotes } from './clinicalNotes';
+import { plantNotes } from './plantNotes';
 
 // Animal notes for zoology (and the animal slides in other departments): how to recognize the structure, what it does,
 // and a comparison. Every English sentence is taken from the cited open textbook page (OpenStax Biology 2e, CC BY 4.0).
 // Notes describe the animal group the source describes, not the exact specimen on the slide. Arabic is a translation that
 // needs review by a specialist. A slide with no entry here shows no note: nothing is guessed.
-export type AnimalNote = { recognize?: Bilingual; function?: Bilingual; compare?: Bilingual; source: { title: string; url: string } };
+export type AnimalNote = { recognize?: Bilingual; function?: Bilingual; functionLabel?: Bilingual; compare?: Bilingual; source: { title: string; url: string } };
 const os = (title: string, page: string) => ({ title: `OpenStax Biology 2e: ${title}`, url: `https://openstax.org/books/biology-2e/pages/${page}` });
 const annelidSrc = os('28.4 Superphylum Lophotrochozoa: Mollusks and Annelids', '28-4-superphylum-lophotrochozoa-mollusks-and-annelids');
 const cnidSrc = os('28.2 Phylum Cnidaria', '28-2-phylum-cnidaria');
@@ -141,9 +143,74 @@ const rotifer: AnimalNote = {
   source: os('28.3 Superphylum Lophotrochozoa: Flatworms, Rotifers, and Nemerteans', '28-3-superphylum-lophotrochozoa-flatworms-rotifers-and-nemerteans'),
 };
 
+// ---- Microbiology groups (bacteria shapes, Gram stain, yeasts and moulds). Sentences from OpenStax Microbiology (CC BY 4.0).
+const osm = (title: string, page: string) => ({ title: `OpenStax Microbiology: ${title}`, url: `https://openstax.org/books/microbiology/pages/${page}` });
+const stainSrc = osm('2.4 Staining Microscopic Specimens', '2-4-staining-microscopic-specimens');
+const morphSrc = osm('3.3 Unique Characteristics of Prokaryotic Cells', '3-3-unique-characteristics-of-prokaryotic-cells');
+const gposSrc = osm('4.4 Gram-Positive Bacteria', '4-4-gram-positive-bacteria');
+const fungiSrc = osm('5.3 Fungi', '5-3-fungi');
+const keyPoint: Bilingual = { en: 'Key point: ', ar: 'النقطة الأساسية: ' };
+const howStain: Bilingual = { en: 'How the stain works: ', ar: 'الصبغة بتشتغل إزاي: ' };
+const gramStain: AnimalNote = {
+  recognize: { en: 'After Gram staining, cells that have thick peptidoglycan layers in their cell walls generally retain the crystal violet dye and remain purple. Cells with thinner peptidoglycan layers lose the dye and are stained pink by the safranin counterstain.', ar: 'بعد صبغة جرام، الخلايا اللي جدارها فيه طبقات peptidoglycan سميكة بتحتفظ بصبغة الكريستال البنفسجي وبتفضل بنفسجية. الخلايا اللي طبقتها أرفع بتفقد الصبغة وبتتصبغ بالوردي من صبغة safranin.' },
+  function: { en: 'The Gram stain procedure is a differential staining procedure developed by Hans Christian Gram in 1884 as an effective method to distinguish between bacteria with different types of cell walls.', ar: 'صبغة جرام طريقة صبغ تفريقية ابتكرها Hans Christian Gram سنة 1884 كوسيلة فعالة للتفريق بين بكتيريا ليها أنواع مختلفة من الجدار الخلوي.' },
+  functionLabel: howStain,
+  source: stainSrc,
+};
+const cocci: AnimalNote = {
+  recognize: { en: 'A coccus (plural: cocci) is a round, spherical cell. A diplococcus is a pair of two cocci, a streptococcus is a chain of cocci, and a staphylococcus is a cluster of cocci connected into a bundle.', ar: 'الـ coccus (جمعه cocci) خلية دايرية كروية. الـ diplococcus زوج من cocci، والـ streptococcus سلسلة من cocci، والـ staphylococcus عنقود من cocci متصلة في حزمة.' },
+  function: { en: 'Prokaryotic cells of the same species may group together in distinctive arrangements depending on the plane of cell division.', ar: 'خلايا بدائيات النواة من نفس النوع ممكن تتجمع في ترتيبات مميزة حسب مستوى انقسام الخلية.' },
+  functionLabel: keyPoint,
+  compare: { en: 'Streptococcus, the name of which comes from the Greek word for twisted chain, is a genus of Gram-positive bacteria.', ar: 'اسم Streptococcus جاي من الكلمة اليونانية اللي معناها سلسلة ملتوية، وهو جنس من البكتيريا موجبة الجرام.' },
+  source: morphSrc,
+};
+const bacilli: AnimalNote = {
+  recognize: { en: 'A bacillus (plural: bacilli) is a rod-shaped cell. A coccobacillus is a short rod that looks oval, and a diplobacillus is a pair of rods.', ar: 'الـ bacillus (جمعه bacilli) خلية عصوية الشكل. الـ coccobacillus عصية قصيرة شكلها بيضاوي، والـ diplobacillus زوج من العصيات.' },
+  function: { en: 'Individual cells of a particular prokaryotic organism are typically similar in shape, or cell morphology.', ar: 'الخلايا الفردية في الكائن بدائي النواة الواحد غالبا بتكون متشابهة في الشكل (cell morphology).' },
+  functionLabel: keyPoint,
+  compare: { en: 'A spirillum is a long spiral cell that looks like a corkscrew.', ar: 'الـ spirillum خلية لولبية طويلة شكلها زي المفتاح اللولبي.' },
+  source: morphSrc,
+};
+const coryne: AnimalNote = {
+  recognize: { en: 'Bacteria in the genus Corynebacterium often form palisades, or pairs of rod-shaped cells resembling the letter V. Cells may contain metachromatic granules, intracellular storage of inorganic phosphates.', ar: 'بكتيريا جنس Corynebacterium غالبا بتكوّن palisades، أي أزواج من خلايا عصوية شكلها زي حرف V. الخلايا ممكن يكون فيها حبيبات metachromatic، وهي تخزين داخل الخلية للفوسفات غير العضوي.' },
+  function: { en: 'Metachromatic granules are useful for identification of Corynebacterium.', ar: 'الحبيبات metachromatic مفيدة في التعرف على Corynebacterium.' },
+  functionLabel: keyPoint,
+  source: gposSrc,
+};
+const filaments: AnimalNote = {
+  recognize: { en: 'The microscopic appearance of Actinobacteria can range from thin filamentous branching rods to coccobacilli. Actinomyces is a Gram-positive bacillus that in colonies shows fungus-like threads (hyphae).', ar: 'الشكل المجهري للـ Actinobacteria ممكن يكون من عصيات خيطية رفيعة متفرعة لـ coccobacilli. الـ Actinomyces عصية موجبة الجرام بتبين في المستعمرات خيوط شبه الفطريات (hyphae).' },
+  compare: { en: 'Nocardia is a weakly Gram-positive bacillus that forms acid-fast branches.', ar: 'الـ Nocardia عصية موجبة الجرام بشكل ضعيف وبتكوّن فروع acid-fast.' },
+  source: gposSrc,
+};
+const lactic: AnimalNote = {
+  recognize: { en: 'The order Lactobacillales comprises low G+C Gram-positive bacteria that include both bacilli and cocci in the genera Lactobacillus, Leuconostoc, Enterococcus, and Streptococcus.', ar: 'رتبة Lactobacillales بتشمل بكتيريا موجبة الجرام منخفضة G+C فيها عصيات و cocci في الأجناس Lactobacillus و Leuconostoc و Enterococcus و Streptococcus.' },
+  source: gposSrc,
+};
+const yeast: AnimalNote = {
+  recognize: { en: 'In contrast to molds, yeasts are unicellular fungi. The budding yeasts reproduce asexually by budding off a smaller daughter cell; the resulting cells may sometimes stick together as a short chain or pseudohypha.', ar: 'عكس العفن (molds)، الخمائر (yeasts) فطريات وحيدة الخلية. الخمائر المتبرعمة بتتكاثر لاجنسيا بتبرعم خلية بنت أصغر، والخلايا الناتجة ممكن تلزق في سلسلة قصيرة أو pseudohypha.' },
+  function: { en: 'Candida albicans and Histoplasma capsulatum are dimorphic yeasts: they can appear as yeasts or molds, changing their appearance in response to nutrient availability or temperature.', ar: 'الـ Candida albicans و Histoplasma capsulatum خمائر ثنائية الشكل (dimorphic): ممكن تظهر كخميرة أو كعفن وبتغير شكلها حسب توفر الغذاء أو درجة الحرارة.' },
+  functionLabel: keyPoint,
+  source: fungiSrc,
+};
+const mould: AnimalNote = {
+  recognize: { en: 'Most multicellular fungal bodies, commonly called molds, are made up of filaments called hyphae. Hyphae can form a tangled network called a mycelium.', ar: 'معظم أجسام الفطريات متعددة الخلايا، وبتتسمى عفن (molds)، مكونة من خيوط اسمها hyphae. الـ hyphae ممكن تكوّن شبكة متشابكة اسمها mycelium.' },
+  function: { en: 'Fungi may reproduce asexually by mitosis, budding, fragmentation of hyphae, and formation of asexual spores. Sexually produced spores are known as zygospores (in Zygomycota), ascospores (in Ascomycota), or basidiospores (in Basidiomycota).', ar: 'الفطريات ممكن تتكاثر لاجنسيا بالانقسام الميتوزي والتبرعم وتفتت الـ hyphae وتكوين أبواغ لاجنسية. الأبواغ الجنسية اسمها zygospores (في Zygomycota) أو ascospores (في Ascomycota) أو basidiospores (في Basidiomycota).' },
+  functionLabel: keyPoint,
+  compare: { en: 'Hyphae that have walls between the cells are called septate hyphae; hyphae that lack walls between the cells are called nonseptate or coenocytic hyphae.', ar: 'الـ hyphae اللي فيها جدران بين الخلايا اسمها septate، واللي مفيهاش جدران بين الخلايا اسمها nonseptate أو coenocytic.' },
+  source: fungiSrc,
+};
+
 // Slide ids are matched by words in the id; the first rule that matches wins. Only groups the cited page describes are listed.
 const rules: Array<[RegExp, AnimalNote | null]> = [
   [/^diatomaceous/, null],
+  [/(yeast|saccharomyces|candida|budding)/, yeast],
+  [/(fung|mould|hyphae|conidi|spore|alternaria|fusarium|curvularia|penicillium|verticillium|thamnidium|basidio|morel|ustilago|urocystis|hortaea|choanephora|rust-)/, mould],
+  [/^(corynebacterium|gram-stain-corynebacterium)/, coryne],
+  [/(branching-gram-positive-filaments)/, filaments],
+  [/(lactobacillus|lactococcus|ligilactobacillus|yogurt)/, lactic],
+  [/(cocci|coccus|streptococc|staphylococc|gemella|aerococcus|^staphylococcus|^streptococcus)/, cocci],
+  [/(rods|bacilli|bacillus|streptobacilli|aeromonas|citrobacter|enterobacter|alcaligenes|pseudomonas)/, bacilli],
+  [/(gram-stain|gram-variab|gram-positive|gram-negative|sputum-smear|bacteria-morphology|stained-bacteria)/, gramStain],
   [/^(paramecium|ciliates-|euplotes|oxytricha|frontonia|hypotrich)/, ciliate],
   [/(diatom|navicula|pleurosigma|licmophora)/, diatom],
   [/radiolarian/, radiolarian],
@@ -167,5 +234,14 @@ const rules: Array<[RegExp, AnimalNote | null]> = [
   [/(mosquito|^aedes|^ant-|bed-bug|^honeybee|housefly|insect-|psocopteran|thrips|firebrat|trichogramma|wasp|violet-carpenter|bee-|drosophila|butterfly|colour-transition|fly-|aphid|nomada|tachinid|honey-bee|phantom-crane|german-wasp|chironomid|damselfly|trigonalid)/, arthropod],
 ];
 const map: Record<string, AnimalNote> = {};
-for (const sp of specimens) for (const [re, note] of rules) if (re.test(sp.id)) { if (note) map[sp.id] = note; break; }
+// Never double up on a slide that already has a note, and only use these notes in the departments they were written for.
+const parasitologyOk = new Set<AnimalNote>([arthropod, chelicerate, nematode, crustacean, tracheae]);
+for (const sp of specimens) {
+  if (clinicalNotes[sp.id] || plantNotes[sp.id]) continue;
+  if (!['zoology', 'aquatic-life', 'microbiology', 'parasitology'].includes(sp.department)) continue;
+  for (const [re, note] of rules) if (re.test(sp.id)) {
+    if (note && (sp.department !== 'parasitology' || parasitologyOk.has(note))) map[sp.id] = note;
+    break;
+  }
+}
 export const animalNotes: Record<string, AnimalNote> = map;

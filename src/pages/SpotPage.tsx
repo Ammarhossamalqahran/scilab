@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { orderFresh, markSeen } from '../lib/recentSeen';
 import { useTestGuard } from '../lib/useTestGuard';
 import { TestGuardNotice } from '../components/TestGuardNotice';
 import { Link } from 'react-router-dom';
@@ -38,7 +39,9 @@ function build(subject: DepartmentId | 'all', count: number, lang: 'en' | 'ar'):
   const source = subject === 'all' ? pool : pool.filter((s) => s.department === subject);
   // One slide per distinct name, so two photos of the same organism never appear as different answers.
   const seen = new Set<string>();
-  const targets = shuffle(source).filter((s) => { const n = name(s); if (seen.has(n)) return false; seen.add(n); return true; }).slice(0, count);
+  const mode = `spot-${subject}`;
+  const targets = orderFresh(source, mode).filter((s) => { const n = name(s); if (seen.has(n)) return false; seen.add(n); return true; }).slice(0, count);
+  markSeen(mode, targets.map((t) => t.id), source.length);
   return targets.map((t) => {
     const same = pool.filter((s) => s.department === t.department && name(s) !== name(t));
     const choices = shuffle(same.length >= 3 ? same : pool.filter((s) => name(s) !== name(t)));

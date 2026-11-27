@@ -10,6 +10,7 @@ import { specimens, type DepartmentId } from '../data/scientificData';
 import { specimenMedia } from '../data/specimenMedia';
 import { clinicalNotes } from '../data/clinicalNotes';
 import { plantNotes } from '../data/plantNotes';
+import { animalNotes } from '../data/animalNotes';
 import { inSubcategory, subcategoryOptions } from '../data/subcategories';
 
 const departments: { id: DepartmentId; label: { en: string; ar: string } }[] = [
@@ -265,6 +266,14 @@ export function MicroscopePage() {
               {plantNotes[specimen.id].function && <p><b>{lang === 'ar' ? 'وظيفتها للنبات: ' : 'What it does for the plant: '}</b>{plantNotes[specimen.id].function![lang]}</p>}
               {plantNotes[specimen.id].compare && <p><b>{lang === 'ar' ? 'مقارنة: ' : 'Comparison: '}</b>{plantNotes[specimen.id].compare![lang]}</p>}
               <small>{lang === 'ar' ? 'المصدر: ' : 'Source: '}<a href={plantNotes[specimen.id].source.url} target="_blank" rel="noreferrer">{plantNotes[specimen.id].source.title}</a>{lang === 'ar' ? ' · للمذاكرة.' : ' · For study.'}</small>
+            </aside>
+          )}
+          {!challengeHidden && animalNotes[specimen.id] && (
+            <aside className="clinical-note plant-note animal-note" aria-label={lang === 'ar' ? 'ملاحظات حيوانية: التعرف والوظيفة والمقارنة' : 'Animal notes: recognition, function and comparison'}>
+              {animalNotes[specimen.id].recognize && <p><b>{lang === 'ar' ? 'ازاي تتعرف عليها: ' : 'How to recognize it: '}</b>{animalNotes[specimen.id].recognize![lang]}</p>}
+              {animalNotes[specimen.id].function && <p><b>{lang === 'ar' ? 'وظيفتها في المجموعة دي: ' : 'What it does in this group: '}</b>{animalNotes[specimen.id].function![lang]}</p>}
+              {animalNotes[specimen.id].compare && <p><b>{lang === 'ar' ? 'مقارنة: ' : 'Comparison: '}</b>{animalNotes[specimen.id].compare![lang]}</p>}
+              <small>{lang === 'ar' ? 'المصدر: ' : 'Source: '}<a href={animalNotes[specimen.id].source.url} target="_blank" rel="noreferrer">{animalNotes[specimen.id].source.title}</a>{lang === 'ar' ? ' · وصف للمجموعة مش للعينة بالذات، للمذاكرة.' : ' · Describes the group, not this exact specimen. For study.'}</small>
             </aside>
           )}
           <div className="canvas-stage">

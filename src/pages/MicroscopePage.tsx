@@ -8,6 +8,7 @@ import { bloodStains, type BloodStainId } from '../data/bloodStains';
 import { MicroscopeCanvas } from '../microscope/MicroscopeCanvas';
 import { specimens, type DepartmentId } from '../data/scientificData';
 import { specimenMedia } from '../data/specimenMedia';
+import { clinicalNotes } from '../data/clinicalNotes';
 
 const departments: { id: DepartmentId; label: { en: string; ar: string } }[] = [
   { id: 'hematology', label: { en: 'Blood cells', ar: 'خلايا الدم' } },
@@ -234,6 +235,13 @@ export function MicroscopePage() {
               <button type="button" className="icon-button reset-button" onClick={resetView} aria-label={lang === 'ar' ? 'إعادة توسيط الشريحة' : 'Center slide'} title={lang === 'ar' ? 'إعادة توسيط الشريحة' : 'Center slide'}><ResetIcon /></button>
             </div>
           </div>
+          {!challengeHidden && clinicalNotes[specimen.id] && (
+            <aside className="clinical-note" aria-label={lang === 'ar' ? 'ملاحظات للتعرف والنقطة الإكلينيكية' : 'Recognition and clinical point'}>
+              {clinicalNotes[specimen.id].recognize && <p><b>{lang === 'ar' ? 'ازاي تتعرف عليها: ' : 'How to recognize it: '}</b>{clinicalNotes[specimen.id].recognize![lang]}</p>}
+              {clinicalNotes[specimen.id].clinical && <p><b>{lang === 'ar' ? 'النقطة الإكلينيكية: ' : 'Clinical point: '}</b>{clinicalNotes[specimen.id].clinical![lang]}</p>}
+              <small>{lang === 'ar' ? 'المصدر: ' : 'Source: '}<a href={clinicalNotes[specimen.id].source.url} target="_blank" rel="noreferrer">{clinicalNotes[specimen.id].source.title}</a>{lang === 'ar' ? ' · للمذاكرة فقط، مش للتشخيص.' : ' · For study only, not for diagnosis.'}</small>
+            </aside>
+          )}
           <div className="canvas-stage">
             <MicroscopeCanvas imageSrc={activeMedia?.src} magnification={magnification} coarseFocus={coarseFocus} fineFocus={fineFocus} light={light} stainFilter={activeStain?.canvasFilter ?? 'none'} pan={pan} placeholders={{ empty: lang === 'ar' ? 'اختر شريحة مجهّزة' : 'Choose a prepared slide', loading: lang === 'ar' ? 'جارٍ تحميل صورة الشريحة…' : 'Loading slide photograph…', failed: lang === 'ar' ? 'تعذّر تحميل صورة الشريحة' : 'Slide photograph unavailable' }} onPan={setPan} onZoomReset={() => { setMagnification(4); setPan({ x: 0, y: 0 }); }} onZoom={(direction) => { const order = objectives.map((objective) => objective.value); const next = order[Math.max(0, Math.min(order.length - 1, order.indexOf(magnification) + direction))]; if (next !== undefined) setMagnification(next); }} ariaLabel={challengeHidden ? (lang === 'ar' ? 'عينة مجهرية مخفية للاختبار' : 'Hidden specimen for identification challenge') : specimen.title[lang]} />
           </div>

@@ -1555,3 +1555,7 @@ img[loading="lazy"], .specimen-thumbnail, .module-card-photo { background: color
 .spot-misses img { object-fit: cover; flex: none; }
 .spot-misses li div { display: grid; gap: 2px; font-size: 13px; }
 .spot-misses small { color: var(--coral); }
+.clinical-note { margin: 10px 0; padding: 12px 14px; border-inline-start: 3px solid var(--accent); background: var(--surface-raised); font-size: 13px; line-height: 1.6; }
+.clinical-note p { margin: 0 0 8px; }
+.clinical-note small { display: block; color: var(--muted); font-size: 11px; }
+.clinical-note a { color: inherit; }

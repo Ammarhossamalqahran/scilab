@@ -1,6 +1,6 @@
 // Talks to the /api leaderboard Worker. Every call fails soft: if the API or database is not there
 // (local preview, offline, not set up yet) the game still works and the leaderboard is just hidden.
-export type Entry = { nick: string; score: number; avatar?: string | null; photo?: string | null };
+export type Entry = { nick: string; score: number; owner?: number | null; avatar?: string | null; photo?: string | null };
 const playerKey = 'scilab-player-id';
 const nickKey = 'scilab-nickname';
 

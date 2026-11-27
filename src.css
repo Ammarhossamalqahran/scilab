@@ -1597,3 +1597,7 @@ body.test-guard-on{-webkit-user-select:none;user-select:none;-webkit-touch-callo
 .frame-pick small{font-size:11px;opacity:.8}
 .frame-pick.is-picked{outline:2px solid #1f5c46}
 .frame-pick.is-locked{cursor:default}
+.chal-rows li.is-owner b{display:inline-flex;align-items:center;gap:4px;white-space:nowrap;background:linear-gradient(90deg,#8a6508,#c99a1a 50%,#8a6508);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#8a6508;font-weight:800}
+.chal-rows li.is-owner b .lb-avatar{-webkit-text-fill-color:initial}
+.owner-badge{margin-inline-start:6px;vertical-align:-3px;-webkit-text-fill-color:initial}
+.chal-rows li.is-owner{box-shadow:inset 3px 0 0 #d4a017}

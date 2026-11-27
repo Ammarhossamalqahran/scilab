@@ -26,7 +26,7 @@ export function ensureSchema(db: D1Database): Promise<void> {
     db.prepare('CREATE INDEX IF NOT EXISTS scores_player ON scores (player_id)'),
     db.prepare('CREATE TABLE IF NOT EXISTS games (id TEXT PRIMARY KEY, started INTEGER NOT NULL, used INTEGER NOT NULL DEFAULT 0, ip TEXT NOT NULL)'),
   ]).then(async () => {
-    for (const col of ['code_hash TEXT', 'avatar TEXT']) await db.prepare(`ALTER TABLE players ADD COLUMN ${col}`).run().then(() => undefined, () => undefined); // already there
+    for (const col of ['code_hash TEXT', 'avatar TEXT', 'owner INTEGER']) await db.prepare(`ALTER TABLE players ADD COLUMN ${col}`).run().then(() => undefined, () => undefined); // already there
   }).catch((e) => { ready = null; throw e; });
   return ready;
 }
@@ -53,8 +53,8 @@ export async function handleLeaderboard(request: Request, db: D1Database, url: U
     const period = url.searchParams.get('period') === 'all' ? 'all' : 'week';
     const since = period === 'week' ? now - 7 * 86400_000 : 0;
     const rows = await db.prepare(
-      "SELECT p.nick AS nick, p.avatar AS avatar, MAX(s.score) AS score, (SELECT ph.pub FROM photos ph WHERE ph.player_id = p.id AND ph.status = 'approved') AS photo FROM scores s JOIN players p ON p.id = s.player_id WHERE s.at >= ? GROUP BY s.player_id ORDER BY score DESC, MIN(s.at) ASC LIMIT 20",
-    ).bind(since).all<{ nick: string; avatar: string | null; score: number; photo: string | null }>();
+      "SELECT p.nick AS nick, p.avatar AS avatar, p.owner AS owner, MAX(s.score) AS score, (SELECT ph.pub FROM photos ph WHERE ph.player_id = p.id AND ph.status = 'approved') AS photo FROM scores s JOIN players p ON p.id = s.player_id WHERE s.at >= ? GROUP BY s.player_id ORDER BY score DESC, MIN(s.at) ASC LIMIT 20",
+    ).bind(since).all<{ nick: string; avatar: string | null; owner: number | null; score: number; photo: string | null }>();
     return json({ period, entries: rows.results }, 200, { 'cache-control': 'public, max-age=30' });
   }
 

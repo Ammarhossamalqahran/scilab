@@ -1,6 +1,7 @@
 import type { D1Database } from './types';
 import { ipHash, ensureSchema } from './leaderboard';
 import { verifyIdClaims } from './google';
+import { hashCode } from './code';
 
 // Owner sign-in with Google. The browser sends a Google ID token; here it is verified (Google's signing
 // keys, our Client ID, the nonce this browser started, expiry), the email must be verified by Google, and
@@ -19,6 +20,26 @@ export async function ensureSessionSchema(db: D1Database): Promise<void> {
   await db.prepare('CREATE TABLE IF NOT EXISTS admin_sessions (h TEXT PRIMARY KEY, exp INTEGER NOT NULL)').run();
 }
 
+async function newSession(db: D1Database, now: number): Promise<string> {
+  await ensureSessionSchema(db);
+  await db.prepare('DELETE FROM admin_sessions WHERE exp < ?').bind(now).run();
+  const token = SESSION_PREFIX + hex(crypto.getRandomValues(new Uint8Array(32)).buffer);
+  await db.prepare('INSERT INTO admin_sessions (h, exp) VALUES (?, ?)').bind(await sha256(token), now + SESSION_MS).run();
+  return token;
+}
+
+// The normal Google link/sign-in flow does not ask for the email. After the owner signed in once with the owner
+// button, the Worker remembers a salted hash of the owner's Google user id (never the email). Later, when the normal
+// flow verifies a token with that same Google user id, the owner session is issued there too.
+export async function ownerSessionFor(db: D1Database, sub: string, now: number): Promise<string | null> {
+  try {
+    await db.prepare('CREATE TABLE IF NOT EXISTS kv (k TEXT PRIMARY KEY, v TEXT NOT NULL)').run();
+    const row = await db.prepare("SELECT v FROM kv WHERE k = 'owner_sub'").first<{ v: string }>();
+    if (!row || row.v !== await hashCode(db, `ownersub:${sub}`)) return null;
+    return await newSession(db, now);
+  } catch { return null; }
+}
+
 export async function validSession(db: D1Database, token: string, now: number): Promise<boolean> {
   if (!token.startsWith(SESSION_PREFIX) || token.length !== SESSION_PREFIX.length + 64) return false;
   try {
@@ -33,8 +54,17 @@ export async function handleAdminGoogle(request: Request, db: D1Database, url: U
   if (!clientId) return json({ error: 'not_configured' }, 503);
   // Read-only check used by the app to decide whether to show the Admin tab. Not rate limited: the token is 256 random bits.
   if (url.pathname === '/api/admin/check') {
-    const b = await request.json().catch(() => null) as { session?: unknown } | null;
-    return json({ ok: typeof b?.session === 'string' && await validSession(db, b.session, now) });
+    const b = await request.json().catch(() => null) as { session?: unknown; player?: unknown } | null;
+    const ok = typeof b?.session === 'string' && await validSession(db, b.session, now);
+    // The owner's own player (the one on this device) gets the owner mark. Only a live server-verified owner session can set it, and only one player holds it.
+    if (ok && typeof b?.player === 'string' && /^[0-9a-f-]{36}$/.test(b.player)) {
+      try {
+        await ensureSchema(db);
+        const me = await db.prepare('SELECT id FROM players WHERE id = ?').bind(b.player).first();
+        if (me) await db.batch([db.prepare('UPDATE players SET owner = NULL WHERE owner = 1 AND id != ?').bind(b.player), db.prepare('UPDATE players SET owner = 1 WHERE id = ?').bind(b.player)]);
+      } catch { /* the mark is cosmetic */ }
+    }
+    return json({ ok });
   }
   await ensureSchema(db);
   await db.prepare('CREATE TABLE IF NOT EXISTS code_rl (kind TEXT NOT NULL, ip TEXT NOT NULL, at INTEGER NOT NULL)').run();
@@ -56,9 +86,8 @@ export async function handleAdminGoogle(request: Request, db: D1Database, url: U
   if (!claims) return json({ error: 'bad_token' }, 401);
   const verified = claims.email_verified === true || claims.email_verified === 'true';
   if (!verified || !claims.email || (await sha256(claims.email.trim().toLowerCase())) !== OWNER_EMAIL_SHA256) return json({ error: 'not_admin' }, 403);
-  await ensureSessionSchema(db);
-  await db.prepare('DELETE FROM admin_sessions WHERE exp < ?').bind(now).run();
-  const token = SESSION_PREFIX + hex(crypto.getRandomValues(new Uint8Array(32)).buffer);
-  await db.prepare('INSERT INTO admin_sessions (h, exp) VALUES (?, ?)').bind(await sha256(token), now + SESSION_MS).run();
-  return json({ ok: true, session: token, expiresAt: now + SESSION_MS });
-}
+  // Remember which Google account is the owner's (salted hash of the user id only), so the normal sign-in can recognise it later.
+  await db.prepare('CREATE TABLE IF NOT EXISTS kv (k TEXT PRIMARY KEY, v TEXT NOT NULL)').run();
+  await db.prepare("INSERT INTO kv (k, v) VALUES ('owner_sub', ?) ON CONFLICT(k) DO UPDATE SET v = excluded.v").bind(await hashCode(db, `ownersub:${claims.sub}`)).run();
+  const token = await newSession(db, now);
+  return json({ ok: true, session: token, expiresAt: now + SESSION_MS });}

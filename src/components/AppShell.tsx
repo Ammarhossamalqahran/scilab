@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { usePreferences } from '../app/PreferencesContext';
 import { getAdminSession, clearAdminSession } from '../lib/adminSession';
 import { recordVisit } from '../data/frames';
+import { playerId } from '../lib/leaderboardApi';
 import { LogoMark } from './LogoMark';
 import { FeedbackButton } from './FeedbackButton';
 import { InstallButton } from './InstallButton';
@@ -58,7 +59,7 @@ export function AppShell() {
     const on = () => {
       const session = getAdminSession();
       if (!session) { setAdminLink(false); return; }
-      fetch('/api/admin/check', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ session }) })
+      fetch('/api/admin/check', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ session, player: playerId() }) })
         .then((r) => r.json()).then((d: { ok?: boolean }) => { if (d.ok === true) setAdminLink(true); else { setAdminLink(false); clearAdminSession(); } })
         .catch(() => setAdminLink(false));
     };

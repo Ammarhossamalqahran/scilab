@@ -1,3 +1,4 @@
+import { getAdminSession } from './adminSession';
 // Talks to the /api leaderboard Worker. Every call fails soft: if the API or database is not there
 // (local preview, offline, not set up yet) the game still works and the leaderboard is just hidden.
 export type Entry = { nick: string; score: number; owner?: number | null; avatar?: string | null; frame?: string | null; photo?: string | null };
@@ -23,8 +24,8 @@ export function saveAvatar(id: string) { try { window.localStorage.setItem(avata
 export function savedCode(): string { try { return window.localStorage.getItem(codeKey) ?? ''; } catch { return ''; } }
 export function saveCode(code: string) { try { window.localStorage.setItem(codeKey, code); } catch { /* session only */ } changed(); }
 
-async function call(path: string, init?: RequestInit) {
-  const res = await fetch(path, { ...init, headers: { 'content-type': 'application/json' } });
+async function call(path: string, init?: RequestInit, extra?: Record<string, string>) {
+  const res = await fetch(path, { ...init, headers: { 'content-type': 'application/json', ...extra } });
   const data = await res.json().catch(() => ({})) as Record<string, unknown>;
   return { ok: res.ok, status: res.status, data };
 }
@@ -119,11 +120,13 @@ export async function resizeToJpeg(file: File): Promise<string | null> {
     return null;
   } catch { return null; }
 }
+// The owner's live session (if this device has one) lets the server approve the owner's own photo at once.
+const ownerHeader = (): Record<string, string> => { const t = getAdminSession(); return t ? { 'x-owner-session': t } : {}; };
 export type PhotoResult = { ok: true } | { ok: false; reason: 'bad_image' | 'no_profile' | 'rate_limited' | 'other' };
 export async function uploadPhoto(image: string): Promise<PhotoResult> {
   try {
-    const r = await call('/api/photo', { method: 'POST', body: JSON.stringify({ player: playerId(), image }) });
-    if (r.ok) { savePhoto({ image, status: 'pending' }); return { ok: true }; }
+    const r = await call('/api/photo', { method: 'POST', body: JSON.stringify({ player: playerId(), image }) }, ownerHeader());
+    if (r.ok) { savePhoto({ image, status: r.data.status === 'approved' ? 'approved' : 'pending' }); return { ok: true }; }
     const e = r.data.error;
     return { ok: false, reason: e === 'bad_image' || e === 'no_profile' || e === 'rate_limited' ? e : 'other' };
   } catch { return { ok: false, reason: 'other' }; }
@@ -134,7 +137,7 @@ export async function removePhoto(): Promise<boolean> {
 // Re-read this player's photo and status from the server (it may have been approved, or restored on a new device).
 export async function refreshPhoto(): Promise<void> {
   try {
-    const r = await call(`/api/photo/mine?player=${playerId()}`);
+    const r = await call(`/api/photo/mine?player=${playerId()}`, undefined, ownerHeader());
     if (!r.ok) return;
     const status = r.data.status as PhotoStatus;
     // 'none' never wipes the local copy: it can race with an upload that just finished.

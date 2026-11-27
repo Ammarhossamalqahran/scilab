@@ -3,7 +3,22 @@ import { readStats } from './gameStats';
 // Avatar frames. Everyone starts with the gold ring. Others unlock by what the student does.
 // Stage 1 (this file): frames that can be checked on the device (visit streak, best score).
 // Frames that need the server (rank 1 for a month, three months in a row) are listed as "soon" and cannot be equipped yet.
+export type Metal = 'bronze' | 'silver' | 'gold' | 'diamond' | 'ruby';
+export type Deco = 'none' | 'beads' | 'laurel' | 'wings' | 'crown' | 'wings-crown';
+export type Spec = { metal: Metal; deco: Deco; glow?: boolean; beads?: boolean };
 export type Frame = { id: string; name: { en: string; ar: string }; how: { en: string; ar: string }; ring: string; soon?: boolean };
+// Look of each frame (drawn by components/FramedAvatar.tsx). Tier order: bronze, silver, gold, diamond, plus ruby for beating the Doctor.
+const SPECS: Record<string, Spec> = {
+  gold: { metal: 'gold', deco: 'beads' },
+  streak7: { metal: 'bronze', deco: 'beads' },
+  streak30: { metal: 'silver', deco: 'laurel' },
+  score50: { metal: 'bronze', deco: 'laurel' },
+  score100: { metal: 'silver', deco: 'wings' },
+  doctor: { metal: 'ruby', deco: 'wings', glow: true },
+  'rank1-month': { metal: 'gold', deco: 'wings-crown', glow: true },
+  'rank1-x3': { metal: 'diamond', deco: 'wings-crown', glow: true },
+};
+export const frameSpec = (id: string): Spec => SPECS[id] ?? SPECS.gold;
 export const FRAMES: Frame[] = [
   { id: 'gold', name: { en: 'Gold ring', ar: 'الحلقة الذهبية' }, how: { en: 'Everyone starts with this one', ar: 'بتبدأ بيها من أول يوم' }, ring: 'linear-gradient(135deg,#f2d27a,#b8860b)' },
   { id: 'streak7', name: { en: 'Week streak', ar: 'أسبوع متواصل' }, how: { en: 'Visit 7 days in a row', ar: 'ادخل الموقع 7 أيام ورا بعض' }, ring: 'linear-gradient(135deg,#6fe0b0,#127a55)' },

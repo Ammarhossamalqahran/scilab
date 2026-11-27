@@ -1,5 +1,6 @@
 import { ensurePhotoSchema } from './photo';
 import type { D1Database } from './types';
+import { notifyAdmin } from './adminPush';
 
 // Rules the server enforces. The game itself runs in the browser, so these checks make cheating
 // harder, not impossible: a server-issued game ticket, minimum/maximum play time, a cap on answers per
@@ -112,7 +113,10 @@ export async function handleLeaderboard(request: Request, db: D1Database, url: U
         : db.prepare('INSERT INTO players (id, nick, nick_lc, created) VALUES (?, ?, ?, ?)').bind(player, nick, lc, now),
       db.prepare('INSERT INTO scores (player_id, score, correct, streak, at) VALUES (?, ?, ?, ?, ?)').bind(player, score, correct, streak, now),
     ];
+    const prevTop = await db.prepare('SELECT MAX(score) AS m FROM scores').first<{ m: number | null }>().catch(() => null);
     try { await db.batch(statements); } catch { return json({ error: 'nick_taken' }, 409); }
+    if (!mine) await notifyAdmin(db, 'user', now);
+    if (prevTop?.m != null && score > prevTop.m) await notifyAdmin(db, 'record', now);
     const rank = await db.prepare('SELECT COUNT(*) + 1 AS rank FROM (SELECT MAX(score) AS m FROM scores WHERE at >= ? GROUP BY player_id) WHERE m > ?').bind(now - 7 * 86400_000, score).first<{ rank: number }>();
     return json({ ok: true, weekRank: rank?.rank ?? null });
   }

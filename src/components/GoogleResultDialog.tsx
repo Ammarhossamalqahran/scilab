@@ -22,6 +22,7 @@ export function GoogleResultDialog() {
     : r.reason === 'already_linked' ? (ar ? 'حساب جوجل ده مربوط باسم تاني. ادخل بيه من "عندي كود".' : 'That Google account is already linked to another name. Sign in with it from "I have a code".')
     : r.reason === 'no_account' ? (ar ? 'مفيش اسم مربوط بحساب جوجل ده. اعمل اسم الأول وبعدين اربطه من البروفايل.' : 'No name is linked to this Google account. Create a name first, then link it from the profile.')
     : r.reason === 'no_profile' ? (ar ? 'سجّل اسمك الأول، بعدين اربط جوجل من البروفايل.' : 'Set your name first, then link Google from the profile.')
+    : r.reason === 'not_admin' ? (ar ? 'حساب جوجل ده مش حساب المالك.' : 'That Google account is not the owner account.')
     : r.reason === 'cancelled' ? (ar ? 'لغيت العملية. مفيش حاجة اتغيرت.' : 'You cancelled. Nothing changed.')
     : (ar ? 'حصلت مشكلة. جرب تاني بعد شوية.' : 'Something went wrong. Please try again in a moment.');
   return (

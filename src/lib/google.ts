@@ -1,4 +1,5 @@
 import { playerId, saveNick, saveAvatar } from './leaderboardApi';
+import { setAdminSession } from './adminSession';
 
 // Optional Google link. A plain full-page redirect to Google and back (no popup), so it also works inside
 // the installed app and in mobile browsers that block or lose popups. We come back to "/" with the signed
@@ -11,17 +12,17 @@ export function googleClientId(): Promise<string> {
 
 const PENDING = 'scilab-google-pending';
 const RESULT = 'scilab-google-result';
-export type GoogleResult = { kind: 'linked' | 'signedin' | 'error'; reason?: 'already_linked' | 'no_account' | 'no_profile' | 'cancelled' | 'other'; nick?: string };
+export type GoogleResult = { kind: 'linked' | 'signedin' | 'error'; reason?: 'already_linked' | 'no_account' | 'no_profile' | 'cancelled' | 'not_admin' | 'other'; nick?: string };
 
 const randomNonce = () => [...crypto.getRandomValues(new Uint8Array(16))].map((b) => b.toString(16).padStart(2, '0')).join('');
 
 // Sends the browser to Google. `mode` says what to do when it comes back.
-export async function startGoogle(mode: 'link' | 'signin'): Promise<boolean> {
+export async function startGoogle(mode: 'link' | 'signin' | 'admin'): Promise<boolean> {
   const id = await googleClientId();
   if (!id) return false;
   const nonce = randomNonce();
   try { window.localStorage.setItem(PENDING, JSON.stringify({ mode, nonce, at: Date.now(), player: playerId() })); } catch { return false; }
-  const q = new URLSearchParams({ client_id: id, redirect_uri: `${window.location.origin}/`, response_type: 'id_token', scope: 'openid', nonce, prompt: 'select_account', state: mode });
+  const q = new URLSearchParams({ client_id: id, redirect_uri: `${window.location.origin}/`, response_type: 'id_token', scope: mode === 'admin' ? 'openid email' : 'openid', nonce, prompt: 'select_account', state: mode });
   window.location.assign(`https://accounts.google.com/o/oauth2/v2/auth?${q}`);
   return true;
 }
@@ -55,6 +56,12 @@ export async function completeGoogleFromHash(): Promise<void> {
   try { pending = JSON.parse(window.localStorage.getItem(PENDING) ?? 'null'); window.localStorage.removeItem(PENDING); } catch { /* ignored */ }
   const credential = params.get('id_token');
   if (!credential || !pending?.nonce || !pending.at || Date.now() - pending.at > 900_000) { publish({ kind: 'error', reason: params.get('error') === 'access_denied' ? 'cancelled' : 'other' }); return; }
+  if (pending.mode === 'admin') {
+    const r = await post('/api/admin/google', { credential, nonce: pending.nonce });
+    if (r.ok && typeof r.data.session === 'string') { setAdminSession(r.data.session); window.location.replace('/admin'); }
+    else publish({ kind: 'error', reason: r.data.error === 'not_admin' ? 'not_admin' : 'other' });
+    return;
+  }
   if (pending.mode === 'signin') {
     const r = await post('/api/google/signin', { credential, nonce: pending.nonce });
     if (r.ok && typeof r.data.player === 'string' && typeof r.data.nick === 'string') {

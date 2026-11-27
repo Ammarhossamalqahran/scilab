@@ -1,5 +1,7 @@
 import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { usePreferences } from '../app/PreferencesContext';
+import { getAdminSession, clearAdminSession } from '../lib/adminSession';
 import { LogoMark } from './LogoMark';
 import { FeedbackButton } from './FeedbackButton';
 import { InstallButton } from './InstallButton';
@@ -48,6 +50,20 @@ function ChallengeGlyph() {
 export function AppShell() {
   const { locale, setLocale, theme, toggleTheme, t } = usePreferences();
   const { pathname } = useLocation();
+  // The tab shows only after the server confirms the stored session is a live owner session (never just because a value is stored).
+  const [adminLink, setAdminLink] = useState(false);
+  useEffect(() => {
+    const on = () => {
+      const session = getAdminSession();
+      if (!session) { setAdminLink(false); return; }
+      fetch('/api/admin/check', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ session }) })
+        .then((r) => r.json()).then((d: { ok?: boolean }) => { if (d.ok === true) setAdminLink(true); else { setAdminLink(false); clearAdminSession(); } })
+        .catch(() => setAdminLink(false));
+    };
+    on();
+    window.addEventListener('scilab-admin-session', on);
+    return () => window.removeEventListener('scilab-admin-session', on);
+  }, []);
 
   return (
     <div className="app-shell">
@@ -102,6 +118,11 @@ export function AppShell() {
             <NavLink to="/challenge" className={({ isActive }) => `nav-item${isActive ? ' is-active' : ''}`}>
               <ChallengeGlyph /><span>{locale === 'ar' ? 'تحدي الـ 60 ثانية' : '60-second challenge'}</span>
             </NavLink>
+            {adminLink && (
+              <NavLink to="/admin" className={({ isActive }) => `nav-item${isActive ? ' is-active' : ''}`}>
+                <ExamGlyph /><span>{locale === 'ar' ? 'لوحة المالك' : 'Admin'}</span>
+              </NavLink>
+            )}
           </nav>
         </aside>
         <main className="main-content"><ReminderBanner /><div key={pathname} className="page-enter"><Outlet /></div></main>

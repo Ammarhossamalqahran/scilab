@@ -1,7 +1,7 @@
 // SciLab service worker: lets the site open offline after a first visit.
 // App shell is cached on install; pages, scripts, fonts and photos are cached as they are used.
 // The 500 specimen photos (about 58 MB) are NOT preloaded, only the ones a student opens.
-const CACHE = 'scilab-v8';
+const CACHE = 'scilab-v9';
 const SHELL = ['/', '/index.html', '/manifest.webmanifest', '/favicon.svg', '/scilab-logo.svg'];
 
 self.addEventListener('install', (event) => {
@@ -76,7 +76,7 @@ async function askKind(sub) {
     const q = sub ? '?endpoint=' + encodeURIComponent(sub.endpoint) : '';
     const res = await fetch('/api/push/kind' + q, { cache: 'no-store', signal: ctl.signal });
     const d = await res.json();
-    return { kind: d.kind, lang: d.lang === 'ar' || d.lang === 'en' ? d.lang : null };
+    return { kind: d.kind, counts: d.counts || null, lang: d.lang === 'ar' || d.lang === 'en' ? d.lang : null };
   } catch (e) { return { kind: 'unknown', lang: null }; } finally { clearTimeout(timer); }
 }
 function show(title, body, tag, lang, url) {
@@ -93,10 +93,19 @@ self.addEventListener('push', (event) => {
       const hit = await (await caches.open('scilab-prefs')).match('/lang');
       if (hit) lang = (await hit.text()) === 'ar' ? 'ar' : 'en';
     } catch (e) { /* default language */ }
-    let kind = 'unknown';
-    try { const r = await askKind(await self.registration.pushManager.getSubscription()); kind = r.kind; if (r.lang) lang = r.lang; } catch (e) { /* unknown */ }
+    let kind = 'unknown'; let counts = null;
+    try { const r = await askKind(await self.registration.pushManager.getSubscription()); kind = r.kind; counts = r.counts; if (r.lang) lang = r.lang; } catch (e) { /* unknown */ }
     try {
-      if (kind === 'winner') {
+      if (kind === 'admin') {
+        // Owner alert: counts only, never names or text.
+        const c = counts || {};
+        const ar = lang === 'ar';
+        const parts = [];
+        if (c.record) parts.push(ar ? 'رقم قياسي جديد: ' + c.record : 'New record: ' + c.record);
+        if (c.user) parts.push(ar ? 'مستخدم جديد: ' + c.user : 'New user: ' + c.user);
+        if (c.review) parts.push(ar ? 'محتاج موافقتك: ' + c.review : 'Needs approval: ' + c.review);
+        await show(ar ? 'SciLab · المالك' : 'SciLab · owner', parts.join(ar ? '، ' : ', ') || 'SciLab', 'scilab-admin', lang, '/admin');
+      } else if (kind === 'winner') {
         // Private message: the notification never shows its text, only that one is waiting.
         await show('SciLab', lang === 'ar' ? 'عندك رسالة خاصة من SciLab. افتح الموقع عشان تشوفها.' : 'You have a private message from SciLab. Open the site to read it.', 'scilab-winner', lang, '/');
       } else if (kind === 'unknown') {

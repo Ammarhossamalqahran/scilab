@@ -148,6 +148,275 @@ const map: Record<string, PlantNote> = {
   'pollen-grains': pollen, 'pollen-grains-251-20': pollen,
   'germinating-pollen-255-27': pollenTube,
 };
+// ---- Batch 2: mosses, liverworts, ferns, club mosses, algae, gymnosperms, plant cells, roots, pollination and more.
+// Same rule as batch 1: every sentence is taken from the cited OpenStax Biology 2e page (CC BY 4.0). Notes describe the group
+// or structure the source describes, not the exact species on the slide. A slide with no entry shows no note.
+const alg = os('25.2 Green Algae: Precursors of Land Plants', '25-2-green-algae-precursors-of-land-plants');
+const bryo = os('25.3 Bryophytes', '25-3-bryophytes');
+const svp = os('25.4 Seedless Vascular Plants', '25-4-seedless-vascular-plants');
+const gym = os('26.2 Gymnosperms', '26-2-gymnosperms');
+const cellS = os('4.3 Eukaryotic Cells', '4-3-eukaryotic-cells');
+const passive = os('5.2 Passive Transport', '5-2-passive-transport');
+const cycle = os('10.2 The Cell Cycle', '10-2-the-cell-cycle');
+const nutr = os('31.3 Nutritional Adaptations of Plants', '31-3-nutritional-adaptations-of-plants');
+const pollin = os('32.2 Pollination and Fertilization', '32-2-pollination-and-fertilization');
+const fungi = os('24.3 Ecology of Fungi', '24-3-ecology-of-fungi');
+
+const plantCell: PlantNote = {
+  recognize: { en: `Plant cells have a cell wall outside the plasma membrane, chloroplasts and other plastids, and a large central vacuole that occupies most of the cell's volume.`, ar: 'خلايا النبات ليها جدار خلوي برا الغشاء البلازمي، وبلاستيدات خضراء وبلاستيدات تانية، وفجوة مركزية كبيرة بتاخد معظم حجم الخلية.' },
+  function: { en: `The cell wall is a rigid covering that protects the cell, provides structural support and gives shape to the cell. The central vacuole plays a key role in regulating the cell's concentration of water in changing environmental conditions.`, ar: 'الجدار الخلوي غطاء صلب بيحمي الخلية وبيدعمها وبيدّيها شكلها. والفجوة المركزية ليها دور أساسي في تنظيم تركيز الماء في الخلية لما الظروف بتتغير.' },
+  compare: { en: 'Animal cells do not have a cell wall, chloroplasts or a large central vacuole.', ar: 'خلايا الحيوان ملهاش جدار خلوي ولا بلاستيدات خضراء ولا فجوة مركزية كبيرة.' },
+  source: cellS,
+};
+const plasmolysis: PlantNote = {
+  recognize: { en: 'In plasmolysis the cell membrane detaches from the cell wall and constricts the cytoplasm. The cell itself does not shrink, because the cell wall is not flexible.', ar: 'في البلزمة (plasmolysis) الغشاء الخلوي بينفصل عن الجدار ويضغط السيتوبلازم. والخلية نفسها مبتصغرش لأن الجدار الخلوي مش مرن.' },
+  function: { en: 'It happens when the extracellular fluid becomes hypertonic, so water leaves the cell. The plant loses turgor pressure and wilts.', ar: 'بتحصل لما السائل برا الخلية يبقى مفرط التوتر، فالماء يخرج من الخلية. والنبات بيفقد ضغط الامتلاء (turgor) وبيدبل.' },
+  compare: { en: `In a hypotonic environment water enters a plant cell and the inflow produces turgor pressure, which stiffens the cell wall. The wall keeps the plasma membrane from expanding past its limit, so the cell does not lyse.`, ar: 'في وسط ناقص التوتر الماء بيدخل خلية النبات وده بيعمل ضغط امتلاء بيشد الجدار الخلوي. والجدار بيمنع الغشاء من التمدد أكتر من حده، فالخلية متنفجرش.' },
+  source: passive,
+};
+const chloroplast: PlantNote = {
+  recognize: { en: 'Chloroplasts are plant cell organelles that carry out photosynthesis. They contain a green pigment, chlorophyll, which captures the light energy that drives the reactions of photosynthesis.', ar: 'البلاستيدات الخضراء عُضيّات في خلية النبات بتعمل البناء الضوئي. وفيها الصبغة الخضراء الكلوروفيل اللي بتمسك طاقة الضوء اللي بتشغّل تفاعلات البناء الضوئي.' },
+  function: { en: 'Photosynthesis uses carbon dioxide, water and light energy to make glucose and oxygen. This lets plants make their own food.', ar: 'البناء الضوئي بيستخدم ثاني أكسيد الكربون والماء وطاقة الضوء علشان يعمل جلوكوز وأكسجين. وده بيخلي النبات يعمل أكله بنفسه.' },
+  compare: { en: 'Animals (heterotrophs) must ingest their food. Plants (autotrophs) make their own.', ar: 'الحيوانات (غيرية التغذية) لازم تاكل أكلها. النباتات (ذاتية التغذية) بتعمل أكلها بنفسها.' },
+  source: cellS,
+};
+const mossLeaf: PlantNote = {
+  recognize: { en: 'The leaflike structures of a moss are green and flat, with a simple midrib. They resemble true leaves but lack stomata and vascular tissue, and they attach in a spiral to a central stalk.', ar: 'التراكيب الشبيهة بالأوراق في الطحلب (moss) خضراء ومسطحة وفيها عرق وسطي بسيط. بتشبه الأوراق الحقيقية بس من غير ثغور ولا نسيج وعائي، وبتتصل بشكل حلزوني بالساق المركزية.' },
+  function: { en: 'Water and nutrients are absorbed directly through the leaflike structures of the gametophyte.', ar: 'الماء والعناصر الغذائية بتتمتص مباشرة من خلال التراكيب الشبيهة بالأوراق في الطور المشيجي.' },
+  compare: { en: 'Mosses have stomata only on the sporophyte, not on the leaflike structures.', ar: 'الطحالب (mosses) ليها ثغور على الطور البوغي بس، مش على التراكيب الشبيهة بالأوراق.' },
+  source: bryo,
+};
+const protonema: PlantNote = {
+  recognize: { en: 'A moss gametophyte germinates from a haploid spore and first forms a protonema, usually a tangle of single-celled filaments that hug the ground.', ar: 'الطور المشيجي للطحلب بينبت من بوغ أحادي المجموعة الكروموسومية وبيكوّن أول حاجة الخيط الأولي (protonema)، وهو غالبًا خيوط متشابكة من خلايا مفردة ملزوقة بالأرض.' },
+  function: { en: 'Cells akin to an apical meristem then divide actively and give rise to a gametophore, which consists of a photosynthetic stem and foliage-like structures.', ar: 'بعدها خلايا شبيهة بالمرستيم القمي بتنقسم بنشاط وتطلّع حامل المشيج (gametophore) المكوّن من ساق بتعمل بناء ضوئي وتراكيب شبيهة بالأوراق.' },
+  source: bryo,
+};
+const liverLeafy: PlantNote = {
+  recognize: { en: 'Leafy liverworts have tiny leaflike structures attached to a stalk. Lobate liverworts, by contrast, form a flat thallus.', ar: 'الحزازيات الكبدية الورقية ليها تراكيب صغيرة شبيهة بالأوراق متصلة بساق. أما الحزازيات الكبدية الفصية فبتكوّن ثالوس مسطح.' },
+  function: { en: 'Liverworts have no cuticle to prevent desiccation, and the thallus takes up water over its entire surface. This explains their preferred wet habitats.', ar: 'الحزازيات الكبدية ملهاش كيوتكل تمنع الجفاف، والثالوس بيمتص الماء من سطحه كله. وده بيفسر ليه بتفضل الأماكن الرطبة.' },
+  source: bryo,
+};
+const liverThallus: PlantNote = {
+  recognize: { en: 'Liverworts have openings in the thallus that let gases move. These are not stomata, because guard cells do not open and close them.', ar: 'في الحزازيات الكبدية فتحات في الثالوس بتسمح بحركة الغازات. دي مش ثغور لأن مفيش خلايا حارسة بتفتحها وتقفلها.' },
+  function: { en: 'Liverworts have no cuticle to prevent desiccation, and the thallus takes up water over its entire surface. This explains their preferred wet habitats.', ar: 'الحزازيات الكبدية ملهاش كيوتكل تمنع الجفاف، والثالوس بيمتص الماء من سطحه كله. وده بيفسر ليه بتفضل الأماكن الرطبة.' },
+  compare: { en: 'Stomata (air pores that can be opened and closed) appear in the hornworts and are abundant on the sporophyte.', ar: 'الثغور (مسام هوائية بتتفتح وتتقفل) موجودة في الحزازيات القرنية (hornworts) وكتيرة على الطور البوغي.' },
+  source: bryo,
+};
+const fernSori: PlantNote = {
+  recognize: { en: 'On the underside of each mature fern frond are groups of sporangia called sori.', ar: 'على الوش التحتاني لكل ورقة سرخس ناضجة (frond) في مجموعات من الأكياس البوغية اسمها السُّرّات (sori).' },
+  function: { en: 'Spores are produced by meiosis and released into the air from the sporangium. Spores that land on a suitable substrate germinate and form a heart-shaped gametophyte, the prothallus.', ar: 'الأبواغ بتتكوّن بالانقسام الاختزالي وبتتطلق في الهوا من الكيس البوغي. والأبواغ اللي بتقع على سطح مناسب بتنبت وبتكوّن طور مشيجي على شكل قلب اسمه البروثالس (prothallus).' },
+  compare: { en: 'In seedless vascular plants such as ferns the diploid sporophyte is the dominant phase of the life cycle. The gametophyte is less conspicuous but still independent of the sporophyte.', ar: 'في النباتات الوعائية اللابذرية زي السراخس الطور البوغي ثنائي المجموعة هو الطور السائد. والطور المشيجي أقل ظهورًا بس لسه مستقل عن الطور البوغي.' },
+  source: svp,
+};
+const fernGameto: PlantNote = {
+  recognize: { en: 'Fern spores that land on a suitable substrate germinate and form a heart-shaped gametophyte, or prothallus, attached to the ground by thin filamentous rhizoids.', ar: 'أبواغ السرخس اللي بتقع على سطح مناسب بتنبت وبتكوّن طور مشيجي على شكل قلب (prothallus) متثبت في الأرض بجذيرات خيطية رفيعة.' },
+  function: { en: 'Gametophytes produce both antheridia and archegonia. Fern sperm have multiple flagella and must swim to the archegonium, which releases a chemoattractant to guide them.', ar: 'الأطوار المشيجية بتنتج الأنثريديا والأرجونيا. وحيوانات السرخس المنوية ليها أسواط كتير ولازم تسبح للأرجونيوم اللي بيطلق مادة جاذبة بتوجهها.' },
+  compare: fernSori.compare,
+  source: svp,
+};
+const fernRoot: PlantNote = {
+  recognize: { en: 'Adventitious organs are those that grow in unusual places, such as roots growing from the side of a stem.', ar: 'الأعضاء العرضية (adventitious) هي اللي بتنمو في أماكن غير معتادة، زي جذور بتطلع من جنب ساق.' },
+  function: { en: 'In a fern the stem may be buried underground as a rhizome, from which adventitious roots grow to absorb water and nutrients from the soil.', ar: 'في السرخس ممكن تكون الساق مدفونة تحت الأرض كريزوم، وتطلع منها جذور عرضية بتمتص الماء والعناصر الغذائية من التربة.' },
+  source: svp,
+};
+const horsetailSpores: PlantNote = {
+  recognize: { en: 'Horsetail spores are attached to elaters, coiled threads that spring open in dry weather.', ar: 'أبواغ ذيل الحصان متعلقة بالمرونات (elaters)، وهي خيوط ملفوفة بتنفتح فجأة في الجو الجاف.' },
+  function: { en: 'The elaters cast the spores to a location distant from the parent plant. The spores then germinate to produce small bisexual gametophytes.', ar: 'المرونات بترمي الأبواغ لمكان بعيد عن النبات الأم. وبعدين الأبواغ بتنبت وبتطلّع أطوار مشيجية صغيرة ثنائية الجنس.' },
+  source: svp,
+};
+const lycophyte: PlantNote = {
+  recognize: { en: 'Today\'s club mosses are small evergreen plants made of a stem, which may be branched, and microphylls. In many club mosses the sporophyte bears sporophylls arranged in strobili, cone-like structures.', ar: 'الليكوفيتات (club mosses) النهارده نباتات صغيرة دايمة الخضرة مكوّنة من ساق (ممكن تتفرع) وأوراق صغيرة (microphylls). وفي كتير منها الطور البوغي بيحمل أوراقًا بوغية مرتبة في مخاريط (strobili).' },
+  function: { en: 'Sporangia develop within the chamber formed by each sporophyll.', ar: 'الأكياس البوغية بتتكوّن جوه الحجرة اللي بتتكوّن من كل ورقة بوغية.' },
+  compare: { en: 'Microphylls are small and have a simple vascular system: a single unbranched vein runs through the center. Megaphylls, seen in ferns, are larger and have multiple veins. Club mosses are not true mosses or bryophytes.', ar: 'الأوراق الصغيرة (microphylls) صغيرة وفيها نظام وعائي بسيط: عرق واحد غير متفرع في النص. الأوراق الكبيرة (megaphylls) الموجودة في السراخس أكبر وفيها عروق متعددة. والليكوفيتات مش طحالب حقيقية ولا حزازيات.' },
+  source: svp,
+};
+const spirogyra: PlantNote = {
+  recognize: { en: 'Spirogyra is a long filament of colonial cells. Green algae cells contain chloroplasts that display a dizzying variety of shapes, and their cell walls contain cellulose.', ar: 'السبيروجيرا خيط طويل من خلايا مستعمرية. وخلايا الطحالب الخضراء فيها بلاستيدات خضراء بأشكال متنوعة جدًا، وجدرانها فيها سليلوز.' },
+  function: { en: 'Most members of the genus live in fresh water, brackish water, seawater or even snow patches. Like land plants, green algae store carbohydrates as starch.', ar: 'معظم أنواع الجنس بتعيش في المياه العذبة أو المالحة قليلًا أو البحر أو حتى بقع التلج. وزي النباتات الأرضية، الطحالب الخضراء بتخزن الكربوهيدرات على شكل نشا.' },
+  compare: { en: 'Spirogyra is a charophyte. Charophytes and land plants both divide along cell plates called phragmoplasts, have plasmodesmata and show apical growth. Chlorophytes do not.', ar: 'السبيروجيرا من الشاروفيتات (charophytes). الشاروفيتات والنباتات الأرضية الاتنين بينقسموا بصفائح خلوية اسمها phragmoplasts وليهم بلازموديزماتا وفيهم نمو قمي. الكلوروفيتات ملهاش كده.' },
+  source: alg,
+};
+const maleCone: PlantNote = {
+  recognize: { en: 'In the male (staminate) cones of a pine, microsporocytes undergo meiosis and the haploid microspores give rise to male gametophytes, the pollen grains, by mitosis.', ar: 'في المخاريط المذكرة للصنوبر، الخلايا الأم للأبواغ الدقيقة بتنقسم اختزاليًا والأبواغ الدقيقة أحادية المجموعة بتكوّن الأطوار المشيجية المذكرة، أي حبوب اللقاح، بالانقسام الفتيلي.' },
+  function: { en: 'In spring, large amounts of yellow pollen are released and carried by the wind.', ar: 'في الربيع بتتطلق كميات كبيرة من حبوب اللقاح الصفراء وتتحمل بالهوا.' },
+  compare: { en: 'Pines carry both male and female cones on the same tree. The male cones are small and the female cones are larger.', ar: 'الصنوبر بيحمل المخاريط المذكرة والمؤنثة على نفس الشجرة. المخاريط المذكرة صغيرة والمؤنثة أكبر.' },
+  source: gym,
+};
+const pinePollen: PlantNote = {
+  recognize: { en: 'Each pine pollen grain consists of just a few haploid cells enclosed in a tough wall reinforced with sporopollenin.', ar: 'كل حبة لقاح صنوبر مكوّنة من كام خلية أحادية المجموعة بس، محاطة بجدار قوي مقوّى بالسبوروبولينين.' },
+  function: { en: 'Large amounts of yellow pollen are released in spring and carried by the wind. Some land on a female cone.', ar: 'كميات كبيرة من حبوب اللقاح الصفراء بتتطلق في الربيع وتتحمل بالهوا، وبعضها بيقع على مخروط مؤنث.' },
+  compare: { en: 'Gymnosperms have separate pollen cones and ovulate cones, and are pollinated by wind and insects.', ar: 'معراة البذور ليها مخاريط لقاح ومخاريط بويضية منفصلة، وبتتلقح بالهوا والحشرات.' },
+  source: gym,
+};
+const gymStem: PlantNote = {
+  function: { en: 'Conifers, cycads and ginkgophytes produce secondary cambium, cells that generate the vascular system of the trunk or stem and are partially specialized for water transportation.', ar: 'الصنوبريات والسيكاسات والجنكو بتنتج كامبيوم ثانوي، وهي خلايا بتكوّن النظام الوعائي للجذع أو الساق ومتخصصة جزئيًا في نقل الماء.' },
+  compare: { en: 'The rest of the gymnosperms have tracheids. Gnetophyta are considered the closest group to angiosperms because they also produce true xylem tissue with vessels.', ar: 'باقي معراة البذور فيها قصيبات (tracheids). والنيتوفيتا تعتبر أقرب مجموعة لمغطاة البذور لأنها بتنتج كمان نسيج خشب حقيقي فيه أوعية.' },
+  source: gym,
+};
+const mesophyll: PlantNote = {
+  recognize: { en: 'Below the epidermis of dicot leaves are layers of cells called the mesophyll. The palisade parenchyma has column-shaped, tightly packed cells in one, two or three layers. Below it are the loosely arranged, irregularly shaped cells of the spongy parenchyma.', ar: 'تحت بشرة أوراق ذوات الفلقتين في طبقات خلايا اسمها الميزوفيل (mesophyll). النسيج العمادي (palisade) خلاياه عمودية الشكل ومتراصة في طبقة أو اتنين أو تلاتة. وتحته خلايا النسيج الإسفنجي المتناثرة وغير منتظمة الشكل.' },
+  function: { en: 'The air space between the spongy parenchyma cells allows gas exchange between the leaf and the outside atmosphere through the stomata.', ar: 'الفراغ الهوائي بين خلايا النسيج الإسفنجي بيسمح بتبادل الغازات بين الورقة والجو الخارجي من خلال الثغور.' },
+  compare: { en: 'In aquatic plants, the intercellular spaces in the spongy parenchyma help the leaf float.', ar: 'في النباتات المائية الفراغات بين الخلايا في النسيج الإسفنجي بتساعد الورقة تطفو.' },
+  source: leaves,
+};
+const hydro: PlantNote = {
+  recognize: { en: 'Many aquatic plants have leaves with a wide lamina that can float on the surface of the water, and a thick waxy cuticle that repels water.', ar: 'كتير من النباتات المائية أوراقها ليها نصل عريض بيطفو على سطح الماء وكيوتكل شمعية سميكة بتطرد الماء.' },
+  function: { en: 'In aquatic plants, the intercellular spaces in the spongy parenchyma help the leaf float.', ar: 'في النباتات المائية الفراغات بين الخلايا في النسيج الإسفنجي بتساعد الورقة تطفو.' },
+  source: leaves,
+};
+const petiole: PlantNote = {
+  recognize: { en: 'Some leaves are attached to the plant stem by a petiole. Leaves with no petiole, attached directly to the stem, are called sessile leaves.', ar: 'بعض الأوراق بتتصل بالساق بعنق الورقة (petiole). والأوراق اللي ملهاش عنق وبتتصل بالساق مباشرة اسمها أوراق جالسة (sessile).' },
+  source: leaves,
+};
+const stolon: PlantNote = {
+  recognize: { en: 'Stolons are stems that run almost parallel to the ground, or just below the surface.', ar: 'الأرومات الزاحفة (stolons) سيقان بتمشي تقريبًا موازية للأرض أو تحت السطح مباشرة.' },
+  function: { en: 'They can give rise to new plants at the nodes. Runners are a type of stolon that runs above the ground and produces new clone plants.', ar: 'ممكن تطلّع نباتات جديدة عند العقد. والعدّائيات (runners) نوع من الأرومات بتمشي فوق الأرض وبتنتج نباتات جديدة مستنسخة.' },
+  source: stems,
+};
+const lenticel: PlantNote = {
+  recognize: { en: 'In woody plants the periderm (cork cambium, cork cells and phelloderm) substitutes for the epidermis. In some plants the periderm has many openings, known as lenticels.', ar: 'في النباتات الخشبية القشرة (periderm) المكوّنة من كامبيوم الفلين وخلايا الفلين والفيلودرم بتحل محل البشرة. وفي بعض النباتات فيها فتحات كتير اسمها العديسات (lenticels).' },
+  function: { en: 'Lenticels allow the interior cells to exchange gases with the outside atmosphere.', ar: 'العديسات بتسمح لخلايا الداخل بتبادل الغازات مع الجو الخارجي.' },
+  source: stems,
+};
+const tuber: PlantNote = {
+  recognize: { en: 'Tubers are modified stems. They arise as swollen ends of stolons and contain many adventitious buds, familiar to us as the eyes on potatoes.', ar: 'الدرنات (tubers) سيقان متحورة. بتنشأ من أطراف منتفخة للأرومات وفيها براعم عرضية كتير، هي اللي بنعرفها كعيون البطاطس.' },
+  function: { en: 'Tubers may store starch, as seen in the potato.', ar: 'الدرنات ممكن تخزن النشا، زي ما في البطاطس.' },
+  source: stems,
+};
+const starchTuber: PlantNote = { function: tuber.function, source: stems };
+const rootGen: PlantNote = {
+  recognize: { en: 'Compared to stems, roots have a lot of cortex and little pith. The vascular tissue lies in the inner part of the root, the stele, and the endodermis separates the stele from the ground tissue outside it.', ar: 'بالمقارنة بالسيقان، الجذور فيها قشرة (cortex) كتير ونخاع (pith) قليل. والنسيج الوعائي في الجزء الداخلي من الجذر وهو الأسطوانة الوعائية (stele)، والإندوديرم بيفصلها عن النسيج الأساسي اللي برا.' },
+  function: { en: 'The endodermis is exclusive to roots and serves as a checkpoint for materials entering the vascular system. Its waxy Casparian strip forces water and solutes to cross the plasma membranes of endodermal cells, so toxic substances and pathogens are generally excluded.', ar: 'الإندوديرم موجود في الجذور بس وبيشتغل كنقطة تفتيش للمواد الداخلة للنظام الوعائي. وشريط كاسبار الشمعي بيجبر الماء والمواد الذايبة تعدي من غشاء خلايا الإندوديرم، فالمواد السامة والمسببات المرضية غالبًا بتتمنع.' },
+  source: roots,
+};
+const rootMono: PlantNote = {
+  ...rootGen,
+  compare: { en: 'In dicot roots the xylem and phloem of the stele are arranged alternately in an X shape. In monocot roots the vascular tissue is arranged in a ring around the pith.', ar: 'في جذور ذوات الفلقتين الخشب واللحاء في الأسطوانة الوعائية متبادلين على شكل X. وفي جذور أحادية الفلقة النسيج الوعائي مرتب في حلقة حوالين النخاع.' },
+};
+const myco: PlantNote = {
+  recognize: { en: 'Endomycorrhizae, also called arbuscular mycorrhizae, do not form a dense sheath over the root. Instead the fungal mycelium is embedded within the root tissue.', ar: 'الميكوريزا الداخلية، وبتتسمى كمان الميكوريزا الشجيرية (arbuscular)، مبتكوّنش غلاف كثيف على الجذر. بدل كده خيوط الفطر بتكون مغروسة جوه نسيج الجذر.' },
+  function: { en: 'The plant obtains mainly phosphate and other minerals, such as zinc and copper, from the soil, and the fungus obtains sugars from the root. The thin hyphae increase the surface area of the root system.', ar: 'النبات بياخد أساسًا الفوسفات ومعادن تانية زي الزنك والنحاس من التربة، والفطر بياخد السكريات من الجذر. والهيفات الرفيعة بتزود مساحة سطح الجذور.' },
+  compare: { en: 'Ectomycorrhizae form an extensive dense sheath, called a mantle, around the roots and are found in forest trees, especially conifers, birches and oaks. Endomycorrhizae are found in the roots of more than 80 percent of terrestrial plants.', ar: 'الميكوريزا الخارجية بتكوّن غلاف كثيف اسمه mantle حوالين الجذور وبتتلاقى في أشجار الغابات خصوصًا الصنوبريات والبتولا والبلوط. أما الميكوريزا الداخلية فموجودة في جذور أكتر من 80 في المية من النباتات الأرضية.' },
+  source: nutr,
+};
+const nodule: PlantNote = {
+  recognize: { en: 'Soil bacteria called rhizobia interact symbiotically with legume roots to form specialized structures called nodules, in which nitrogen fixation takes place.', ar: 'بكتيريا التربة المسماة ريزوبيا بتتعايش تكافليًا مع جذور البقوليات وبتكوّن تراكيب متخصصة اسمها العقد (nodules) اللي بيحصل فيها تثبيت النيتروجين.' },
+  function: { en: 'Nitrogen fixation reduces atmospheric nitrogen to ammonia with the enzyme nitrogenase. The plant obtains ammonia, and the bacteria obtain carbon compounds generated through photosynthesis.', ar: 'تثبيت النيتروجين بيختزل نيتروجين الجو لأمونيا بإنزيم النيتروجينيز. النبات بياخد الأمونيا والبكتيريا بتاخد مركبات كربون من البناء الضوئي.' },
+  source: nutr,
+};
+const anaphase: PlantNote = {
+  recognize: { en: 'In anaphase the cohesin proteins degrade and the sister chromatids separate at the centromere. Each chromatid is now called a single chromosome.', ar: 'في الطور الانفصالي (anaphase) بروتينات الكوهيسين بتتحلل والكروماتيدات الشقيقة بتنفصل عند السنترومير. وكل كروماتيد بيتسمى كروموسوم منفرد.' },
+  function: { en: 'The chromosomes are pulled rapidly apart along their microtubules. The cell becomes visibly elongated as the polar microtubules slide against each other where they overlap.', ar: 'الكروموسومات بتتسحب بسرعة بعيد عن بعض على الأنيبيبات الدقيقة. والخلية بتطول بشكل واضح لما الأنيبيبات القطبية بتنزلق على بعضها عند منطقة التداخل.' },
+  source: cycle,
+};
+const lichen: PlantNote = {
+  recognize: { en: 'A lichen is not a single organism but a mutualism, in which a fungus lives with a photosynthetic organism, a eukaryotic alga or a prokaryotic cyanobacterium. The body of a lichen is a thallus formed of hyphae wrapped around the photosynthetic partner.', ar: 'الأشنة (lichen) مش كائن واحد لكنها تكافل، فيها فطر عايش مع كائن بيعمل بناء ضوئي، يا طحلب حقيقي النواة يا سيانوبكتيريا. وجسم الأشنة ثالوس مكوّن من هيفات ملفوفة حوالين الشريك اللي بيعمل البناء الضوئي.' },
+  function: { en: 'The photosynthetic organism provides carbon and energy as carbohydrates. In return the fungus supplies minerals and protection from dryness and excessive light.', ar: 'الكائن اللي بيعمل البناء الضوئي بيوفر الكربون والطاقة على شكل كربوهيدرات. وفي المقابل الفطر بيوفر المعادن والحماية من الجفاف والضوء الزايد.' },
+  compare: { en: 'Lichens can survive extended periods of drought, when they become completely desiccated, and then become active rapidly once water is available again.', ar: 'الأشنات بتتحمل فترات جفاف طويلة وتتجفف تمامًا، وبعدين بتنشط بسرعة أول ما الماء يتوفر تاني.' },
+  source: fungi,
+};
+const pollination: PlantNote = {
+  recognize: { en: 'In angiosperms, pollination is the placement or transfer of pollen from the anther to the stigma of the same flower or another flower.', ar: 'في مغطاة البذور التلقيح هو وضع أو نقل حبوب اللقاح من المتك لميسم نفس الزهرة أو زهرة تانية.' },
+  function: { en: 'After transfer the pollen germinates to form the pollen tube and the sperm for fertilizing the egg. Pollen tubes grow through the tissue of the stigma and style before they enter the ovule.', ar: 'بعد النقل حبة اللقاح بتنبت وتكوّن أنبوب اللقاح والخلايا المنوية اللي هتخصب البويضة. وأنابيب اللقاح بتنمو جوه نسيج الميسم والقلم قبل ما تدخل البويضة.' },
+  compare: { en: 'In self-pollination pollen lands on the stigma of the same flower or another flower on the same plant. In cross-pollination it goes to a flower on a different individual. Primroses have two flower types, pin-eyed and thrum-eyed, with different anther and stigma lengths.', ar: 'في التلقيح الذاتي حبوب اللقاح بتقع على ميسم نفس الزهرة أو زهرة تانية على نفس النبات. وفي التلقيح الخلطي بتروح لزهرة على فرد تاني. زهرة الربيع (primrose) ليها نوعين من الأزهار، pin-eyed وthrum-eyed، بأطوال مختلفة للمتك والميسم.' },
+  source: pollin,
+};
+const flowerBud: PlantNote = {
+  recognize: { en: 'A typical flower has four whorls: the calyx (sepals), the corolla (petals), the androecium and the gynoecium. The sepals help protect the unopened bud.', ar: 'الزهرة النموذجية ليها أربع دوائر: الكأس (السبلات) والتويج (البتلات) والطلع والمتاع. والسبلات بتساعد في حماية البرعم قبل ما يتفتح.' },
+  compare: { en: 'In monocots petals usually number three or multiples of three. In dicots the number is four or five, or multiples of four or five.', ar: 'في أحاديات الفلقة البتلات غالبًا تلاتة أو مضاعفات التلاتة. وفي ثنائيات الفلقة أربعة أو خمسة أو مضاعفاتهم.' },
+  source: repro,
+};
+const ovary: PlantNote = {
+  recognize: { en: 'The ovary may contain one or multiple ovules.', ar: 'المبيض ممكن يحتوي بويضة واحدة أو أكتر.' },
+  function: { en: 'A double-layered integument protects the megasporangium and later the embryo sac, and develops into the seed coat after fertilization. The ovule wall becomes part of the fruit.', ar: 'الغلاف المزدوج (integument) بيحمي الكيس البوغي الكبير وبعدين الكيس الجنيني، وبيتحول لقصرة البذرة بعد الإخصاب. وجدار البويضة بيبقى جزء من الثمرة.' },
+  compare: { en: 'In angiosperms the female gametophyte is in an enclosed structure, the ovule, within the ovary. In gymnosperms it is on the exposed bracts of the female cone.', ar: 'في مغطاة البذور الطور المشيجي المؤنث جوه تركيب مغلق هو البويضة داخل المبيض. وفي معراة البذور بيكون على قنابات مكشوفة في المخروط المؤنث.' },
+  source: repro,
+};
+
+Object.assign(map, {
+  // plant cells
+  'onion-epidermis': plantCell, 'onion-epidermis-248-04': plantCell, 'onion-epidermis-255-19': plantCell, 'onion-epidermis-255-20': plantCell,
+  'onion-epidermis-cells-40x': plantCell, 'onion-epidermal-cells': plantCell, 'red-onion-cells': plantCell, 'onion-epidermis-cells': plantCell,
+  'onion-epidermis-deplasmolysis': plantCell,
+  'plasmolysis-in-red-onion-epidermis': plasmolysis, 'rhoeo-discolor-plasmolysis': plasmolysis,
+  'elodea-leaf-cells': chloroplast, 'elodea-anacharis-leaf-cells-400x': chloroplast, 'elodea-cells-with-chloroplasts-100x': chloroplast,
+  'mitosis-in-onion-root-meristem-anaphase': anaphase, 'anaphase-of-plant-cell-mitosis': anaphase,
+  // algae, lichen, mosses, liverworts
+  'spirogyra': spirogyra,
+  'iceland-moss-lichen-thallus-255-37r': lichen,
+  'moss-barbula-unguiculata-leaf-cells-400x': mossLeaf, 'moss-bartramia-ithyphylla-leaf-sheath-125x': mossLeaf, 'moss-bryum-caespiticium-leaf-cells-400x': mossLeaf,
+  'moss-bryum-capillare-live-leaf-cells': mossLeaf, 'moss-leaf-in-polarised-light': mossLeaf, 'moss-leaf-under-the-microscope': mossLeaf,
+  'physcomitrella-protonema': protonema,
+  'liverwort-cephalozia-connivens-side-leaf-250x': liverLeafy, 'liverwort-calypogeia-azurea-cells-with-oil-bodies': liverLeafy,
+  'liverwort-cross-section': liverThallus, 'metzgeriothallus-thallus': liverThallus,
+  // ferns and relatives
+  'fern-sporangium': fernSori, 'licorice-fern-polypodium-glycyrrhiza-spores-40x': fernSori,
+  'fern-gametophyte-development-1-week': fernGameto, 'fern-gametophyte-development-3-weeks': fernGameto,
+  'fern-root-cross-section-40x': fernRoot, 'rough-horsetail-spores': horsetailSpores,
+  'lycopodium-annotinum-stem-section-calcofluor-white-confocal': lycophyte, 'lycopodium-complanatum-stem-section-calcofluor-white-confocal': lycophyte,
+  'lycopodium-clavatum-shoot-cross-section-triple-stain': lycophyte,
+  // gymnosperms
+  'male-pine-cone-section': maleCone, 'pollen-grains-255-26': pinePollen,
+  'pinus-merkusii-stem-cross-section-safranin': gymStem, 'ginkgo-biloba-shoot-cross-section': gymStem,
+  'pine-leaf-needle-cross-section-prepared-slide': needle,
+  // leaves
+  'mesophyte-leaf-cross-section-stained': mesophyll, 'chestnut-leaf-cross-section': mesophyll, 'lemon-leaf-cross-section-10x': mesophyll,
+  'hydrophyte-leaf-cross-section-stained': hydro,
+  'leaf-stalk-petiole-255-24': petiole, 'leaf-stalk-petiole-255-25': petiole, 'leaf-stalk-petiole-255-34': petiole,
+  // stems and storage
+  'dicot-stem-showing-xylem-and-phloem': dicotStem,
+  'lily-of-the-valley-convallaria-rhizome-cross-section-fluorescence': rhizome,
+  'chlorophytum-comosum-stolon-section': stolon,
+  'woody-dicot-stem-lenticel-development-1': lenticel, 'woody-dicot-stem-lenticel-development-2': lenticel,
+  'potato-tuber-248-03': tuber, 'potato-tuber-250-35': tuber, 'potato-starch-grains-400x': starchTuber, 'potato-starch-in-polarised-light-100x': starchTuber,
+  // roots
+  'monocot-root-cross-section': rootMono, 'maize-zea-root-cross-section-100x': rootMono,
+  'sweet-flag-acorus-root-cross-section-100x': rootGen, 'greenbriar-smilax-root-cross-section-40x': rootGen, 'iris-root-cross-section': rootGen,
+  'onion-root-cross-section-10x-objective': rootGen,
+  'arbuscular-mycorrhizae-in-root-40x': myco, 'vicia-root-nodule-cross-section': nodule,
+  // pollen and flowers
+  'china-rose-hibiscus-rosa-sinensis-pollen-grains': pollen, 'hibiscus-pollen-under-the-microscope': pollen, 'marshmallow-althaea-officinalis-pollen-grain-40x': pollen,
+  'chicory-anther-surface-with-pollen': anther, 'primula-vulgaris-pollen-on-a-stigma': pollination,
+  'lily-flower-bud-250-30': flowerBud, 'lily-flower-bud-255-29': flowerBud, 'tulip-ovary-255-30': ovary,
+});
+
+// ---- Batch 2, part 2: general organ notes for stem, leaf and root slides whose species the sources do not describe.
+const stemGen: PlantNote = {
+  recognize: { en: 'Like the rest of the plant, a stem has three tissue systems: dermal, vascular and ground tissue. The xylem and phloem of the vascular tissue are arranged in distinct strands called vascular bundles, which run up and down the length of the stem.', ar: 'زي باقي النبات، الساق فيها تلات أنظمة أنسجة: بشري ووعائي وأساسي. والخشب واللحاء في النسيج الوعائي مرتبين في خيوط واضحة اسمها الحزم الوعائية، بتمشي بطول الساق.' },
+  function: { en: 'The main function of a stem is to provide support to the plant, holding leaves, flowers and buds. In some cases stems also store food for the plant.', ar: 'وظيفة الساق الأساسية إنها تدعم النبات وتشيل الأوراق والأزهار والبراعم. وفي بعض الحالات الساق بتخزن كمان غذاء للنبات.' },
+  compare: { en: 'When a stem is viewed in cross section, the vascular bundles of dicot stems are arranged in a ring. In monocot stems the bundles are randomly scattered throughout the ground tissue.', ar: 'في المقطع العرضي لساق ثنائية الفلقة الحزم الوعائية مرتبة في حلقة. وفي ساق أحادية الفلقة الحزم مبعثرة عشوائيًا في النسيج الأساسي.' },
+  source: stems,
+};
+const leafGen: PlantNote = {
+  recognize: { en: 'The epidermis of a leaf is usually one cell layer thick and is covered by a waxy layer called the cuticle. Below the epidermis are layers of cells called the mesophyll, or "middle leaf". Most leaves have a midrib that branches to each side to produce veins of vascular tissue.', ar: 'بشرة الورقة غالبًا طبقة خلايا واحدة وبتتغطى بطبقة شمعية اسمها الكيوتكل. وتحت البشرة طبقات خلايا اسمها الميزوفيل (mesophyll) يعني "وسط الورقة". ومعظم الأوراق فيها عرق وسطي بيتفرع للجنبين ويكوّن عروقًا من نسيج وعائي.' },
+  function: { en: 'The cuticle reduces the rate of water loss from the leaf surface.', ar: 'الكيوتكل بتقلل معدل فقد الماء من سطح الورقة.' },
+  compare: { en: 'Leaves are adapted to their environment. Conifer needles have sunken stomata and a small surface area, which reduce water loss. In hot climates, cacti have leaves reduced to spines, which with their succulent stems help conserve water.', ar: 'الأوراق متكيفة مع بيئتها. إبر الصنوبريات ثغورها غائرة ومساحة سطحها صغيرة، وده بيقلل فقد الماء. وفي المناخ الحار الصبار أوراقه متحورة لأشواك، وده مع سيقانه العصارية بيساعد في توفير الماء.' },
+  source: leaves,
+};
+const stemLeaf: PlantNote = stemGen;
+const bud: PlantNote = {
+  recognize: { en: 'An axillary bud is usually found in the axil, the area between the base of a leaf and the stem. The tip (apex) of the shoot contains the apical bud.', ar: 'البرعم الإبطي بيكون غالبًا في الإبط، وهو المنطقة بين قاعدة الورقة والساق. وقمة الفرع فيها البرعم القمي.' },
+  function: { en: 'An axillary bud can give rise to a branch or a flower. The apical bud diminishes the growth of axillary buds along the sides of branches and stems, which is called apical dominance.', ar: 'البرعم الإبطي ممكن يطلّع فرع أو زهرة. والبرعم القمي بيقلل نمو البراعم الإبطية على جوانب الفروع والسيقان، وده اسمه السيادة القمية.' },
+  source: stems,
+};
+const confPollen: PlantNote = {
+  recognize: { en: 'A conifer pollen grain consists of just a few haploid cells enclosed in a tough wall reinforced with sporopollenin.', ar: 'حبة لقاح الصنوبريات مكوّنة من كام خلية أحادية المجموعة بس، محاطة بجدار قوي مقوّى بالسبوروبولينين.' },
+  function: { en: 'Conifers release large amounts of pollen that the wind carries. Pollination is the transfer of pollen from the male cone to the female cone.', ar: 'الصنوبريات بتطلق كميات كبيرة من حبوب اللقاح وبتتحمل بالهوا. والتلقيح هو نقل حبوب اللقاح من المخروط المذكر للمخروط المؤنث.' },
+  source: gym,
+};
+Object.assign(map, {
+  'roselle-hibiscus-sabdariffa-stem-cross-section': stemGen, 'young-stem-of-hibiscus-rosa-sinensis-cross-section-400x': stemGen,
+  'acacia-stem-cross-section': stemGen, 'bamboo-phyllostachys-stem': stemGen, 'umbrella-plant-cyperus-alternifolius-stalk-etzold-green': stemGen,
+  'garlic-mustard-alliaria-petiolata-stalk-longitudinal-section': stemGen, 'male-fern-dryopteris-filix-mas-dictyostele': stemGen,
+  'bracken-fern-pteridium-aquilinum-section-calcofluor-white-confocal': stemGen,
+  'stem-and-leaf-of-dame-s-rocket-hesperis-sylvestris': stemLeaf,
+  'cycas-leaflet-cross-section-safranin-stain': leafGen, 'xerophyte-leaf-cross-section-stained': leafGen, 'oleander-nerium-leaf-cross-section': leafGen,
+  'leaf-section-255-21': leafGen, 'leaf-epidermis-of-tall-fescue-grass-festuca-arundinacea': cuticle,
+  'ruscus-hypophyllum-root-cross-section': rootGen, 'ruscus-hypophyllum-root-cross-section-second-field': rootGen,
+  'horsetail-equisetum-apical-cell-longitudinal-section': apicalMeristem, 'bud-lilac-255-28': bud,
+  'cypress-pollen-grain-in-a-nasal-cytology-smear': confPollen,
+});
+
 // Epidermis prints whose id names stomata share the stomata note.
 for (const sp of specimens) if (sp.department === 'botany' && /stomata/.test(sp.id) && !map[sp.id]) map[sp.id] = stomata;
 export const plantNotes: Record<string, PlantNote> = map;

@@ -1565,3 +1565,11 @@ img[loading="lazy"], .specimen-thumbnail, .module-card-photo { background: color
 .subject-chip b{font-size:12px;opacity:.7}
 .subject-chip.is-selected{background:#1f5c46;border-color:#1f5c46;color:#fff}
 .subject-chip.is-selected b{opacity:.9}
+
+.doctors-section{margin:40px 0 24px}
+.doctors-grid{display:grid;gap:14px;margin-top:14px}
+@media(min-width:720px){.doctors-grid{grid-template-columns:1fr 1fr}}
+.doctor-quote{margin:0;padding:18px;border:1px solid var(--line,#cfd6cc);border-inline-start:4px solid #1f5c46;border-radius:8px}
+.doctor-quote blockquote{margin:0 0 12px;font-size:18px;line-height:1.5;text-align:left}
+.doctor-quote figcaption{display:flex;flex-direction:column;gap:2px;font-size:14px;text-align:left}
+.doctor-quote figcaption span{opacity:.75}

@@ -4,6 +4,8 @@ import { ensureSchema, ipHash } from './leaderboard';
 // POST /api/profile {player, nick?, avatar?}: change the name and/or avatar of an existing player.
 // Same trust level as posting a score: whoever holds the player id (kept in the browser) can edit it.
 const NICK_RE = /^[\p{L}\p{N}][\p{L}\p{N} _\-.]{1,15}$/u;
+const FRAME_IDS = ['gold', 'streak7', 'streak30', 'score50', 'score100', 'doctor', 'rank1-month', 'rank1-x3'];
+const OWNER_ONLY = ['rank1-month', 'rank1-x3']; // not obtainable yet; only the verified owner mark may wear them
 export const AVATAR_RE = /^[a-z0-9-]{1,20}$/;
 const json = (data: unknown, status = 200) =>
   new Response(JSON.stringify(data), { status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } });
@@ -16,14 +18,18 @@ export async function handleProfile(request: Request, db: D1Database, now = Date
   const n = await db.prepare("SELECT COUNT(*) AS n FROM code_rl WHERE kind = 'profile' AND ip = ? AND at > ?").bind(ip, now - 3600_000).first<{ n: number }>();
   if ((n?.n ?? 0) >= 60) return json({ error: 'rate_limited' }, 429);
   await db.prepare("INSERT INTO code_rl (kind, ip, at) VALUES ('profile', ?, ?)").bind(ip, now).run();
-  const body = await request.json().catch(() => null) as { player?: unknown; nick?: unknown; avatar?: unknown } | null;
+  const body = await request.json().catch(() => null) as { player?: unknown; nick?: unknown; avatar?: unknown; frame?: unknown } | null;
   const player = typeof body?.player === 'string' && /^[0-9a-f-]{36}$/.test(body.player) ? body.player : '';
   if (!player) return json({ error: 'bad_request' }, 400);
-  const row = await db.prepare('SELECT nick FROM players WHERE id = ?').bind(player).first<{ nick: string }>();
+  const row = await db.prepare('SELECT nick, owner FROM players WHERE id = ?').bind(player).first<{ nick: string; owner: number | null }>();
   if (!row) return json({ error: 'no_profile' }, 404);
   if (typeof body?.avatar === 'string') {
     if (!AVATAR_RE.test(body.avatar)) return json({ error: 'bad_avatar' }, 400);
     await db.prepare('UPDATE players SET avatar = ? WHERE id = ?').bind(body.avatar, player).run();
+  }
+  if (typeof body?.frame === 'string') {
+    if (!FRAME_IDS.includes(body.frame) || (OWNER_ONLY.includes(body.frame) && row.owner !== 1)) return json({ error: 'bad_frame' }, 400);
+    await db.prepare('UPDATE players SET frame = ? WHERE id = ?').bind(body.frame, player).run();
   }
   let nick = row.nick;
   if (typeof body?.nick === 'string') {

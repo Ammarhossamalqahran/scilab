@@ -18,11 +18,11 @@ const leaf = (a: number, r: number, side: 1 | -1) => {
   return { x, y, rot: a + 90 * side };
 };
 
-export function FramedAvatar({ frame, id, photo, size = 36 }: { frame: string; id?: string | null; photo?: string | null; size?: number }) {
+export function FramedAvatar({ frame, id, photo, size = 36, full = false }: { frame: string; id?: string | null; photo?: string | null; size?: number; full?: boolean }) {
   const spec = frameSpec(frame);
   const m = METALS[spec.metal];
   const uid = useId().replace(/:/g, '');
-  const fancy = size >= 44; // wings, laurels and crown need room; small sizes get the ring only
+  const fancy = full || size >= 44; // wings, laurels and crown need room; small sizes get the ring only
   const wide = fancy && (spec.deco === 'wings' || spec.deco === 'wings-crown');
   const box = wide ? { x: -30, y: -14, w: 160, h: 128 } : fancy ? { x: -6, y: -14, w: 112, h: 120 } : { x: 0, y: 0, w: 100, h: 100 };
   const scale = size / (wide ? 100 : fancy ? 100 : 100); // the ring itself is always `size` wide; decoration spills outside

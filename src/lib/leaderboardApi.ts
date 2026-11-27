@@ -29,7 +29,7 @@ async function call(path: string, init?: RequestInit) {
   return { ok: res.ok, status: res.status, data };
 }
 
-export type Mode = 'sprint60' | 'tf' | 'survival';
+export type Mode = 'sprint60' | 'tf' | 'dept' | 'survival';
 export async function startTicket(mode: Mode = 'sprint60'): Promise<string | null> {
   try { const r = await call('/api/game/start', { method: 'POST', body: JSON.stringify({ mode }) }); return r.ok && typeof r.data.ticket === 'string' ? r.data.ticket : null; } catch { return null; }
 }

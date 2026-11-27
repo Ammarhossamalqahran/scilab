@@ -9,13 +9,15 @@ const BONUS_STEP = 2; const BONUS_MAX_STREAK_STEPS = 5; // mirrors the client: 1
 const STARTS_PER_10_MIN = 60; // mobile networks put many students behind one IP
 const SUBMITS_PER_HOUR = 8;
 // Game modes. The ticket (issued by the server) fixes the mode, so a client cannot post a score into another mode.
-type Mode = 'sprint60' | 'tf' | 'survival';
+type Mode = 'sprint60' | 'tf' | 'dept' | 'survival';
 const MODES: Record<Mode, { seconds: number; minElapsed: number; maxElapsed: number; minPerAnswer: number; maxCorrect: number }> = {
   sprint60: { seconds: 60, minElapsed: 48, maxElapsed: 180, minPerAnswer: 1.3, maxCorrect: 60 },
+  dept: { seconds: 45, minElapsed: 38, maxElapsed: 150, minPerAnswer: 1.1, maxCorrect: 40 }, // which department: +8 +streak bonus (max +5) per right answer, wrong answers cost nothing
   survival: { seconds: 600, minElapsed: 5, maxElapsed: 900, minPerAnswer: 1.3, maxCorrect: 60 }, // 3 lives, 10 s per question, scoring like the 60-second game
   tf: { seconds: 45, minElapsed: 38, maxElapsed: 150, minPerAnswer: 0.9, maxCorrect: 50 }, // true/false: +5 +streak bonus (max +5) per right answer, -3 per wrong, never below 0
 };
-const asMode = (v: unknown): Mode => (v === 'tf' ? 'tf' : v === 'survival' ? 'survival' : 'sprint60');
+const asMode = (v: unknown): Mode => (v === 'tf' ? 'tf' : v === 'dept' ? 'dept' : v === 'survival' ? 'survival' : 'sprint60');
+export function maxScoreDept(correct: number): number { let t = 0; for (let i = 0; i < correct; i++) t += 8 + Math.min(i, 5); return t; }
 export function maxScoreTf(correct: number): number { let t = 0; for (let i = 0; i < correct; i++) t += 5 + Math.min(i, 5); return t; }
 const NICK_RE = /^[\p{L}\p{N}][\p{L}\p{N} _\-.]{1,15}$/u;
 
@@ -102,6 +104,8 @@ export async function handleLeaderboard(request: Request, db: D1Database, url: U
     const mode = asMode(game.mode); const rules = MODES[mode];
     const plausible = mode === 'tf'
       ? streak <= correct && correct <= rules.maxCorrect && score <= maxScoreTf(correct)
+      : mode === 'dept'
+      ? streak <= correct && correct <= rules.maxCorrect && score <= maxScoreDept(correct) && score >= correct * 8
       : streak <= correct && correct <= rules.maxCorrect && score <= maxScoreFor(correct) && score >= correct * 10;
     if (!plausible) return json({ error: 'implausible' }, 422);
     const elapsed = (now - game.started) / 1000;

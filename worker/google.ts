@@ -89,10 +89,10 @@ export async function handleGoogle(request: Request, db: D1Database, url: URL, c
   if (url.pathname === '/api/google/signin') {
     const sub = nonce ? await verifyIdToken(body?.credential, clientId, now, fetchImpl, nonce) : null;
     if (!sub) return json({ error: 'bad_token' }, 401);
-    const row = await db.prepare('SELECT id, nick, avatar FROM players WHERE google_hash = ?').bind(await hashSub(sub)).first<{ id: string; nick: string; avatar: string | null }>();
+    const row = await db.prepare('SELECT id, nick, avatar, frame FROM players WHERE google_hash = ?').bind(await hashSub(sub)).first<{ id: string; nick: string; avatar: string | null; frame: string | null }>();
     const admin = await ownerSessionFor(db, sub, now);
     if (!row) return json({ error: 'no_account', admin }, 404);
-    return json({ player: row.id, nick: row.nick, avatar: row.avatar, admin });
+    return json({ player: row.id, nick: row.nick, avatar: row.avatar, frame: row.frame, admin });
   }
   if (url.pathname === '/api/google/status') {
     if (!player) return json({ error: 'bad_request' }, 400);

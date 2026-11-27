@@ -22,3 +22,15 @@ export async function adoptServerFrame(force = false): Promise<void> {
     if (local !== sf) { ls.setItem(FRAME, sf); window.dispatchEvent(new Event('scilab-frame')); }
   } catch { /* ignored */ }
 }
+
+// Verified owner session on a device with no profile (after sign out): take the owner's own profile so name, character and frame show.
+export function adoptOwnerProfile(p: { id?: string; nick?: string; avatar?: string | null; frame?: string | null } | null | undefined): void {
+  try {
+    const ls = window.localStorage;
+    if (!p || ls.getItem('scilab-nickname') || typeof p.id !== 'string' || !/^[0-9a-f-]{36}$/.test(p.id) || typeof p.nick !== 'string') return;
+    ls.setItem('scilab-player-id', p.id); ls.setItem('scilab-nickname', p.nick);
+    if (typeof p.avatar === 'string') ls.setItem('scilab-avatar', p.avatar);
+    if (typeof p.frame === 'string' && FRAMES.some((f) => f.id === p.frame)) { ls.setItem(FRAME, p.frame); ls.setItem(SYNCED, p.frame); }
+    window.dispatchEvent(new Event('scilab-profile-changed')); window.dispatchEvent(new Event('scilab-frame'));
+  } catch { /* ignored */ }
+}

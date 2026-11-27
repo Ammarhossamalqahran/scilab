@@ -417,6 +417,32 @@ Object.assign(map, {
   'cypress-pollen-grain-in-a-nasal-cytology-smear': confPollen,
 });
 
+// ---- Batch 3: the last five botany slides. Each uses the open page named in its source link, not OpenStax.
+// Sentences follow the cited page for the group or structure; they do not describe the exact specimen on the slide.
+const pmcSph = { title: 'Sphagnum cell walls (open access, PMC12026656)', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12026656/' };
+const sphagnumLeaf: PlantNote = {
+  recognize: { en: 'Sphagnum branch leaves are one cell layer thick and have two kinds of cells: large, water-filled hyaline cells, dead at maturity and often with pores, and chlorophyll-containing cells arranged around them.', ar: 'ورقة الفرع في الـ Sphagnum سمكها طبقة خلايا واحدة وفيها نوعين خلايا: خلايا شفافة كبيرة (hyaline) مليانة ماية وميتة عند النضج وغالبا فيها ثقوب، وخلايا فيها كلوروفيل حواليها.' },
+  function: { en: 'The hyaline cells let the moss absorb up to 25 times its dry weight in water.', ar: 'الخلايا الشفافة بتخلي الطحلب يمتص لحد 25 ضعف وزنه الجاف ماية.' },
+  source: pmcSph,
+};
+const wheat = { title: 'Raven Biology 12e, 40.5.2 Mature Embryos and Seed Structure (LibreTexts)', url: 'https://bio.libretexts.org/Bookshelves/Introductory_and_General_Biology/Map:_Raven_Biology_12th_Edition/40:_Plant_Reproduction/40.05:_Embryo_Development/40.5.02:_Mature_Embryos_and_Seed_Structure' };
+const caryopsis: PlantNote = {
+  recognize: { en: 'In a caryopsis (grain) the fruit wall (pericarp) is fused to the seed coat, so the grain is a one-seeded fruit. The thin outer layer of the endosperm is a single layer of cells called the aleurone.', ar: 'في الـ caryopsis (الحبة) جدار الثمرة (pericarp) ملتحم مع غلاف البذرة، فالحبة ثمرة فيها بذرة واحدة. الطبقة الخارجية الرقيقة من الإندوسبيرم طبقة خلايا واحدة اسمها aleurone.' },
+  function: { en: 'The single cotyledon of a monocot is called the scutellum; it channels nutrition to the growing embryo. On germination the aleurone secretes enzymes that break down the stored carbohydrates, proteins and lipids.', ar: 'الفلقة الوحيدة في ذوات الفلقة الواحدة اسمها scutellum وبتوصّل الغذاء للجنين النامي. وقت الإنبات الـ aleurone بيفرز إنزيمات بتحلل الكربوهيدرات والبروتينات والدهون المخزنة.' },
+  source: wheat,
+};
+const pmcRus = { title: 'Ruscus aculeatus botanical description (open access, PMC12655856)', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12655856/' };
+const ruscus: PlantNote = {
+  recognize: { en: 'Ruscus aerial shoots bear phylloclades: flattened, leaf-like branches arising from the axils of reduced leaves. They are leathery and end in a sharp spine.', ar: 'سيقان الـ Ruscus الهوائية عليها phylloclades: فروع مفلطحة شبه الورقة طالعة من إبط أوراق مختزلة. جلدية وبتنتهي بشوكة حادة.' },
+  function: { en: 'The phylloclades perform an assimilative function.', ar: 'الـ phylloclades بتعمل وظيفة assimilative (تمثيل).' },
+  source: pmcRus,
+};
+map['leaf-section-251-13'] = sphagnumLeaf;
+map['sphagnum-moss-stained-slide'] = sphagnumLeaf;
+map['caryopsis-grain-255-31'] = caryopsis;
+map['caryopsis-grain-255-32'] = caryopsis;
+map['butcher-s-broom-ruscus-hypophyllum-stem-cross-section'] = ruscus;
+
 // Epidermis prints whose id names stomata share the stomata note.
 for (const sp of specimens) if (sp.department === 'botany' && /stomata/.test(sp.id) && !map[sp.id]) map[sp.id] = stomata;
 export const plantNotes: Record<string, PlantNote> = map;

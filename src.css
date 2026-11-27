@@ -1544,3 +1544,14 @@ img[loading="lazy"], .specimen-thumbnail, .module-card-photo { background: color
 
 
 .button.google-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
+
+.spot-label { margin: 16px 0 8px; font-size: 14px; color: var(--ink-soft); }
+.spot-chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.spot-chips button { padding: 7px 12px; border: 1px solid var(--line-strong); background: transparent; color: var(--ink-soft); font: inherit; font-size: 13px; cursor: pointer; }
+.spot-chips button.is-active { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.spot-setup .button { margin-top: 8px; }
+.spot-misses ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.spot-misses li { display: flex; gap: 12px; align-items: center; padding: 10px; border: 1px solid var(--line-strong); background: var(--surface-raised); }
+.spot-misses img { object-fit: cover; flex: none; }
+.spot-misses li div { display: grid; gap: 2px; font-size: 13px; }
+.spot-misses small { color: var(--coral); }

@@ -96,6 +96,9 @@ export function AppShell() {
             <NavLink to="/compare" className={({ isActive }) => `nav-item${isActive ? ' is-active' : ''}`}>
               <CompareGlyph /><span>{locale === 'ar' ? 'مقارنة' : 'Compare'}</span>
             </NavLink>
+            <NavLink to="/spot" className={({ isActive }) => `nav-item${isActive ? ' is-active' : ''}`}>
+              <ChallengeGlyph /><span>{locale === 'ar' ? 'سبوت تيست' : 'Spot test'}</span>
+            </NavLink>
             <NavLink to="/challenge" className={({ isActive }) => `nav-item${isActive ? ' is-active' : ''}`}>
               <ChallengeGlyph /><span>{locale === 'ar' ? 'تحدي الـ 60 ثانية' : '60-second challenge'}</span>
             </NavLink>

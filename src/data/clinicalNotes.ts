@@ -37,6 +37,7 @@ import { microbiologyNotes } from './clinicalNotesMicrobiology';
 import { histologyNotes } from './clinicalNotesHistology';
 import { histology2Notes } from './clinicalNotesHistology2';
 import { geneticsNotes } from './clinicalNotesGenetics';
+import { histology3Notes } from './clinicalNotesHistology3';
 
 export const clinicalNotes: Record<string, ClinicalNote> = {
   ...hematologyNotes,
@@ -45,6 +46,7 @@ export const clinicalNotes: Record<string, ClinicalNote> = {
   ...histologyNotes,
   ...histology2Notes,
   ...geneticsNotes,
+  ...histology3Notes,
   'ascaris-egg-early-cell-division': ascarisFertile,
   'ascaris-infertile-egg': ascarisInfertile,
   'whipworm-trichuris-trichiura-egg': whipworm,

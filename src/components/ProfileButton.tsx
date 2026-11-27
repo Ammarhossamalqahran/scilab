@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { usePreferences } from '../app/PreferencesContext';
 import { Avatar, AVATARS, DEFAULT_AVATAR } from '../data/avatars';
+import { FRAMES, earnedFrames, selectedFrame, selectFrame, frameById, readVisits } from '../data/frames';
 import { readStats } from '../data/gameStats';
 import { createCode, savedAvatar, savedCode, savedNick, saveAvatar, saveNick, updateProfile, savedPhoto, refreshPhoto, removePhoto } from '../lib/leaderboardApi';
 import { PhotoPicker } from './PhotoPicker';
@@ -36,6 +37,11 @@ export function ProfileButton() {
 
   const nick = savedNick();
   const avatar = savedAvatar() || DEFAULT_AVATAR;
+  const [frameId, setFrameId] = useState(selectedFrame());
+  useEffect(() => { const on = () => setFrameId(selectedFrame()); window.addEventListener('scilab-frame', on); return () => window.removeEventListener('scilab-frame', on); }, []);
+  const ring = frameById(frameId).ring;
+  const earned = earnedFrames();
+  const visits = readVisits();
   const stats = readStats();
   const code = savedCode();
   const photo = savedPhoto();
@@ -71,14 +77,14 @@ export function ProfileButton() {
   return (
     <>
       <button type="button" className="profile-btn" onClick={show} aria-label={ar ? 'البروفايل' : 'Profile'} title={ar ? 'البروفايل' : 'Profile'}>
-        <Avatar id={avatar} photo={shown} size={34} />
+        <span className="avatar-frame" style={{ background: ring }}><Avatar id={avatar} photo={shown} size={34} /></span>
       </button>
       {open && (
         <div className="welcome-backdrop" role="dialog" aria-modal="true" aria-labelledby="profile-title" onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }}>
           <div className="welcome-card profile-card">
             <button type="button" className="welcome-lang" onClick={() => setOpen(false)} aria-label={ar ? 'إغلاق' : 'Close'}>×</button>
             <div className="welcome-body">
-              <button type="button" className="profile-btn" style={{ justifySelf: 'center' }} onClick={() => setPicking((v) => !v)} aria-label={ar ? 'غيّر الشخصية' : 'Change character'}><Avatar id={avatar} photo={shown} size={76} /></button>
+              <button type="button" className="profile-btn" style={{ justifySelf: 'center' }} onClick={() => setPicking((v) => !v)} aria-label={ar ? 'غيّر الشخصية' : 'Change character'}><span className="avatar-frame" style={{ background: ring }}><Avatar id={avatar} photo={shown} size={76} /></span></button>
               <h2 id="profile-title">{nick || (ar ? 'ضيف' : 'Guest')}</h2>
               {picking && (
                 <div className="avatar-grid">
@@ -87,6 +93,22 @@ export function ProfileButton() {
                   ))}
                 </div>
               )}
+              <div className="frame-section">
+                <b>{ar ? 'الإطارات' : 'Frames'}</b>
+                <small>{ar ? `زيارات ورا بعض: ${visits.streak} يوم. ادخل كل يوم عشان تفتح إطارات جديدة.` : `Visit streak: ${visits.streak} day${visits.streak === 1 ? '' : 's'}. Come back every day to unlock frames.`}</small>
+                <div className="frame-grid">
+                  {FRAMES.map((f) => {
+                    const ok = earned.has(f.id);
+                    return (
+                      <button type="button" key={f.id} className={`frame-pick${frameId === f.id ? ' is-picked' : ''}${ok ? '' : ' is-locked'}`} disabled={!ok} onClick={() => selectFrame(f.id)}>
+                        <span className="avatar-frame" style={{ background: f.ring, opacity: ok ? 1 : 0.35 }}><Avatar id={avatar} size={36} /></span>
+                        <span>{f.name[ar ? 'ar' : 'en']}</span>
+                        <small>{ok ? (frameId === f.id ? (ar ? 'مستخدم' : 'In use') : (ar ? 'اضغط للاستخدام' : 'Tap to use')) : f.soon ? (ar ? `قريبا: ${f.how.ar}` : `Soon: ${f.how.en}`) : f.how[ar ? 'ar' : 'en']}</small>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
               {nick && photo?.status === 'pending' && <small className="winner-note">{ar ? 'صورتك ظاهرة ليك بس. هتظهر للناس بعد موافقة صاحب الموقع.' : 'Only you can see your photo for now. It shows to others after the owner approves it.'}</small>}
               {nick && photo?.status === 'approved' && <small className="winner-note">{ar ? 'صورتك اتوافق عليها وظاهرة في الترتيب.' : 'Your photo is approved and shows on the leaderboard.'}</small>}
               {nick && photo?.status === 'rejected' && <small className="winner-note">{ar ? 'الصورة ماتوافقش عليها. تقدر ترفع صورة تانية أو تختار شخصية.' : 'Your photo was not approved. Upload another or pick a character.'}</small>}

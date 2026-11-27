@@ -57,6 +57,7 @@ function ResetIcon() {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7v5h5M5 12a7 7 0 1 0 2-5" /><path d="M12 8v4l3 2" /></svg>;
 }
 
+const searchStopWords = new Set(['and','the','of','in','a','an','with','section','sections','slide','slides','و','في','من']);
 function normalizeSearch(value: string) {
   return value.normalize('NFD').replace(/[\u0300-\u036f\u064b-\u065f\u0670\u0640]/g, '').replace(/[أإآٱ]/g, 'ا').toLowerCase().trim();
 }
@@ -137,17 +138,22 @@ export function MicroscopePage() {
     return () => window.removeEventListener('keydown', onKey);
   }, [showReferences]);
 
+  const searchWords = useMemo(() => normalizeSearch(sampleQuery).split(/[\s,;]+/).filter((word) => word && !searchStopWords.has(word)), [sampleQuery]);
+  const searching = searchWords.length > 0;
+  const allSpecimensSorted = useMemo(() => [...specimens].sort((a, b) => a.title[lang].localeCompare(b.title[lang], lang)), [lang]);
   const filteredSpecimens = useMemo(() => {
-    // Match both languages, the source photo title and the diacritic-free form, so English and Latin names work in the Arabic UI.
-    const query = normalizeSearch(sampleQuery);
-    return availableSpecimens.filter((sample) => {
-      if (favoritesOnly && !favoriteIds.includes(sample.id)) return false;
-      if (!inSubcategory(department, sample, subcategory)) return false;
-      if (!query) return true;
-      return [sample.title.ar, sample.title.en, sample.subtitle.ar, sample.subtitle.en, sample.description.ar, sample.description.en, specimenMedia[sample.id]?.title ?? '']
-        .some((value) => normalizeSearch(value).includes(query));
+    // A typed search looks through every department, in both languages, and every word must match somewhere in the slide text, in any order.
+    const pool = searching ? allSpecimensSorted : availableSpecimens;
+    if (!searching) return pool.filter((sample) => (!favoritesOnly || favoriteIds.includes(sample.id)) && inSubcategory(department, sample, subcategory));
+    // Score each slide by how many of the typed words it contains. Slides with every word come first; if none has every word, show the slides with the most matching words.
+    const scored = pool.filter((sample) => !favoritesOnly || favoriteIds.includes(sample.id)).map((sample) => {
+      const dept = departments.find((item) => item.id === sample.department);
+      const haystack = normalizeSearch([sample.id.replace(/-/g, ' '), sample.title.ar, sample.title.en, sample.subtitle.ar, sample.subtitle.en, sample.description.ar, sample.description.en, specimenMedia[sample.id]?.title ?? '', dept?.label.en ?? '', dept?.label.ar ?? ''].join(' '));
+      return { sample, score: searchWords.filter((word) => haystack.includes(word)).length };
     });
-  }, [availableSpecimens, department, favoriteIds, favoritesOnly, sampleQuery, subcategory]);
+    const best = Math.max(0, ...scored.map((row) => row.score));
+    return scored.filter((row) => best > 0 && row.score === best).map((row) => row.sample);
+  }, [allSpecimensSorted, availableSpecimens, department, favoriteIds, favoritesOnly, searching, searchWords, subcategory]);
 
   useEffect(() => {
     try {
@@ -159,6 +165,7 @@ export function MicroscopePage() {
 
   function changeDepartment(id: DepartmentId) {
     setDepartment(id);
+    setSampleQuery('');
     setAppliedStainId(null);
     setChallengeSpecimenId(null);
     setChallengeRevealed(false);
@@ -166,7 +173,10 @@ export function MicroscopePage() {
     resetView();
   }
   function changeSpecimen(id: string) {
-    setSelectedByDepartment((current) => ({ ...current, [department]: id }));
+    const target = specimens.find((sample) => sample.id === id);
+    const targetDepartment = target?.department ?? department;
+    if (targetDepartment !== department) setDepartment(targetDepartment);
+    setSelectedByDepartment((current) => ({ ...current, [targetDepartment]: id }));
     setAppliedStainId(null);
     setSearchParams({ slide: id }, { replace: true });
     setChallengeSpecimenId(null);
@@ -299,7 +309,7 @@ export function MicroscopePage() {
             </section>
 
             <section className="control-section specimen-control-section">
-              <div className="control-section-title control-section-title--split"><h3>{t('selectSpecimen')}</h3><small className="specimen-count">{filteredSpecimens.length} / {availableSpecimens.length} {t('samplesCount')}</small></div>
+              <div className="control-section-title control-section-title--split"><h3>{t('selectSpecimen')}</h3><small className="specimen-count">{filteredSpecimens.length} / {searching ? specimens.length : availableSpecimens.length} {t('samplesCount')}{searching ? (lang === 'ar' ? ' (كل الأقسام)' : ' (all departments)') : ''}</small></div>
               <div className="specimen-tools">
                 <label className="specimen-search-wrap">
                   <span className="sr-only">{t('searchSamples')}</span>
@@ -326,7 +336,7 @@ export function MicroscopePage() {
                       <div key={sample.id} className={`specimen-pick-row${isSelected ? ' is-selected' : ''}`}>
                         <button type="button" className="specimen-pick-button" onClick={() => changeSpecimen(sample.id)} aria-pressed={isSelected}>
                           <img className="specimen-thumbnail" src={thumbSrc(specimenMedia[sample.id]?.src)} alt="" width="50" height="43" loading="lazy" decoding="async" />
-                          <span><b>{sample.title[lang]}</b><small>{sample.subtitle[lang]}</small></span>
+                          <span><b>{sample.title[lang]}</b><small>{searching ? `${departments.find((item) => item.id === sample.department)?.label[lang] ?? ''} · ` : ''}{sample.subtitle[lang]}</small></span>
                         </button>
                         <button type="button" className={`specimen-favorite${isFavorite ? ' is-favorite' : ''}`} onClick={() => toggleFavorite(sample.id)} aria-label={`${isFavorite ? t('removeFavorite') : t('addFavorite')}: ${sample.title[lang]}`} aria-pressed={isFavorite} title={isFavorite ? t('removeFavorite') : t('addFavorite')}>{isFavorite ? '★' : '☆'}</button>
                       </div>

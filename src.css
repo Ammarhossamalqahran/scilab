@@ -1610,3 +1610,7 @@ body.test-guard-on{-webkit-user-select:none;user-select:none;-webkit-touch-callo
 .chal-rows li b{display:inline-flex;align-items:center}
 .chal-rows li{align-items:center;padding-block:5px}
 .topbar .profile-btn{margin-inline:6px}
+
+.welcome-or { display: flex; align-items: center; gap: 10px; margin: 4px 0; color: var(--muted, #6b7a74); font-size: .85rem; }
+.welcome-or::before, .welcome-or::after { content: ''; flex: 1; height: 1px; background: currentColor; opacity: .25; }
+.welcome-card .welcome-gnote { display: block; text-align: center; color: var(--muted, #6b7a74); font-size: .78rem; line-height: 1.5; }

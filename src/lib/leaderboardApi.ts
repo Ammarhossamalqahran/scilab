@@ -1,6 +1,6 @@
 // Talks to the /api leaderboard Worker. Every call fails soft: if the API or database is not there
 // (local preview, offline, not set up yet) the game still works and the leaderboard is just hidden.
-export type Entry = { nick: string; score: number; owner?: number | null; avatar?: string | null; photo?: string | null };
+export type Entry = { nick: string; score: number; owner?: number | null; avatar?: string | null; frame?: string | null; photo?: string | null };
 const playerKey = 'scilab-player-id';
 const nickKey = 'scilab-nickname';
 
@@ -83,7 +83,7 @@ export async function restoreCode(code: string): Promise<RestoreResult> {
 
 export type ProfileResult = { ok: true; nick: string } | { ok: false; reason: 'nick_taken' | 'bad_nick' | 'no_profile' | 'rate_limited' | 'other' };
 // Change the name and/or avatar of this player on the server.
-export async function updateProfile(patch: { nick?: string; avatar?: string }): Promise<ProfileResult> {
+export async function updateProfile(patch: { nick?: string; avatar?: string; frame?: string }): Promise<ProfileResult> {
   try {
     const r = await call('/api/profile', { method: 'POST', body: JSON.stringify({ player: playerId(), ...patch }) });
     if (r.ok) return { ok: true, nick: typeof r.data.nick === 'string' ? r.data.nick : patch.nick ?? '' };

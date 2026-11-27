@@ -41,6 +41,13 @@ export function ProfileButton() {
   const [frameId, setFrameId] = useState(selectedFrame());
   const [, setTick] = useState(0);
   useEffect(() => { const on = () => { setFrameId(selectedFrame()); setTick((n) => n + 1); }; window.addEventListener('scilab-frame', on); return () => window.removeEventListener('scilab-frame', on); }, []);
+  // Tell the server which frame this player wears, so others see it on the leaderboard. Only a frame that is really in use is sent.
+  useEffect(() => {
+    try {
+      if (!savedNick() || window.localStorage.getItem('scilab-frame') !== frameId || window.localStorage.getItem('scilab-frame-synced') === frameId) return;
+      void updateProfile({ frame: frameId }).then((r) => { if (r.ok) window.localStorage.setItem('scilab-frame-synced', frameId); });
+    } catch { /* ignored */ }
+  }, [frameId]);
   const earned = earnedFrames();
   const visits = readVisits();
   const stats = readStats();
@@ -78,7 +85,7 @@ export function ProfileButton() {
   return (
     <>
       <button type="button" className="profile-btn" onClick={show} aria-label={ar ? 'البروفايل' : 'Profile'} title={ar ? 'البروفايل' : 'Profile'}>
-        <FramedAvatar frame={frameId} id={avatar} photo={shown} size={34} />
+        <FramedAvatar frame={frameId} id={avatar} photo={shown} size={44} full />
       </button>
       {open && (
         <div className="welcome-backdrop" role="dialog" aria-modal="true" aria-labelledby="profile-title" onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }}>
@@ -98,7 +105,7 @@ export function ProfileButton() {
                 <b>{ar ? 'الإطارات' : 'Frames'}</b>
                 <small>{ar ? `زيارات ورا بعض: ${visits.streak} يوم. ادخل كل يوم عشان تفتح إطارات جديدة.` : `Visit streak: ${visits.streak} day${visits.streak === 1 ? '' : 's'}. Come back every day to unlock frames.`}</small>
                 <div className="frame-sizes" aria-label={ar ? 'شكل الإطار بأحجام مختلفة' : 'Frame at different sizes'}>
-                  <FramedAvatar frame={frameId} id={avatar} size={56} /><FramedAvatar frame={frameId} id={avatar} size={34} /><FramedAvatar frame={frameId} id={avatar} size={24} />
+                  <FramedAvatar frame={frameId} id={avatar} size={56} /><FramedAvatar frame={frameId} id={avatar} size={44} full /><FramedAvatar frame={frameId} id={avatar} size={26} full />
                 </div>
                 <div className="frame-grid">
                   {FRAMES.map((f) => {

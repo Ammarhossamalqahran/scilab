@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { usePreferences } from '../app/PreferencesContext';
 import { Avatar, AVATARS, DEFAULT_AVATAR } from '../data/avatars';
-import { FRAMES, earnedFrames, selectedFrame, selectFrame, frameById, readVisits } from '../data/frames';
+import { FramedAvatar } from './FramedAvatar';
+import { FRAMES, earnedFrames, selectedFrame, selectFrame, readVisits } from '../data/frames';
 import { readStats } from '../data/gameStats';
 import { createCode, savedAvatar, savedCode, savedNick, saveAvatar, saveNick, updateProfile, savedPhoto, refreshPhoto, removePhoto } from '../lib/leaderboardApi';
 import { PhotoPicker } from './PhotoPicker';
@@ -39,7 +40,6 @@ export function ProfileButton() {
   const avatar = savedAvatar() || DEFAULT_AVATAR;
   const [frameId, setFrameId] = useState(selectedFrame());
   useEffect(() => { const on = () => setFrameId(selectedFrame()); window.addEventListener('scilab-frame', on); return () => window.removeEventListener('scilab-frame', on); }, []);
-  const ring = frameById(frameId).ring;
   const earned = earnedFrames();
   const visits = readVisits();
   const stats = readStats();
@@ -77,14 +77,14 @@ export function ProfileButton() {
   return (
     <>
       <button type="button" className="profile-btn" onClick={show} aria-label={ar ? 'البروفايل' : 'Profile'} title={ar ? 'البروفايل' : 'Profile'}>
-        <span className="avatar-frame" style={{ background: ring }}><Avatar id={avatar} photo={shown} size={34} /></span>
+        <FramedAvatar frame={frameId} id={avatar} photo={shown} size={34} />
       </button>
       {open && (
         <div className="welcome-backdrop" role="dialog" aria-modal="true" aria-labelledby="profile-title" onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }}>
           <div className="welcome-card profile-card">
             <button type="button" className="welcome-lang" onClick={() => setOpen(false)} aria-label={ar ? 'إغلاق' : 'Close'}>×</button>
             <div className="welcome-body">
-              <button type="button" className="profile-btn" style={{ justifySelf: 'center' }} onClick={() => setPicking((v) => !v)} aria-label={ar ? 'غيّر الشخصية' : 'Change character'}><span className="avatar-frame" style={{ background: ring }}><Avatar id={avatar} photo={shown} size={76} /></span></button>
+              <button type="button" className="profile-btn" style={{ justifySelf: 'center' }} onClick={() => setPicking((v) => !v)} aria-label={ar ? 'غيّر الشخصية' : 'Change character'}><FramedAvatar frame={frameId} id={avatar} photo={shown} size={96} /></button>
               <h2 id="profile-title">{nick || (ar ? 'ضيف' : 'Guest')}</h2>
               {picking && (
                 <div className="avatar-grid">
@@ -96,12 +96,15 @@ export function ProfileButton() {
               <div className="frame-section">
                 <b>{ar ? 'الإطارات' : 'Frames'}</b>
                 <small>{ar ? `زيارات ورا بعض: ${visits.streak} يوم. ادخل كل يوم عشان تفتح إطارات جديدة.` : `Visit streak: ${visits.streak} day${visits.streak === 1 ? '' : 's'}. Come back every day to unlock frames.`}</small>
+                <div className="frame-sizes" aria-label={ar ? 'شكل الإطار بأحجام مختلفة' : 'Frame at different sizes'}>
+                  <FramedAvatar frame={frameId} id={avatar} size={56} /><FramedAvatar frame={frameId} id={avatar} size={34} /><FramedAvatar frame={frameId} id={avatar} size={24} />
+                </div>
                 <div className="frame-grid">
                   {FRAMES.map((f) => {
                     const ok = earned.has(f.id);
                     return (
                       <button type="button" key={f.id} className={`frame-pick${frameId === f.id ? ' is-picked' : ''}${ok ? '' : ' is-locked'}`} disabled={!ok} onClick={() => selectFrame(f.id)}>
-                        <span className="avatar-frame" style={{ background: f.ring, opacity: ok ? 1 : 0.35 }}><Avatar id={avatar} size={36} /></span>
+                        <span style={{ opacity: ok ? 1 : 0.4 }}><FramedAvatar frame={f.id} id={avatar} size={56} /></span>
                         <span>{f.name[ar ? 'ar' : 'en']}</span>
                         <small>{ok ? (frameId === f.id ? (ar ? 'مستخدم' : 'In use') : (ar ? 'اضغط للاستخدام' : 'Tap to use')) : f.soon ? (ar ? `قريبا: ${f.how.ar}` : `Soon: ${f.how.en}`) : f.how[ar ? 'ar' : 'en']}</small>
                       </button>

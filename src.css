@@ -1601,3 +1601,8 @@ body.test-guard-on{-webkit-user-select:none;user-select:none;-webkit-touch-callo
 .chal-rows li.is-owner b .lb-avatar{-webkit-text-fill-color:initial}
 .owner-badge{margin-inline-start:6px;vertical-align:-3px;-webkit-text-fill-color:initial}
 .chal-rows li.is-owner{box-shadow:inset 3px 0 0 #d4a017}
+
+.frame-sizes{display:flex;gap:14px;align-items:center;justify-content:center;padding:6px 0}
+.frame-pick .framed-avatar{margin-block:2px}
+.framed-avatar-img{display:block;width:100%;height:100%;border-radius:0}
+.profile-btn:has(.framed-avatar){border:0;background:none;box-shadow:none;padding:0;border-radius:0}

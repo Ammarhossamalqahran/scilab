@@ -29,11 +29,12 @@ async function call(path: string, init?: RequestInit) {
   return { ok: res.ok, status: res.status, data };
 }
 
-export async function startTicket(): Promise<string | null> {
-  try { const r = await call('/api/game/start', { method: 'POST' }); return r.ok && typeof r.data.ticket === 'string' ? r.data.ticket : null; } catch { return null; }
+export type Mode = 'sprint60' | 'tf';
+export async function startTicket(mode: Mode = 'sprint60'): Promise<string | null> {
+  try { const r = await call('/api/game/start', { method: 'POST', body: JSON.stringify({ mode }) }); return r.ok && typeof r.data.ticket === 'string' ? r.data.ticket : null; } catch { return null; }
 }
-export async function fetchBoard(period: 'week' | 'all'): Promise<Entry[] | null> {
-  try { const r = await call(`/api/leaderboard?period=${period}`); return r.ok && Array.isArray(r.data.entries) ? (r.data.entries as Entry[]) : null; } catch { return null; }
+export async function fetchBoard(period: 'week' | 'all', mode: Mode = 'sprint60'): Promise<Entry[] | null> {
+  try { const r = await call(`/api/leaderboard?period=${period}&mode=${mode}`); return r.ok && Array.isArray(r.data.entries) ? (r.data.entries as Entry[]) : null; } catch { return null; }
 }
 export type SubmitResult = { ok: true; weekRank: number | null } | { ok: false; reason: 'nick_taken' | 'bad_nick' | 'rate_limited' | 'other' };
 export async function submitScore(ticket: string, nick: string, score: number, correct: number, streak: number): Promise<SubmitResult> {

@@ -76,7 +76,7 @@ export async function handleAdmin(request: Request, db: D1Database, adminKey: st
   const msgs = await db.prepare('SELECT p.nick AS nick, w.created AS created, w.seen_at AS seen_at FROM winner_msgs w JOIN players p ON p.id = w.player_id ORDER BY w.created DESC LIMIT 100').all();
   const month = new Date(now); month.setUTCDate(1); month.setUTCHours(0, 0, 0, 0);
   const best = (since: number) => db.prepare(
-    'SELECT p.nick AS nick, MAX(s.score) AS score, MAX(s.correct) AS correct, COUNT(*) AS games, MAX(s.at) AS last_at FROM scores s JOIN players p ON p.id = s.player_id WHERE s.at >= ? GROUP BY s.player_id ORDER BY score DESC, MIN(s.at) ASC LIMIT 200',
+    'SELECT p.nick AS nick, MAX(s.score) AS score, MAX(s.correct) AS correct, COUNT(*) AS games, MAX(s.at) AS last_at FROM scores s JOIN players p ON p.id = s.player_id WHERE s.at >= ? AND s.mode = \'sprint60\' GROUP BY s.player_id ORDER BY score DESC, MIN(s.at) ASC LIMIT 200',
   ).bind(since).all();
   const [thisMonth, archive] = await Promise.all([
     best(month.getTime()),

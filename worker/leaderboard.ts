@@ -5,13 +5,17 @@ import { notifyAdmin } from './adminPush';
 // Rules the server enforces. The game itself runs in the browser, so these checks make cheating
 // harder, not impossible: a server-issued game ticket, minimum/maximum play time, a cap on answers per
 // second, a score that must match the answer count, one-time tickets and per-IP rate limits.
-const GAME_SECONDS = 60;
-const MIN_ELAPSED = 48;           // seconds between ticket and submit
-const MAX_ELAPSED = 180;
-const MIN_SECONDS_PER_ANSWER = 1.3; // a human cannot read a photo and tap faster than this
 const BONUS_STEP = 2; const BONUS_MAX_STREAK_STEPS = 5; // mirrors the client: 10 + min(streak-1, 5) * 2 per answer
 const STARTS_PER_10_MIN = 60; // mobile networks put many students behind one IP
 const SUBMITS_PER_HOUR = 8;
+// Game modes. The ticket (issued by the server) fixes the mode, so a client cannot post a score into another mode.
+type Mode = 'sprint60' | 'tf';
+const MODES: Record<Mode, { seconds: number; minElapsed: number; maxElapsed: number; minPerAnswer: number; maxCorrect: number }> = {
+  sprint60: { seconds: 60, minElapsed: 48, maxElapsed: 180, minPerAnswer: 1.3, maxCorrect: 60 },
+  tf: { seconds: 45, minElapsed: 38, maxElapsed: 150, minPerAnswer: 0.9, maxCorrect: 50 }, // true/false: +5 +streak bonus (max +5) per right answer, -3 per wrong, never below 0
+};
+const asMode = (v: unknown): Mode => (v === 'tf' ? 'tf' : 'sprint60');
+export function maxScoreTf(correct: number): number { let t = 0; for (let i = 0; i < correct; i++) t += 5 + Math.min(i, 5); return t; }
 const NICK_RE = /^[\p{L}\p{N}][\p{L}\p{N} _\-.]{1,15}$/u;
 
 const json = (data: unknown, status = 200, extra: Record<string, string> = {}) =>
@@ -26,6 +30,7 @@ export function ensureSchema(db: D1Database): Promise<void> {
     db.prepare('CREATE INDEX IF NOT EXISTS scores_player ON scores (player_id)'),
     db.prepare('CREATE TABLE IF NOT EXISTS games (id TEXT PRIMARY KEY, started INTEGER NOT NULL, used INTEGER NOT NULL DEFAULT 0, ip TEXT NOT NULL)'),
   ]).then(async () => {
+    for (const t of ['scores', 'games']) await db.prepare(`ALTER TABLE ${t} ADD COLUMN mode TEXT NOT NULL DEFAULT 'sprint60'`).run().then(() => undefined, () => undefined);
     for (const col of ['code_hash TEXT', 'avatar TEXT', 'owner INTEGER', 'frame TEXT']) await db.prepare(`ALTER TABLE players ADD COLUMN ${col}`).run().then(() => undefined, () => undefined); // already there
   }).catch((e) => { ready = null; throw e; });
   return ready;
@@ -51,11 +56,12 @@ export async function handleLeaderboard(request: Request, db: D1Database, url: U
 
   if (url.pathname === '/api/leaderboard' && request.method === 'GET') {
     const period = url.searchParams.get('period') === 'all' ? 'all' : 'week';
+    const mode = asMode(url.searchParams.get('mode'));
     const since = period === 'week' ? now - 7 * 86400_000 : 0;
     const rows = await db.prepare(
-      "SELECT p.nick AS nick, p.avatar AS avatar, p.owner AS owner, p.frame AS frame, MAX(s.score) AS score, (SELECT ph.pub FROM photos ph WHERE ph.player_id = p.id AND ph.status = 'approved') AS photo FROM scores s JOIN players p ON p.id = s.player_id WHERE s.at >= ? GROUP BY s.player_id ORDER BY score DESC, MIN(s.at) ASC LIMIT 20",
-    ).bind(since).all<{ nick: string; avatar: string | null; owner: number | null; frame: string | null; score: number; photo: string | null }>();
-    return json({ period, entries: rows.results }, 200, { 'cache-control': 'public, max-age=30' });
+      "SELECT p.nick AS nick, p.avatar AS avatar, p.owner AS owner, p.frame AS frame, MAX(s.score) AS score, (SELECT ph.pub FROM photos ph WHERE ph.player_id = p.id AND ph.status = 'approved') AS photo FROM scores s JOIN players p ON p.id = s.player_id WHERE s.at >= ? AND s.mode = ? GROUP BY s.player_id ORDER BY score DESC, MIN(s.at) ASC LIMIT 20",
+    ).bind(since, mode).all<{ nick: string; avatar: string | null; owner: number | null; frame: string | null; score: number; photo: string | null }>();
+    return json({ period, mode, entries: rows.results }, 200, { 'cache-control': 'public, max-age=30' });
   }
 
   if (url.pathname === '/api/nick' && request.method === 'GET') {
@@ -71,12 +77,13 @@ export async function handleLeaderboard(request: Request, db: D1Database, url: U
     const ip = await ipHash(request);
     const recent = await db.prepare('SELECT COUNT(*) AS n FROM games WHERE ip = ? AND started > ?').bind(ip, now - 600_000).first<{ n: number }>();
     if ((recent?.n ?? 0) >= STARTS_PER_10_MIN) return json({ error: 'rate_limited' }, 429);
+    const mode = asMode(((await request.json().catch(() => null)) as { mode?: unknown } | null)?.mode);
     const id = crypto.randomUUID();
     await db.batch([
-      db.prepare('INSERT INTO games (id, started, ip) VALUES (?, ?, ?)').bind(id, now, ip),
+      db.prepare('INSERT INTO games (id, started, ip, mode) VALUES (?, ?, ?, ?)').bind(id, now, ip, mode),
       db.prepare('DELETE FROM games WHERE started < ?').bind(now - 86400_000),
     ]);
-    return json({ ticket: id, seconds: GAME_SECONDS });
+    return json({ ticket: id, seconds: MODES[mode].seconds, mode });
   }
 
   if (url.pathname === '/api/score' && request.method === 'POST') {
@@ -89,13 +96,16 @@ export async function handleLeaderboard(request: Request, db: D1Database, url: U
     if (!/^[0-9a-f-]{36}$/.test(ticket) || !/^[0-9a-f-]{36}$/.test(player)) return json({ error: 'bad_request' }, 400);
     if (!NICK_RE.test(nick)) return json({ error: 'bad_nick' }, 400);
     if (![score, correct, streak].every((n) => Number.isInteger(n) && n >= 0)) return json({ error: 'bad_numbers' }, 400);
-    if (streak > correct || correct > 60 || score > maxScoreFor(correct) || score < correct * 10) return json({ error: 'implausible' }, 422);
-
-    const game = await db.prepare('SELECT started, used FROM games WHERE id = ?').bind(ticket).first<{ started: number; used: number }>();
+    const game = await db.prepare('SELECT started, used, mode FROM games WHERE id = ?').bind(ticket).first<{ started: number; used: number; mode: string }>();
     if (!game || game.used) return json({ error: 'bad_ticket' }, 403);
+    const mode = asMode(game.mode); const rules = MODES[mode];
+    const plausible = mode === 'tf'
+      ? streak <= correct && correct <= rules.maxCorrect && score <= maxScoreTf(correct)
+      : streak <= correct && correct <= rules.maxCorrect && score <= maxScoreFor(correct) && score >= correct * 10;
+    if (!plausible) return json({ error: 'implausible' }, 422);
     const elapsed = (now - game.started) / 1000;
-    if (elapsed < MIN_ELAPSED || elapsed > MAX_ELAPSED) return json({ error: 'bad_timing' }, 422);
-    if (correct * MIN_SECONDS_PER_ANSWER > elapsed) return json({ error: 'implausible' }, 422);
+    if (elapsed < rules.minElapsed || elapsed > rules.maxElapsed) return json({ error: 'bad_timing' }, 422);
+    if (correct * rules.minPerAnswer > elapsed) return json({ error: 'implausible' }, 422);
 
     const hourly = await db.prepare('SELECT COUNT(*) AS n FROM scores WHERE player_id = ? AND at > ?').bind(player, now - 3600_000).first<{ n: number }>();
     if ((hourly?.n ?? 0) >= SUBMITS_PER_HOUR) return json({ error: 'rate_limited' }, 429);
@@ -111,13 +121,13 @@ export async function handleLeaderboard(request: Request, db: D1Database, url: U
       mine
         ? db.prepare('UPDATE players SET nick = ?, nick_lc = ? WHERE id = ?').bind(nick, lc, player)
         : db.prepare('INSERT INTO players (id, nick, nick_lc, created) VALUES (?, ?, ?, ?)').bind(player, nick, lc, now),
-      db.prepare('INSERT INTO scores (player_id, score, correct, streak, at) VALUES (?, ?, ?, ?, ?)').bind(player, score, correct, streak, now),
+      db.prepare('INSERT INTO scores (player_id, score, correct, streak, at, mode) VALUES (?, ?, ?, ?, ?, ?)').bind(player, score, correct, streak, now, mode),
     ];
-    const prevTop = await db.prepare('SELECT MAX(score) AS m FROM scores').first<{ m: number | null }>().catch(() => null);
+    const prevTop = await db.prepare('SELECT MAX(score) AS m FROM scores WHERE mode = ?').bind(mode).first<{ m: number | null }>().catch(() => null);
     try { await db.batch(statements); } catch { return json({ error: 'nick_taken' }, 409); }
     if (!mine) await notifyAdmin(db, 'user', now);
-    if (prevTop?.m != null && score > prevTop.m) await notifyAdmin(db, 'record', now);
-    const rank = await db.prepare('SELECT COUNT(*) + 1 AS rank FROM (SELECT MAX(score) AS m FROM scores WHERE at >= ? GROUP BY player_id) WHERE m > ?').bind(now - 7 * 86400_000, score).first<{ rank: number }>();
+    if (mode === 'sprint60' && prevTop?.m != null && score > prevTop.m) await notifyAdmin(db, 'record', now);
+    const rank = await db.prepare('SELECT COUNT(*) + 1 AS rank FROM (SELECT MAX(score) AS m FROM scores WHERE at >= ? AND mode = ? GROUP BY player_id) WHERE m > ?').bind(now - 7 * 86400_000, mode, score).first<{ rank: number }>();
     return json({ ok: true, weekRank: rank?.rank ?? null });
   }
 
@@ -135,7 +145,7 @@ export async function purgeLeaderboard(db: D1Database, now = Date.now()): Promis
   ]);
   await db.batch([
     db.prepare('DELETE FROM leaderboard_archive WHERE month = ?').bind(label),
-    db.prepare('INSERT INTO leaderboard_archive (month, nick, score, at) SELECT ?, p.nick, MAX(s.score), MIN(s.at) FROM scores s JOIN players p ON p.id = s.player_id GROUP BY s.player_id ORDER BY MAX(s.score) DESC, MIN(s.at) ASC LIMIT 50').bind(label),
+    db.prepare('INSERT INTO leaderboard_archive (month, nick, score, at) SELECT ?, p.nick, MAX(s.score), MIN(s.at) FROM scores s JOIN players p ON p.id = s.player_id WHERE s.mode = \'sprint60\' GROUP BY s.player_id ORDER BY MAX(s.score) DESC, MIN(s.at) ASC LIMIT 50').bind(label),
     db.prepare('DELETE FROM scores'),
     db.prepare('DELETE FROM games'),
   ]);

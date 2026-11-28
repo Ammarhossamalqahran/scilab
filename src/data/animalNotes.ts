@@ -378,6 +378,9 @@ const parNotes = new Set<AnimalNote>(parRules.map(([, n]) => n));
 
 // Slide ids are matched by words in the id; the first rule that matches wins. Only groups the cited page describes are listed.
 const rules: Array<[RegExp, AnimalNote | null]> = [
+  [/^(castor-bean-tick|[a-z-]*-tick-)/, chelicerate],
+  [/(daphnia|water-flea)/, crustacean],
+  [/(^(crab|bird|guinea-pig)-louse|^louse|^flea|-flea-|^head-of-an-adult-flea)/, arthropod],
   [/^diatomaceous/, null],
   [/(yeast|saccharomyces|candida|budding)/, yeast],
   [/(fung|mould|hyphae|conidi|spore|alternaria|fusarium|curvularia|penicillium|verticillium|thamnidium|basidio|morel|ustilago|urocystis|hortaea|choanephora|rust-)/, mould],

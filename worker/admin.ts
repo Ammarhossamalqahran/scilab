@@ -1,5 +1,5 @@
 import type { D1Database } from './types';
-import { ensureSchema } from './leaderboard';
+import { ensureSchema, ipHash } from './leaderboard';
 import { pushOne } from './push';
 import { nickForCode } from './code';
 import { listPhotos, decidePhoto } from './photo';
@@ -25,12 +25,18 @@ async function authorize(request: Request, db: D1Database, adminKey: string | un
   const isSession = given.startsWith(SESSION_PREFIX);
   if (!isSession && (!adminKey || adminKey.length < 8)) return json({ error: 'admin_not_configured' }, 503);
   await ensureSchema(db);
-  await db.prepare('CREATE TABLE IF NOT EXISTS admin_fails (at INTEGER NOT NULL)').run();
-  const fails = await db.prepare('SELECT COUNT(*) AS n FROM admin_fails WHERE at > ?').bind(now - 600_000).first<{ n: number }>();
+  // A live owner session (256 random bits) is never locked out, so nobody can shut the owner out by sending bad keys.
+  if (isSession && await validSession(db, given, now)) return null;
+  // Failed tries are counted per caller (IP hash), not globally, and old rows are purged.
+  await db.prepare('CREATE TABLE IF NOT EXISTS code_rl (kind TEXT NOT NULL, ip TEXT NOT NULL, at INTEGER NOT NULL)').run();
+  const ip = await ipHash(request);
+  const fails = await db.prepare("SELECT COUNT(*) AS n FROM code_rl WHERE kind = 'admin_fail' AND ip = ? AND at > ?").bind(ip, now - 600_000).first<{ n: number }>();
   if ((fails?.n ?? 0) >= 10) return json({ error: 'locked' }, 429);
-  // Either the Google-issued owner session (server-checked) or the old secret key.
-  if (isSession ? await validSession(db, given, now) : await same(given, adminKey as string)) return null;
-  await db.prepare('INSERT INTO admin_fails (at) VALUES (?)').bind(now).run();
+  if (!isSession && await same(given, adminKey as string)) return null;
+  await db.batch([
+    db.prepare("INSERT INTO code_rl (kind, ip, at) VALUES ('admin_fail', ?, ?)").bind(ip, now),
+    db.prepare("DELETE FROM code_rl WHERE kind = 'admin_fail' AND at < ?").bind(now - 86400_000),
+  ]);
   return json({ error: 'forbidden' }, 403);
 }
 

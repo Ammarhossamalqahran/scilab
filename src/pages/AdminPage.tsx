@@ -59,29 +59,49 @@ export function AdminPage() {
   const [chkRes, setChkRes] = useState('');
   async function checkCode() {
     setChkRes('');
-    const res = await fetch('/api/admin/code', { method: 'POST', headers: { 'x-admin-key': key, 'content-type': 'application/json' }, body: JSON.stringify({ code: chk }) });
+    let res: Response;
+    try { res = await fetch('/api/admin/code', { method: 'POST', headers: { 'x-admin-key': key, 'content-type': 'application/json' }, body: JSON.stringify({ code: chk }) }); } catch { setChkRes(ar ? 'مفيش اتصال.' : 'No connection.'); return; }
+    if (res.status === 403 || res.status === 429) { guard(res); return; }
     const b = await res.json().catch(() => ({})) as { nick?: string };
     setChkRes(res.ok && b.nick ? (ar ? `الكود ده بتاع: ${b.nick}` : `This code belongs to: ${b.nick}`) : (ar ? 'مفيش حد بالكود ده.' : 'No player has this code.'));
+  }
+  const [actErr, setActErr] = useState('');
+  // Shared check for the small admin calls: an expired session sends the owner back to sign-in, any other failure is shown.
+  function guard(res: Response): boolean {
+    if (res.ok) { setActErr(''); return true; }
+    if (key.startsWith('gs.') && res.status === 403) { clearAdminSession(); setKey(''); setData(null); setErr(ar ? 'انتهت الجلسة. ادخل بجوجل تاني.' : 'Session expired. Sign in with Google again.'); }
+    else setActErr(res.status === 429 ? (ar ? 'محاولات كتير. استنى شوية.' : 'Too many tries. Wait a bit.') : (ar ? 'العملية ماتمتش. جرب تاني.' : 'That did not work. Try again.'));
+    return false;
   }
   type Opin = { id: number; nick: string; text: string; status: string; created: number };
   const [opins, setOpins] = useState<Opin[]>([]);
   async function loadOpins() {
-    const res = await fetch('/api/admin/opinions', { headers: { 'x-admin-key': key } });
-    const b = await res.json().catch(() => ({})) as { opinions?: Opin[] };
-    if (res.ok) setOpins(b.opinions ?? []);
+    try {
+      const res = await fetch('/api/admin/opinions', { headers: { 'x-admin-key': key } });
+      const b = await res.json().catch(() => ({})) as { opinions?: Opin[] };
+      if (guard(res)) setOpins(b.opinions ?? []);
+    } catch { setActErr(ar ? 'مفيش اتصال.' : 'No connection.'); }
   }
   async function decideOpin(id: number, action: string) {
-    await fetch('/api/admin/opinion', { method: 'POST', headers: { 'x-admin-key': key, 'content-type': 'application/json' }, body: JSON.stringify({ id, action }) });
+    try {
+      const res = await fetch('/api/admin/opinion', { method: 'POST', headers: { 'x-admin-key': key, 'content-type': 'application/json' }, body: JSON.stringify({ id, action }) });
+      if (!guard(res)) return;
+    } catch { setActErr(ar ? 'مفيش اتصال.' : 'No connection.'); return; }
     void loadOpins();
   }
   const [photos, setPhotos] = useState<Photo[]>([]);
   async function loadPhotos() {
-    const res = await fetch('/api/admin/photos', { headers: { 'x-admin-key': key } });
-    const b = await res.json().catch(() => ({})) as { photos?: Photo[] };
-    if (res.ok) setPhotos(b.photos ?? []);
+    try {
+      const res = await fetch('/api/admin/photos', { headers: { 'x-admin-key': key } });
+      const b = await res.json().catch(() => ({})) as { photos?: Photo[] };
+      if (guard(res)) setPhotos(b.photos ?? []);
+    } catch { setActErr(ar ? 'مفيش اتصال.' : 'No connection.'); }
   }
   async function decide(pub: string, action: 'approve' | 'reject' | 'remove') {
-    await fetch('/api/admin/photo', { method: 'POST', headers: { 'x-admin-key': key, 'content-type': 'application/json' }, body: JSON.stringify({ pub, action }) });
+    try {
+      const res = await fetch('/api/admin/photo', { method: 'POST', headers: { 'x-admin-key': key, 'content-type': 'application/json' }, body: JSON.stringify({ pub, action }) });
+      if (!guard(res)) return;
+    } catch { setActErr(ar ? 'مفيش اتصال.' : 'No connection.'); return; }
     void loadPhotos();
   }
   useEffect(() => { if (data) { void loadPhotos(); void loadOpins(); } }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -90,6 +110,7 @@ export function AdminPage() {
   return (
     <section className="admin-page">
       <h1>{ar ? 'لوحة المالك' : 'Owner view'}</h1>
+      {actErr && <p className="admin-error" role="alert">{actErr}</p>}
       {!data && (
         <form className="admin-login" onSubmit={load}>
           <input type="password" value={key} onChange={(e) => setKey(e.target.value)} placeholder={ar ? 'المفتاح السري' : 'Secret key'} autoComplete="off" />

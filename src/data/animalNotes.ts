@@ -290,7 +290,15 @@ const pineal: AnimalNote = {
   function: { en: 'The pinealocyte cells that make up the pineal gland produce and secrete the hormone melatonin. The secretion of melatonin varies according to the level of light received from the environment.', ar: 'خلايا الـ pinealocyte المكونة للغدة الصنوبرية بتنتج وبتفرز هرمون الميلاتونين. إفراز الميلاتونين بيتغير حسب مستوى الضوء من البيئة.' },
   functionLabel: keyPoint, source: pinSrc,
 };
+const stratified: AnimalNote = {
+  recognize: { en: 'A stratified squamous epithelium contains many layers of flattened cells. The lining of the mouth cavity is an example of an unkeratinized, stratified squamous epithelium.', ar: 'الظهارة الحرشفية الطبقية (stratified squamous) فيها طبقات كتير من الخلايا المسطحة. بطانة تجويف الفم مثال على ظهارة حرشفية طبقية غير متقرنة.' },
+  function: { en: 'The function of stratified squamous epithelium is to protect against abrasion.', ar: 'وظيفة الظهارة الحرشفية الطبقية هي الحماية من الاحتكاك.' },
+  functionLabel: keyPoint,
+  compare: { en: 'Mammalian skin is an example of this dry, keratinized, stratified squamous epithelium.', ar: 'جلد الثدييات مثال على الظهارة الحرشفية الطبقية الجافة المتقرنة.' },
+  source: epiSrc,
+};
 const histRules: Array<[RegExp, AnimalNote]> = [
+  [/(^cheek-cell|cheek-epithelial)/, stratified],
   [/^simple-squamous/, squamous],
   [/^cuboidal-epithelium/, cuboidal],
   [/(loose-areolar|reticular-connective|teased-tendon|reticular-dermis|elastic-tissue|elastic-connective)/, fibres],
